@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Simple Map</title>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.12/esri/css/esri.css">
+      <script src="xml2json.js"></script>
+      <script type="text/javascript" src="xmlToJSON.js"></script>
+    <style>
+      html, body, #map {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #FFF;
+        overflow: hidden;
+        font-family: "Trebuchet MS";
+      }
+    </style>
+    <script src="http://js.arcgis.com/3.12/"></script>
+    <script>
+        
+      //  var lat, lon;
+      var map;
+          var responseObj, data, jsonobj;
+        var tag, modified, finish, latitude;
+      require(["esri/map", "dojo/domReady!"], function(Map) {
+        map = new Map("map", {
+          basemap: "topo",
+          center: [-122.45, 37.75], // longitude, latitude
+          zoom: 13
+        });
+          
+        var myXMLrequest = new XMLHttpRequest();
+          
+          myXMLrequest.open("get", "https://ws.geonorge.no/SKWS3Index/ssr/sok?navn=ekenes");
+          myXMLrequest.send();
+          myXMLrequest.onload = requestListener;
+          
+          function requestListener(){
+              
+               data = this.responseText;
+             // modified = this.responseXML;
+              
+              console.log(typeof(data));
+            
+              modified = data.replace('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>', '');
+            //  finish = modified + '</xml>';
+              console.log("with removed text: ", modified);
+         result = xmlToJSON.parseString(modified);
+              console.log(result);
+          console.log(result.sokRes[0].stedsnavn);  //array of results in objects
+              console.log("easting: ", result.sokRes[0].stedsnavn[0].aust[0]._text, typeof(result.sokRes[0].stedsnavn[0].aust[0]._text));
+              console.log("northing: ", result.sokRes[0].stedsnavn[0].nord[0]._text, typeof(result.sokRes[0].stedsnavn[0].nord[0]._text));
+              console.log("name: ", result.sokRes[0].stedsnavn[0].stedsnavn[0]._text, "county: ", result.sokRes[0].stedsnavn[0].fylkesnavn[0]._text, "muni: ", result.sokRes[0].stedsnavn[0].kommunenavn[0]._text, "ssrid: ", result.sokRes[0].stedsnavn[0].ssrId[0]._text);
+              
+              resultB = xml2json.parser(modified);
+              console.log(resultB);
+              console.log("easting: ", resultB.sokres.aust[0], typeof(resultB.sokres.aust[0]));
+              console.log("northing: ", resultB.sokres.nord[0], typeof(resultB.sokres.nord[0]));
+              console.log("name: ", resultB.sokres.stedsnavn[0].stedsnavn, "county: ", resultB.sokres.stedsnavn[0].fylkesnavn, "muni: ", resultB.sokres.stedsnavn[0].kommunenavn, "ssrid: ", resultB.sokres.stedsnavn[0].ssrid);
+              
+             var lat = result.sokRes[0].stedsnavn[0].nord[0]._text;
+              
+             var lon = result.sokRes[0].stedsnavn[0].aust[0]._text;
+              
+             latitude = lat;
+              console.log(lat, latitude);
+              //datatext = this.response;
+            //  console.log(data.getElementsByName("stedsnavn"));
+              done(lat, lon);
+              
+          }
+          
+        function done(y, x)
+          {
+          console.log("status: ", myXMLrequest.status);
+           console.log("( ", y, ", ", x, ")");
+              
+              latitude = y;
+          }
+          
+       //   if(myXMLrequest.status)
+         //   console.log(latitude);
+        //  console.log(modified);
+          
+       // jsonobj = xml2json.parser(finish);
+
+       //   result2 = xmlToJSON.parseXML(modified);
+          
+        //  console.log(modified);
+          
+          
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="map"></div>
+  </body>
+</html>
