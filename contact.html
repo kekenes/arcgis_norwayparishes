@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+
+<title>Norway's Parishes</title>
+
+<meta name="author" content="Kristian Ekenes">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dijit/themes/claro/claro.css">
+<link rel="stylesheet" type="text/css" href="CSS/aboutStyle.css">
+
+<script>dojoConfig = {parseOnLoad: true}</script>
+<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js" data-dojo-config="async: true"></script>
+<script src="JS/ButtonJS.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/flag_1-20140714-favicon.ico" />
+
+</head>
+
+<body>
+
+<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'sidebar', gutters:true" id="borderContainer">
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'leading'" style="width: 20%;" class="sidePanels">
+	
+	<div id="siteName">Norway's<br>Parishes</div>
+	<div id="credits">
+	Background image by <a href="http://ozelotstudios.deviantart.com/art/Norge-Flag-of-Norway-308124945" target="_blank">OzelotStudios</a> via <a href="http://www.deviantart.com/" target="_blank">Deviantart</a>
+	</div>
+	</div>
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'right'" style="width: 20%;" class="sidePanels"></div>
+    
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" id="centerStyle">
+	
+		<div id='menu'>
+			<button id='Map' class='menuButton' onclick="openNewPage('map.html')">Map</button>
+			<button id='Acknowledgements' class='menuButton' onclick="openNewPage('about.html')">About</button>
+			<button id='Resources' class='menuButton' onclick="openNewPage('Acknowledgements.html')">Acknowledgements</button>
+			<button id='Contact' class='menuButton' onclick="openNewPage('resources.html')">Research Helps</button>
+		</div>
+	<br><br>
+
+	<div id="content">
+	<div id="title">Contact Us</div>	
+	
+	<p>If you have questions, comments, or suggestions on how to improve NorwayParishes.com, we would love to hear from you. Also if 
+	you notice any errors in boundary locations or in other content found on this site, please report them so they can be fixed.</p>
+		<p>Send an email to Kristian Ekenes at <a href="mailto:kekenes@asu.edu" target="_blank">kekenes@asu.edu</a>.</p>
+		Thank you for visiting!
+	</p>
+	
+	</div>
+	
+	</div>
+</div>
+
+</body>
+
+</html>

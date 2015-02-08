@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<head>
+
+<title>Norway's Parishes</title>
+
+<meta name="author" content="Kristian Ekenes">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dijit/themes/claro/claro.css">
+<link rel="stylesheet" type="text/css" href="CSS/aboutStyle.css">
+
+<script>dojoConfig = {parseOnLoad: true}</script>
+<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js" data-dojo-config="async: true"></script>
+<script src="JS/ButtonJS.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/flag_1-20140714-favicon.ico" />
+
+</head>
+
+<body>
+
+<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'sidebar', gutters:true" id="borderContainer">
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'leading'" style="width: 20%;" class="sidePanels">
+	
+	<div id="siteName">Norway's<br>Parishes</div>
+	<div id="credits">
+	Background image by <a href="http://ozelotstudios.deviantart.com/art/Norge-Flag-of-Norway-308124945" target="_blank">OzelotStudios</a> via <a href="http://www.deviantart.com/" target="_blank">Deviantart</a>
+	</div>	
+	</div>
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'right'" style="width: 20%;" class="sidePanels"></div>
+    
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" id="centerStyle">
+	
+		<div id='menu'>
+			<button id='Map' class='menuButton' onclick="openNewPage('map.html')">Map</button>
+			<button id='Acknowledgements' class='menuButton' onclick="openNewPage('Acknowledgements.html')">Acknowledgements</button>
+			<button id='Resources' class='menuButton' onclick="openNewPage('resources.html')">Research Helps</button>
+			<button id='Contact' class='menuButton' onclick="openNewPage('contact.html')">Contact</button>
+		</div>
+	<br><br>
+
+	<div id="content">
+	<div id="title">About</div>	
+	<p>NorwayParishes.com is a free web application designed to assist those with Norwegian ancestry
+	in conducting genealogical research. Kristian Ekenes created it in 2014 while working on his master’s 
+	degree in Geographic Information Systems at Arizona State University. </p>
+	
+	<p>The primary goal of NorwayParishes.com is to provide researchers with interactive, accurate, and precise maps 
+	of Norway's parish boundaries while providing 
+	links to the best online genealogical research tools available filtered by geographic jurisdiction (parishes and counties).</p>
+	
+	<h3>The Need</h3>
+	
+	<p>Many people researching their family roots want to know more about the locations their ancestors lived. 
+	Where did they grow up? What is it like there? What does the physical landscape look like? Did they live in a 
+	city, on an island, or in the mountains? Did they live nearby other ancestors? NorwayParishes.com seeks to 
+	help people answer these questions that a standard paper map may not be able to answer. Whether you’re trying 
+	to identify unknown ancestors’ names and residences, obtain official documentation or vital records of ancestors, 
+	or are simply trying to learn more about the region where your ancestors lived, NorwayParishes.com will make the process of answering these questions easier.</p>
+	
+	<p>Many tools already exist to facilitate Norwegian genealogical research online. However, few of 
+	those tools provide detailed maps for each parish on a large scale. In fact, before NorwayParishes.com 
+	launched no searchable, interactive, nationwide web map of Norwegian parish boundaries existed on the web. Print maps of parishes
+	are available online through the <a href=”http://digitalarkivet.uib.no/geistleg/oversikt.htm” target="_blank">Norwegian National Archives</a> 
+	and <a href=”https://familysearch.org/learn/wiki/en/Norway_Maps” target="_blank">FamilySearch</a>, but those 
+	maps are limited in their ability to depict geographic details on large scales. Understanding the regional context of the parish of interest as well as the 
+	details of locations that exist within the parish help researchers better understand the stories of their ancestors' lives as well as their place in world history.</p>
+	
+	<p>Unfortunately, the print maps mentioned above can become useless when a researcher desires to view specific locations (such as farms) within parish 
+	boundaries. Using them to find a specific parish's boundaries can also be time consuming due to illegibility and limitations of map scale. 
+	Also, parish boundaries become generalized causing them to lose a large 
+	amount of detail. The way to solve these issues in the past has been to collect a series of maps and atlases in various scales
+	and couple them with the use of a gazetteer. Attempting to understand the spatial relationship of locations depicted in several maps with differing scales 
+	 can become time consuming and frustrating. NorwayParishes.com presents all parish, municipal and county boundaries in a scale-less map, 
+	 allowing users to view the details of a parish as well as its regional context with little effort.</p>
+	
+	<h3>Using this Application</h3>
+	
+	<p>NorwayParishes.com virtually eliminates the need for people to collect and decipher multiple paper maps simultaneously. On this site, researchers can dynamically 
+	filter parishes and view their boundaries based on a selection of counties and/or
+	municipalities using drop down menus. One can also zoom to the parish level to view towns and farms located inside each parish. If a farm
+	or place of residence falls within a specific parish boundary, it is presumed that the birth, marriage, death, and 
+	census records of the former inhabitants of that farm/residence were originally kept by church leaders of that respective parish. 
+	Note: that may not always be the case with current jurisdictions and naming conventions since parish boundaries changed over time (see “A Note on Parish Boundaries” below).</p>
+	
+	<p> Users can also use the search button in the upper-left portion of the map to search for cities, towns, farms, and other places
+	 when the parish jurisdiction is unknown. That capability is designed to take the user to the desired location and indicate which parish most likely kept records for that location's inhabitants.</p>
+	
+	<p>Users can also view historic information about each parish, vital records specific to each geography, and view 
+	a list of farm names by county along with a very basic history of most farms in the searched geographic region. </p>
+	For strategies on how to conduct genealogical research in Norway, <a href="http://homepages.rootsweb.ancestry.com/~norway/index.html" target="_blank">click here</a>.
+	
+	<h3>A Note on Parish Boundaries</h3>
+	
+	<p>The county and municipal boundaries on the web map depict the current limits of each respective jurisdiction. The parish 
+	boundaries, however, reflect parishes as they were in 1979. Those limits were created with data obtained from the Norwegian Mapping Authority
+	overlaid on maps provided by the Norwegian National Archives. GIS software was used to create a spatial dataset of parishes and assign each parish
+	proper attribute data.</p>
+	
+	<h3>Future Research and Development</h3>
+	
+	<p>While the 1979 parish boundaries are a good guide for showing historic parish limits, they don't tell the whole story of the changing geography of parishes
+	over time. NorwayParishes.com will attempt to provide additional layers of parish boundaries as they existed prior to 1979 to more accurately 
+	represent how they may have looked when your ancestors were living in Norway. While that ability will take some time to complete, this application still 
+	accomplishes its purpose of depicting precise parish boundaries at all scales while consolidating the best genealogical 
+	research tools filtered by geography.</p>
+	
+	<p>Efforts will also be made to filter the gazetteer listings of farm names by parish rather than county. 
+	We hope to provide other genealogical helps specific to each region as well.</p>
+	
+	<p>NorwayParishes.com does not claim the parish boundaries depicted here are 100 percent accurate. If errors are found, 
+	please contact Kristian Ekenes by <a target="_blank" href="mailto:kekenes@asu.edu">email</a> and report the issue, 
+	so it can be fixed as quickly as possible.</p>
+
+	
+	</div>
+	
+	</div>
+</div>
+
+</body>
+
+</html>

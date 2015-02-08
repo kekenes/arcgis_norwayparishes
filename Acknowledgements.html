@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<head>
+
+<title>Norway's Parishes</title>
+
+<meta name="author" content="Kristian Ekenes">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dijit/themes/claro/claro.css">
+<link rel="stylesheet" type="text/css" href="CSS/aboutStyle.css">
+
+<script>dojoConfig = {parseOnLoad: true}</script>
+<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js" data-dojo-config="async: true"></script>
+<script src="JS/ButtonJS.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/flag_1-20140714-favicon.ico" />
+
+</head>
+
+<body>
+
+<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'sidebar', gutters:true" id="borderContainer">
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'leading'" style="width: 20%;" class="sidePanels">
+	
+	<div id="siteName">Norway's<br>Parishes</div>
+	<div id="credits">
+	Background image by <a href="http://ozelotstudios.deviantart.com/art/Norge-Flag-of-Norway-308124945" target="_blank">OzelotStudios</a> via <a href="http://www.deviantart.com/" target="_blank">Deviantart</a>
+	</div>	
+	</div>
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'right'" style="width: 20%;" class="sidePanels"></div>
+    
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" id="centerStyle">
+	
+		<div id='menu'>
+			<button id='Map' class='menuButton' onclick="openNewPage('map.html')">Map</button>
+			<button id='Acknowledgements' class='menuButton' onclick="openNewPage('about.html')">About</button>
+			<button id='Resources' class='menuButton' onclick="openNewPage('resources.html')">Research Helps</button>
+			<button id='Contact' class='menuButton' onclick="openNewPage('contact.html')">Contact</button>
+		</div>
+	<br><br>
+
+	<div id="content">
+	<div id="title">Acknowledgements</div>	
+	
+	<p>NorwayParishes.com offers a special thank you to the following organizations for their help and support with this project. Without their help, 
+	guidance and support, this project would not have been possible.</p>
+	
+	<table>
+	
+	<tr><td><a href="http://kartverket.no/" target="_blank"><img src="IMG/kartverket.jpg" height="50px" width="125px"></a></td><td><b>State Mapping Authority of Norway</b> - For providing the municipal and county boundaries in GIS format and the data used to create the parish boundaries on a national scale. Norway and Europe topo web services were also provided courtesy Kartverket.</td></tr>
+	<tr><td><a href="https://familysearch.org/" target="_blank"><img src="IMG/familySearch.JPG" height="50px" width="125px"></a></td><td><b>FamilySearch</b> - Parish maps on a county scale were used as reference to help create a GIS dataset of parish boundaries. FamilySearch also provided valuable information regarding the former jurisdictions of most parishes.<td></tr>	
+	<tr><td><a href="https://www.kirken.no/english/index.cfm" target="_blank"><img src="IMG/A_church_of_norge.jpg" height="50px" width="125px"></a></td><td><b>State Church of Norway</b> - Provided valuable information describing how parishes are organized today and offered recommendations on who to contact to obtain current GIS data for parishes.</td></tr>
+	<tr><td><a href="http://www.kirkesok.no/eng" target="_blank"><img src="IMG/A_Kirkesok.jpg" height="50px" width="125px"></a></td><td><b>Kirkesok</b> - All photos of churches as viewed in NorwayParishes.com are courtesy of Kirkesok.no.</td></tr>
+	<tr><td><a href="http://www.arkivverket.no/eng/Digitalarkivet" target="_blank"><img src="IMG/logo_digitalarkivet.jpg" height="50px" width="125px"></a></td><td><b>Digital Archives of Norway</b> - For providing official maps of Norway's parishes as they were in 1979 and 1801. The Digital Archives also provided sound guidance for this project.</td></tr>
+	<tr><td><a href="http://arkivverket.no/" target="_blank"><img src="IMG/Riksarkivet.jpg" height="50px" width="125px"></a></td><td><b>National Archives of Norway</b> - For providing guidance and information regarding best practices in conducting genealogical research and the presentation of geographic data relating to that research.</td></tr>
+	<tr><td><a href="http://leafletjs.com/plugins.html" target="_blank"><img src="IMG/leaflet.JPG" height="50px" width="125px"></a></td><td><b>Leaflet and its developers </b> - The web map contained in NorwayParishes.com was created using the Leaflet JavaScript API. Plugins in this application include code obtained from 
+	<a target="_blank" href="https://github.com/k4r573n/leaflet-control-osm-geocoder">Leaflet.Control.OSM.Geocoder</a>, 
+	<a href="https://github.com/Leaflet/Leaflet.label" target="_blank">Leaflet.label</a>, and 
+	<a target="_blank" href="https://github.com/davidchouse/Leaflet.NavBar">Leaflet.NavBar</a>.</td></tr>	
+	</table>
+	
+	<p>We also thank the <b>City of Oslo's Department of Cultural Affairs and Business Development</b> and the <b>City of Bergen's
+	Department of Urban Development</b> for their help in retrieving and lending GIS data related to this project. Also thanks to the dozens of other municipal
+	governments of Norway who reached out and helped with this project, by either delivering data or offering advice.</p>
+	
+	</div>
+	
+	</div>
+</div>
+
+</body>
+
+</html>
