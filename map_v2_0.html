@@ -6,13 +6,23 @@
 
     <meta charset="utf-8" />
     <title>Norway's Parishes</title>
+    
 
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <!--Load JQuery from CDN-->    
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+   <link rel="stylesheet" href="http://js.arcgis.com/3.12/dijit/themes/claro/claro.css">
+    
     <!--Load ArcGIS JS API from CDN-->
     <link rel="stylesheet" href="http://js.arcgis.com/3.12/esri/css/esri.css">
-    <script src="http://js.arcgis.com/3.12/"></script>
+
     
     <!-- Load Leaflet from CDN-->
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css" />
@@ -25,14 +35,8 @@
 
 </head>
     
-<body>
-    <div id="header">
-        <header>Norway's Parishes</header>
-    
-    </div>
-    <div id="map"></div>
-    <span id="results"></span>
-    <span id="tools"></span>
+<body class="claro">
+    <script src="http://js.arcgis.com/3.12/"></script>
 
     <script src="JS/parishjs_v2.js"></script>
 
