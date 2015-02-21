@@ -214,18 +214,18 @@ function loadJSfile()
 			
 	if(dom.byId('CountyDropDown').value == 'Akershus')
 	{
-		++AkershusCount;
+		++AkershusCount;    //create count parameter
 		psrc = 'JS/Parishes/Akershus.js';
 
 		var AkershusData = document.createElement('script');
 		AkershusData.type = 'text/javascript';
 		
-		document.body.appendChild(AkershusData);
+		document.body.appendChild(AkershusData); //create data parameter
 
 		console.log(AkershusCount);
 		
 		AkershusData.onload = function(){
-		
+		//create var name parameter
 		var Akershus_parish_layer = L.geoJson(Akershus_parishes, {style: ParishStyle, onEachFeature: labelParishes});
 		parish_data_properties = Akershus_parishes;
 		if(AkershusCount == 1)
