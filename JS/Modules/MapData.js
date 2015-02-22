@@ -175,6 +175,21 @@ return declare(null, {
         break;
       }
     }
+  },
+    
+  municipalityList: function(countyIndex){
+    if(typeof this.references[countyIndex].municipal_data != "object")
+    {
+      console.error("ERROR: Municipal data not properly loaded to complete operation, Type is a ", typeof this.references[countyIndex].municipal_data);
+      return;
+    }
+      
+      
+    if(this.references[countyIndex].count > 1)
+        //then get list inside refereneces objec
+    //CONTINUE WRITING THIS METHOD!!!  and set results to new property in reference object
+   // this.references[countyIndex];  
+      
   }
     
 });

@@ -1,3 +1,4 @@
+var mapdata;
 require(["dijit/layout/BorderContainer", 
          "dijit/layout/ContentPane",
          "dijit/layout/AccordionContainer",
@@ -180,7 +181,7 @@ map.attributionControl.addAttribution("Counties, Municipalities, and Topographic
 var Municipalities_layer = L.layerGroup().addTo(map);
 var parishes_layer = L.layerGroup().addTo(map);
     
-var mapdata = new mapData();
+mapdata = new mapData();
     
     console.log("map data: ", mapdata.references);
     console.log("county list: ", mapdata.countyList());
@@ -194,10 +195,15 @@ map.on("load", setDropDown(countyDropdown, mapdata.countyList()));
 console.log("map in initial js: ", map);
 
 on(countyDropdown, "change", function(){
-   console.log("dropdown selection: ", countyDropdown.value);
    var index = mapdata.countySelection(countyDropdown.value);
-   console.log("index: ", index, typeof index);
    loadData(Number(index));
+
+   //console.log("prototype: ", mapdata.__proto__);
+  // setDropDown(municipalityDropdown, );
+  // setDropDown(parishDropdown, );
+//WRITE code to set lists for municipalities and parishes    
+//  maybe chain them with promises.....
+//
 });
     
 function setDropDown(dropdown, values){
@@ -220,63 +226,154 @@ function setDropDown(dropdown, values){
       dropdown.add(option);
     }
 }
-//CONTINUE BY FIXING UP THIS SECTION!!!!!!!!!!!!!!!!!!!!!!!    
+    
 //arg must be the index of a county listed in references
 function loadData(countyIndex){
     mapdata.references[countyIndex].count++;
-
-    var dataScript = document.createElement('script');
-    dataScript.type = 'text/javascript';
-    document.body.appendChild(dataScript);
-    console.log(mapdata.references[countyIndex].name, " count = ", mapdata.references[countyIndex].count, " datascript: ", dataScript);
-      
-    on(dataScript, "load", function(){
+    console.log(mapdata.references[countyIndex].name, " Counnty - count: ", mapdata.references[countyIndex].count);
     if(mapdata.references[countyIndex].count == 1){
-        if(mapdata.references[countyIndex].name == "Akershus")
+        //Create parish data script
+        var parishDataScript = document.createElement('script');
+        parishDataScript.type = 'text/javascript';
+        document.body.appendChild(parishDataScript);
+        //Create municipal data script
+        var muniDataScript = document.createElement('script');
+        muniDataScript.type = 'text/javascript';
+        document.body.appendChild(muniDataScript);  
+      
+    on(parishDataScript, "load", function(){
+        if(mapdata.references[countyIndex].name == "Akershus"){
             mapdata.references[countyIndex].parish_data = Akershus_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
+        }
+        else if(mapdata.references[countyIndex].name == "Aust-Agder"){
+            mapdata.references[countyIndex].parish_data = Aust_Agder_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Buskerud"){
+            mapdata.references[countyIndex].parish_data = Buskerud_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Finnmark"){
             mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-        else if(mapdata.references[countyIndex].name == "Finnmark")
-            mapdata.references[countyIndex].parish_data = Finnmark_parishes;
-    }
-
-    var parishLayer = L.geoJson(mapdata.references[countyIndex].parish_data, {style: ParishStyle});
+        }
+        else if(mapdata.references[countyIndex].name == "Hedmark"){
+            mapdata.references[countyIndex].parish_data = Hedmark_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Hordaland"){
+            mapdata.references[countyIndex].parish_data = Hordaland_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Møre og Romsdal"){
+            mapdata.references[countyIndex].parish_data = More_og_Romsdal_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Nord-Trøndelag"){
+            mapdata.references[countyIndex].parish_data = Nord_Trondelag_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Nordland"){
+            mapdata.references[countyIndex].parish_data = Nordland_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Oppland"){
+            mapdata.references[countyIndex].parish_data = Oppland_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Oslo"){
+            mapdata.references[countyIndex].parish_data = Oslo_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Rogaland"){
+            mapdata.references[countyIndex].parish_data = Rogaland_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Sogn og Fjordane"){
+            mapdata.references[countyIndex].parish_data = Sogn_og_Fjordane_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Sør-Trøndelag"){
+            mapdata.references[countyIndex].parish_data = Sor_Trondelag_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Telemark"){
+            mapdata.references[countyIndex].parish_data = Telemark_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Troms"){
+            mapdata.references[countyIndex].parish_data = Troms_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Vest-Agder"){
+            mapdata.references[countyIndex].parish_data = Vest_Agder_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Vestfold"){
+            mapdata.references[countyIndex].parish_data = Vestfold_parishes;
+        }
+        else if(mapdata.references[countyIndex].name == "Østfold"){
+            mapdata.references[countyIndex].parish_data = Ostfold_parishes;
+        }
+        else {
+          console.log("Parish Data Already Loaded. This message shouldn't appear. If it does, something is wrong.");
+        }
         
-    if(mapdata.references[countyIndex].count == 1)
-    {
-        parishLayer.addTo(map);
+        console.log("New parish data loaded");
+        var parishLayer = L.geoJson(mapdata.references[countyIndex].parish_data, {style: ParishStyle});         parishLayer.addTo(map);
         parishes_layer.addLayer(parishLayer);
-    }
-    map.fitBounds(parishLayer.getBounds());
-    });
-    dataScript.src = "JS/Parishes/" + mapdata.references[countyIndex].parish_file;
+        map.fitBounds(parishLayer.getBounds());
+        mapdata.references[countyIndex].parishLayer = parishLayer;
+        });
+
+    on(muniDataScript, "load", function(){
+    //  if(mapdata.references[countyIndex].count == 1){
+        if(mapdata.references[countyIndex].name == "Akershus"){
+            mapdata.references[countyIndex].municipal_data = Akershus_muni; }
+        else if(mapdata.references[countyIndex].name == "Aust-Agder"){
+            mapdata.references[countyIndex].municipal_data = Aust_Agder_muni; }
+        else if(mapdata.references[countyIndex].name == "Buskerud"){
+            mapdata.references[countyIndex].municipal_data = Buskerud_muni; }
+        else if(mapdata.references[countyIndex].name == "Finnmark"){
+            mapdata.references[countyIndex].municipal_data = Finnmark_muni; }
+        else if(mapdata.references[countyIndex].name == "Hedmark"){
+            mapdata.references[countyIndex].municipal_data = Hedmark_muni; }
+        else if(mapdata.references[countyIndex].name == "Hordaland"){
+            mapdata.references[countyIndex].municipal_data = Hordaland_muni; }
+        else if(mapdata.references[countyIndex].name == "Møre og Romsdal"){
+            mapdata.references[countyIndex].municipal_data = More_og_Romsdal_muni; }
+        else if(mapdata.references[countyIndex].name == "Nord-Trøndelag"){
+            mapdata.references[countyIndex].municipal_data = Nord_Trondelag_muni; }
+        else if(mapdata.references[countyIndex].name == "Nordland"){
+            mapdata.references[countyIndex].municipal_data = Nordland_muni; }
+        else if(mapdata.references[countyIndex].name == "Oppland"){
+            mapdata.references[countyIndex].municipal_data = Oppland_muni; }
+        else if(mapdata.references[countyIndex].name == "Oslo"){
+            mapdata.references[countyIndex].municipal_data = Oslo_muni; }
+        else if(mapdata.references[countyIndex].name == "Rogaland"){
+            mapdata.references[countyIndex].municipal_data = Rogaland_muni; }
+        else if(mapdata.references[countyIndex].name == "Sogn og Fjordane"){
+            mapdata.references[countyIndex].municipal_data = Sogn_og_Fjordane_muni; }
+        else if(mapdata.references[countyIndex].name == "Sør-Trøndelag"){
+            mapdata.references[countyIndex].municipal_data = Sor_Trondelag_muni; }
+        else if(mapdata.references[countyIndex].name == "Telemark"){
+            mapdata.references[countyIndex].municipal_data = Telemark_muni; }
+        else if(mapdata.references[countyIndex].name == "Troms"){
+            mapdata.references[countyIndex].municipal_data = Troms_muni; }
+        else if(mapdata.references[countyIndex].name == "Vest-Agder"){
+            mapdata.references[countyIndex].municipal_data = Vest_Agder_muni; }
+        else if(mapdata.references[countyIndex].name == "Vestfold"){
+            mapdata.references[countyIndex].municipal_data = Vestfold_muni; }
+        else if(mapdata.references[countyIndex].name == "Østfold"){
+            mapdata.references[countyIndex].municipal_data = Ostfold_muni; }
+        else {
+          console.log("Municipal Data Already Loaded. This message shouldn't appear. If it does, something is wrong.");
+        }
         
+        console.log("New Municipal data loaded");                                                  
+        var muniLayer = L.geoJson(mapdata.references[countyIndex].municipal_data, {style: MuniStyle});
+        muniLayer.addTo(map);
+        Municipalities_layer.addLayer(muniLayer);  
+        mapdata.references[countyIndex].municipalLayer = muniLayer;
+        
+        mapdata.municipalityList(countyIndex);
+
+    });
+        
+    parishDataScript.src = "JS/Parishes/" + mapdata.references[countyIndex].parish_file;
+    muniDataScript.src = "JS/Municipalities/" + mapdata.references[countyIndex].municipal_file;
+        
+    }    //REAL END OF GIANT IF STATEMENT
+    else{
+        map.fitBounds(mapdata.references[countyIndex].parishLayer.getBounds());
+    }
+    
+       
+    return countyIndex;
   }    
     
 });
