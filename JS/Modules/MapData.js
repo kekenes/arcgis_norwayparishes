@@ -183,12 +183,21 @@ return declare(null, {
       console.error("ERROR: Municipal data not properly loaded to complete operation, Type is a ", typeof this.references[countyIndex].municipal_data);
       return;
     }
-      
-      
-    if(this.references[countyIndex].count > 1)
+    if(this.references[countyIndex].count == 1){
+        
+    console.log(this.references[countyIndex].name, " municipal data: ", this.references[countyIndex].municipal_data);
         //then get list inside refereneces objec
     //CONTINUE WRITING THIS METHOD!!!  and set results to new property in reference object
-   // this.references[countyIndex];  
+    var items = [];
+    for(i = 0; i < this.references[countyIndex].municipal_data.features.length; i++){     items.push(this.references[countyIndex].municipal_data.features[i].properties.MUNICIPALI);
+    }
+    items.sort();
+    this.references[countyIndex].municipal_list = items;
+    return items;  
+    }
+    if(this.references[countyIndex].count > 1){
+      return this.references[countyIndex].municipal_list;
+    }
       
   }
     

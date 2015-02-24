@@ -5,10 +5,11 @@ require(["dijit/layout/BorderContainer",
          "dijit/layout/AccordionPane",
          
          "Modules/MapData",
-         "dojo/dom-construct", 
+         "dojo/dom-construct",
+         "dojo/Deferred",
          "dojo/on", 
          "dojo/domReady!"],
-        function(BorderContainer, ContentPane, AccordionContainer, AccordionPane, mapData, domConstruct, on){
+        function(BorderContainer, ContentPane, AccordionContainer, AccordionPane, mapData, domConstruct, Deferred, on){
     
 var introduction = "<div id='intro'>Select a county to view all municipal and parish boundaries within"
 				+ " its jurisdiction. Parish boundaries from multiple counties can be viewed simultaneously.</div>";
@@ -194,9 +195,31 @@ map.on("load", setDropDown(countyDropdown, mapdata.countyList()));
     
 console.log("map in initial js: ", map);
 
+function orderIt(){
+  var deferredExample = new Deferred();
+ 
+  var index = mapdata.countySelection(countyDropdown.value);
+     loadData(Number(index));
+    
+  return deferredExample.promise;
+}    
+    
 on(countyDropdown, "change", function(){
-   var index = mapdata.countySelection(countyDropdown.value);
-   loadData(Number(index));
+    // CHAIN PROMISES
+    //get municipal and parish lists
+    //set both dropdowns
+    //zoom to county
+    
+//   var index = mapdata.countySelection(countyDropdown.value);
+//   loadData(Number(index));
+    
+    var delayed = orderIt();
+    delayed.then(function(results){
+      mapdata.municipalityList(results);
+      return results;
+    }).then(function(results){
+      console.log(mapdata.references[results].municipal_list);
+    });
 
    //console.log("prototype: ", mapdata.__proto__);
   // setDropDown(municipalityDropdown, );
@@ -205,6 +228,9 @@ on(countyDropdown, "change", function(){
 //  maybe chain them with promises.....
 //
 });
+//on(countyDropdown, "change", function(){
+//testValue = mapdata.municipalityList(mapdata.countySelection(countyDropdown.value));
+//});
     
 function setDropDown(dropdown, values){
     
