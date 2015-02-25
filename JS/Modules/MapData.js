@@ -199,6 +199,28 @@ return declare(null, {
       return this.references[countyIndex].municipal_list;
     }
       
+  },
+    
+  parishList: function(countyIndex, muni){
+    if(typeof this.references[countyIndex].parish_data != "object")
+    {
+      console.error("ERROR: Parish data not properly loaded to complete operation, Type is a ", typeof this.references[countyIndex].parish_data);
+      return;
+    }
+    if(this.references[countyIndex].count == 1){
+        
+    console.log(this.references[countyIndex].name, " parish data: ", this.references[countyIndex].parish_data);
+
+    var items = [];
+    for(i = 0; i < this.references[countyIndex].parish_data.features.length; i++){     items.push(this.references[countyIndex].parish_data.features[i].properties.Par_NAME);
+    }
+    items.sort();
+    this.references[countyIndex].parish_list = items;
+    return items;  
+    }
+    if(this.references[countyIndex].count > 1){
+      return this.references[countyIndex].parish_list;
+    }  
   }
     
 });

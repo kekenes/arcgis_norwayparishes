@@ -195,46 +195,30 @@ map.on("load", setDropDown(countyDropdown, mapdata.countyList()));
     
 console.log("map in initial js: ", map);
 
-function orderIt(){
-  var deferredExample = new Deferred();
- 
-  var index = mapdata.countySelection(countyDropdown.value);
-     loadData(Number(index));
-    
-  return deferredExample.promise;
-}    
+function getData(){
+  var waitLoad = new Deferred();
+  countyNum = loadData(mapdata.countySelection(countyDropdown.value));
+  setTimeout(function(){
+    waitLoad.resolve(countyNum);
+  }, 1000);
+  return waitLoad.promise;
+}
     
 on(countyDropdown, "change", function(){
-    // CHAIN PROMISES
-    //get municipal and parish lists
-    //set both dropdowns
-    //zoom to county
-    
-//   var index = mapdata.countySelection(countyDropdown.value);
-//   loadData(Number(index));
-    
-    var delayed = orderIt();
-    delayed.then(function(results){
-      mapdata.municipalityList(results);
-      return results;
-    }).then(function(results){
-      console.log(mapdata.references[results].municipal_list);
-    });
-
-   //console.log("prototype: ", mapdata.__proto__);
-  // setDropDown(municipalityDropdown, );
-  // setDropDown(parishDropdown, );
-//WRITE code to set lists for municipalities and parishes    
-//  maybe chain them with promises.....
-//
+  var popDropdowns = getData();
+  popDropdowns.then(function(result){
+      setDropDown(municipalityDropdown, mapdata.municipalityList(result));
+      return result;
+  }).then(function(result){
+      setDropDown(parishDropdown, mapdata.parishList(result));
+  });
 });
-//on(countyDropdown, "change", function(){
-//testValue = mapdata.municipalityList(mapdata.countySelection(countyDropdown.value));
-//});
     
 function setDropDown(dropdown, values){
+    console.log("initializing dropdown");
     
     if((countyDropdown.value == 'null') && (dropdown != countyDropdown)){
+      console.log("inside first if");
       parishDropdown.options.length = 0;
       municipalityDropdown.options.length = 0;
       return;
@@ -243,10 +227,11 @@ function setDropDown(dropdown, values){
     dropdown.options.length = 0;
     var iniOption = document.createElement('option');
 	iniOption.text = "";
-    if(dropdown != countyDropdown)
+    //if(dropdown != countyDropdown)
 	  dropdown.add(iniOption);
     
     for(i in values){
+      console.log("adding to dropdown. Count: ", i);
       var option = document.createElement('option');
       option.text = values[i];
       dropdown.add(option);
