@@ -1,8 +1,8 @@
 define(["dojo/_base/declare"],
         function(declare){
-
+console.log("Can you read me? ", County_data);
 return declare(null, {
-  
+    
   references: [
       {
         "name": "Akershus",
@@ -186,8 +186,6 @@ return declare(null, {
     if(this.references[countyIndex].count == 1){
         
     console.log(this.references[countyIndex].name, " municipal data: ", this.references[countyIndex].municipal_data);
-        //then get list inside refereneces objec
-    //CONTINUE WRITING THIS METHOD!!!  and set results to new property in reference object
     var items = [];
     for(i = 0; i < this.references[countyIndex].municipal_data.features.length; i++){     items.push(this.references[countyIndex].municipal_data.features[i].properties.MUNICIPALI);
     }
@@ -221,6 +219,46 @@ return declare(null, {
     if(this.references[countyIndex].count > 1){
       return this.references[countyIndex].parish_list;
     }  
+  },
+    
+  getIndex: function(countyIndex, name, regionType){
+    var result = {};
+    var index;
+    if(!name && !regionType && !countyIndex){ 
+      console.error("No parameters specified in getIndex. Please specify.");
+    }
+    else if(!name && !regionType && countyIndex){  
+      result.countyIndex = countyIndex;
+      result.regionType = "county";
+      result.regionName = this.references[countyIndex].name;
+     // result.regionNameIndex = index;
+      return result;
+    }
+    else if(regionType == "municipality"){
+      for(i=0; this.references[countyIndex].municipal_data.features.length; i++){
+        if(this.references[countyIndex].municipal_data.features[i].properties.MUNICIPALI == name){
+          index = i;
+          break;
+        }
+      }
+    }
+    else if(regionType == "parish"){
+      for(j=0; this.references[countyIndex].parish_data.features.length; j++){
+        if(this.references[countyIndex].parish_data.features[j].properties.Par_NAME == name){
+          index = j;
+          break;
+        }
+      }
+    }
+    else{
+      console.error("Incorrect input for NAME in getIndex()");
+    }
+      
+    result.countyIndex = countyIndex;
+    result.regionType = regionType;
+    result.regionName = name;
+    result.regionNameIndex = index;
+    return result;
   }
     
 });

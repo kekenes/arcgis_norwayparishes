@@ -100,10 +100,6 @@ bc.addChild(headerPane);
     
 bc.placeAt(document.body);    
 bc.startup();
-//var norwayCountiesLayerURL = "http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/0";
-//var norwayMuniLayerURL = "http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/1";
-//var norwayParishesURL = "http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/2";
-    
 
 //Set map bounds to keep Norway centered on screen
 var southWest = L.latLng(50.4, -4.0);
@@ -181,6 +177,7 @@ map.attributionControl.addAttribution("Counties, Municipalities, and Topographic
 
 var Municipalities_layer = L.layerGroup().addTo(map);
 var parishes_layer = L.layerGroup().addTo(map);
+var selectedRegion;
     
 mapdata = new mapData();
     
@@ -194,31 +191,32 @@ var countyDropdown = document.getElementById('countyDropdown');
 map.on("load", setDropDown(countyDropdown, mapdata.countyList()));
     
 console.log("map in initial js: ", map);
-
-function getData(){
-  var waitLoad = new Deferred();
-  countyNum = loadData(mapdata.countySelection(countyDropdown.value));
-  setTimeout(function(){
-    waitLoad.resolve(countyNum);
-  }, 1000);
-  return waitLoad.promise;
-}
+    
+//function dataLoader(){
+//    var waitLoad = new Deferred();
+//    console.log("waitload: ", waitLoad);
+//    county = mapdata.countySelection(countyDropdown.value);
+//    countyNum = loadData(county);
+//    setTimeout(function(){
+//      waitLoad.resolve(countyNum);
+//    }, 1000);
+//    
+//    return waitLoad.promise;
+//}    
     
 on(countyDropdown, "change", function(){
-  var popDropdowns = getData();
-  popDropdowns.then(function(result){
-      setDropDown(municipalityDropdown, mapdata.municipalityList(result));
-      return result;
-  }).then(function(result){
-      setDropDown(parishDropdown, mapdata.parishList(result));
-  });
+//    dataLoader().then(function(county){
+//    selectedRegion = mapdata.getIndex(county);
+//    zoomToRegion(selectedRegion);
+//    });
+    county = mapdata.countySelection(countyDropdown.value);
+    loadData(county);
+    selectedRegion = mapdata.getIndex(county);
+    zoomToRegion(selectedRegion);
 });
     
-function setDropDown(dropdown, values){
-    console.log("initializing dropdown");
-    
+function setDropDown(dropdown, values){    
     if((countyDropdown.value == 'null') && (dropdown != countyDropdown)){
-      console.log("inside first if");
       parishDropdown.options.length = 0;
       municipalityDropdown.options.length = 0;
       return;
@@ -231,11 +229,11 @@ function setDropDown(dropdown, values){
 	  dropdown.add(iniOption);
     
     for(i in values){
-      console.log("adding to dropdown. Count: ", i);
       var option = document.createElement('option');
       option.text = values[i];
       dropdown.add(option);
     }
+    return mapdata.countySelection(countyDropdown.value);
 }
     
 //arg must be the index of a county listed in references
@@ -319,6 +317,8 @@ function loadData(countyIndex){
         parishes_layer.addLayer(parishLayer);
         map.fitBounds(parishLayer.getBounds());
         mapdata.references[countyIndex].parishLayer = parishLayer;
+        
+        setDropDown(parishDropdown, mapdata.parishList(countyIndex));
         });
 
     on(muniDataScript, "load", function(){
@@ -371,7 +371,7 @@ function loadData(countyIndex){
         Municipalities_layer.addLayer(muniLayer);  
         mapdata.references[countyIndex].municipalLayer = muniLayer;
         
-        mapdata.municipalityList(countyIndex);
+        setDropDown(municipalityDropdown, mapdata.municipalityList(countyIndex));
 
     });
         
@@ -381,10 +381,37 @@ function loadData(countyIndex){
     }    //REAL END OF GIANT IF STATEMENT
     else{
         map.fitBounds(mapdata.references[countyIndex].parishLayer.getBounds());
+        setDropDown(municipalityDropdown, mapdata.municipalityList(countyIndex));
+        setDropDown(parishDropdown, mapdata.parishList(countyIndex));
     }
-    
-       
     return countyIndex;
-  }    
+  }
+
+function zoomToRegion(getIndexResult){
+  var cIndex = getIndexResult.countyIndex;
+  var rType = getIndexResult.regionType;
+  var rName = getIndexResult.regionName;
+  var rIndex = getIndexResult.regionNameIndex;
+  if(rType == "county"){
+      for(k=0; k < County_data.features.length; k++){
+        if(County_data.features[k].properties.COUNTY == rName){
+          rIndex = k;
+        }
+      }
+    selection_layer = L.geoJson(County_data.features[rIndex], {style: SelectedStyle}); 
+  }
+  if(rType == "municipality"){
+    selection_layer = L.geoJson(mapdata.references[cIndex].municipal_data.features[rIndex], {style: SelectedStyle});
+  }
+  if(rType == "parish"){
+    selection_layer = L.geoJson(mapdata.references[cIndex].parish_data.features[rIndex], {style: SelectedStyle});
+  }
+    
+  console.log("Selection Layer: ", selection_layer);    
+  selection_layer.addTo(map);
+  map.fitBounds(selection_layer.getBounds());
+
+}    
+
     
 });
