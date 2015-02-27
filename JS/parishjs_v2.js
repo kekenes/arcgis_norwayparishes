@@ -1,4 +1,4 @@
-var mapdata;
+var map, mapdata;
 require(["dijit/layout/BorderContainer", 
          "dijit/layout/ContentPane",
          "dijit/layout/AccordionContainer",
@@ -106,14 +106,14 @@ var southWest = L.latLng(50.4, -4.0);
 var northEast = L.latLng(80.0, 45.0);
 var bounds = L.latLngBounds(southWest, northEast);    
 
-var map = L.map('map', {
+map = L.map('map', {
 center: [64.5,11.0],
 zoom: 5,
 minZoom: 4,
 maxZoom: 18,
 maxBounds: bounds    
 });
-    
+///TILE LAYERS    
 //Add ESRI Imagery to map
 var satelliteLayer = L.tileLayer.provider('Esri.WorldImagery');
 //Add Transportation tiled service to map
@@ -174,15 +174,24 @@ var Counties_layer = L.geoJson(County_data, {
 
 map.attributionControl.addAttribution("Counties, Municipalities, and Topographic layers provided by <a href='http://statkart.no' title='The National Mapping Authority of Norway'>Kartverket</a>");
 
-
+////VECTOR LAYERS
 var Municipalities_layer = L.layerGroup().addTo(map);
 var parishes_layer = L.layerGroup().addTo(map);
+var current_selection = L.layerGroup().addTo(map);
 var selectedRegion;
+var Offices_layer = L.geoJson(NA_Regional_Offices_data, {
+	pointToLayer: function(feature, latlng){
+			return L.circleMarker(latlng, OfficeStyle).bindLabel(feature.properties.NAME, {noHide: true});
+			},
+	onEachFeature: onEachOffice
+			}).addTo(map);    
+    
+////////////////SET MAP CONTROLS//////////////////////////////////////
+    
+////////////////END MAP CONTROLS///////////////////////////////////////    
+    
     
 mapdata = new mapData();
-    
-    console.log("map data: ", mapdata.references);
-    console.log("county list: ", mapdata.countyList());
     
 var parishDropdown = document.getElementById('ParishDropDown');    
 var municipalityDropdown = document.getElementById('MunicipalityDropdown');
@@ -203,30 +212,48 @@ console.log("map in initial js: ", map);
 //    
 //    return waitLoad.promise;
 //}    
-    
+/////////////////////EVENT HANDLERS/////////////////////////  
 on(countyDropdown, "change", function(){
 //    dataLoader().then(function(county){
 //    selectedRegion = mapdata.getIndex(county);
 //    zoomToRegion(selectedRegion);
 //    });
-    county = mapdata.countySelection(countyDropdown.value);
+    var county = mapdata.countySelection(countyDropdown.value);
     loadData(county);
     selectedRegion = mapdata.getIndex(county);
     zoomToRegion(selectedRegion);
 });
+
+on(municipalityDropdown, "change", function(){
+  var county = mapdata.countySelection(countyDropdown.value);
+  var muni_name = municipalityDropdown.value;
+  selectedRegion = mapdata.getIndex(county, muni_name, "municipality");
+  zoomToRegion(selectedRegion);
+  var newParList = mapdata.parishList(county, muni_name);
+  setDropDown(parishDropdown, newParList);
+});
     
-function setDropDown(dropdown, values){    
+on(parishDropdown, "change", function(){
+  var county = mapdata.countySelection(countyDropdown.value);
+  var par_name = parishDropdown.value;
+  selectedRegion = mapdata.getIndex(county, par_name, "parish");
+  zoomToRegion(selectedRegion);
+});
+    
+function setDropDown(dropdown, values){ 
+    console.log("RESETTING ", dropdown, " DROPDOWN");
     if((countyDropdown.value == 'null') && (dropdown != countyDropdown)){
       parishDropdown.options.length = 0;
       municipalityDropdown.options.length = 0;
       return;
     }
     
-    dropdown.options.length = 0;
+    dropdown.options.length = 0;  //reset dropdown options
     var iniOption = document.createElement('option');
 	iniOption.text = "";
-    //if(dropdown != countyDropdown)
-	  dropdown.add(iniOption);
+    if(dropdown == municipalityDropdown)
+        iniOption.text = "ALL PARISHES"
+    dropdown.add(iniOption);
     
     for(i in values){
       var option = document.createElement('option');
@@ -315,7 +342,7 @@ function loadData(countyIndex){
         console.log("New parish data loaded");
         var parishLayer = L.geoJson(mapdata.references[countyIndex].parish_data, {style: ParishStyle});         parishLayer.addTo(map);
         parishes_layer.addLayer(parishLayer);
-        map.fitBounds(parishLayer.getBounds());
+       // map.fitBounds(parishLayer.getBounds());
         mapdata.references[countyIndex].parishLayer = parishLayer;
         
         setDropDown(parishDropdown, mapdata.parishList(countyIndex));
@@ -392,6 +419,9 @@ function zoomToRegion(getIndexResult){
   var rType = getIndexResult.regionType;
   var rName = getIndexResult.regionName;
   var rIndex = getIndexResult.regionNameIndex;
+    
+  current_selection.clearLayers();
+    
   if(rType == "county"){
       for(k=0; k < County_data.features.length; k++){
         if(County_data.features[k].properties.COUNTY == rName){
@@ -407,11 +437,28 @@ function zoomToRegion(getIndexResult){
     selection_layer = L.geoJson(mapdata.references[cIndex].parish_data.features[rIndex], {style: SelectedStyle});
   }
     
-  console.log("Selection Layer: ", selection_layer);    
-  selection_layer.addTo(map);
+  console.log("Selection Layer: ", selection_layer); 
+  current_selection.addLayer(selection_layer);
+//  selection_layer.addTo(map);
+//  selection_layer.bringToBack();
   map.fitBounds(selection_layer.getBounds());
 
 }    
 
+function onEachOffice(feature, layer)
+{
+	layer.on({
+		click: function(){
+		
+		var officePopupContent = "<div align='center'><b>" + feature.properties.NAME + " Regional Office<br>of the National Archives</b>"
+								+ "<br><img src='" + feature.properties.PHOTO + "' height='113px' width='150px'></div>"
+								+ "<br><b>Address: </b>" + feature.properties.ADDRESS
+								+ "<br><b>Phone: </b>" + feature.properties.PHONE
+								+ "<br><b>Email: </b><a target='_blank' href='mailto:" + feature.properties.EMAIL + "'>" + feature.properties.EMAIL + "</a>";
+		
+			layer.bindPopup(officePopupContent);
+		}
+	});
+}
     
 });

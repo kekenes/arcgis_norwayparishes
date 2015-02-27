@@ -205,20 +205,32 @@ return declare(null, {
       console.error("ERROR: Parish data not properly loaded to complete operation, Type is a ", typeof this.references[countyIndex].parish_data);
       return;
     }
-    if(this.references[countyIndex].count == 1){
+    else if((this.references[countyIndex].count == 1) && (!muni)){
         
     console.log(this.references[countyIndex].name, " parish data: ", this.references[countyIndex].parish_data);
 
     var items = [];
-    for(i = 0; i < this.references[countyIndex].parish_data.features.length; i++){     items.push(this.references[countyIndex].parish_data.features[i].properties.Par_NAME);
+    for(i = 0; i < this.references[countyIndex].parish_data.features.length; i++){    items.push(this.references[countyIndex].parish_data.features[i].properties.Par_NAME);
     }
     items.sort();
     this.references[countyIndex].parish_list = items;
     return items;  
     }
-    if(this.references[countyIndex].count > 1){
+    else if((this.references[countyIndex].count > 1) && (!muni)){
       return this.references[countyIndex].parish_list;
-    }  
+    }
+    else
+    {
+      items = [];
+      for(p = 0; p < this.references[countyIndex].parish_data.features.length; p++){
+        if(this.references[countyIndex].parish_data.features[p].properties.MUNICIPALI == muni)
+        {
+           items.push(this.references[countyIndex].parish_data.features[p].properties.Par_NAME);
+        }
+      }
+      items.sort();
+      return items;
+    }
   },
     
   getIndex: function(countyIndex, name, regionType){
