@@ -48,7 +48,6 @@ selectPane = new AccordionPane({
    content: "<div class='tools'>" + introduction
             + "<br><b>County: </b>"
             + "<select id='countyDropdown'>"
-            + "<option value='null' selected></option>"
             + "</select><br><br>"
             + "<b>Municipality: </b><select id='MunicipalityDropdown'>"
             + "<option value='null'></option></select><br><br>"
@@ -217,6 +216,8 @@ console.log("map in initial js: ", map);
     
 /////////////////////EVENT HANDLERS/////////////////////////  
 on(countyDropdown, "change", function(){
+    if(countyDropdown.value == '')
+        clearDropdowns();
     var county = mapdata.countySelection(countyDropdown.value);
     loadData(county);
     selectedRegion = mapdata.getIndex(county);
@@ -274,11 +275,11 @@ function onEachOffice(feature, layer)
     
 function setDropDown(dropdown, values){ 
     console.log("RESETTING ", dropdown, " DROPDOWN");
-    if((countyDropdown.value == 'null') && (dropdown != countyDropdown)){
-      parishDropdown.options.length = 0;
-      municipalityDropdown.options.length = 0;
-      return;
-    }
+//    if((countyDropdown.value == '') && (dropdown != countyDropdown)){
+//      parishDropdown.options.length = 0;
+//      municipalityDropdown.options.length = 0;
+//      return;
+//    }
     
     dropdown.options.length = 0;  //reset dropdown options
     var iniOption = document.createElement('option');
@@ -480,10 +481,17 @@ function zoomToRegion(getIndexResult){
 
 }    
 
-function clearResults()
+function clearAll()
 {
 	dom.byId('results').innerHTML = '';
 	dom.byId('results').style.visibility = 'hidden';
-}    
+    clearDropdowns();
+
+} 
+function clearDropdowns(){
+    municipalityDropdown.options.length = 0;
+    parishDropdown.options.length = 0;
+    current_selection.clearLayers();
+}
     
 });
