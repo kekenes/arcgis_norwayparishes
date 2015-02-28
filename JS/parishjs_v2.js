@@ -7,9 +7,10 @@ require(["dijit/layout/BorderContainer",
          "Modules/MapData",
          "dojo/dom-construct",
          "dojo/Deferred",
+         "dojo/dom",
          "dojo/on", 
          "dojo/domReady!"],
-        function(BorderContainer, ContentPane, AccordionContainer, AccordionPane, mapData, domConstruct, Deferred, on){
+        function(BorderContainer, ContentPane, AccordionContainer, AccordionPane, mapData, domConstruct, Deferred, dom, on){
     
 var introduction = "<div id='intro'>Select a county to view all municipal and parish boundaries within"
 				+ " its jurisdiction. Parish boundaries from multiple counties can be viewed simultaneously.</div>";
@@ -45,25 +46,20 @@ selectPane = new AccordionPane({
    title: "Select Parish",
    style: "margin: 0; padding: 0;",    
    content: "<div class='tools'>" + introduction
-								+ "<br><b>County: </b>"
-								+ "<select id='countyDropdown'>"
-								+ "<option value='null' selected></option>"
-								+ "</select><br><br>"
-								+ "<b>Municipality: </b><select id='MunicipalityDropdown'>"
-								+ "<option value='null'></option></select><br><br>"
-								+ "<b>Parish:</b>&nbsp;&nbsp;<select id='ParishDropDown'>"
-								+ "<option value='null'></option>"
-								+ "</select>"
-								+ "<br><br><div id='centerButton'><button id='ClearButton' class='clearButton'>Clear Selection</button>"
-								+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id='offButton' class='clearButton'>Hide Popup</button></div>"
-								+ "<br>" + legend
-								/*+ "<br><b>Labels:</b>"
-								+ "<br><input type='checkbox' id='countyLabels'> Counties&nbsp;&nbsp;"
-								+ "<input type='checkbox' id='MunicipalityLabels'> Municipalities&nbsp;&nbsp;"
-								+ "<input type='checkbox' id='ParishLabels'> Parishes"*/
-								+ "<br><br>" + menu
-								+ "</div>"
-
+            + "<br><b>County: </b>"
+            + "<select id='countyDropdown'>"
+            + "<option value='null' selected></option>"
+            + "</select><br><br>"
+            + "<b>Municipality: </b><select id='MunicipalityDropdown'>"
+            + "<option value='null'></option></select><br><br>"
+            + "<b>Parish:</b>&nbsp;&nbsp;<select id='ParishDropDown'>"
+            + "<option value='null'></option>"
+            + "</select>"
+            + "<br><br><div id='centerButton'><button id='ClearButton' class='clearButton'>Clear Selection</button>"
+            + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id='offButton' class='clearButton'>Hide Popup</button></div>"
+            + "<br>" + legend
+            + "<br><br>" + menu
+            + "</div>"
     
 });
 toolContainer.addChild(selectPane);
@@ -125,6 +121,7 @@ var topoLayer = leafletUtils.SkTiles({layers: "topo2"});
 var europeLayer = leafletUtils.SkTiles({layers: "europa"});
 europeLayer.setOpacity(0.5);
 var topoBase = L.layerGroup([europeLayer, topoLayer]).addTo(map);
+var satelliteTransLayer = L.layerGroup([satelliteLayer, transportationLayer]);
 
 //Set layer styles
 var CountyStyle = {
@@ -184,12 +181,29 @@ var Offices_layer = L.geoJson(NA_Regional_Offices_data, {
 			return L.circleMarker(latlng, OfficeStyle).bindLabel(feature.properties.NAME, {noHide: true});
 			},
 	onEachFeature: onEachOffice
-			}).addTo(map);    
+			});    
     
 ////////////////SET MAP CONTROLS//////////////////////////////////////
     
-////////////////END MAP CONTROLS///////////////////////////////////////    
+var NavBar = L.control.navbar({position: 'topleft'});
+map.addControl(NavBar);	
+	
+var osmGeocoder = new L.Control.OSMGeocoder({position: 'topleft'});
+map.addControl(osmGeocoder); 
     
+var baseLayers = {
+	"Satellite Imagery": satelliteTransLayer,
+	"Topographic Map": topoBase,
+	"Open Street Map": OSM
+};
+
+var overlayLayers = {
+	"Counties": Counties_layer,
+	"Regional Offices": Offices_layer
+};
+
+var LayerControl = L.control.layers(baseLayers, overlayLayers, {position: 'topleft'}).addTo(map);    
+////////////////END MAP CONTROLS///////////////////////////////////////       
     
 mapdata = new mapData();
     
@@ -201,23 +215,8 @@ map.on("load", setDropDown(countyDropdown, mapdata.countyList()));
     
 console.log("map in initial js: ", map);
     
-//function dataLoader(){
-//    var waitLoad = new Deferred();
-//    console.log("waitload: ", waitLoad);
-//    county = mapdata.countySelection(countyDropdown.value);
-//    countyNum = loadData(county);
-//    setTimeout(function(){
-//      waitLoad.resolve(countyNum);
-//    }, 1000);
-//    
-//    return waitLoad.promise;
-//}    
 /////////////////////EVENT HANDLERS/////////////////////////  
 on(countyDropdown, "change", function(){
-//    dataLoader().then(function(county){
-//    selectedRegion = mapdata.getIndex(county);
-//    zoomToRegion(selectedRegion);
-//    });
     var county = mapdata.countySelection(countyDropdown.value);
     loadData(county);
     selectedRegion = mapdata.getIndex(county);
@@ -239,6 +238,39 @@ on(parishDropdown, "change", function(){
   selectedRegion = mapdata.getIndex(county, par_name, "parish");
   zoomToRegion(selectedRegion);
 });
+///////////////////END EVENT HANDLERS///////////////////////////////
+    
+///////////////////LABELS//////////////////////////////////////////
+    
+function labelParishes(feature, layer) 
+{
+	var labelLayer = layer;
+	return labelLayer.bindLabel(feature.properties.Par_NAME + " Parish", {noHide: true});
+}
+
+function labelMunicipalities(feature, layer)
+{
+	var labelLayer = layer;
+	return labelLayer.bindLabel(feature.properties.MUNICIPALI + " Municipality", {noHide: true});
+}
+
+
+function onEachOffice(feature, layer)
+{
+	layer.on({
+		click: function(){
+		
+		var officePopupContent = "<div align='center'><b>" + feature.properties.NAME + " Regional Office<br>of the National Archives</b>"
+								+ "<br><img src='" + feature.properties.PHOTO + "' height='113px' width='150px'></div>"
+								+ "<br><b>Address: </b>" + feature.properties.ADDRESS
+								+ "<br><b>Phone: </b>" + feature.properties.PHONE
+								+ "<br><b>Email: </b><a target='_blank' href='mailto:" + feature.properties.EMAIL + "'>" + feature.properties.EMAIL + "</a>";
+		
+			layer.bindPopup(officePopupContent);
+		}
+	});
+}    
+////////////////////END LABEL FUNCTIONS////////////////////////////////////
     
 function setDropDown(dropdown, values){ 
     console.log("RESETTING ", dropdown, " DROPDOWN");
@@ -340,8 +372,11 @@ function loadData(countyIndex){
         }
         
         console.log("New parish data loaded");
-        var parishLayer = L.geoJson(mapdata.references[countyIndex].parish_data, {style: ParishStyle});         parishLayer.addTo(map);
+        var parishLayer = L.geoJson(mapdata.references[countyIndex].parish_data, {
+            style: ParishStyle,
+            onEachFeature: labelParishes});         //parishLayer.addTo(map);
         parishes_layer.addLayer(parishLayer);
+        LayerControl.addOverlay(parishes_layer, "Parishes");
        // map.fitBounds(parishLayer.getBounds());
         mapdata.references[countyIndex].parishLayer = parishLayer;
         
@@ -393,13 +428,15 @@ function loadData(countyIndex){
         }
         
         console.log("New Municipal data loaded");                                                  
-        var muniLayer = L.geoJson(mapdata.references[countyIndex].municipal_data, {style: MuniStyle});
-        muniLayer.addTo(map);
-        Municipalities_layer.addLayer(muniLayer);  
+        var muniLayer = L.geoJson(mapdata.references[countyIndex].municipal_data, {
+            style: MuniStyle,
+            onEachFeature: labelMunicipalities});
+       // muniLayer.addTo(map);
+        Municipalities_layer.addLayer(muniLayer);
+        LayerControl.addOverlay(Municipalities_layer, "Municipalities");
         mapdata.references[countyIndex].municipalLayer = muniLayer;
         
         setDropDown(municipalityDropdown, mapdata.municipalityList(countyIndex));
-
     });
         
     parishDataScript.src = "JS/Parishes/" + mapdata.references[countyIndex].parish_file;
@@ -439,26 +476,14 @@ function zoomToRegion(getIndexResult){
     
   console.log("Selection Layer: ", selection_layer); 
   current_selection.addLayer(selection_layer);
-//  selection_layer.addTo(map);
-//  selection_layer.bringToBack();
   map.fitBounds(selection_layer.getBounds());
 
 }    
 
-function onEachOffice(feature, layer)
+function clearResults()
 {
-	layer.on({
-		click: function(){
-		
-		var officePopupContent = "<div align='center'><b>" + feature.properties.NAME + " Regional Office<br>of the National Archives</b>"
-								+ "<br><img src='" + feature.properties.PHOTO + "' height='113px' width='150px'></div>"
-								+ "<br><b>Address: </b>" + feature.properties.ADDRESS
-								+ "<br><b>Phone: </b>" + feature.properties.PHONE
-								+ "<br><b>Email: </b><a target='_blank' href='mailto:" + feature.properties.EMAIL + "'>" + feature.properties.EMAIL + "</a>";
-		
-			layer.bindPopup(officePopupContent);
-		}
-	});
-}
+	dom.byId('results').innerHTML = '';
+	dom.byId('results').style.visibility = 'hidden';
+}    
     
 });
