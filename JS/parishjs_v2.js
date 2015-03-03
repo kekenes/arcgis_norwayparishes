@@ -5,12 +5,14 @@ require(["dijit/layout/BorderContainer",
          "dijit/layout/AccordionPane",
          
          "Modules/MapData",
+         
+         "dojo/request",
          "dojo/dom-construct",
          "dojo/Deferred",
          "dojo/dom",
          "dojo/on", 
          "dojo/domReady!"],
-        function(BorderContainer, ContentPane, AccordionContainer, AccordionPane, mapData, domConstruct, Deferred, dom, on){
+        function(BorderContainer, ContentPane, AccordionContainer, AccordionPane, mapData, request, domConstruct, Deferred, dom, on){
     
 var introduction = "<div id='intro'>Select a county to view all municipal and parish boundaries within"
 				+ " its jurisdiction. Parish boundaries from multiple counties can be viewed simultaneously.</div>";
@@ -28,7 +30,7 @@ var menu = "<div id='centerMenu'>"
 			+ "<br><button id='Resources' class='menuButton'>Research Helps</button>"
 			+ "<br><button id='Contact' class='menuButton'>Contact</button>"
 			+ "</div>";			    
-
+/////////////CONTAINER ELEMENTS///////////////////////////////////
 var bc = new BorderContainer({
     style: "height: 100%; width: 100%; padding: 0; margin: 0;", 
     gutters: true, 
@@ -95,7 +97,60 @@ bc.addChild(headerPane);
     
 bc.placeAt(document.body);    
 bc.startup();
+    
+var countyResultsContainer = new AccordionContainer({style: "height: 100%"}, "results");
 
+//var countyOverview = new ContentPane();
+//var countyWiki
+//var countyFS
+//var countyFarms
+
+countyResultsContainer.addChild(new ContentPane({
+  title: "Overview",
+  content: "<div id='countyOverviewContent'>test content</div>"
+}));
+countyResultsContainer.addChild(new ContentPane({
+  title: "Wikipedia",
+  content: "<div id='countyWiki'></div>"
+}));
+countyResultsContainer.addChild(new ContentPane({
+  title: "Family Search Wiki",
+  content: "<div id='countyFS'></div>"
+}));
+countyResultsContainer.addChild(new ContentPane({
+  title: "Farm List",
+  content: "<div id='countyFarms'></div>"
+}));
+countyResultsContainer.startup();
+
+////////////////////END CONTAINER ELEMENTS
+    
+/////////////////////TEST REGION///////////
+    
+  
+// request("http://jyang.esri.com/proxy/proxy.ashx?http://en.wikipedia.org/wiki/Aust-Agder").then(function(data){
+    // dom.byId('countyWiki').innerHTML = data;
+	// console.log("wiki html: ", data);
+                  // }, function(err){
+    // console.error("ERROR: ", err);
+// }, function(evt){
+    // console.log("request evt: ", evt);                        
+                            // });
+ // $("#countyWiki").load("http://jyang.esri.com/proxy/proxy.ashx?http://en.wikipedia.org/wiki/Aust-Agder");
+   
+$.ajax({
+    url: 'http://jyang.esri.com/proxy/proxy.ashx?http://en.wikipedia.org/wiki/Aust-Agder',
+    dataType: 'html',
+    success: function(html) {
+        var div = $('table', $(html));
+        $('#countyWiki').html(div);
+    }
+});
+
+
+//////END TEST REGION/////////////////////
+    
+    
 //Set map bounds to keep Norway centered on screen
 var southWest = L.latLng(50.4, -4.0);
 var northEast = L.latLng(80.0, 45.0);

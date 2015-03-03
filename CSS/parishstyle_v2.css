@@ -70,12 +70,12 @@ html, body{
 
 #results{
 max-height: 80%;
-height: 350px;
-width: 100px;
-max-width: 300px;
+height: 85%;
+width: 350px;
+/*max-width: 300px;*/
 z-index: 20;
 position: absolute;
-top: 120px;
+top: 20px;
 right: 20px;
 /*visibility: hidden;*/
 /*overflow: scroll;*/
