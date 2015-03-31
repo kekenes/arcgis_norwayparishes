@@ -271,6 +271,25 @@ return declare(null, {
     result.regionName = name;
     result.regionNameIndex = index;
     return result;
+  },
+    
+  getRegionContent: function(regionIndex){
+    var index = regionIndex.regionNameIndex;
+    var type = regionIndex.regionType;
+    var name = regionIndex.regionName;
+    var county = regionIndex.countyIndex;
+    var content = "";
+      
+      if(type == "county"){
+        content = "<div id='resultsTitle'>" + County_data.features[county].properties.COUNTY + " County</div>"
+				//+ "<p>Until 1919 " + County_data.features[i].properties.COUNTY + " was known as <b>" + County_data.features[i].properties.OLD_COUNTY + " amt</b></p>"
+				+ "<br><b>Prior Name: </b>" + County_data.features[county].properties.OLD_COUNTY + " amt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(until 1919)"
+				+ "<br><b>Wikipedia: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><a target='_blank' href='" + County_data.features[county].properties.WIKI + "'>Demographics and History</a>"
+				+ "<br><b>Family Search: </b><a target='_blank' href='" + County_data.features[county].properties.FS_WIKI + "'>Regional Genealogy Helps</a>"
+				+ "<br><b>Farms: &nbsp;&nbsp;&nbsp;&nbsp;</b><a target='_blank' href='" + County_data.features[county].properties.FARMS + "'>Gazetteer of farms by Oluf Rygh</a>";		
+      }
+      
+      return content;
   }
     
 });
