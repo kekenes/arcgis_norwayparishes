@@ -70,14 +70,14 @@ farmPane = new AccordionPane({
    content: "<div class='tools'>Tool Content</div>",
    style: "margin: 0; padding: 0;"    
 });
-toolContainer.addChild(farmPane);
+//toolContainer.addChild(farmPane);
     
 personPane = new AccordionPane({
    title: "Select Person",
    content: "<div class='tools'>Tool Content</div>",
    style: "margin: 0; padding: 0;"    
 });
-toolContainer.addChild(personPane);
+//toolContainer.addChild(personPane);
 
 var mapPane = new ContentPane({
   splitter: true,
@@ -128,24 +128,6 @@ countyResultsContainer.startup();
 /////////////////////TEST REGION///////////
     
   
-// request("http://jyang.esri.com/proxy/proxy.ashx?http://en.wikipedia.org/wiki/Aust-Agder").then(function(data){
-    // dom.byId('countyWiki').innerHTML = data;
-	// console.log("wiki html: ", data);
-                  // }, function(err){
-    // console.error("ERROR: ", err);
-// }, function(evt){
-    // console.log("request evt: ", evt);                        
-                            // });
- // $("#countyWiki").load("http://jyang.esri.com/proxy/proxy.ashx?http://en.wikipedia.org/wiki/Aust-Agder");
-   
-$.ajax({
-    url: 'http://jyang.esri.com/proxy/proxy.ashx?http://en.wikipedia.org/wiki/Aust-Agder',
-    dataType: 'html',
-    success: function(html) {
-        var div = $('table', $(html));
-        $('#countyWiki').html(div);
-    }
-});
 
 
 //////END TEST REGION/////////////////////
@@ -533,8 +515,15 @@ function zoomToRegion(getIndexResult){
   console.log("Selection Layer: ", selection_layer); 
   current_selection.addLayer(selection_layer);
   map.fitBounds(selection_layer.getBounds());
+    
+  setContent(getIndexResult);
 
-}    
+} 
+    
+function setContent(regionIndex){
+   var popupContent = mapdata.getRegionContent(regionIndex);
+   dom.byId('countyOverviewContent').innerHTML = popupContent;
+}
 
 function clearAll()
 {
