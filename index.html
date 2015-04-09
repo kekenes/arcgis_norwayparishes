@@ -4,22 +4,21 @@
 
 <head>
 
-    <meta charset="utf-8" />
     <title>Norway's Parishes</title>
     
 
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <!--Load JQuery from CDN-->    
-    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
     
     <!-- Bootstrap Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
     <!-- Bootstrap Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
 
    <link rel="stylesheet" href="http://js.arcgis.com/3.13/dijit/themes/claro/claro.css">
     
+<!--
     <script>
       var dojoConfig = { 
         paths: {
@@ -27,40 +26,26 @@
         }
       };
     </script>
+-->
     
     <!--Load ArcGIS JS API from CDN-->
     <link rel="stylesheet" href="http://js.arcgis.com/3.13/esri/css/esri.css">
     <script src="http://js.arcgis.com/3.13/"></script>
-    
-    <!-- Load Leaflet from CDN-->
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css" />
-    <script src="http://cdn.jsdelivr.net/leaflet/0.7.3/leaflet.js"></script>
+    >
 
-    <!-- Load Esri Leaflet from CDN -->
-<!--    <script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/1.0.0-rc.5/esri-leaflet.js"></script>-->
 
     <link href="CSS/parishstyle_v2.css" rel="stylesheet" type="text/css">
     
-    <link rel="stylesheet" type="text/css" href="JS/Leaflet.label-master/dist/leaflet.label.css">
-    <link rel="stylesheet" type="text/css" href="JS/leaflet-control-osm-geocoder-master/Control.OSMGeocoder.css">
-    <link rel="stylesheet" type="text/css" href="JS/Leaflet.NavBar-master/src/Leaflet.NavBar.css">
     <link rel="shortcut icon" type="image/x-icon" href="/flag_1-20140714-favicon.ico" >
+    
+    <script src="JS/Census_searches.js"></script>
+    <script src="JS/parishjs_v2.js"></script>
+    <script src="JS/NA_Regional_Offices_data.js"></script> 
 
 </head>
     
 <body class="claro">
-    
-    <script src="JS/leaflet-providers-master/leaflet-providers.js"></script>
-    <script src="JS/leafletUtils.js"></script>
-    <script src="JS/leaflet-search-master/src/leaflet-search.js"></script>
-    <script src="JS/Leaflet.label-master/dist/leaflet.label.js"></script>
-    <script src="JS/leaflet-control-osm-geocoder-master/Control.OSMGeocoder.js"></script>
-    <script src="JS/Leaflet.NavBar-master/src/Leaflet.NavBar.js"></script>
-    <script src="JS/Census_searches.js"></script>
-    <script src="JS/parishjs_v2.js"></script>
-    <script src="JS/County_Boundaries_data.js"></script>
-    <script src="JS/NA_Regional_Offices_data.js"></script>    
-
+<div id="map"></div>
 </body>
     
 </html>
