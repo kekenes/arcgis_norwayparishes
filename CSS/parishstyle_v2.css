@@ -40,8 +40,8 @@ html, body, #map{
 
 #header{
     height: 75px;
-    width: 45%;
-    margin: 0 0 0 27%;
+    width: 40%;             /*45*/
+    margin: 0 0 0 30%;     /*27*/
     top: 10px;
     position: absolute;
     z-index: 98;
@@ -78,5 +78,6 @@ padding: 0;
     opacity: 0.8;
     background-color: white;
     border-radius: 8px;
+    transition: height 1s linear 0s;
     
 }

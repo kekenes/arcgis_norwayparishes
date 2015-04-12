@@ -91,6 +91,19 @@ require([
   
   
 
+    ///////////////////////////EVENTS/////////////
+    
+    on(dom.byId("toolsMinButton"), "click", function(){
+      dom.byId("tools").style.height = "45px";
+      dom.byId("toolsMinButton").style.visibility = "hidden";
+      dom.byId("toolsMaxButton").style.visibility = "visible";
+    });
+    
+    on(dom.byId("toolsMaxButton"), "click", function(){
+      dom.byId("tools").style.height = "50%";
+      dom.byId("toolsMinButton").style.visibility = "visible";
+      dom.byId("toolsMaxButton").style.visibility = "hidden";
+    });
   
   
    
