@@ -31,8 +31,6 @@
     <!--Load ArcGIS JS API from CDN-->
     <link rel="stylesheet" href="http://js.arcgis.com/3.13/esri/css/esri.css">
     <script src="http://js.arcgis.com/3.13/"></script>
-    >
-
 
     <link href="CSS/parishstyle_v2.css" rel="stylesheet" type="text/css">
     
@@ -45,7 +43,35 @@
 </head>
     
 <body class="claro">
-<div id="map"></div>
+<div id="map">
+    <div id="header">
+    <nav class="navbar navbar-default visibleBar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+<!--
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="...">
+            </a>
+-->
+            <a class="navbar-brand title" href="#">Norway's Parishes</a>
+          </div>
+<!--          <div id="navbar" class="navbar-collapse collapse">-->
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Map</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Acknowledgements</a></li> 
+              <li><a href="#">Research Helps</a></li>    
+              <li><a href="#">Contact</a></li>  
+            </ul>
+<!--          </div>/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+    </div>
+    
+    <div id="tools">
+        <div class="divTitle" title="Click to minimize and maximize this toolbox">Tools <span id="toolsMinButton" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span><span id="toolsMaxButton" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></div>
+    </div>
+</div>
 </body>
     
 </html>
