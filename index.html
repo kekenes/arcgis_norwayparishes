@@ -17,16 +17,16 @@
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
 
    <link rel="stylesheet" href="http://js.arcgis.com/3.13/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" type="text/css" href="./JS/Modules/src/agsjs/css/agsjs.css">
     
-<!--
     <script>
       var dojoConfig = { 
         paths: {
-          Modules: location.pathname.replace(/\/[^/]+$/, "") + "/JS/Modules"
+          Modules: location.pathname.replace(/\/[^/]+$/, "") + "/JS/Modules",
+          agsjs: location.pathname.replace(/\/[^/]+$/, "") + "/JS/Modules/src/agsjs"
         }
       };
     </script>
--->
     
     <!--Load ArcGIS JS API from CDN-->
     <link rel="stylesheet" href="http://js.arcgis.com/3.13/esri/css/esri.css">
@@ -57,11 +57,11 @@
           </div>
 <!--          <div id="navbar" class="navbar-collapse collapse">-->
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Map</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Acknowledgements</a></li> 
-              <li><a href="#">Research Helps</a></li>    
-              <li><a href="#">Contact</a></li>  
+              <li class="active"><a href="./index.html">Map</a></li>
+              <li><a href="./about_v2.html">About</a></li>
+              <li><a href="./Acknowledgements_v2.html">Acknowledgements</a></li> 
+              <li><a href="./resources_v2.html">Research Helps</a></li>    
+              <li><a href="./contact_v2.html">Contact</a></li>  
             </ul>
 <!--          </div>/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -69,7 +69,12 @@
     </div>
     
     <div id="tools">
-        <div class="divTitle" title="Click to minimize and maximize this toolbox">Tools <span id="toolsMinButton" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span><span id="toolsMaxButton" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></div>
+        <div id="toolsHeader" class="divTitle" title="Click to minimize and maximize this toolbox">Tools <span id="toolsMinIcon" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span><span id="toolsMaxIcon" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></div>
+        <div class="content">Test content</div>
+    </div>
+    <div id="legend">
+        <div id="legendHeader" class="divTitle" title="Click to minimize and maximize this toolbox">Legend<span id="legendMinIcon" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span><span id="legendMaxIcon" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></div>
+        <div id="legendContent" class="content"></div>
     </div>
 </div>
 </body>

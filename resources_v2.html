@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<head>
+
+<title>Norway's Parishes</title>
+
+<meta name="author" content="Kristian Ekenes">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dijit/themes/claro/claro.css">
+<link rel="stylesheet" type="text/css" href="CSS/aboutStyle.css">
+
+<script>dojoConfig = {parseOnLoad: true}</script>
+<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js" data-dojo-config="async: true"></script>
+<script src="JS/ButtonJS.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/flag_1-20140714-favicon.ico" />
+
+</head>
+
+<body>
+
+<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'sidebar', gutters:true" id="borderContainer">
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'leading'" style="width: 20%;" class="sidePanels">
+	
+	<div id="siteName">Norway's<br>Parishes</div>
+	<div id="credits">
+	Background image by <a href="http://ozelotstudios.deviantart.com/art/Norge-Flag-of-Norway-308124945" target="_blank">OzelotStudios</a> via <a href="http://www.deviantart.com/" target="_blank">Deviantart</a>
+	</div>	
+	</div>
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'right'" style="width: 20%;" class="sidePanels"></div>
+    
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" id="centerStyle">
+	
+		<div id='menu'>
+			<button id='Map' class='menuButton' onclick="openNewPage('map.html')">Map</button>
+			<button id='Acknowledgements' class='menuButton' onclick="openNewPage('about.html')">About</button>
+			<button id='Resources' class='menuButton' onclick="openNewPage('Acknowledgements.html')">Acknowledgements</button>
+			<button id='Contact' class='menuButton' onclick="openNewPage('contact.html')">Contact</button>
+		</div>
+	<br><br>
+
+	<div id="content">
+	<div id="title">Other Helpful Resources</div>	
+	
+	<p>For additional help in conducting family history research in Norway, check out some of these other sites:</p>
+	
+	<ul>
+		<li><a href="http://nordicgenealogy.org/Norway_Genealogy.htm" target="_blank"><b>Nordic Genealogical Society of Southern California</b></a> - Provides links to various helpful resources.</li>
+		<li><a href="http://gammel.norgeskart.no//adaptive2/default.aspx?gui=1&lang=1" target="_blank"><b>Norgeskart</b></a> - A web mapping application that allows users to make detailed searches of all places in Norway, including farms. It's an excellent resource for farm searches and very detailed aerial imagery.</li>
+		<li><a href="http://homepages.rootsweb.ancestry.com/~norway/index.html" target="_blank"><b>RootsWeb: Ancestors from Norway</b></a> - An in-depth website, outlining genealogical research methods for Norway, and links to other resources.</li>
+		<li><a href="https://familysearch.org/" target="_blank"><b>FamilySearch</b></a> - Allows users to search millions of indexed vital records from Norway. An excellent tool that should be used in conjunction with the <a target="_blank" href="http://www.arkivverket.no/arkivverket/Digitalarkivet">Digital Archives</a>. FamilySearch also provides helpful <a target="_blank" href="https://familysearch.org/learn/wiki/en/Norway">wiki</a> articles for all counties and parishes in Norway.</li>
+		<li><a href="https://familysearch.org/learn/wiki/en/Norwegian_Word_List" target="_blank"><b>Norwegian Word List</b></a> - FamilySearch's list of essential genealogical terms in Norwegian with their English equivalents. Very helpful when learning how to read original documents and records in Norwegian.</li>
+		<li><a href="http://www.norwayheritage.com/" target="_blank"><b>Norway Heritage</b></a> - A site that allows users to search passenger lists of emigrant ships from Norway. This resource can help researchers approximate the residence of specific people who emigrated from Norway prior to 1875.</li>
+		<li><a href="http://www.rootsweb.ancestry.com/~wgnorway/NorLinks.htm" target="_blank"><b>RootsWeb: Norwegian Research Sources</b></a> - Gives tips for getting started on Norwegian family history research and provides language and research helps.</li>
+		<li><a href="http://www.vennekretsen.com/Documents/GenealogyGuide.pdf" target="_blank"><b>Sons of Norway</b></a> - A guide for conducting genealogical research in Norway.</li>
+		<li><a href="http://www.disnorge.no/eng/index.html" target="_blank"><b>Genealogy Society of Norway</b></a> - An organization that provides a forum for asking for and receiving help with genealogical research questions.</li>
+		<li><a href="http://digitalarkivet.uib.no/sab/howto.html" target="_blank"><b>How to Trace Ancestors in Norway </b></a> - The Norwegian Digital Archives' "how to" on genealogical research in Norway.</li>
+		<li><a href="http://www.dokpro.uio.no/rygh_ng/rygh_form.html#soek" target="_blank"><b>Oluf Rygh's Norwegian Farm Name Gazetteer</b></a> - An excellent resource for finding alternate spellings of farms; their histories; and parish, municipal and county jurisdictions.</li>
+		<li><a href="http://arkivverket.no/eng/content/view/full/629" target="_blank"><b>National Digital Archives of Norway</b></a> - The primary source of official copies of original vital records in Norway. Users can search digitized records dating back to the mid-1600s.</li>
+		<li><a href="http://www.rhd.uit.no/folketellinger/folketellinger_e.aspx" target="_blank"><b>University of Tromso</b></a> - This site allows users to search various indexed census and parish records. Complete results for baptisms, marriages, and burials are only available for select parishes. The entire 1865, 1900, and 1910 censuses are searchable by name.</li>
+		<li><a href="https://www.kirken.no/english/" target="_blank"><b>State Church of Norway</b></a> - Provides statistical information, current church practices, a brief history of the church, and current parish and diocese leadership contact information.</li>
+		<li><a href="http://www.arkivverket.no/eng/Digitalarkivet/About-the-Digital-Archives/Contact/Useful-Links" target="_blank"><b>Digital Archives Useful Links</b></a> - Very helpful links to web pages within the Digital Archives and other outside resources.</li>
+		<li><a href="http://www.utvandrersenteret.no/index.cfm?CFID=61012127&CFTOKEN=ce9a90a6a062f564-CBC2B42E-D5DA-DEEC-31DD3512986E5E07&jsessionid=8430cabc0c9a6e7a521e20242a33124ea695" target="_blank"><b>Norwegian Emigration Center</b></a> - The website of a research center dedicated to the study and documentation of emigration from Norway.</li>
+		<li><a href="http://www.nndata.no/home/jborgos/jborgose.htm" target="_blank"><b>Ancestry and History</b></a> - Historian Johan Ingvald Borgos and Marianne Pettersen, genealogist, give some helpful historical background to naming conventions and strategies for locating Norwegian ancestors.</li>
+	</ul>
+	
+	</div>
+	
+	</div>
+</div>
+
+</body>
+
+</html>
