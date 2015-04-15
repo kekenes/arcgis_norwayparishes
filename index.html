@@ -70,11 +70,17 @@
     
     <div id="tools">
         <div id="toolsHeader" class="divTitle" title="Click to minimize and maximize this toolbox">Tools <span id="toolsMinIcon" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span><span id="toolsMaxIcon" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></div>
-        <div class="content">Test content</div>
+        <div id="toolsContent" class="content">Test content</div>
     </div>
     <div id="legend">
         <div id="legendHeader" class="divTitle" title="Click to minimize and maximize this toolbox">Legend<span id="legendMinIcon" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span><span id="legendMaxIcon" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></div>
         <div id="legendContent" class="content"></div>
+        <div id="legendContentBase" class="content">
+        <h4>Base Layers</h4>
+        <input type="checkbox" id="streetCheck">&nbsp;&nbsp;&nbsp;Highways and Streets<br> 
+        <input type="radio" name="baseLayers" id="radioTopo" checked>&nbsp;&nbsp;&nbsp;Topographic Map<br>
+        <input type="radio" name="baseLayers" id="radioSat">&nbsp;&nbsp;&nbsp;Satellite Imagery<br>   
+        </div>
     </div>
 </div>
 </body>

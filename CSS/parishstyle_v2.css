@@ -79,7 +79,7 @@ padding: 0;
     
 }
 #legend{
-    height: 50%;
+    height: 35%;
     width: 300px;
     bottom: 40px;
     right: 20px;
@@ -90,11 +90,15 @@ padding: 0;
     background-color: white;
     border-radius: 8px;
     transition: height 0.6s linear 0s;
-    
 }
 
 .content{
     padding: 10px;
+}
+
+h4{
+font-size: 1.2em;
+font-weight: bold;
 }
 
 /*
@@ -103,7 +107,9 @@ padding: 0;
 }
 */
 
-
+#scaleDiv .agsjsTOCOutOfScale{
+    display: none;
+}
 .agsjsTOCRootLayer{
     padding: 4px;
 }
