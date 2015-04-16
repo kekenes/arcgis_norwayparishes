@@ -7,6 +7,9 @@ require([
     "esri/layers/ArcGISTiledMapServiceLayer",
     "esri/config",
     "esri/dijit/Legend",
+    "esri/tasks/query",
+    "esri/tasks/QueryTask",
+    "esri/graphicsUtils",
     
     "dijit/layout/BorderContainer", 
     "dijit/layout/ContentPane",
@@ -14,7 +17,8 @@ require([
     "dijit/layout/AccordionPane",
     
     "agsjs/dijit/TOC", 
-         
+     
+    "dojo/_base/array",
     "dojo/request",
     "dojo/dom-construct",
     "dojo/dom",
@@ -28,6 +32,9 @@ require([
         ArcGISTiledMapServiceLayer,
         esriConfig,
         Legend,
+        Query,
+        QueryTask,
+        graphicsUtils,
          
         BorderContainer, 
         ContentPane, 
@@ -36,6 +43,7 @@ require([
          
         TOC,
          
+        array,
         request, 
         domConstruct, 
         dom, 
@@ -197,6 +205,96 @@ require([
   
   
   ////////////////////END MAP AND LEGEND///////////////////////////
+    
+    
+/////////////////////////TOOLS - SELECT REGIONS//////////////////////////////
+    
+    var countyDropdown = dom.byId("countyDropdown");
+    var municipalityDropdown = dom.byId("municipalityDropdown");
+    var parishDropdown = dom.byId("parishDropdown");
+    
+    function setDropdown(dropdown, county, municipality){
+        
+        console.log("set dropdown: ", dropdown, " county dropdown: ", countyDropdown);
+        var dropQuery = new Query();
+        var dropQueryTask = new QueryTask();
+        var selectLayer, attribute;
+        
+        dropQuery.outFields = [ "COUNTY" , "MUNICIPALITY" , "Par_NAME" ];
+        dropQuery.returnGeometry = true;
+    
+        if(dropdown === countyDropdown){
+            console.log("county where set!!!", municipalitiesLayer);
+            dropQuery.where = "1=1";
+            selectLayer = countiesLayer;  //apply this to counties layer
+            attribute = "county";
+        }
+        if(dropdown === municipalityDropdown){
+            dropQuery.where = "COUNTY = '" + county + "'";
+            selectLayer = municipalitiesLayer;  //apply this query to municipalities
+            attribute = "municipality";
+        }
+        if((dropdown === parishDropdown) && (!municipality)){
+            dropQuery.where = "COUNTY = '" + county + "'";  
+            selectLayer = parishesLayer;    //apply this query to parishes
+            attribute = "parish";
+        }
+        if((dropdown === parishDropdown) && (municipality)){
+            dropQuery.where = "COUNTY = '" + county + "' AND MUNICIPALITY = '" + municipality + "'";
+            selectLayer = parishesLayer;  //apply this query to parishes
+            attribute = "parish";
+        }
+        
+        selectLayer.queryFeatures(dropQuery, function(results){   //execute query
+            dropdown.options.length = 0;
+            var options = [];
+            console.log("results: ", results);
+            zoomTo(graphicsUtils.graphicsExtent(results.features));
+            var features = results.features;
+            array.forEach(features, function(item, i){
+                if(attribute === "county")
+                    options.push(item.attributes.COUNTY);
+                if(attribute === "municipality")
+                    options.push(item.attributes.MUNICIPALITY);
+                if(attribute === "parish")
+                    options.push(item.attributes.Par_NAME);
+            });
+            options.sort();   //alphabetize
+            array.forEach(options, function(item, i){
+                if(i==0){
+                    var initOption = domConstruct.create("option");
+                    initOption.text = "";
+                    dropdown.add(initOption);
+                }
+                var option = domConstruct.create("option");
+                option.text = item;
+                dropdown.add(option);    
+            });
+            console.log("list: ", options);
+        });
+    }
+    
+    function zoomTo(extent){
+        map.setExtent(extent);
+    }
+    
+    on(countiesLayer, "load", function(){
+        console.log("on counties layer load.");
+        setDropdown(countyDropdown);
+    });
+    
+    on(countyDropdown, "change", function(evt){
+        console.log("county dropdown selection made.", evt.target.value);
+        setDropdown(municipalityDropdown, evt.target.value);
+        setDropdown(parishDropdown, evt.target.value);
+    });
+    
+    on(municipalityDropdown, "change", function(evt){
+        console.log("municipality dropdown selection made: ", evt.target.value);
+        console.log("county val: ", countyDropdown.value);
+        setDropdown(parishDropdown, countyDropdown.value, evt.target.value);
+    });
+    
 
     ///////////////////////////EVENTS/////////////
     dom.byId("legend").style.height = "35%";
