@@ -10,11 +10,10 @@ require([
     "esri/tasks/query",
     "esri/tasks/QueryTask",
     "esri/graphicsUtils",
-    
-    "dijit/layout/BorderContainer", 
-    "dijit/layout/ContentPane",
-    "dijit/layout/AccordionContainer",
-    "dijit/layout/AccordionPane",
+    "esri/symbols/SimpleFillSymbol",
+    "esri/symbols/SimpleLineSymbol",
+    "esri/symbols/SimpleMarkerSymbol",
+    "esri/Color",
     
     "agsjs/dijit/TOC", 
      
@@ -35,11 +34,10 @@ require([
         Query,
         QueryTask,
         graphicsUtils,
-         
-        BorderContainer, 
-        ContentPane, 
-        AccordionContainer, 
-        AccordionPane,
+        SimpleFillSymbol,
+        SimpleLineSymbol,
+        SimpleMarkerSymbol,
+        Color,
          
         TOC,
          
@@ -53,11 +51,17 @@ require([
   esriConfig.defaults.io.proxyUrl = "/proxy/";
     
   ///////////////////LAYERS AND LAYER INFO///////////////////////////////////////  
-  var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/0");
+  var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/0", {
+    outFields: ["*"]
+  });
     
-  var municipalitiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/1");
+  var municipalitiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/1", {
+    outFields: ["*"]
+  });
     
-  var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/2");
+  var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/2", {
+    outFields: ["*"]
+  });
 
   var euroInfo = new WMTSLayerInfo({
           identifier: "europa",
@@ -96,6 +100,10 @@ require([
   //////////////////////END LAYERS AND LAYER INFO///////////////////////////
     
     /////////////////////////POPUPs///////////////////////////////////
+//    var countyFields = ["COUNTY", "WIKI", "FS_WIKI", "OLD_COUNTY", "FARMS"];
+//    var municipalityFields = ["COUNTY", "MUNICIPALITY"];
+//    var parishFields = ["Par_NAME", "MUNICIPALITY", "COUNTY", "PHOTO", "PHOTO_O", "FAM_SEARCH", "FARMS", "CHURCH", "DA_1", "DA_1_NAME", "DA_2", "DA_2_NAME", "DA_3", "DA_3_NAME", "DA_4", "DA_4_NAME", "DA_5", "DA_5_NAME"];
+    
  function setCountyInfo(info){
     var countyName = info.COUNTY;
     var wikiURL = info.WIKI;
@@ -110,7 +118,7 @@ require([
  }
 
  function setParishInfo(info){
-    var parishName = info.PAR_NAME;
+    var parishName = info.Par_NAME;
     var municipalityName = info.MUNICIPALITY;
     var countyName = info.COUNTY;
     var photoURL = info.PHOTO;
@@ -177,7 +185,6 @@ require([
     if(dom.byId("radioSat").checked){
 //        map.setBasemap("satellite");
         satelliteLayer.show();
-        streetLayer.show();
         topoLayer.hide();
         norTopoLayer.hide();
     }
@@ -187,7 +194,6 @@ require([
     if(dom.byId("radioTopo").checked){
 //        map.setBasemap("topo");
         satelliteLayer.hide();
-        streetLayer.hide();
         topoLayer.show();
         norTopoLayer.show();
     }
@@ -207,7 +213,7 @@ require([
   ////////////////////END MAP AND LEGEND///////////////////////////
     
     
-/////////////////////////TOOLS - SELECT REGIONS//////////////////////////////
+/////////////////////////TOOLS - DROPDOWN SETUP//////////////////////////////
     
     var countyDropdown = dom.byId("countyDropdown");
     var municipalityDropdown = dom.byId("municipalityDropdown");
@@ -249,7 +255,6 @@ require([
             dropdown.options.length = 0;
             var options = [];
             console.log("results: ", results);
-            zoomTo(graphicsUtils.graphicsExtent(results.features));
             var features = results.features;
             array.forEach(features, function(item, i){
                 if(attribute === "county")
@@ -274,10 +279,6 @@ require([
         });
     }
     
-    function zoomTo(extent){
-        map.setExtent(extent);
-    }
-    
     on(countiesLayer, "load", function(){
         console.log("on counties layer load.");
         setDropdown(countyDropdown);
@@ -285,6 +286,7 @@ require([
     
     on(countyDropdown, "change", function(evt){
         console.log("county dropdown selection made.", evt.target.value);
+        selectRegion(countiesLayer, evt.target.value);
         setDropdown(municipalityDropdown, evt.target.value);
         setDropdown(parishDropdown, evt.target.value);
     });
@@ -292,13 +294,75 @@ require([
     on(municipalityDropdown, "change", function(evt){
         console.log("municipality dropdown selection made: ", evt.target.value);
         console.log("county val: ", countyDropdown.value);
+        selectRegion(municipalitiesLayer, countyDropdown.value, evt.target.value);
         setDropdown(parishDropdown, countyDropdown.value, evt.target.value);
     });
     
+    on(parishDropdown, "change", function(evt){
+        selectRegion(parishesLayer, countyDropdown.value, evt.target.value);
+    });
+    
+    //////////////////////////SELECT REGIONS AND ZOOM////////////////////
+    var selectSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("black"), 10), new Color([0,0,0,0.25]));
+    
+    parishesLayer.setSelectionSymbol(selectSymbol);
+    municipalitiesLayer.setSelectionSymbol(selectSymbol);
+    countiesLayer.setSelectionSymbol(selectSymbol);
+    
+    
+    function selectRegion(layer, county, name){
+        countiesLayer.clearSelection();
+        municipalitiesLayer.clearSelection();
+        parishesLayer.clearSelection();
+        
+        var selectQuery = new Query();
+        selectQuery.returnGeometry = true;
+        selectQuery.outFields = ["COUNTY", "MUNICIPALITY", "Par_NAME"];
+        
+        if(layer === parishesLayer){
+            selectQuery.where = "COUNTY = '" + county + "' AND Par_NAME = '" + name + "'";
+        }
+        if(layer === municipalitiesLayer){
+            selectQuery.where = "COUNTY = '" + county + "' AND MUNICIPALITY = '" + name + "'";
+        }
+        if(layer === countiesLayer){
+            selectQuery.where = "COUNTY = '" + county + "'";
+        }
+        console.log("where statement: ", selectQuery.where);
+        console.log("layer: ", layer.graphics);
+        layer.selectFeatures(selectQuery, FeatureLayer.SELECTION_NEW, zoomTo);
+        
+    }
+    
+    function zoomTo(result){
+        var extent = graphicsUtils.graphicsExtent(result);
+        map.setExtent(extent);
+        console.log("zoom to result: ", result);
+        var selectionInfo = result[0].attributes;
+        
+        //set content here!!!!!!!!!!!!!!!!!!!!!!!
+        if(selectionInfo.COUNTY && !selectionInfo.MUNICIPALITY)
+            setCountyInfo(selectionInfo);
+        if(selectionInfo.MUNICIPALITY && !selectionInfo.Par_NAME)
+            setMunicipalityInfo(selectionInfo);
+        if(selectionInfo.Par_NAME)
+            setParishInfo(selectionInfo);
+    }
+    
+    on(countiesLayer, "click", function(evt){
+        selectRegion(countiesLayer, evt.graphic.attributes.COUNTY);
+    });
+    on(municipalitiesLayer, "click", function(evt){
+        selectRegion(municipalitiesLayer, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
+    });
+    on(parishesLayer, "click", function(evt){
+        selectRegion(parishesLayer, evt.graphic.attributes.COUNTY, evt.graphic.attributes.Par_NAME);
+    });
 
     ///////////////////////////EVENTS/////////////
     dom.byId("legend").style.height = "35%";
     dom.byId("tools").style.height = "50%";
+    dom.byId("info").style.height = "35%";
     
     on(dom.byId("toolsHeader"), "click", function(){
         
@@ -325,6 +389,7 @@ require([
           dom.byId("legendContent").style.visibility = "hidden";
           dom.byId("legendContentBase").style.visibility = "hidden";
           
+          dom.byId("info").style.bottom = "75px";
       }
       else{
           dom.byId("legend").style.height = "35%";
@@ -332,6 +397,24 @@ require([
           dom.byId("legendMaxIcon").style.visibility = "hidden";
           dom.byId("legendContent").style.visibility = "visible";
           dom.byId("legendContentBase").style.visibility = "visible";
+          
+          dom.byId("info").style.bottom = "41%";
+      }
+    });
+    
+    on(dom.byId("infoHeader"), "click", function(){
+        
+      if(dom.byId("info").style.height == "35%"){    
+          dom.byId("info").style.height = "25px";
+          dom.byId("infoMinIcon").style.visibility = "hidden";
+          dom.byId("infoMaxIcon").style.visibility = "visible";
+          dom.byId("infoContent").style.visibility = "hidden";
+      }
+      else{
+          dom.byId("info").style.height = "35%";
+          dom.byId("infoMinIcon").style.visibility = "visible";
+          dom.byId("infoMaxIcon").style.visibility = "hidden";
+          dom.byId("infoContent").style.visibility = "visible";
       }
     });
    
