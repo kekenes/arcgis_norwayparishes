@@ -100,24 +100,46 @@ require([
   //////////////////////END LAYERS AND LAYER INFO///////////////////////////
     
     /////////////////////////POPUPs///////////////////////////////////
-//    var countyFields = ["COUNTY", "WIKI", "FS_WIKI", "OLD_COUNTY", "FARMS"];
-//    var municipalityFields = ["COUNTY", "MUNICIPALITY"];
-//    var parishFields = ["Par_NAME", "MUNICIPALITY", "COUNTY", "PHOTO", "PHOTO_O", "FAM_SEARCH", "FARMS", "CHURCH", "DA_1", "DA_1_NAME", "DA_2", "DA_2_NAME", "DA_3", "DA_3_NAME", "DA_4", "DA_4_NAME", "DA_5", "DA_5_NAME"];
+    
+ var infoHeight = "25px";
     
  function setCountyInfo(info){
+    infoHeight = "25%";
+    animateInfoBox(infoHeight);
+    console.log("set county info called: ", info);
     var countyName = info.COUNTY;
     var wikiURL = info.WIKI;
     var FSwiki = info.FS_WIKI;
     var oldName = info.OLD_COUNTY;   //not in FS
     var farmList = info.FARMS;      //not in FS
+     
+    var content = "<h4>" + countyName + " County</h4>"
+    + "Known as " + oldName + " prior to 1919<br><br>"
+    + "<a target='_blank' href='" + wikiURL + "'><button type='button' class='btn btn-primary btn-sm' >General Information</button></a><br>"
+    + "<a target='_blank' href='" + FSwiki + "'><button type='button' class='btn btn-primary btn-sm' >Genealogical Resources</button></a><br>"
+    + "<a target='_blank' href='" + farmList + "'><button type='button' class='btn btn-primary btn-sm' >Farm List</button></a><br><br>";
+     
+    dom.byId("infoContent").innerHTML = content;
  }
     
  function setMunicipalityInfo(info){
+    infoHeight = "20%";
+    animateInfoBox(infoHeight);
     var municipalityName = info.MUNICIPALITY;
     var countyName = info.COUNTY;
- }
-
+    var wikiURL = "http://en.wikipedia.org/wiki/" + municipalityName;
+     
+    var content = "<h4>" + municipalityName + " Municipality</h4>"
+    + "<p>" + countyName + " County</p>"
+    + "<a target='_blank' href='" + wikiURL + "'><button type='button' class='btn btn-primary btn-sm' >General Information</button></a><br><br>";
+     
+    dom.byId("infoContent").innerHTML = content;
+ }  
+    
  function setParishInfo(info){
+    infoHeight = "50%";
+    animateInfoBox(infoHeight); 
+     
     var parishName = info.Par_NAME;
     var municipalityName = info.MUNICIPALITY;
     var countyName = info.COUNTY;
@@ -126,17 +148,58 @@ require([
     var FSwiki = info.FAM_SEARCH;
     var farmList = info.FARMS;
     var churchURL = info.CHURCH;
-    var da1_url = info.DA_1 || null;
-    var da1_name = info.DA_1_NAME || null;
-    var da2_url = info.DA_2 || null;
-    var da2_name = info.DA_2_NAME || null;
-    var da3_url = info.DA_3 || null;
-    var da3_name = info.DA_3_NAME || null;
-    var da4_url = info.DA_4 || null;
-    var da4_name = info.DA_4_NAME || null;
-    var da5_url = info.DA_5 || null;
-    var da5_name = info.DA_5_NAME || null;
+    var da1_url = info.DA_1;
+    var da1_name = info.DA_1_NAME;
+    var da2_url = info.DA_2;
+    var da2_name = info.DA_2_NAME;
+    var da3_url = info.DA_3;
+    var da3_name = info.DA_3_NAME;
+    var da4_url = info.DA_4;
+    var da4_name = info.DA_4_NAME;
+    var da5_url = info.DA_5;
+    var da5_name = info.DA_5_NAME;
+     
+    var photoWidth, photoHeight;
+     
+    if(photoOr == "L"){
+        photoHeight = "150";
+        photoWidth = "200";
+    }
+    if(photoOr == "P"){
+        photoWidth = "150";
+        photoHeight = "200";
+    }
+     
+    var content = "<h4>" + parishName + " Parish</h4>"
+    + "<p>" + municipalityName + ", " + countyName + " County</p>"
+    + "<img src='" + photoURL + "' height='" + photoHeight + "' width='" + photoWidth + "'><br>"
+    + "<a target='_blank' href='" + FSwiki + "'><button type='button' class='btn btn-primary btn-sm' >Genealogical Resources</button></a><br>"
+    + "<a target='_blank' href='" + churchURL + "'><button type='button' class='btn btn-primary btn-sm' >Church History</button></a><br>"
+    + "<a target='_blank' href='" + farmList + "'><button type='button' class='btn btn-primary btn-sm' > " + countyName + " County Farm List</button></a><br>";
+     
+     if(da1_url){
+        content += "<a target='_blank' href='" + da1_url + "'><button type='button' class='btn btn-primary btn-sm'>" + da1_name + "</button></a><br>";
+     }
+     if(da2_url){
+        content += "<a target='_blank' href='" + da2_url + "'><button type='button' class='btn btn-primary btn-sm'>" + da2_name + "</button></a><br>";
+     }
+     if(da3_url){
+        content += "<a target='_blank' href='" + da3_url + "'><button type='button' class='btn btn-primary btn-sm'>" + da3_name + "</button></a><br>";
+     }
+     if(da4_url){
+        content += "<a target='_blank' href='" + da4_url + "'><button type='button' class='btn btn-primary btn-sm'>" + da4_name + "</button></a><br>";
+     }
+     if(da5_url){
+        content += "<a target='_blank' href='" + da5_url + "'><button type='button' class='btn btn-primary btn-sm'>" + da5_name + "</button></a>";
+     }
+     
+     dom.byId("infoContent").innerHTML = content;
  }
+    
+    function animateInfoBox(height){
+        dom.byId("info").style.visibility = "visible";
+        dom.byId("info").style.height = height;
+    }
     
     ////////////////////////END POPUPS//////////////////////////////////
     
@@ -358,11 +421,14 @@ require([
     on(parishesLayer, "click", function(evt){
         selectRegion(parishesLayer, evt.graphic.attributes.COUNTY, evt.graphic.attributes.Par_NAME);
     });
+    
+    ////////////////////////////FARM SEARCH TOOLS///////////////////////////////
 
     ///////////////////////////EVENTS/////////////
     dom.byId("legend").style.height = "35%";
     dom.byId("tools").style.height = "50%";
-    dom.byId("info").style.height = "35%";
+    dom.byId("info").style.height = "25px";
+    dom.byId("results").style.height = "25px";
     
     on(dom.byId("toolsHeader"), "click", function(){
         
@@ -371,12 +437,16 @@ require([
           dom.byId("toolsMinIcon").style.visibility = "hidden";
           dom.byId("toolsMaxIcon").style.visibility = "visible";
           dom.byId("toolsContent").style.visibility = "hidden";
+          
+          dom.byId("results").style.bottom = "60px";
       }
       else{
           dom.byId("tools").style.height = "50%";
           dom.byId("toolsMinIcon").style.visibility = "visible";
           dom.byId("toolsMaxIcon").style.visibility = "hidden";
           dom.byId("toolsContent").style.visibility = "visible";
+          
+          dom.byId("results").style.bottom = "55%";
       }
     });
     
@@ -404,17 +474,33 @@ require([
     
     on(dom.byId("infoHeader"), "click", function(){
         
-      if(dom.byId("info").style.height == "35%"){    
+      if(dom.byId("info").style.height == infoHeight){    
           dom.byId("info").style.height = "25px";
           dom.byId("infoMinIcon").style.visibility = "hidden";
           dom.byId("infoMaxIcon").style.visibility = "visible";
           dom.byId("infoContent").style.visibility = "hidden";
       }
       else{
-          dom.byId("info").style.height = "35%";
+          dom.byId("info").style.height = infoHeight;
           dom.byId("infoMinIcon").style.visibility = "visible";
           dom.byId("infoMaxIcon").style.visibility = "hidden";
           dom.byId("infoContent").style.visibility = "visible";
+      }
+    });
+    
+    on(dom.byId("resultsHeader"), "click", function(){
+        
+      if(dom.byId("results").style.height == "25px"){    
+          dom.byId("results").style.height = "35%";
+          dom.byId("resultsMinIcon").style.visibility = "visible";
+          dom.byId("resultsMaxIcon").style.visibility = "hidden";
+          dom.byId("resultsContent").style.visibility = "visible";
+      }
+      else{
+          dom.byId("results").style.height = "25px";
+          dom.byId("resultsMinIcon").style.visibility = "hidden";
+          dom.byId("resultsMaxIcon").style.visibility = "visible";
+          dom.byId("resultsContent").style.visibility = "hidden";
       }
     });
    
