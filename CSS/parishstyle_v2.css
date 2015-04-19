@@ -17,7 +17,7 @@ html, body, #map{
 }
 */
 .glyphicon-collapse-down{
-    visibility: visible;
+/*    visibility: visible;*/
     float: right;
 }
 .glyphicon-collapse-up{
@@ -30,7 +30,7 @@ html, body, #map{
 }
 
 #results .glyphicon-collapse-up{
-    visibility: visible;
+/*    visibility: visible;*/
 }
 
 #info .content{

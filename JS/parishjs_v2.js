@@ -16,7 +16,7 @@ require([
     "esri/Color",
     
     "agsjs/dijit/TOC", 
-     
+    
     "dojo/_base/array",
     "dojo/request",
     "dojo/dom-construct",
@@ -40,7 +40,7 @@ require([
         Color,
          
         TOC,
-         
+          
         array,
         request, 
         domConstruct, 
@@ -199,6 +199,7 @@ require([
     function animateInfoBox(height){
         dom.byId("info").style.visibility = "visible";
         dom.byId("info").style.height = height;
+        dom.byId("infoContent").style.visibility = "visible";
     }
     
     ////////////////////////END POPUPS//////////////////////////////////
@@ -336,10 +337,13 @@ require([
                 }
                 var option = domConstruct.create("option");
                 option.text = item;
-                dropdown.add(option);    
+                dropdown.add(option);
             });
+            
             console.log("list: ", options);
         });
+
+        return;
     }
     
     on(countiesLayer, "load", function(){
@@ -426,8 +430,10 @@ require([
         {
             countyDropdown.value = evt.graphic.attributes.COUNTY;
             setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY);
-            municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
+            setTimeout(function(){
+                municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
+                setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
+            }, 2000);
             
         }
         else{
@@ -443,14 +449,24 @@ require([
         if((municipalityDropdown.value != evt.graphic.attributes.MUNICIPALITY) && (countyDropdown.value != evt.graphic.attributes.COUNTY)){
             countyDropdown.value = evt.graphic.attributes.COUNTY;
             setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY);
-            municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-            parishDropdown.value = evt.graphic.attributes.Par_NAME;
+            
+            setTimeout(function(){
+                municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
+                setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
+                setTimeout(function(){
+                    parishDropdown.value = evt.graphic.attributes.Par_NAME;
+                }, 2000);
+            }, 2000);
+            
+            
         }
         else if((municipalityDropdown.value != evt.graphic.attributes.MUNICIPALITY) && (countyDropdown.value == evt.graphic.attributes.COUNTY)){
             municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-            parishDropdown.value = evt.graphic.attributes.Par_NAME;
+            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY, evt.graphic.attributes.Par_NAME);
+            
+            setTimeout(function(){
+                parishDropdown.value = evt.graphic.attributes.Par_NAME;
+            }, 2000);
         }
         else{
             parishDropdown.value = evt.graphic.attributes.Par_NAME;
