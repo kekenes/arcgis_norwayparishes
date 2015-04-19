@@ -414,12 +414,47 @@ require([
     
     on(countiesLayer, "click", function(evt){
         selectRegion(countiesLayer, evt.graphic.attributes.COUNTY);
+        
+        countyDropdown.value = evt.graphic.attributes.COUNTY;
+        setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY);
+        setDropdown(parishDropdown, evt.graphic.attributes.COUNTY);
     });
     on(municipalitiesLayer, "click", function(evt){
         selectRegion(municipalitiesLayer, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
+        
+        if(countyDropdown.value != evt.graphic.attributes.COUNTY)
+        {
+            countyDropdown.value = evt.graphic.attributes.COUNTY;
+            setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY);
+            municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
+            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
+            
+        }
+        else{
+            municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
+            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
+        }
+        
     });
     on(parishesLayer, "click", function(evt){
+        console.log("parish click event: ", evt);
         selectRegion(parishesLayer, evt.graphic.attributes.COUNTY, evt.graphic.attributes.Par_NAME);
+        
+        if((municipalityDropdown.value != evt.graphic.attributes.MUNICIPALITY) && (countyDropdown.value != evt.graphic.attributes.COUNTY)){
+            countyDropdown.value = evt.graphic.attributes.COUNTY;
+            setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY);
+            municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
+            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
+            parishDropdown.value = evt.graphic.attributes.Par_NAME;
+        }
+        else if((municipalityDropdown.value != evt.graphic.attributes.MUNICIPALITY) && (countyDropdown.value == evt.graphic.attributes.COUNTY)){
+            municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
+            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
+            parishDropdown.value = evt.graphic.attributes.Par_NAME;
+        }
+        else{
+            parishDropdown.value = evt.graphic.attributes.Par_NAME;
+        }
     });
     
     ////////////////////////////FARM SEARCH TOOLS///////////////////////////////
