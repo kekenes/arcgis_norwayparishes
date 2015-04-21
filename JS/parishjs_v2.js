@@ -14,6 +14,7 @@ require([
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleMarkerSymbol",
     "esri/Color",
+    "esri/dijit/HomeButton",
     
     "agsjs/dijit/TOC", 
     
@@ -38,6 +39,7 @@ require([
         SimpleLineSymbol,
         SimpleMarkerSymbol,
         Color,
+        HomeButton,
          
         TOC,
           
@@ -54,14 +56,17 @@ require([
   var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/0", {
     outFields: ["*"]
   });
+//  countiesLayer.setAutoGeneralize(false);
     
   var municipalitiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/1", {
     outFields: ["*"]
   });
+//  municipalitiesLayer.setAutoGeneralize(false);
     
   var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/2", {
     outFields: ["*"]
   });
+//  parishesLayer.setAutoGeneralize(false);
 
   var euroInfo = new WMTSLayerInfo({
           identifier: "europa",
@@ -96,6 +101,7 @@ require([
   var topoLayer = new ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/arcgis/rest/services/World_Topo_Map/MapServer", {
     opacity: 0.4
   });    
+
     
   //////////////////////END LAYERS AND LAYER INFO///////////////////////////
     
@@ -205,7 +211,7 @@ require([
     ////////////////////////END POPUPS//////////////////////////////////
     
   /////////////////////MAP AND LEGEND///////////////////////////////////////
-    
+  var loading = dom.byId("loading");
   on(countiesLayer, "load", initMap);
   
   function initMap(){
@@ -214,6 +220,11 @@ require([
       extent: countiesLayer.fullExtent//,
 //      basemap: "topo"
     });
+      
+    var homeButton = new HomeButton({
+        map: map
+    }, "homeButton");
+    homeButton.startup();
       
     console.log("map extent: ", map.extent);
       
@@ -272,7 +283,9 @@ require([
     }
   });    
     
-  
+  function calcOffset(){
+    return (map.extent.getWidth() / map.width);
+  }
   
   ////////////////////END MAP AND LEGEND///////////////////////////
     
@@ -284,6 +297,7 @@ require([
     var parishDropdown = dom.byId("parishDropdown");
     
     function setDropdown(dropdown, county, municipality){
+        loading.style.visibility = "visible";
         
         console.log("set dropdown: ", dropdown, " county dropdown: ", countyDropdown);
         var dropQuery = new Query();
@@ -338,11 +352,13 @@ require([
                 var option = domConstruct.create("option");
                 option.text = item;
                 dropdown.add(option);
+                
+                if(i === (options.length - 1))
+                    loading.style.visibility = "hidden";
             });
             
             console.log("list: ", options);
         });
-
         return;
     }
     
@@ -395,10 +411,10 @@ require([
         if(layer === countiesLayer){
             selectQuery.where = "COUNTY = '" + county + "'";
         }
+        
         console.log("where statement: ", selectQuery.where);
         console.log("layer: ", layer.graphics);
         layer.selectFeatures(selectQuery, FeatureLayer.SELECTION_NEW, zoomTo);
-        
     }
     
     function zoomTo(result){
@@ -414,6 +430,8 @@ require([
             setMunicipalityInfo(selectionInfo);
         if(selectionInfo.Par_NAME)
             setParishInfo(selectionInfo);
+        
+        return;
     }
     
     on(countiesLayer, "click", function(evt){

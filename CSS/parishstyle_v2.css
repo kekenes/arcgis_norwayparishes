@@ -37,6 +37,23 @@ html, body, #map{
     text-align: center;
 }
 
+#homeButton{
+    position: absolute;
+    top: 20px;
+    left: 65px;
+    z-index: 50;
+}
+
+#loading{
+    position: absolute;
+    z-index: 98;
+    height: 150px;
+    width: 150px;
+    left: 65px;
+    top: 30%;
+    visibility: hidden;
+}
+
 .divTitle{
     background-color: darkgray;
     color: white;
