@@ -120,7 +120,7 @@ require([
     var farmList = info.FARMS;      //not in FS
      
     var content = "<h4>" + countyName + " County</h4>"
-    + "Known as " + oldName + " prior to 1919<br><br>"
+    + "Known as <b>" + oldName + "</b> prior to 1919<br><br>"
     + "<a target='_blank' href='" + wikiURL + "'><button type='button' class='btn btn-primary btn-sm' >General Information</button></a><br>"
     + "<a target='_blank' href='" + FSwiki + "'><button type='button' class='btn btn-primary btn-sm' >Genealogical Resources</button></a><br>"
     + "<a target='_blank' href='" + farmList + "'><button type='button' class='btn btn-primary btn-sm' >Farm List</button></a><br><br>";
@@ -178,28 +178,30 @@ require([
      
     var content = "<h4>" + parishName + " Parish</h4>"
     + "<p>" + municipalityName + ", " + countyName + " County</p>"
-    + "<img src='" + photoURL + "' height='" + photoHeight + "' width='" + photoWidth + "'><br>"
+    + "<div id='photo'><img src='" + photoURL + "' height='" + photoHeight + "' width='" + photoWidth + "'><br><span id='photoCredit'><a target='_blank' href='http://kirkesok.no'>kirkesok.no</a></span></div><br>"
     + "<a target='_blank' href='" + FSwiki + "'><button type='button' class='btn btn-primary btn-sm' >Genealogical Resources</button></a><br>"
     + "<a target='_blank' href='" + churchURL + "'><button type='button' class='btn btn-primary btn-sm' >Church History</button></a><br>"
-    + "<a target='_blank' href='" + farmList + "'><button type='button' class='btn btn-primary btn-sm' > " + countyName + " County Farm List</button></a><br>";
+    + "<a target='_blank' href='" + farmList + "'><button type='button' class='btn btn-primary btn-sm' > " + countyName + " County Farm List</button></a><br>"
+    + "<b>Search Vital Records</b><br>";
      
      if(da1_url){
-        content += "<a target='_blank' href='" + da1_url + "'><button type='button' class='btn btn-primary btn-sm'>" + da1_name + "</button></a><br>";
+        content += "<a target='_blank' href='" + da1_url + "'><button type='button' class='btn btn-success btn-sm'>" + da1_name + "</button></a><br>";
      }
      if(da2_url){
-        content += "<a target='_blank' href='" + da2_url + "'><button type='button' class='btn btn-primary btn-sm'>" + da2_name + "</button></a><br>";
+        content += "<a target='_blank' href='" + da2_url + "'><button type='button' class='btn btn-success btn-sm'>" + da2_name + "</button></a><br>";
      }
      if(da3_url){
-        content += "<a target='_blank' href='" + da3_url + "'><button type='button' class='btn btn-primary btn-sm'>" + da3_name + "</button></a><br>";
+        content += "<a target='_blank' href='" + da3_url + "'><button type='button' class='btn btn-success btn-sm'>" + da3_name + "</button></a><br>";
      }
      if(da4_url){
-        content += "<a target='_blank' href='" + da4_url + "'><button type='button' class='btn btn-primary btn-sm'>" + da4_name + "</button></a><br>";
+        content += "<a target='_blank' href='" + da4_url + "'><button type='button' class='btn btn-success btn-sm'>" + da4_name + "</button></a><br>";
      }
      if(da5_url){
-        content += "<a target='_blank' href='" + da5_url + "'><button type='button' class='btn btn-primary btn-sm'>" + da5_name + "</button></a>";
+        content += "<a target='_blank' href='" + da5_url + "'><button type='button' class='btn btn-success btn-sm'>" + da5_name + "</button></a>";
      }
      
      dom.byId("infoContent").innerHTML = content;
+     dom.byId("infoContent").style.overflowY = "scroll";
  }
     
     function animateInfoBox(height){
@@ -493,7 +495,7 @@ require([
     
     ////////////////////////////FARM SEARCH TOOLS///////////////////////////////
 
-    ///////////////////////////EVENTS/////////////
+    ///////////////////////////LAYOUT EVENTS//////////////////////////////////
     dom.byId("legend").style.height = "35%";
     dom.byId("tools").style.height = "50%";
     dom.byId("info").style.height = "25px";
@@ -506,6 +508,7 @@ require([
           dom.byId("toolsMinIcon").style.visibility = "hidden";
           dom.byId("toolsMaxIcon").style.visibility = "visible";
           dom.byId("toolsContent").style.visibility = "hidden";
+          dom.byId("tools").style.overflowY = "initial";
           
           dom.byId("results").style.bottom = "60px";
       }
@@ -514,6 +517,7 @@ require([
           dom.byId("toolsMinIcon").style.visibility = "visible";
           dom.byId("toolsMaxIcon").style.visibility = "hidden";
           dom.byId("toolsContent").style.visibility = "visible";
+          dom.byId("tools").style.overflowY = "auto";
           
           dom.byId("results").style.bottom = "55%";
       }
@@ -527,6 +531,7 @@ require([
           dom.byId("legendMaxIcon").style.visibility = "visible";
           dom.byId("legendContent").style.visibility = "hidden";
           dom.byId("legendContentBase").style.visibility = "hidden";
+          dom.byId("legend").style.overflowY = "initial";
           
           dom.byId("info").style.bottom = "75px";
       }
@@ -536,6 +541,7 @@ require([
           dom.byId("legendMaxIcon").style.visibility = "hidden";
           dom.byId("legendContent").style.visibility = "visible";
           dom.byId("legendContentBase").style.visibility = "visible";
+          dom.byId("legend").style.overflowY = "auto";
           
           dom.byId("info").style.bottom = "41%";
       }
@@ -548,12 +554,14 @@ require([
           dom.byId("infoMinIcon").style.visibility = "hidden";
           dom.byId("infoMaxIcon").style.visibility = "visible";
           dom.byId("infoContent").style.visibility = "hidden";
+          dom.byId("info").style.overflowY = "initial";
       }
       else{
           dom.byId("info").style.height = infoHeight;
           dom.byId("infoMinIcon").style.visibility = "visible";
           dom.byId("infoMaxIcon").style.visibility = "hidden";
           dom.byId("infoContent").style.visibility = "visible";
+          dom.byId("info").style.overflowY = "auto";
       }
     });
     
@@ -564,12 +572,14 @@ require([
           dom.byId("resultsMinIcon").style.visibility = "visible";
           dom.byId("resultsMaxIcon").style.visibility = "hidden";
           dom.byId("resultsContent").style.visibility = "visible";
+          dom.byId("results").style.overflowY = "auto";
       }
       else{
           dom.byId("results").style.height = "25px";
           dom.byId("resultsMinIcon").style.visibility = "hidden";
           dom.byId("resultsMaxIcon").style.visibility = "visible";
           dom.byId("resultsContent").style.visibility = "hidden";
+          dom.byId("results").style.overflowY = "initial";
       }
     });
    
