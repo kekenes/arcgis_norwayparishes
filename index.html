@@ -42,7 +42,7 @@
 
 </head>
     
-<body class="claro">
+<body>
 <div id="map">
     <div id="header">
     <nav class="navbar navbar-default visibleBar">
@@ -75,16 +75,30 @@
         County: <select id="countyDropdown" class="form-control"></select><br>
         Municipality: <select id="municipalityDropdown" class="form-control"></select><br>
         Parish: <select id="parishDropdown" class="form-control"></select><br>
+            <h4>Property/Farm Search</h4>
+<!--        <input type="text" id="propInput" value="Enter property name here"><br>-->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for farm/property name...">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">Go</button>
+              </span>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->  </div>
+        <input type="checkbox" id="useGeoSelection" checked>&nbsp;&nbsp;&nbsp;Filter by currently selected geography<br>
         </div>
     </div>
     <div id="legend">
         <div id="legendHeader" class="divTitle" title="Click to minimize and maximize the legend">Legend<span id="legendMinIcon" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span><span id="legendMaxIcon" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></div>
+        <div id="legendSuperContent">
         <div id="legendContent" class="content"></div>
         <div id="legendContentBase" class="content">
         <h4>Base Layers</h4>
         <input type="checkbox" id="streetCheck">&nbsp;&nbsp;&nbsp;Highways and Streets<br> 
         <input type="radio" name="baseLayers" id="radioTopo" checked>&nbsp;&nbsp;&nbsp;Topographic Map<br>
         <input type="radio" name="baseLayers" id="radioSat">&nbsp;&nbsp;&nbsp;Satellite Imagery<br>   
+        </div>
         </div>
     </div>
     <div id="info">

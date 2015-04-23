@@ -68,15 +68,15 @@ require([
   });
 //  parishesLayer.setAutoGeneralize(false);
 
-  var euroInfo = new WMTSLayerInfo({
-          identifier: "europa",
-          tileMatrixSet: "EPSG:3857",  //3857, 4326, 900913, 32635, 32633, 32632
-          format: "png"
-        });
-  var euroOptions = {
-          serviceMode: "KVP",
-          layerInfo: euroInfo
-        };
+//  var euroInfo = new WMTSLayerInfo({
+//          identifier: "europa",
+//          tileMatrixSet: "EPSG:3857",  //3857, 4326, 900913, 32635, 32633, 32632
+//          format: "png"
+//        });
+//  var euroOptions = {
+//          serviceMode: "KVP",
+//          layerInfo: euroInfo
+//        };
         
   var topoInfo = new WMTSLayerInfo({
           identifier: "topo2",
@@ -178,7 +178,7 @@ require([
      
     var content = "<h4>" + parishName + " Parish</h4>"
     + "<p>" + municipalityName + ", " + countyName + " County</p>"
-    + "<div id='photo'><img src='" + photoURL + "' height='" + photoHeight + "' width='" + photoWidth + "'><br><span id='photoCredit'><a target='_blank' href='http://kirkesok.no'>kirkesok.no</a></span></div><br>"
+    + "<div class='photo'><img src='" + photoURL + "' height='" + photoHeight + "' width='" + photoWidth + "'><div class='photoCredit'><a target='_blank' href='http://kirkesok.no'>photo: kirkesok.no</a></div></div>"
     + "<a target='_blank' href='" + FSwiki + "'><button type='button' class='btn btn-primary btn-sm' >Genealogical Resources</button></a><br>"
     + "<a target='_blank' href='" + churchURL + "'><button type='button' class='btn btn-primary btn-sm' >Church History</button></a><br>"
     + "<a target='_blank' href='" + farmList + "'><button type='button' class='btn btn-primary btn-sm' > " + countyName + " County Farm List</button></a><br>"
@@ -307,7 +307,7 @@ require([
         var selectLayer, attribute;
         
         dropQuery.outFields = [ "COUNTY" , "MUNICIPALITY" , "Par_NAME" ];
-        dropQuery.returnGeometry = true;
+//        dropQuery.returnGeometry = true;
     
         if(dropdown === countyDropdown){
             console.log("county where set!!!", municipalitiesLayer);
@@ -508,7 +508,7 @@ require([
           dom.byId("toolsMinIcon").style.visibility = "hidden";
           dom.byId("toolsMaxIcon").style.visibility = "visible";
           dom.byId("toolsContent").style.visibility = "hidden";
-          dom.byId("tools").style.overflowY = "initial";
+//          dom.byId("tools").style.overflowY = "initial";
           
           dom.byId("results").style.bottom = "60px";
       }
@@ -517,7 +517,7 @@ require([
           dom.byId("toolsMinIcon").style.visibility = "visible";
           dom.byId("toolsMaxIcon").style.visibility = "hidden";
           dom.byId("toolsContent").style.visibility = "visible";
-          dom.byId("tools").style.overflowY = "auto";
+//          dom.byId("tools").style.overflowY = "auto";
           
           dom.byId("results").style.bottom = "55%";
       }
@@ -531,7 +531,7 @@ require([
           dom.byId("legendMaxIcon").style.visibility = "visible";
           dom.byId("legendContent").style.visibility = "hidden";
           dom.byId("legendContentBase").style.visibility = "hidden";
-          dom.byId("legend").style.overflowY = "initial";
+//          dom.byId("legend").style.overflowY = "initial";
           
           dom.byId("info").style.bottom = "75px";
       }
@@ -541,7 +541,7 @@ require([
           dom.byId("legendMaxIcon").style.visibility = "hidden";
           dom.byId("legendContent").style.visibility = "visible";
           dom.byId("legendContentBase").style.visibility = "visible";
-          dom.byId("legend").style.overflowY = "auto";
+//          dom.byId("legend").style.overflowY = "auto";
           
           dom.byId("info").style.bottom = "41%";
       }
@@ -554,14 +554,14 @@ require([
           dom.byId("infoMinIcon").style.visibility = "hidden";
           dom.byId("infoMaxIcon").style.visibility = "visible";
           dom.byId("infoContent").style.visibility = "hidden";
-          dom.byId("info").style.overflowY = "initial";
+//          dom.byId("info").style.overflow = "initial";
       }
       else{
           dom.byId("info").style.height = infoHeight;
           dom.byId("infoMinIcon").style.visibility = "visible";
           dom.byId("infoMaxIcon").style.visibility = "hidden";
           dom.byId("infoContent").style.visibility = "visible";
-          dom.byId("info").style.overflowY = "auto";
+//          dom.byId("info").style.overflowY = "auto";
       }
     });
     
@@ -572,14 +572,14 @@ require([
           dom.byId("resultsMinIcon").style.visibility = "visible";
           dom.byId("resultsMaxIcon").style.visibility = "hidden";
           dom.byId("resultsContent").style.visibility = "visible";
-          dom.byId("results").style.overflowY = "auto";
+//          dom.byId("results").style.overflowY = "auto";
       }
       else{
           dom.byId("results").style.height = "25px";
           dom.byId("resultsMinIcon").style.visibility = "hidden";
           dom.byId("resultsMaxIcon").style.visibility = "visible";
           dom.byId("resultsContent").style.visibility = "hidden";
-          dom.byId("results").style.overflowY = "initial";
+//          dom.byId("results").style.overflowY = "initial";
       }
     });
    
