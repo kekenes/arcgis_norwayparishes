@@ -387,7 +387,7 @@ require([
     });
     
     //////////////////////////SELECT REGIONS AND ZOOM////////////////////
-    var selectSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("black"), 10), new Color([0,0,0,0.25]));
+    var selectSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,0]), 6), new Color([0,0,0,0.25]));
     
     parishesLayer.setSelectionSymbol(selectSymbol);
     municipalitiesLayer.setSelectionSymbol(selectSymbol);
