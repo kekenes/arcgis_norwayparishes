@@ -109,7 +109,7 @@ require([
  var infoHeight = "25px";
     
  function setCountyInfo(info){
-    infoHeight = "25%";
+    infoHeight = "30%";
     animateInfoBox(infoHeight);
     console.log("set county info called: ", info);
     var countyName = info.COUNTY;
