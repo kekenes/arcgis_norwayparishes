@@ -53,17 +53,17 @@ require([
   esriConfig.defaults.io.proxyUrl = "/proxy/";
     
   ///////////////////LAYERS AND LAYER INFO///////////////////////////////////////  
-  var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/0", {
+  var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/0", {
     outFields: ["*"]
   });
 //  countiesLayer.setAutoGeneralize(false);
     
-  var municipalitiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/1", {
+  var municipalitiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/1", {
     outFields: ["*"]
   });
 //  municipalitiesLayer.setAutoGeneralize(false);
     
-  var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/Norway_Parish_Boundaries_4326_FS/FeatureServer/2", {
+  var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/2", {
     outFields: ["*"]
   });
 //  parishesLayer.setAutoGeneralize(false);
@@ -105,8 +105,7 @@ require([
     
   //////////////////////END LAYERS AND LAYER INFO///////////////////////////
     
-    /////////////////////////POPUPs///////////////////////////////////
-    
+    /////////////////////////POPUPs///////////////////////////////////  
  var infoHeight = "25px";
     
  function setCountyInfo(info){
