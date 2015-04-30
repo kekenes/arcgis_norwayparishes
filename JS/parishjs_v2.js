@@ -65,18 +65,22 @@ require([
     
   ///////////////////LAYERS AND LAYER INFO///////////////////////////////////////
   var parishSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0.25]));
-  var municipalitySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0.25]));
-//  var countySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0.25]));
+  var municipalitySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([217,95,2]), 6), new Color([0,0,0,0.25]));
+  var countySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,100,0]), 6), new Color([0,0,0,0.25]));
     var parishRenderer = new SimpleRenderer(parishSymbol);
+    var municipalityRenderer = new SimpleRenderer(municipalitySymbol);
+    var countyRenderer = new SimpleRenderer(countySymbol);
     
   var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/0", {
     outFields: ["*"]
   });
+    countiesLayer.setRenderer(countyRenderer);
 //  countiesLayer.setAutoGeneralize(false);
     
   var municipalitiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/1", {
     outFields: ["*"]
   });
+    municipalitiesLayer.setRenderer(municipalityRenderer);
 //  municipalitiesLayer.setAutoGeneralize(false);
     
   var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/2", {
