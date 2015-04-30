@@ -5,6 +5,7 @@ require([
     "esri/layers/WMTSLayer",
     "esri/layers/WMTSLayerInfo",
     "esri/layers/ArcGISTiledMapServiceLayer",
+    "esri/layers/LabelLayer",
     "esri/config",
     "esri/dijit/Legend",
     "esri/tasks/query",
@@ -13,11 +14,15 @@ require([
     "esri/symbols/SimpleFillSymbol",
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleMarkerSymbol",
+    "esri/symbols/TextSymbol",
+    "esri/symbols/Font",
     "esri/Color",
     "esri/dijit/HomeButton",
+    "esri/renderers/SimpleRenderer",
     
     "agsjs/dijit/TOC", 
     
+    "dojo/query",
     "dojo/_base/array",
     "dojo/request",
     "dojo/dom-construct",
@@ -30,6 +35,7 @@ require([
         WMTSLayer,
         WMTSLayerInfo,
         ArcGISTiledMapServiceLayer,
+        LabelLayer,
         esriConfig,
         Legend,
         Query,
@@ -38,11 +44,15 @@ require([
         SimpleFillSymbol,
         SimpleLineSymbol,
         SimpleMarkerSymbol,
+        TextSymbol,
+        Font,
         Color,
         HomeButton,
+        SimpleRenderer,
          
         TOC,
           
+        $,
         array,
         request, 
         domConstruct, 
@@ -51,8 +61,14 @@ require([
     
   //////////CONFIG SETTINGS AND OPTIONS/////////////////////////////////////////
   esriConfig.defaults.io.proxyUrl = "/proxy/";
+//    $("[data-toggle='tooltip']").tooltip();
     
-  ///////////////////LAYERS AND LAYER INFO///////////////////////////////////////  
+  ///////////////////LAYERS AND LAYER INFO///////////////////////////////////////
+  var parishSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0.25]));
+  var municipalitySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0.25]));
+//  var countySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0.25]));
+    var parishRenderer = new SimpleRenderer(parishSymbol);
+    
   var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/0", {
     outFields: ["*"]
   });
@@ -66,7 +82,15 @@ require([
   var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/2", {
     outFields: ["*"]
   });
+    parishesLayer.setRenderer(parishRenderer);
 //  parishesLayer.setAutoGeneralize(false);
+    
+    var parishFont = new Font("12pt", Font.STYLE_NORMAL, Font.VARIANT_NORMAL, Font.WEIGHT_BOLD, "Arial");
+    var parishText = new TextSymbol("filler text", parishFont, new Color([148,0,211]));
+    var parishTextRenderer = new SimpleRenderer(parishText);
+    
+  var parishLabels = new LabelLayer();
+    parishLabels.addFeatureLayer(parishesLayer, parishTextRenderer, "{Par_NAME}");
 
 //  var euroInfo = new WMTSLayerInfo({
 //          identifier: "europa",
@@ -229,7 +253,7 @@ require([
       
     console.log("map extent: ", map.extent);
       
-    map.addLayers([satelliteLayer, topoLayer, norTopoLayer, streetLayer, parishesLayer, municipalitiesLayer, countiesLayer]);
+    map.addLayers([satelliteLayer, topoLayer, norTopoLayer, streetLayer, parishesLayer, parishLabels, municipalitiesLayer, countiesLayer]);
       satelliteLayer.hide();
       streetLayer.hide();
       
