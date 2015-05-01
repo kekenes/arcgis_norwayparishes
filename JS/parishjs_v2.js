@@ -6,11 +6,13 @@ require([
     "esri/layers/WMTSLayerInfo",
     "esri/layers/ArcGISTiledMapServiceLayer",
     "esri/layers/LabelLayer",
+    "esri/layers/GraphicsLayer",
     "esri/config",
     "esri/dijit/Legend",
     "esri/tasks/query",
     "esri/tasks/QueryTask",
     "esri/graphicsUtils",
+    "esri/graphic",
     "esri/symbols/SimpleFillSymbol",
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleMarkerSymbol",
@@ -36,11 +38,13 @@ require([
         WMTSLayerInfo,
         ArcGISTiledMapServiceLayer,
         LabelLayer,
+        GraphicsLayer,
         esriConfig,
         Legend,
         Query,
         QueryTask,
         graphicsUtils,
+        Graphic,
         SimpleFillSymbol,
         SimpleLineSymbol,
         SimpleMarkerSymbol,
@@ -71,23 +75,25 @@ require([
     var municipalityRenderer = new SimpleRenderer(municipalitySymbol);
     var countyRenderer = new SimpleRenderer(countySymbol);
     
+    var selectionLayer = new GraphicsLayer();
+    
   var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/0", {
     outFields: ["*"]
   });
-    countiesLayer.setRenderer(countyRenderer);
-//  countiesLayer.setAutoGeneralize(false);
     
   var municipalitiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/1", {
     outFields: ["*"]
   });
-    municipalitiesLayer.setRenderer(municipalityRenderer);
-//  municipalitiesLayer.setAutoGeneralize(false);
     
   var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/2", {
     outFields: ["*"]
   });
+
+    //These renderers don't allow for on click events to work on layers
+    //May have to republish services
+    countiesLayer.setRenderer(countyRenderer);
+    municipalitiesLayer.setRenderer(municipalityRenderer);
     parishesLayer.setRenderer(parishRenderer);
-//  parishesLayer.setAutoGeneralize(false);
     
     var parishFont = new Font("12pt", Font.STYLE_NORMAL, Font.VARIANT_NORMAL, Font.WEIGHT_BOLD, "Arial");
     var parishText = new TextSymbol("filler text", parishFont, new Color([148,0,211]));
@@ -228,7 +234,7 @@ require([
      }
      
      dom.byId("infoContent").innerHTML = content;
-     dom.byId("infoContent").style.overflowY = "scroll";
+//     dom.byId("infoContent").style.overflowY = "scroll";
  }
     
     function animateInfoBox(height){
@@ -242,7 +248,7 @@ require([
   /////////////////////MAP AND LEGEND///////////////////////////////////////
   var loading = dom.byId("loading");
   on(countiesLayer, "load", initMap);
-  
+  var homeButton;
   function initMap(){
       
     map = new Map("map", {
@@ -250,14 +256,14 @@ require([
 //      basemap: "topo"
     });
       
-    var homeButton = new HomeButton({
+    homeButton = new HomeButton({
         map: map
     }, "homeButton");
     homeButton.startup();
       
     console.log("map extent: ", map.extent);
       
-    map.addLayers([satelliteLayer, topoLayer, norTopoLayer, streetLayer, parishesLayer, parishLabels, municipalitiesLayer, countiesLayer]);
+    map.addLayers([satelliteLayer, topoLayer, norTopoLayer, streetLayer, selectionLayer, parishesLayer, parishLabels, municipalitiesLayer, countiesLayer]);
       satelliteLayer.hide();
       streetLayer.hide();
       
@@ -397,6 +403,11 @@ require([
     });
     
     on(countyDropdown, "change", function(evt){
+        if(evt.target.value === ""){
+           clearSelection();
+           map.setExtent(homeButton.extent);
+           return;
+        }
         console.log("county dropdown selection made.", evt.target.value);
         selectRegion(countiesLayer, evt.target.value);
         setDropdown(municipalityDropdown, evt.target.value);
@@ -417,19 +428,21 @@ require([
     //////////////////////////SELECT REGIONS AND ZOOM////////////////////
     var selectSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,0]), 6), new Color([0,0,0,0.25]));
     
-    parishesLayer.setSelectionSymbol(selectSymbol);
-    municipalitiesLayer.setSelectionSymbol(selectSymbol);
-    countiesLayer.setSelectionSymbol(selectSymbol);
+//    parishesLayer.setSelectionSymbol(selectSymbol);
+//    municipalitiesLayer.setSelectionSymbol(selectSymbol);
+//    countiesLayer.setSelectionSymbol(selectSymbol);
     
     
     function selectRegion(layer, county, name){
-        countiesLayer.clearSelection();
-        municipalitiesLayer.clearSelection();
-        parishesLayer.clearSelection();
+        var queryTask = new QueryTask(layer.url);
+        
+//        countiesLayer.clearSelection();
+//        municipalitiesLayer.clearSelection();
+//        parishesLayer.clearSelection();
         
         var selectQuery = new Query();
         selectQuery.returnGeometry = true;
-        selectQuery.outFields = ["COUNTY", "MUNICIPALITY", "Par_NAME"];
+        selectQuery.outFields = ["*"];
         
         if(layer === parishesLayer){
             selectQuery.where = "COUNTY = '" + county + "' AND Par_NAME = '" + name + "'";
@@ -442,15 +455,20 @@ require([
         }
         
         console.log("where statement: ", selectQuery.where);
-        console.log("layer: ", layer.graphics);
-        layer.selectFeatures(selectQuery, FeatureLayer.SELECTION_NEW, zoomTo);
+        console.log("layer: ", layer);
+//        layer.selectFeatures(selectQuery, FeatureLayer.SELECTION_NEW, zoomTo);
+        queryTask.execute(selectQuery, zoomTo);
     }
     
     function zoomTo(result){
-        var extent = graphicsUtils.graphicsExtent(result);
+        var selectedGeom = result.features[0].geometry;
+        console.log("query task result: ", result);
+        selectionLayer.clear();
+        selectionLayer.add(new Graphic(selectedGeom, selectSymbol));
+        var extent = graphicsUtils.graphicsExtent(result.features);
         map.setExtent(extent);
         console.log("zoom to result: ", result);
-        var selectionInfo = result[0].attributes;
+        var selectionInfo = result.features[0].attributes;
         
         //set content here!!!!!!!!!!!!!!!!!!!!!!!
         if(selectionInfo.COUNTY && !selectionInfo.MUNICIPALITY)
@@ -464,6 +482,7 @@ require([
     }
     
     on(countiesLayer, "click", function(evt){
+        console.log("counties clicked!!!!!!!!!!!!");
         selectRegion(countiesLayer, evt.graphic.attributes.COUNTY);
         
         countyDropdown.value = evt.graphic.attributes.COUNTY;
@@ -471,6 +490,7 @@ require([
         setDropdown(parishDropdown, evt.graphic.attributes.COUNTY);
     });
     on(municipalitiesLayer, "click", function(evt){
+        console.log("munis clicked!!!!!!!!!!!!");
         selectRegion(municipalitiesLayer, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
         
         if(countyDropdown.value != evt.graphic.attributes.COUNTY)
@@ -519,6 +539,20 @@ require([
             parishDropdown.value = evt.graphic.attributes.Par_NAME;
         }
     });
+    
+    function clearSelection(){
+        selectionLayer.clear();
+//        dom.byId("info").style.height = "25px";
+        dom.byId("info").style.visibility = "hidden";
+//        dom.byId("infoMinIcon").style.visibility = "hidden";
+//        dom.byId("infoMaxIcon").style.visibility = "visible";
+//        dom.byId("infoContent").style.visibility = "hidden";
+        municipalityDropdown.length = 0;
+        parishDropdown.length = 0;
+        countyDropdown.value = "";
+    }
+    
+    on(dom.byId('clearBtn'), "click", clearSelection);
     
     ////////////////////////////FARM SEARCH TOOLS///////////////////////////////
 
