@@ -63,6 +63,11 @@ html, body, #map{
     border-radius: 8px;
 }
 
+#tools .clearBtnCenter{
+    text-align: center;
+    padding-top: 15px;
+}
+
 #homeButton{
     position: absolute;
     top: 20px;
