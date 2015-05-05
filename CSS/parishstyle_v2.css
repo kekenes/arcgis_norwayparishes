@@ -155,22 +155,22 @@ html, body, #map{
 }
 
 #aboutContent{
-    height: 85%;
-    width: 75%;
+    height: 0;  /*85%*/
+    width: 0;   /*94%*/
     position: absolute;
     z-index: 100;
-    top: 5%;
-    margin: 0;
+    top: 12%;
+    margin: 0 0 0 18%;
     opacity: 0.90;
     border-radius: 8px;
     background-color: white;
     overflow-y: auto;
     transition: height 1s linear 0s, width 1s linear 0s;
-/*    visibility: hidden;*/
+    visibility: hidden;
 }
 
 #aboutContent .content{
-    padding: 10px;
+    padding: 2% 10% 0 10%;
 }
 
 #aboutContent .content h2{
