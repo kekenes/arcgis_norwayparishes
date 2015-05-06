@@ -20,11 +20,13 @@ require([
     "esri/symbols/Font",
     "esri/Color",
     "esri/dijit/HomeButton",
+    "esri/dijit/Scalebar",
     "esri/renderers/SimpleRenderer",
     
     "agsjs/dijit/TOC", 
     
     "dojo/query",
+    "dojo/Deferred",
     "dojo/_base/array",
     "dojo/request",
     "dojo/dom-construct",
@@ -52,11 +54,13 @@ require([
         Font,
         Color,
         HomeButton,
+        Scalebar,
         SimpleRenderer,
          
         TOC,
           
         $,
+        Deferred,
         array,
         request, 
         domConstruct, 
@@ -99,7 +103,9 @@ require([
     var parishText = new TextSymbol("filler text", parishFont, new Color([148,0,211]));
     var parishTextRenderer = new SimpleRenderer(parishText);
     
-  var parishLabels = new LabelLayer();
+  var parishLabels = new LabelLayer({
+    mode: "DYNAMIC"
+  });
     parishLabels.addFeatureLayer(parishesLayer, parishTextRenderer, "{Par_NAME}");
 
 //  var euroInfo = new WMTSLayerInfo({
@@ -248,7 +254,7 @@ require([
   /////////////////////MAP AND LEGEND///////////////////////////////////////
   var loading = dom.byId("loading");
   on(countiesLayer, "load", initMap);
-  var homeButton;
+  var homeButton, scalebar;
   function initMap(){
       
     map = new Map("map", {
@@ -260,6 +266,8 @@ require([
         map: map
     }, "homeButton");
     homeButton.startup();
+      
+    
       
     console.log("map extent: ", map.extent);
       
@@ -287,6 +295,15 @@ require([
           ]
         }, "legendContent");
         toc.startup();
+        
+      scalebar = new Scalebar({
+        map: map,
+        attachTo: "bottom-center",
+//        scalebarUnit: "dual",
+        scalebarStyle: "ruler"
+        });
+      scalebar.startup();
+        
     });
       
   }
@@ -332,6 +349,7 @@ require([
     var parishDropdown = dom.byId("parishDropdown");
     
     function setDropdown(dropdown, county, municipality){
+        var dfd = new Deferred();
         loading.style.visibility = "visible";
         
         console.log("set dropdown: ", dropdown, " county dropdown: ", countyDropdown);
@@ -388,13 +406,15 @@ require([
                 option.text = item;
                 dropdown.add(option);
                 
-                if(i === (options.length - 1))
+                if(i === (options.length - 1)){
                     loading.style.visibility = "hidden";
+                    dfd.resolve(true);
+                }
             });
             
             console.log("list: ", options);
         });
-        return;
+        return dfd.promise;
     }
     
     on(countiesLayer, "load", function(){
@@ -466,7 +486,7 @@ require([
         selectionLayer.clear();
         selectionLayer.add(new Graphic(selectedGeom, selectSymbol));
         var extent = graphicsUtils.graphicsExtent(result.features);
-        map.setExtent(extent);
+        map.setExtent(extent, true);
         console.log("zoom to result: ", result);
         var selectionInfo = result.features[0].attributes;
         
@@ -496,12 +516,14 @@ require([
         if(countyDropdown.value != evt.graphic.attributes.COUNTY)
         {
             countyDropdown.value = evt.graphic.attributes.COUNTY;
-            setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY);
-            setTimeout(function(){
-                municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-                setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-            }, 2000);
-            
+            setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY).then(function(resolved){
+                if(resolved){
+                    municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
+                    setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
+                }
+                else
+                    consle.error("Municipality dropdown not set! Promise needs to resolve.");
+            });            
         }
         else{
             municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
@@ -515,25 +537,23 @@ require([
         
         if((municipalityDropdown.value != evt.graphic.attributes.MUNICIPALITY) && (countyDropdown.value != evt.graphic.attributes.COUNTY)){
             countyDropdown.value = evt.graphic.attributes.COUNTY;
-            setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY);
-            
-            setTimeout(function(){
-                municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-                setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-                setTimeout(function(){
+            setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY).then(function(resolved){
+                if(resolved){
+                    municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
+                    return setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
+                }
+                else
+                    consle.error("Municipality dropdown not set! Promise needs to resolve.");
+            }).then(function(resolved){
+                if(resolved)
                     parishDropdown.value = evt.graphic.attributes.Par_NAME;
-                }, 2000);
-            }, 2000);
-            
-            
+            });         
         }
         else if((municipalityDropdown.value != evt.graphic.attributes.MUNICIPALITY) && (countyDropdown.value == evt.graphic.attributes.COUNTY)){
             municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY, evt.graphic.attributes.Par_NAME);
-            
-            setTimeout(function(){
+            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY, evt.graphic.attributes.Par_NAME).then(function(resolve){
                 parishDropdown.value = evt.graphic.attributes.Par_NAME;
-            }, 2000);
+            });
         }
         else{
             parishDropdown.value = evt.graphic.attributes.Par_NAME;

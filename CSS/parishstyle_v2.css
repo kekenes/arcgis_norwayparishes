@@ -75,6 +75,13 @@ html, body, #map{
     z-index: 50;
 }
 
+#scaleBar{
+    position: absolute;
+    bottom: 20px;
+    left: 350px;
+    z-index: 40;
+}
+
 #loading{
     position: absolute;
     z-index: 98;
@@ -170,7 +177,7 @@ html, body, #map{
 }
 
 #aboutContent .content{
-    padding: 2% 10% 0 10%;
+    padding: 2% 5% 0 5%;
 }
 
 #aboutContent .content h2{
