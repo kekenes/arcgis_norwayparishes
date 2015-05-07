@@ -21,6 +21,7 @@ require([
     "esri/Color",
     "esri/dijit/HomeButton",
     "esri/dijit/Scalebar",
+    "esri/dijit/OverviewMap",
     "esri/renderers/SimpleRenderer",
     
     "agsjs/dijit/TOC", 
@@ -55,6 +56,7 @@ require([
         Color,
         HomeButton,
         Scalebar,
+        OverviewMap,
         SimpleRenderer,
          
         TOC,
@@ -68,40 +70,48 @@ require([
         on){
     
   //////////CONFIG SETTINGS AND OPTIONS/////////////////////////////////////////
-  esriConfig.defaults.io.proxyUrl = "/proxy/";
+//  esriConfig.defaults.io.proxyUrl = "/proxy/";
+//  esriConfig.defaults.io.proxyUrl = "./proxy/PHP/proxy.php";
+    esriConfig.defaults.io.proxyUrl = "./proxy/DotNet/proxy.ashx";
 //    $("[data-toggle='tooltip']").tooltip();
     
   ///////////////////LAYERS AND LAYER INFO///////////////////////////////////////
-  var parishSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0.25]));
-  var municipalitySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([217,95,2]), 6), new Color([0,0,0,0.25]));
-  var countySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,100,0]), 6), new Color([0,0,0,0.25]));
-    var parishRenderer = new SimpleRenderer(parishSymbol);
-    var municipalityRenderer = new SimpleRenderer(municipalitySymbol);
-    var countyRenderer = new SimpleRenderer(countySymbol);
+//  var parishSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0.25]));
+//  var municipalitySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([217,95,2]), 6), new Color([0,0,0,0.25]));
+//  var countySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,100,0]), 6), new Color([0,0,0,0.25]));
+//    var parishRenderer = new SimpleRenderer(parishSymbol);
+//    var municipalityRenderer = new SimpleRenderer(municipalitySymbol);
+//    var countyRenderer = new SimpleRenderer(countySymbol);
     
     var selectionLayer = new GraphicsLayer();
     
-  var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/0", {
+  //"http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/0"    
+  var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/0", {
+    outFields: ["*"]
+  });
+   
+  //http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/1    
+  var municipalitiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/1", {
     outFields: ["*"]
   });
     
-  var municipalitiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/1", {
-    outFields: ["*"]
-  });
-    
-  var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/2", {
+  //http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/2    
+  var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/2", {
     outFields: ["*"]
   });
 
     //These renderers don't allow for on click events to work on layers
     //May have to republish services
-    countiesLayer.setRenderer(countyRenderer);
-    municipalitiesLayer.setRenderer(municipalityRenderer);
-    parishesLayer.setRenderer(parishRenderer);
+//    countiesLayer.setRenderer(countyRenderer);
+//    municipalitiesLayer.setRenderer(municipalityRenderer);
+//    parishesLayer.setRenderer(parishRenderer);
     
     var parishFont = new Font("12pt", Font.STYLE_NORMAL, Font.VARIANT_NORMAL, Font.WEIGHT_BOLD, "Arial");
     var parishText = new TextSymbol("filler text", parishFont, new Color([148,0,211]));
     var parishTextRenderer = new SimpleRenderer(parishText);
+
+//    var parishSatText = new TextSymbol("filler text", parishFont, new Color([0,0,0]));
+//    var parishSatRenderer = new SimpleRenderer(parishSatText);
     
   var parishLabels = new LabelLayer({
     mode: "DYNAMIC"
@@ -135,7 +145,7 @@ require([
   var streetLayer = new ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/arcgis/rest/services/Reference/World_Transportation/MapServer");
     
   var satelliteLayer = new ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer", {
-    opacity: 1
+    opacity: 0.9
   });
     
   var topoLayer = new ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/arcgis/rest/services/World_Topo_Map/MapServer", {
@@ -254,7 +264,7 @@ require([
   /////////////////////MAP AND LEGEND///////////////////////////////////////
   var loading = dom.byId("loading");
   on(countiesLayer, "load", initMap);
-  var homeButton, scalebar;
+  var homeButton, scalebar, overviewMap;
   function initMap(){
       
     map = new Map("map", {
@@ -267,7 +277,13 @@ require([
     }, "homeButton");
     homeButton.startup();
       
-    
+    overviewMap = new OverviewMap({
+        map: map,
+        attachTo: "top-left",
+        baseLayer: topoLayer,
+        expandFactor: 3
+    });
+    overviewMap.startup();
       
     console.log("map extent: ", map.extent);
       
@@ -314,6 +330,8 @@ require([
         satelliteLayer.show();
         topoLayer.hide();
         norTopoLayer.hide();
+//        parishLabels.setRenderer(parishSatRenderer);
+//        parishLabels.redraw();
     }
   });
     
@@ -323,6 +341,8 @@ require([
         satelliteLayer.hide();
         topoLayer.show();
         norTopoLayer.show();
+//        parishLabels.setRenderer(parishTextRenderer);
+//        parishLabels.redraw();
     }
   });
     

@@ -178,10 +178,25 @@ html, body, #map{
 
 #aboutContent .content{
     padding: 2% 5% 0 5%;
+    font-size: 12pt;
 }
 
-#aboutContent .content h2{
+#aboutContent .content td{
+    padding: 7px;
+}
 
+#aboutContent .content h1{
+    font-size: 36px;
+    font-weight: bold;
+/*    color: #5A0000;*/
+    text-align: left;
+}
+
+#aboutContent .content h3{
+    font-size: 24px;
+/*    font-weight: bold;*/
+/*    color: #5A0000;*/
+    text-align: left;
 }
 
 #legend{
