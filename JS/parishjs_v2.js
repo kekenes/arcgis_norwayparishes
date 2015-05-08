@@ -77,8 +77,8 @@ require([
     
   //////////CONFIG SETTINGS AND OPTIONS/////////////////////////////////////////
 //  esriConfig.defaults.io.proxyUrl = "/proxy/";
-//  esriConfig.defaults.io.proxyUrl = "./proxy/PHP/proxy.php";
-    esriConfig.defaults.io.proxyUrl = "./proxy/DotNet/proxy.ashx";
+  esriConfig.defaults.io.proxyUrl = "./proxy/PHP/proxy.php";
+//    esriConfig.defaults.io.proxyUrl = "./proxy/DotNet/proxy.ashx";
 //    $("[data-toggle='tooltip']").tooltip();
     
   ///////////////////LAYERS AND LAYER INFO///////////////////////////////////////
