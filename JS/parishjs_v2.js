@@ -11,6 +11,7 @@ require([
     "esri/dijit/Legend",
     "esri/tasks/query",
     "esri/tasks/QueryTask",
+    "esri/tasks/locator",
     "esri/graphicsUtils",
     "esri/graphic",
     "esri/symbols/SimpleFillSymbol",
@@ -22,6 +23,8 @@ require([
     "esri/dijit/HomeButton",
     "esri/dijit/Scalebar",
     "esri/dijit/OverviewMap",
+    "esri/dijit/Search",
+    "dojo/i18n!esri/nls/jsapi",
     "esri/renderers/SimpleRenderer",
     
     "agsjs/dijit/TOC", 
@@ -46,6 +49,7 @@ require([
         Legend,
         Query,
         QueryTask,
+        Locator,
         graphicsUtils,
         Graphic,
         SimpleFillSymbol,
@@ -57,6 +61,8 @@ require([
         HomeButton,
         Scalebar,
         OverviewMap,
+        Search,
+        esriBundle,
         SimpleRenderer,
          
         TOC,
@@ -360,7 +366,155 @@ require([
   }
   
   ////////////////////END MAP AND LEGEND///////////////////////////
+
+    /////////////////////////SEARCH WIDGET////////////////////////////////
     
+     esriBundle.widgets.Search.main.placeholder = "Search parish, city, county";
+     console.log("esri bundle: ", esriBundle);
+    
+    var searchSources = [
+//        {  //Geocoder
+//            locator: new Locator("//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
+//            singleLineFieldName: "SingleLine",
+//            outFields: ["Addr_type"],
+//            name: "Places",
+//            localSearchOptions: {
+//              minScale: 300000,
+//              distance: 50000
+//            },
+//            placeholder: "Search place or address",
+//            maxResults: 5,
+//            minCharacters: 1,
+//            maxSuggestions: 2,
+//            autoNavigate: true
+//        },
+        {  //COUNTIES LAYER
+            featureLayer: countiesLayer,
+            autoNavigate: true,
+            displayField: "COUNTY",
+            enableHighlight: true,
+            enableInfoWindow: false,
+            maxResults: 5,
+            maxSuggestions: 5,
+            minCharacters: 1,
+            name: "Counties",
+            outFields: ["COUNTY"],
+            placeholder: "e.g. Aust-Agder",
+            searchFields: ["COUNTY"],
+            showInfoWindowOnSelect: false
+        },
+        {  //MUNICIPALITIES LAYER
+            featureLayer: municipalitiesLayer,
+            autoNavigate: true,
+            displayField: "MUNICIPALITY",
+            enableHighlight: true,
+            enableInfoWindow: false,
+            maxResults: 5,
+            maxSuggestions: 5,
+            minCharacters: 1,
+            name: "Municipalities",
+            outFields: ["MUNICIPALITY", "COUNTY"],
+            placeholder: "e.g. Oslo",
+            searchFields: ["MUNICIPALITY", "COUNTY"],
+            showInfoWindowOnSelect: false
+        },
+        {  //PARISHES LAYER
+            featureLayer: parishesLayer,
+            autoNavigate: true,
+            displayField: "Par_NAME",
+            enableHighlight: true,
+            enableInfoWindow: false,
+            maxResults: 5,
+            maxSuggestions: 5,
+            minCharacters: 1,
+            name: "Parishes",
+            outFields: ["Par_NAME", "MUNICIPALITY", "COUNTY"],
+            placeholder: "e.g. Tvedestrand",
+            searchFields: ["Par_NAME", "MUNICIPALITY", "COUNTY"],
+            showInfoWindowOnSelect: false
+        }
+    ];
+    
+    var search = new Search({
+        activeSourceIndex: "all",
+        map: map,
+//        autoNavigate: false,
+        enableButtonMode: true,
+//        enableHighlight: false,
+        enableInfoWindow: false,
+        enableSuggestions: true,
+        enableSuggestionsMenu: true,
+        expanded: false,
+//        graphicsLayer: selectionLayer,
+//        highlightSymbol: selectSymbol,
+        maxResults: 5,
+        maxSuggestions: 5,
+        minCharacters: 1,
+        showInfoWindowOnSelect: false,
+        sources: searchSources
+    }, "searchWidget");
+    search.startup();
+    
+    on(search, "select-result", function(evt){
+        var result = evt.result.feature.attributes;
+        
+        if(result.COUNTY && !result.MUNICIPALITY){
+            selectRegion(countiesLayer, result.COUNTY);
+            
+            countyDropdown.value = result.COUNTY;
+            setDropdown(municipalityDropdown, result.COUNTY);
+            setDropdown(parishDropdown, result.COUNTY);
+        }
+        if(result.MUNICIPALITY && !result.Par_NAME){
+            selectRegion(municipalitiesLayer, result.COUNTY, result.MUNICIPALITY);
+            
+            if(countyDropdown.value != result.COUNTY)
+            {
+                countyDropdown.value = result.COUNTY;
+                setDropdown(municipalityDropdown, result.COUNTY).then(function(resolved){
+                    if(resolved){
+                        municipalityDropdown.value = result.MUNICIPALITY;
+                        setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY);
+                    }
+                    else
+                        consle.error("Municipality dropdown not set! Promise needs to resolve.");
+                });            
+            }
+            else{
+                municipalityDropdown.value = result.MUNICIPALITY;
+                setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY);
+            }
+        }
+        if(result.Par_NAME){
+            selectRegion(parishesLayer, result.COUNTY, result.Par_NAME);
+            
+            if((municipalityDropdown.value != result.MUNICIPALITY) && (countyDropdown.value != result.COUNTY)){
+                countyDropdown.value = result.COUNTY;
+                setDropdown(municipalityDropdown, result.COUNTY).then(function(resolved){
+                    if(resolved){
+                        municipalityDropdown.value = result.MUNICIPALITY;
+                        return setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY);
+                    }
+                    else
+                        consle.error("Municipality dropdown not set! Promise needs to resolve.");
+                }).then(function(resolved){
+                    if(resolved)
+                        parishDropdown.value = result.Par_NAME;
+                });         
+            }
+            else if((municipalityDropdown.value != result.MUNICIPALITY) && (countyDropdown.value == result.COUNTY)){
+                municipalityDropdown.value = result.MUNICIPALITY;
+                setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY, result.Par_NAME).then(function(resolve){
+                    parishDropdown.value = result.Par_NAME;
+                });
+            }
+            else{
+                parishDropdown.value = result.Par_NAME;
+            }
+        }
+    });
+    
+    /////////////////////////END SEARCH WIDGET//////////////////////////////  
     
 /////////////////////////TOOLS - DROPDOWN SETUP//////////////////////////////
     
@@ -468,18 +622,9 @@ require([
     //////////////////////////SELECT REGIONS AND ZOOM////////////////////
     var selectSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,0]), 6), new Color([0,0,0,0.25]));
     
-//    parishesLayer.setSelectionSymbol(selectSymbol);
-//    municipalitiesLayer.setSelectionSymbol(selectSymbol);
-//    countiesLayer.setSelectionSymbol(selectSymbol);
-    
-    
     function selectRegion(layer, county, name){
         var queryTask = new QueryTask(layer.url);
-        
-//        countiesLayer.clearSelection();
-//        municipalitiesLayer.clearSelection();
-//        parishesLayer.clearSelection();
-        
+
         var selectQuery = new Query();
         selectQuery.returnGeometry = true;
         selectQuery.outFields = ["*"];
@@ -496,7 +641,6 @@ require([
         
         console.log("where statement: ", selectQuery.where);
         console.log("layer: ", layer);
-//        layer.selectFeatures(selectQuery, FeatureLayer.SELECTION_NEW, zoomTo);
         queryTask.execute(selectQuery, zoomTo);
     }
     

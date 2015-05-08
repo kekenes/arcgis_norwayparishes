@@ -70,9 +70,16 @@ html, body, #map{
 
 #homeButton{
     position: absolute;
-    top: 20px;
-    left: 65px;
+    top: 90px;
+    left: 21px;
     z-index: 50;
+}
+
+#searchWidget{
+    position: absolute;
+    top: 128px;
+    left: 12px;
+    z-index: 30;
 }
 
 #scaleBar{
@@ -174,6 +181,7 @@ html, body, #map{
     overflow-y: auto;
     transition: height 1s linear 0s, width 1s linear 0s;
     visibility: hidden;
+    box-shadow: 0px 0px 30px #888888
 }
 
 #aboutContent .content{
