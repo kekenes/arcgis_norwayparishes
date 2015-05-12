@@ -27,7 +27,8 @@ require([
     "dojo/i18n!esri/nls/jsapi",
     "esri/renderers/SimpleRenderer",
     
-    "agsjs/dijit/TOC", 
+    "agsjs/dijit/TOC",
+    "Modules/NorwayPlaces",
     
     "dojo/query",
     "dojo/Deferred",
@@ -66,6 +67,7 @@ require([
         SimpleRenderer,
          
         TOC,
+        NorwayPlaces,
           
         $,
         Deferred,
@@ -740,6 +742,15 @@ require([
     
     ////////////////////////////FARM SEARCH TOOLS///////////////////////////////
 
+    NorwayPlaces.test();
+    
+    var placeSearchBtn = dom.byId("farmSearchBtn");
+    
+    on(placeSearchBtn, "click", function(){
+        var propName = dom.byId("propTextBox").value;
+        NorwayPlaces.search("ekenes");  //hardcode for testing purposes
+    });
+    
     ///////////////////////////LAYOUT EVENTS//////////////////////////////////
     dom.byId("legend").style.height = "35%";
     dom.byId("tools").style.height = "50%";
