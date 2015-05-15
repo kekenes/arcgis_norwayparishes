@@ -534,7 +534,7 @@ require([
         var selectLayer, attribute;
         
         dropQuery.outFields = [ "COUNTY" , "MUNICIPALITY" , "Par_NAME" ];
-//        dropQuery.returnGeometry = true;
+        dropQuery.returnGeometry = false;
     
         if(dropdown === countyDropdown){
             console.log("county where set!!!", municipalitiesLayer);
@@ -748,7 +748,10 @@ require([
     
     on(placeSearchBtn, "click", function(){
         var propName = dom.byId("propTextBox").value;
-        NorwayPlaces.search("ekenes");  //hardcode for testing purposes
+        NorwayPlaces.search("Ekenes").then(function(responseLyr){
+            console.log("response layer: ", responseLyr);
+            map.addLayer(responseLyr);
+        });  //hardcode for testing purposes
     });
     
     ///////////////////////////LAYOUT EVENTS//////////////////////////////////
