@@ -42,74 +42,74 @@ define([
             
             var pointSymbol = new SimpleMarkerSymbol(SimpleLineSymbol.STYLE_CIRCLE, 7, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("red"), 0.5), new Color([0,255,0,1]));
             
-            var featureSet = new FeatureSet();
+//            var featureSet = new FeatureSet();
             
             var propLayer = new GraphicsLayer();
             
-            var layerDefinition = {
-              "geometryType": "esriGeometryPoint",
-              "spatialReference": new SpatialReference({wkid: 25833}),
-              "fields": [{
-                "alias": "OID",
-                "name": "OID",
-                "type": "esriFieldTypeOID"
-              },
-              {
-                "alias": "x",
-                "name": "x",
-                "type": "esriFieldTypeInteger"
-              },
-              {
-                "alias": "y",
-                "name": "y",
-                "type": "esriFieldTypeInteger"
-              },
-              {
-                "alias": "wkid",
-                "name": "wkid",
-                "type": "esriFieldTypeInteger"
-              },
-              {
-                "alias": "ssrId",
-                "name": "ssrId",
-                "type": "esriFieldTypeInteger"
-              },
-              {
-                "alias": "name",
-                "name": "name",
-                "type": "esriFieldTypeString"
-              },
-              {
-                "alias": "SpName",
-                "name": "SpName",
-                "type": "esriFieldTypeString"
-              },
-              {
-                "alias": "status",
-                "name": "status",
-                "type": "esriFieldTypeString"
-              },
-              {
-                "alias": "type",
-                "name": "type",
-                "type": "esriFieldTypeString"
-              },
-              {
-                "alias": "municipality",
-                "name": "municipality",
-                "type": "esriFieldTypeString"
-              },
-              {
-                "alias": "county",
-                "name": "county",
-                "type": "esriFieldTypeString"
-              }
-                        ],
-              "drawingInfo": {
-                "renderer": new SimpleRenderer(pointSymbol),
-                "transparency": 0
-              }
-            }; 
+//            var layerDefinition = {
+//              "geometryType": "esriGeometryPoint",
+//              "spatialReference": new SpatialReference({wkid: 25833}),
+//              "fields": [{
+//                "alias": "OID",
+//                "name": "OID",
+//                "type": "esriFieldTypeOID"
+//              },
+//              {
+//                "alias": "x",
+//                "name": "x",
+//                "type": "esriFieldTypeInteger"
+//              },
+//              {
+//                "alias": "y",
+//                "name": "y",
+//                "type": "esriFieldTypeInteger"
+//              },
+//              {
+//                "alias": "wkid",
+//                "name": "wkid",
+//                "type": "esriFieldTypeInteger"
+//              },
+//              {
+//                "alias": "ssrId",
+//                "name": "ssrId",
+//                "type": "esriFieldTypeInteger"
+//              },
+//              {
+//                "alias": "name",
+//                "name": "name",
+//                "type": "esriFieldTypeString"
+//              },
+//              {
+//                "alias": "SpName",
+//                "name": "SpName",
+//                "type": "esriFieldTypeString"
+//              },
+//              {
+//                "alias": "status",
+//                "name": "status",
+//                "type": "esriFieldTypeString"
+//              },
+//              {
+//                "alias": "type",
+//                "name": "type",
+//                "type": "esriFieldTypeString"
+//              },
+//              {
+//                "alias": "municipality",
+//                "name": "municipality",
+//                "type": "esriFieldTypeString"
+//              },
+//              {
+//                "alias": "county",
+//                "name": "county",
+//                "type": "esriFieldTypeString"
+//              }
+//                        ],
+//              "drawingInfo": {
+//                "renderer": new SimpleRenderer(pointSymbol),
+//                "transparency": 0
+//              }
+//            }; 
             var exampleRequestUrl = "https://ws.geonorge.no/SKWS3Index/ssr/sok?navn=Ask*&maxAnt=50&tilSosiKoordSyst=4258&fylkeKommuneListe=605,612&eksakteForst=true";
             
             var baseUrl = "https://ws.geonorge.no/SKWS3Index/ssr/sok?";
@@ -123,7 +123,7 @@ define([
 //            }).then(function(response){
 //                console.log("search response: ", response);
 //            });
-            var features = [];
+//            var features = [];
             esriRequest({
                 url: requestUrl,
                 handleAs: "xml"
@@ -161,9 +161,10 @@ define([
                     geometryService.project(projectParams, function(result){
                         console.log("projection result: ", result);
                         projGeom = result[0];
+                        att.geom = projGeom;
                         var feature = new Graphic(projGeom, pointSymbol, att);
                         propLayer.add(feature);
-                        features.push(feature);
+//                        features.push(feature);
                     });
                     
                     
@@ -176,25 +177,26 @@ define([
                     placeObjects.push(att);
                 });
                 
-                console.log("features array: ", features);
+//                console.log("features array: ", features);
                 
-                featureSet.features = features;
+//                featureSet.features = features;
                 
-                var featureCollection = {
-                    layerDefinition: layerDefinition,
-                    featureSet: featureSet
-                };
+//                var featureCollection = {
+//                    layerDefinition: layerDefinition,
+//                    featureSet: featureSet
+//                };
                 
-                var propertiesLayer = new FeatureLayer(featureCollection, {
-                    mode: FeatureLayer.MODE_SNAPSHOT
-                });
+//                var propertiesLayer = new FeatureLayer(featureCollection, {
+//                    mode: FeatureLayer.MODE_SNAPSHOT
+//                });
                 
                 console.log("cleaned up search results: ", placeObjects);
-                console.log("features: ", features);
-                console.log("properties layer: ", propertiesLayer);
+//                console.log("features: ", features);
+//                console.log("properties layer: ", propertiesLayer);
                 console.log("graphics layer: ", propLayer);
                 
-                dfd.resolve(propLayer);
+//                dfd.resolve(propLayer);
+                dfd.resolve(placeObjects);
             });
            return dfd.promise; 
         }

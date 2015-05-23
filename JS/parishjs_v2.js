@@ -159,6 +159,8 @@ require([
   var topoLayer = new ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/arcgis/rest/services/World_Topo_Map/MapServer", {
     opacity: 0.4
   });    
+    
+  var propertiesLayer = new GraphicsLayer();  
 
     
   //////////////////////END LAYERS AND LAYER INFO///////////////////////////
@@ -223,6 +225,8 @@ require([
     var da5_name = info.DA_5_NAME;
      
     var photoWidth, photoHeight;
+     
+     console.log("FARM LINK: ", info.FARMS);
      
     if(photoOr == "L"){
         photoHeight = "150";
@@ -295,7 +299,12 @@ require([
       
     console.log("map extent: ", map.extent);
       
-    map.addLayers([satelliteLayer, topoLayer, norTopoLayer, streetLayer, selectionLayer, parishesLayer, parishLabels, municipalitiesLayer, countiesLayer]);
+    map.addLayer(satelliteLayer); 
+    map.addLayer(topoLayer); 
+    map.addLayer(norTopoLayer); 
+    map.addLayer(streetLayer); 
+      
+    map.addLayers([selectionLayer, parishesLayer, parishLabels, municipalitiesLayer, countiesLayer, propertiesLayer]);
       satelliteLayer.hide();
       streetLayer.hide();
       
@@ -744,15 +753,61 @@ require([
 
     NorwayPlaces.test();
     
+    var pointSymbol = new SimpleMarkerSymbol(SimpleLineSymbol.STYLE_CIRCLE, 7, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("red"), 0.5), new Color([0,255,0,1]));
+    
     var placeSearchBtn = dom.byId("farmSearchBtn");
     
     on(placeSearchBtn, "click", function(){
         var propName = dom.byId("propTextBox").value;
-        NorwayPlaces.search("Ekenes").then(function(responseLyr){
-            console.log("response layer: ", responseLyr);
-            map.addLayer(responseLyr);
-        });  //hardcode for testing purposes
+        NorwayPlaces.search("ekenes").then(function(properties){
+            console.log("response layer: ", properties);
+//            map.addLayer(responseLyr);
+            
+            dom.byId("results").style.height = "35%";
+            dom.byId("results").style.visibility = "visible";
+            
+//            var resultFeatures = responseLyr.graphics;
+            
+            return properties;
+//            showSearchResults(responseLyr.graphics);
+        }).then(showSearchResults)
+        .then(addFeatureToMap);  //hardcode for testing purposes
     });
+    
+    function showSearchResults(response){
+        console.log("show search results called: ", response);
+        
+        dom.byId("resultsContent").innerHTML = "<ul class='list-group'>";
+             
+        array.forEach(response, function(item, i){
+            console.log("show search results: ", i, ".) ", item);
+            var id = item.ssrId;
+            dom.byId("resultsContent").innerHTML += "<a href='#' onclick='selectProperty(" + id + ");' class='list-group-item' id='" + id + "'>"
+            + "<b>" + item.name + "</b><br>"
+            + "<span style='padding: 15px;'><i>" + item.type + "</i></span><br>"
+            + "<span style='padding: 15px;'>" + item.municipality + ", " + item.county + "</span>"
+            + "</a>";
+            
+            var propFeature = new Graphic(item.geom, pointSymbol, item);
+            console.log("new graphic: ", propFeature);
+            propertiesLayer.add(propFeature);
+        });
+        
+        dom.byId("resultsContent").innerHTML += "</ul>";
+        
+        return response;
+    }
+    
+    function addFeatureToMap(response){
+        console.log("add feature: ");
+        
+        //project points in here and add to map
+        //zoom to extent of all features
+    }
+    
+    window.selectProperty = function (propId){
+        console.log("select property: ", propId);
+    }
     
     ///////////////////////////LAYOUT EVENTS//////////////////////////////////
     dom.byId("legend").style.height = "35%";
