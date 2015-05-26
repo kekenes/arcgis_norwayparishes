@@ -1,6 +1,7 @@
 var map;
 require([
     "esri/map",
+    "esri/SpatialReference",
     "esri/layers/FeatureLayer",
     "esri/layers/WMTSLayer",
     "esri/layers/WMTSLayerInfo",
@@ -12,8 +13,11 @@ require([
     "esri/tasks/query",
     "esri/tasks/QueryTask",
     "esri/tasks/locator",
+    "esri/tasks/GeometryService",
+    "esri/tasks/ProjectParameters",
     "esri/graphicsUtils",
     "esri/graphic",
+    "esri/geometry/Point",
     "esri/symbols/SimpleFillSymbol",
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleMarkerSymbol",
@@ -40,6 +44,7 @@ require([
     "dojo/domReady!"],
     function(
         Map,
+        SpatialReference,
         FeatureLayer,
         WMTSLayer,
         WMTSLayerInfo,
@@ -51,8 +56,11 @@ require([
         Query,
         QueryTask,
         Locator,
+        GeometryService,
+        ProjectParameters,
         graphicsUtils,
         Graphic,
+        Point,
         SimpleFillSymbol,
         SimpleLineSymbol,
         SimpleMarkerSymbol,
@@ -756,27 +764,34 @@ require([
     var pointSymbol = new SimpleMarkerSymbol(SimpleLineSymbol.STYLE_CIRCLE, 7, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("red"), 0.5), new Color([0,255,0,1]));
     
     var placeSearchBtn = dom.byId("farmSearchBtn");
+    var placeGeoCheckBox = dom.byId("useGeoSelection");
     
     on(placeSearchBtn, "click", function(){
         var propName = dom.byId("propTextBox").value;
-        NorwayPlaces.search("ekenes").then(function(properties){
+        var geoFilter = null;
+        
+        if(placeGeoCheckBox.checked && selectionLayer.graphics.length > 0)
+            geoFilter = selectionLayer.graphics[0].geometry;
+        
+        NorwayPlaces.search("ekenes", geoFilter).then(function(properties){
             console.log("response layer: ", properties);
 //            map.addLayer(responseLyr);
             
             dom.byId("results").style.height = "35%";
             dom.byId("results").style.visibility = "visible";
+            dom.byId("resultsMinIcon").style.visibility = "visible";
             
 //            var resultFeatures = responseLyr.graphics;
             
             return properties;
 //            showSearchResults(responseLyr.graphics);
         }).then(showSearchResults)
-        .then(addFeatureToMap);  //hardcode for testing purposes
+//        .then(addFeaturesToMap);  //hardcode for testing purposes
     });
     
     function showSearchResults(response){
         console.log("show search results called: ", response);
-        
+        propertiesLayer.clear();
         dom.byId("resultsContent").innerHTML = "<ul class='list-group'>";
              
         array.forEach(response, function(item, i){
@@ -792,21 +807,86 @@ require([
             console.log("new graphic: ", propFeature);
             propertiesLayer.add(propFeature);
         });
+        console.log("PROPERTIES LAYER GRAPHICS: ", propertiesLayer);
+        map.setExtent(graphicsUtils.graphicsExtent(propertiesLayer.graphics), true);
         
         dom.byId("resultsContent").innerHTML += "</ul>";
         
         return response;
     }
-    
-    function addFeatureToMap(response){
-        console.log("add feature: ");
-        
+//    
+//    function addFeaturesToMap(items){
+////        console.log("add features to map called: ", response);
+//        
+//        NorwayPlaces.getLayer(items).then(function(layer){
+////            map.addLayer(layer);
+//            var featureExtent = graphicsUtils.graphicsExtent(layer.graphics);
+//            console.log("feature extent: ", featureExtent);
+//            console.log("layer graphics: ", layer.graphics);
+//            map.setExtent(featureExtent);
+//        });
         //project points in here and add to map
         //zoom to extent of all features
-    }
+        
+//        var dfd = new Deferred();
+        
+        
+//            var pointSymbol = new SimpleMarkerSymbol(SimpleLineSymbol.STYLE_CIRCLE, 7, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("red"), 0.5), new Color([0,255,0,1]));
+//            var propLayer = new GraphicsLayer();
+//        
+//            var geometryService = new GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+//            var projectParams = new ProjectParameters();
+//            projectParams.outSR = new SpatialReference({wkid: 3857});
+//    
+//            array.forEach(items, function(item, i){
+//                var geom = new Point([item.x,item.y], new SpatialReference({wkid: item.wkid}));
+//                var projGeom;
+//                console.log("geometry: ", geom);
+//                
+//                projectParams.geometries = [geom];
+//                geometryService.project(projectParams, function(result){
+////                    var pointSymbol = new SimpleMarkerSymbol(SimpleLineSymbol.STYLE_CIRCLE, 7, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("red"), 0.5), new Color([0,255,0,1]));
+//                    console.log("projection result: ", result);
+//                    projGeom = result[0];
+//                    
+//                    var feature = new Graphic(projGeom, pointSymbol, item);
+//                    propLayer.add(feature);
+////                        features.push(feature);
+//                });
+//                
+////                if(items.length === (i - 1)){
+//////                    dfd.resolve(propLayer);
+////                    map.addLayer(propLayer);
+////                }
+//            });
+            
+    
+            
+
+            
+//                    console.log("feature: ", feature);
+            
+
+//         map.addLayer(propLayer);   
+//            return dfd.promise;
+//    }
     
     window.selectProperty = function (propId){
         console.log("select property: ", propId);
+        console.log("map layers: ", map.graphicsLayerIds);
+        console.log("property layer???: ", map.getLayer("graphicsLayer9"));
+        
+        var propLayer = map.getLayer(map.graphicsLayerIds[map.graphicsLayerIds.length-1]);
+//        var propLayer = map.getLayer("graphicsLayer9");
+        var propFeatures = propLayer.graphics;
+        
+        array.forEach(propFeatures, function(item, i){
+            if(item.attributes.ssrId === propId){
+                console.log("A MATCH!", item);
+                map.centerAndZoom(item.attributes.geom, 18);
+                //SET GEOGRAPHIC INFO BOX HERE
+            }
+        });
     }
     
     ///////////////////////////LAYOUT EVENTS//////////////////////////////////

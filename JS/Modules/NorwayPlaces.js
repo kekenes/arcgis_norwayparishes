@@ -9,6 +9,7 @@ define([
     "esri/tasks/FeatureSet",
     "esri/tasks/ProjectParameters",
     "esri/tasks/GeometryService",
+    "esri/geometry/geometryEngine",
     "esri/graphic",
     "esri/renderers/SimpleRenderer",
     "esri/symbols/SimpleMarkerSymbol",
@@ -17,14 +18,14 @@ define([
     "esri/geometry/Point",
     "dojo/_base/array",
     "dojo/Deferred"
-], function(request, esriRequest, urlUtils, esriConfig, SpatialReference, FeatureLayer, GraphicsLayer, FeatureSet, ProjectParameters, GeometryService, Graphic, SimpleRenderer, SimpleMarkerSymbol, SimpleLineSymbol, Color, Point, array, Deferred){
+], function(request, esriRequest, urlUtils, esriConfig, SpatialReference, FeatureLayer, GraphicsLayer, FeatureSet, ProjectParameters, GeometryService, geometryEngine, Graphic, SimpleRenderer, SimpleMarkerSymbol, SimpleLineSymbol, Color, Point, array, Deferred){
     
     return {
         test: function(){
             console.log("this is a test");
         },
         
-        search: function(propertyName){
+        search: function(propertyName, geoFilter){
             esriConfig.defaults.io.corsEnabledServers.push("tasks.arcgisonline.com");
             
             urlUtils.addProxyRule({
@@ -35,16 +36,17 @@ define([
             var dfd = new Deferred();
             
             var geometryService = new GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
-            var projectParams = new ProjectParameters();
-            projectParams.outSR = new SpatialReference({wkid: 3857});
+//            var projectParams = new ProjectParameters();
+//            projectParams.outSR = new SpatialReference({wkid: 4326});
             
             var placeObjects = [];
+            var geoMatch;
             
-            var pointSymbol = new SimpleMarkerSymbol(SimpleLineSymbol.STYLE_CIRCLE, 7, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("red"), 0.5), new Color([0,255,0,1]));
+//            var pointSymbol = new SimpleMarkerSymbol(SimpleLineSymbol.STYLE_CIRCLE, 7, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("red"), 0.5), new Color([0,255,0,1]));
             
 //            var featureSet = new FeatureSet();
             
-            var propLayer = new GraphicsLayer();
+//            var propLayer = new GraphicsLayer();
             
 //            var layerDefinition = {
 //              "geometryType": "esriGeometryPoint",
@@ -138,6 +140,9 @@ define([
                 
                 var rawResults = jsonResponse.sokRes[0].stedsnavn;
                 
+                var projectParams = new ProjectParameters();
+                projectParams.outSR = new SpatialReference({wkid: 4326});
+                
                 array.forEach(rawResults, function(item, i){
                     var att = {};
                     att.x = item.aust[0]._text;
@@ -152,20 +157,66 @@ define([
                     att.wkid = item.epsgKode[0]._text;
                     
                     var geom = new Point([att.x,att.y], new SpatialReference({wkid: att.wkid}));
-                    var projGeom;
-                    
-                    console.log("geometry: ", geom);
-//                    console.log("feature: ", feature);
                     projectParams.geometries = [geom];
                     
                     geometryService.project(projectParams, function(result){
                         console.log("projection result: ", result);
                         projGeom = result[0];
                         att.geom = projGeom;
-                        var feature = new Graphic(projGeom, pointSymbol, att);
-                        propLayer.add(feature);
-//                        features.push(feature);
-                    });
+                        
+                        if(geoFilter){
+                            geoMatch = geometryEngine.intersects(projGeom, geoFilter);
+                            console.log("geomatch = ", geoMatch);
+                            console.log("geofilter geom = ", geoFilter);
+                            if(geoMatch){
+                                placeObjects.push(att);
+                            }
+//                            else if((i + 1) === rawResults.length){
+                            if((i + 1) === rawResults.length)
+                                dfd.resolve(placeObjects);
+//                            }
+//                            else{
+//                                return;
+//                            }
+                        }
+                        else{
+                            console.log("geofilter doesn't match: ", att);
+                            
+                            placeObjects.push(att);
+                            console.log("i = ", i, " raw results length = ", rawResults.length);
+                            if((i + 1) === rawResults.length){
+                                dfd.resolve(placeObjects);
+                            }
+                        }
+                     });
+    
+//                    if(geoFilter){
+//                        geoMatch = geometryEngine.intersects(geom, geoFilter);
+//                        if(geoMatch){
+//                            placeObjects.push(att);
+//                        }
+//                        else{
+//                            console.log("no geo match");
+//                        }
+//                    }
+//                    else{
+//                        placeObjects.push(att);
+//                    }
+                                                            
+//                    var projGeom;
+                    
+//                    console.log("geometry: ", geom);
+//                    console.log("feature: ", feature);
+//                    projectParams.geometries = [geom];
+                    
+//                    geometryService.project(projectParams, function(result){
+//                        console.log("projection result: ", result);
+//                        projGeom = result[0];
+//                        att.geom = projGeom;
+//                        var feature = new Graphic(projGeom, pointSymbol, att);
+//                        propLayer.add(feature);
+////                        features.push(feature);
+//                    });
                     
                     
 //                    features.push(new Graphic(geom, pointSymbol, att));
@@ -174,7 +225,7 @@ define([
                     
 //                    propLayer.add(feature);
                     
-                    placeObjects.push(att);
+//                    placeObjects.push(att);
                 });
                 
 //                console.log("features array: ", features);
@@ -193,12 +244,60 @@ define([
                 console.log("cleaned up search results: ", placeObjects);
 //                console.log("features: ", features);
 //                console.log("properties layer: ", propertiesLayer);
-                console.log("graphics layer: ", propLayer);
+//                console.log("graphics layer: ", propLayer);
                 
 //                dfd.resolve(propLayer);
-                dfd.resolve(placeObjects);
+//                dfd.resolve(placeObjects);
             });
            return dfd.promise; 
+        },
+        
+//        getLayer: function(items){
+//            var dfd = new Deferred();
+//            var pointSymbol = new SimpleMarkerSymbol(SimpleLineSymbol.STYLE_CIRCLE, 7, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("red"), 0.5), new Color([0,255,0,1]));
+//            var propLayer = new GraphicsLayer();
+////            var geometryService = new GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+////            var projectParams = new ProjectParameters();
+////            projectParams.outSR = new SpatialReference({wkid: 3857});
+//    
+//            array.forEach(items, function(item, i){
+//                console.log("item = ", items.length, " i = ", i);
+//                var geom = item.geom;
+//                var feature = new Graphic(geom, pointSymbol, item);
+//                propLayer.add(feature);
+//                var geom = new Point([item.x,item.y], new SpatialReference({wkid: item.wkid}));
+//                var projGeom;
+//                console.log("geometry: ", geom);
+//                
+//                projectParams.geometries = [geom];
+//                geometryService.project(projectParams, function(result){
+////                    var pointSymbol = new SimpleMarkerSymbol(SimpleLineSymbol.STYLE_CIRCLE, 7, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("red"), 0.5), new Color([0,255,0,1]));
+//                    console.log("projection result: ", result);
+//                    projGeom = result[0];
+//                    
+//                    var feature = new Graphic(projGeom, pointSymbol, item);
+//                    propLayer.add(feature);
+////                        features.push(feature);
+//                });
+//                
+//                if(items.length === (i + 1)){
+//                    dfd.resolve(propLayer);
+//                }
+//            });
+            
+    
+            
+
+            
+//                    console.log("feature: ", feature);
+            
+
+            
+//            return dfd.promise;
+//        },
+        
+        getLayerExtent: function(graphics){
+            
         }
     };
 });
