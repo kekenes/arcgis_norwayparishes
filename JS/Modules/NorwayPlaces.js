@@ -143,7 +143,9 @@ define([
                 var projectParams = new ProjectParameters();
                 projectParams.outSR = new SpatialReference({wkid: 4326});
                 
+                var itemCount = 0;
                 array.forEach(rawResults, function(item, i){
+                    
                     var att = {};
                     att.x = item.aust[0]._text;
                     att.y = item.nord[0]._text;
@@ -160,6 +162,7 @@ define([
                     projectParams.geometries = [geom];
                     
                     geometryService.project(projectParams, function(result){
+                        itemCount++;
                         console.log("projection result: ", result);
                         projGeom = result[0];
                         att.geom = projGeom;
@@ -172,7 +175,7 @@ define([
                                 placeObjects.push(att);
                             }
 //                            else if((i + 1) === rawResults.length){
-                            if((i + 1) === rawResults.length)
+                            if(itemCount === rawResults.length)
                                 dfd.resolve(placeObjects);
 //                            }
 //                            else{
@@ -184,7 +187,7 @@ define([
                             
                             placeObjects.push(att);
                             console.log("i = ", i, " raw results length = ", rawResults.length);
-                            if((i + 1) === rawResults.length){
+                            if(itemCount === rawResults.length){
                                 dfd.resolve(placeObjects);
                             }
                         }
@@ -252,6 +255,14 @@ define([
            return dfd.promise; 
         },
         
+        getFactSheet: function(id){
+            var baseUrl = "http://faktaark.statkart.no/SSRFakta/faktaarkfraobjektid?enhet=";
+            var ssrId = id;
+            
+            var requestUrl = baseUrl + ssrId;
+            window.open(requestUrl);
+        }
+        
 //        getLayer: function(items){
 //            var dfd = new Deferred();
 //            var pointSymbol = new SimpleMarkerSymbol(SimpleLineSymbol.STYLE_CIRCLE, 7, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("red"), 0.5), new Color([0,255,0,1]));
@@ -296,8 +307,8 @@ define([
 //            return dfd.promise;
 //        },
         
-        getLayerExtent: function(graphics){
-            
-        }
+//        getLayerExtent: function(graphics){
+//            
+//        }
     };
 });

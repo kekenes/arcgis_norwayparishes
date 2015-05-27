@@ -92,9 +92,9 @@ require([
 //    $("[data-toggle='tooltip']").tooltip();
     
   ///////////////////LAYERS AND LAYER INFO///////////////////////////////////////
-//  var parishSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0.25]));
-//  var municipalitySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([217,95,2]), 6), new Color([0,0,0,0.25]));
-//  var countySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,100,0]), 6), new Color([0,0,0,0.25]));
+//  var parishSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_FILL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0]));
+//  var municipalitySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_FILL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([217,95,2]), 6), new Color([0,0,0,0]));
+//  var countySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_FILL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,100,0]), 6), new Color([0,0,0,0]));
 //    var parishRenderer = new SimpleRenderer(parishSymbol);
 //    var municipalityRenderer = new SimpleRenderer(municipalitySymbol);
 //    var countyRenderer = new SimpleRenderer(countySymbol);
@@ -175,6 +175,56 @@ require([
     
     /////////////////////////POPUPs///////////////////////////////////  
  var infoHeight = "25px";
+    
+ function getParishByPoint(point){
+    var queryTask = new QueryTask(parishesLayer.url);
+    var parishQuery = new Query();
+    parishQuery.geometry = point;
+    parishQuery.returnGeometry = false;
+    parishQuery.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
+    queryTask.execute(parishQuery, function(result){
+        console.log("getParishByPoint result: ", result);
+        var parishName = result.features[0].attributes.Par_NAME;
+        
+    });
+ }
+    
+ function setFarmInfo(info){
+    infoHeight = "30%";
+    animateInfoBox(infoHeight);
+    var content = "";
+    var propName = info.name;
+    var county = info.county;
+    var municipality = info.municipality;
+    var type = info.type;
+    var parish;
+    var queryTask = new QueryTask(parishesLayer.url);
+    var parishQuery = new Query();
+    parishQuery.geometry = info.geom;
+    parishQuery.returnGeometry = false;
+    parishQuery.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
+    queryTask.execute(parishQuery, function(result){
+        console.log("getParishByPoint result: ", result);
+        parish = result.features[0].attributes.Par_NAME;
+        
+        content = "<h4>" + propName + "</h4>"
+        + "<i>" + type + "</i><br>"
+        + parish + " Parish<br>"
+        + municipality + ", " + county + " County<br><br>"
+        + "<a href='#'><button type='button' id='addFarmInfo' class='btn btn-primary btn-sm' >View Propety Information</button></a><br>"
+        + "<a href='#'><button type='button' id='farmParish' class='btn btn-primary btn-sm' >View " + parish + " Parish Records</button></a><br>";
+        
+        dom.byId("infoContent").innerHTML = content;
+        
+        on(dom.byId("farmParish"), "click", function(){
+            selectRegion(parishesLayer, county, parish);
+        });
+        
+        on(dom.byId("addFarmInfo"), "click", function(){
+            NorwayPlaces.getFactSheet(info.ssrId);
+        });
+    });
+ }
     
  function setCountyInfo(info){
     infoHeight = "30%";
@@ -458,7 +508,7 @@ require([
         activeSourceIndex: "all",
         map: map,
 //        autoNavigate: false,
-        enableButtonMode: true,
+        enableButtonMode: false,
 //        enableHighlight: false,
         enableInfoWindow: false,
         enableSuggestions: true,
@@ -773,7 +823,7 @@ require([
         if(placeGeoCheckBox.checked && selectionLayer.graphics.length > 0)
             geoFilter = selectionLayer.graphics[0].geometry;
         
-        NorwayPlaces.search("ekenes", geoFilter).then(function(properties){
+        NorwayPlaces.search(propName, geoFilter).then(function(properties){
             console.log("response layer: ", properties);
 //            map.addLayer(responseLyr);
             
@@ -885,6 +935,7 @@ require([
                 console.log("A MATCH!", item);
                 map.centerAndZoom(item.attributes.geom, 18);
                 //SET GEOGRAPHIC INFO BOX HERE
+                setFarmInfo(item.attributes);
             }
         });
     }
