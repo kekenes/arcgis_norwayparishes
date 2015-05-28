@@ -824,6 +824,7 @@ require([
             geoFilter = selectionLayer.graphics[0].geometry;
         
         NorwayPlaces.search(propName, geoFilter).then(function(properties){
+            
             console.log("response layer: ", properties);
 //            map.addLayer(responseLyr);
             
@@ -842,7 +843,14 @@ require([
     function showSearchResults(response){
         console.log("show search results called: ", response);
         propertiesLayer.clear();
-        dom.byId("resultsContent").innerHTML = "<ul class='list-group'>";
+        
+        if(typeof response === "string"){
+            dom.byId("resultsContent").innerHTML = response + "<div class='clearBtnCenter'><button onclick='clearPropSearch()' type='button' class='btn btn-default btn-sm'>Clear Search Results</button></div>";
+            return;
+        }
+        
+        dom.byId("resultsContent").innerHTML = "<span style='padding-left:25%'><b>" + response.length + "</b> properties found</span>"
+            + "<ul class='list-group'>";
              
         array.forEach(response, function(item, i){
             console.log("show search results: ", i, ".) ", item);
@@ -857,12 +865,20 @@ require([
             console.log("new graphic: ", propFeature);
             propertiesLayer.add(propFeature);
         });
+        dom.byId("resultsContent").innerHTML += "<div class='clearBtnCenter'><button onclick='clearPropSearch()' type='button' class='btn btn-default btn-sm'>Clear Search Results</button></div>";
         console.log("PROPERTIES LAYER GRAPHICS: ", propertiesLayer);
         map.setExtent(graphicsUtils.graphicsExtent(propertiesLayer.graphics), true);
         
         dom.byId("resultsContent").innerHTML += "</ul>";
         
         return response;
+    }
+    
+    window.clearPropSearch = function (){
+        dom.byId("resultsContent").innerHTML = "";
+        dom.byId("results").style.visibility = "hidden";
+        propertiesLayer.clear();
+        dom.byId("propTextBox").value = "";
     }
 //    
 //    function addFeaturesToMap(items){

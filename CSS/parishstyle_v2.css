@@ -63,7 +63,7 @@ html, body, #map{
     border-radius: 8px;
 }
 
-#tools .clearBtnCenter{
+.clearBtnCenter{
     text-align: center;
     padding-top: 15px;
 }
