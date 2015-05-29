@@ -168,7 +168,8 @@ require([
     opacity: 0.4
   });    
     
-  var propertiesLayer = new GraphicsLayer();  
+  var propertiesLayer = new GraphicsLayer();
+  var addressLayer = new GraphicsLayer();
 
     
   //////////////////////END LAYERS AND LAYER INFO///////////////////////////
@@ -202,10 +203,13 @@ require([
     var parishQuery = new Query();
     parishQuery.geometry = info.geom;
     parishQuery.returnGeometry = false;
+    parishQuery.outFields = ["Par_NAME", "COUNTY", "MUNICIPALITY"];
     parishQuery.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
     queryTask.execute(parishQuery, function(result){
         console.log("getParishByPoint result: ", result);
         parish = result.features[0].attributes.Par_NAME;
+        county = result.features[0].attributes.COUNTY;
+        municipality = result.features[0].attributes.MUNICIPALITY;
         
         content = "<h4>" + propName + "</h4>"
         + "<i>" + type + "</i><br>"
@@ -217,7 +221,11 @@ require([
         dom.byId("infoContent").innerHTML = content;
         
         on(dom.byId("farmParish"), "click", function(){
-            selectRegion(parishesLayer, county, parish);
+            setAllDropdowns({
+                COUNTY: county,
+                MUNICIPALITY: municipality,
+                Par_NAME: parish
+            });
         });
         
         on(dom.byId("addFarmInfo"), "click", function(){
@@ -362,7 +370,7 @@ require([
     map.addLayer(norTopoLayer); 
     map.addLayer(streetLayer); 
       
-    map.addLayers([selectionLayer, parishesLayer, parishLabels, municipalitiesLayer, countiesLayer, propertiesLayer]);
+    map.addLayers([selectionLayer, parishesLayer, parishLabels, municipalitiesLayer, countiesLayer, addressLayer, propertiesLayer]);
       satelliteLayer.hide();
       streetLayer.hide();
       
@@ -442,21 +450,6 @@ require([
      console.log("esri bundle: ", esriBundle);
     
     var searchSources = [
-//        {  //Geocoder
-//            locator: new Locator("//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
-//            singleLineFieldName: "SingleLine",
-//            outFields: ["Addr_type"],
-//            name: "Places",
-//            localSearchOptions: {
-//              minScale: 300000,
-//              distance: 50000
-//            },
-//            placeholder: "Search place or address",
-//            maxResults: 5,
-//            minCharacters: 1,
-//            maxSuggestions: 2,
-//            autoNavigate: true
-//        },
         {  //COUNTIES LAYER
             featureLayer: countiesLayer,
             autoNavigate: true,
@@ -501,6 +494,21 @@ require([
             placeholder: "e.g. Tvedestrand",
             searchFields: ["Par_NAME", "MUNICIPALITY", "COUNTY"],
             showInfoWindowOnSelect: false
+        },
+        {  //Geocoder
+            locator: new Locator("//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
+            singleLineFieldName: "SingleLine",
+            outFields: ["Addr_type"],
+            name: "Addresses",
+            localSearchOptions: {
+              minScale: 300000,
+              distance: 50000
+            },
+            placeholder: "Street address",
+            maxResults: 5,
+            minCharacters: 1,
+            maxSuggestions: 2,
+            autoNavigate: true
         }
     ];
     
@@ -525,62 +533,28 @@ require([
     search.startup();
     
     on(search, "select-result", function(evt){
-        var result = evt.result.feature.attributes;
-        
-        if(result.COUNTY && !result.MUNICIPALITY){
-            selectRegion(countiesLayer, result.COUNTY);
-            
-            countyDropdown.value = result.COUNTY;
-            setDropdown(municipalityDropdown, result.COUNTY);
-            setDropdown(parishDropdown, result.COUNTY);
+        addressLayer.clear();
+        console.log("Locator search result: ", evt);
+        if(!evt.result.feature.attributes.COUNTY){
+            var queryTask = new QueryTask(parishesLayer.url);
+            var searchQuery = new Query();
+            searchQuery.geometry = evt.result.feature.geometry;
+            searchQuery.returnGeometry = false;
+            searchQuery.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
+            searchQuery.outFields = ["Par_NAME", "COUNTY", "MUNICIPALITY"];
+            queryTask.execute(searchQuery, function(queryResult){
+                console.log("search query result after LOCATOR: ", queryResult);
+                setAllDropdowns(queryResult.features[0].attributes);
+                addressLayer.add(new Graphic(searchQuery.geometry, new SimpleMarkerSymbol()));
+            });
         }
-        if(result.MUNICIPALITY && !result.Par_NAME){
-            selectRegion(municipalitiesLayer, result.COUNTY, result.MUNICIPALITY);
-            
-            if(countyDropdown.value != result.COUNTY)
-            {
-                countyDropdown.value = result.COUNTY;
-                setDropdown(municipalityDropdown, result.COUNTY).then(function(resolved){
-                    if(resolved){
-                        municipalityDropdown.value = result.MUNICIPALITY;
-                        setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY);
-                    }
-                    else
-                        consle.error("Municipality dropdown not set! Promise needs to resolve.");
-                });            
-            }
-            else{
-                municipalityDropdown.value = result.MUNICIPALITY;
-                setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY);
-            }
+        else{
+            setAllDropdowns(evt.result.feature.attributes);
         }
-        if(result.Par_NAME){
-            selectRegion(parishesLayer, result.COUNTY, result.Par_NAME);
-            
-            if((municipalityDropdown.value != result.MUNICIPALITY) && (countyDropdown.value != result.COUNTY)){
-                countyDropdown.value = result.COUNTY;
-                setDropdown(municipalityDropdown, result.COUNTY).then(function(resolved){
-                    if(resolved){
-                        municipalityDropdown.value = result.MUNICIPALITY;
-                        return setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY);
-                    }
-                    else
-                        consle.error("Municipality dropdown not set! Promise needs to resolve.");
-                }).then(function(resolved){
-                    if(resolved)
-                        parishDropdown.value = result.Par_NAME;
-                });         
-            }
-            else if((municipalityDropdown.value != result.MUNICIPALITY) && (countyDropdown.value == result.COUNTY)){
-                municipalityDropdown.value = result.MUNICIPALITY;
-                setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY, result.Par_NAME).then(function(resolve){
-                    parishDropdown.value = result.Par_NAME;
-                });
-            }
-            else{
-                parishDropdown.value = result.Par_NAME;
-            }
-        }
+    });
+    
+    on(search, "clear-search", function(evt){
+        addressLayer.clear();
     });
     
     /////////////////////////END SEARCH WIDGET//////////////////////////////  
@@ -688,6 +662,64 @@ require([
         selectRegion(parishesLayer, countyDropdown.value, evt.target.value);
     });
     
+    function setAllDropdowns(selectAtt){
+        
+        if(selectAtt.COUNTY && !selectAtt.MUNICIPALITY){
+            selectRegion(countiesLayer, selectAtt.COUNTY);
+            
+            countyDropdown.value = selectAtt.COUNTY;
+            setDropdown(municipalityDropdown, selectAtt.COUNTY);
+            setDropdown(parishDropdown, selectAtt.COUNTY);
+        }
+        if(selectAtt.MUNICIPALITY && !selectAtt.Par_NAME){
+            selectRegion(municipalitiesLayer, selectAtt.COUNTY, selectAtt.MUNICIPALITY);
+            
+            if(countyDropdown.value != selectAtt.COUNTY)
+            {
+                countyDropdown.value = selectAtt.COUNTY;
+                setDropdown(municipalityDropdown, selectAtt.COUNTY).then(function(resolved){
+                    if(resolved){
+                        municipalityDropdown.value = selectAtt.MUNICIPALITY;
+                        setDropdown(parishDropdown, selectAtt.COUNTY, selectAtt.MUNICIPALITY);
+                    }
+                    else
+                        consle.error("Municipality dropdown not set! Promise needs to resolve.");
+                });            
+            }
+            else{
+                municipalityDropdown.value = selectAtt.MUNICIPALITY;
+                setDropdown(parishDropdown, selectAtt.COUNTY, selectAtt.MUNICIPALITY);
+            }
+        }
+        if(selectAtt.Par_NAME){
+            selectRegion(parishesLayer, selectAtt.COUNTY, selectAtt.Par_NAME);
+            
+            if((municipalityDropdown.value != selectAtt.MUNICIPALITY) && (countyDropdown.value != selectAtt.COUNTY)){
+                countyDropdown.value = selectAtt.COUNTY;
+                setDropdown(municipalityDropdown, selectAtt.COUNTY).then(function(resolved){
+                    if(resolved){
+                        municipalityDropdown.value = selectAtt.MUNICIPALITY;
+                        return setDropdown(parishDropdown, selectAtt.COUNTY, selectAtt.MUNICIPALITY);
+                    }
+                    else
+                        consle.error("Municipality dropdown not set! Promise needs to resolve.");
+                }).then(function(resolved){
+                    if(resolved)
+                        parishDropdown.value = selectAtt.Par_NAME;
+                });         
+            }
+            else if((municipalityDropdown.value != selectAtt.MUNICIPALITY) && (countyDropdown.value == selectAtt.COUNTY)){
+                municipalityDropdown.value = selectAtt.MUNICIPALITY;
+                setDropdown(parishDropdown, selectAtt.COUNTY, selectAtt.MUNICIPALITY, selectAtt.Par_NAME).then(function(resolve){
+                    parishDropdown.value = selectAtt.Par_NAME;
+                });
+            }
+            else{
+                parishDropdown.value = selectAtt.Par_NAME;
+            }
+        }
+    }
+    
     //////////////////////////SELECT REGIONS AND ZOOM////////////////////
     var selectSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,0]), 6), new Color([0,0,0,0.25]));
     
@@ -730,8 +762,6 @@ require([
             setMunicipalityInfo(selectionInfo);
         if(selectionInfo.Par_NAME)
             setParishInfo(selectionInfo);
-        
-        return;
     }
     
     on(countiesLayer, "click", function(evt){
@@ -744,57 +774,16 @@ require([
     });
     on(municipalitiesLayer, "click", function(evt){
         console.log("munis clicked!!!!!!!!!!!!");
-        selectRegion(municipalitiesLayer, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-        
-        if(countyDropdown.value != evt.graphic.attributes.COUNTY)
-        {
-            countyDropdown.value = evt.graphic.attributes.COUNTY;
-            setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY).then(function(resolved){
-                if(resolved){
-                    municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-                    setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-                }
-                else
-                    consle.error("Municipality dropdown not set! Promise needs to resolve.");
-            });            
-        }
-        else{
-            municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-        }
-        
+        setAllDropdowns(evt.graphic.attributes);
     });
     on(parishesLayer, "click", function(evt){
         console.log("parish click event: ", evt);
-        selectRegion(parishesLayer, evt.graphic.attributes.COUNTY, evt.graphic.attributes.Par_NAME);
-        
-        if((municipalityDropdown.value != evt.graphic.attributes.MUNICIPALITY) && (countyDropdown.value != evt.graphic.attributes.COUNTY)){
-            countyDropdown.value = evt.graphic.attributes.COUNTY;
-            setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY).then(function(resolved){
-                if(resolved){
-                    municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-                    return setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-                }
-                else
-                    consle.error("Municipality dropdown not set! Promise needs to resolve.");
-            }).then(function(resolved){
-                if(resolved)
-                    parishDropdown.value = evt.graphic.attributes.Par_NAME;
-            });         
-        }
-        else if((municipalityDropdown.value != evt.graphic.attributes.MUNICIPALITY) && (countyDropdown.value == evt.graphic.attributes.COUNTY)){
-            municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY, evt.graphic.attributes.Par_NAME).then(function(resolve){
-                parishDropdown.value = evt.graphic.attributes.Par_NAME;
-            });
-        }
-        else{
-            parishDropdown.value = evt.graphic.attributes.Par_NAME;
-        }
+        setAllDropdowns(evt.graphic.attributes);
     });
     
     function clearSelection(){
         selectionLayer.clear();
+        addressLayer.clear();
 //        dom.byId("info").style.height = "25px";
         dom.byId("info").style.visibility = "hidden";
 //        dom.byId("infoMinIcon").style.visibility = "hidden";

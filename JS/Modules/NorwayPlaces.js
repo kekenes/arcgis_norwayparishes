@@ -138,6 +138,10 @@ define([
             
             var requestUrl = baseUrl + ssrId;
             window.open(requestUrl);
+        },
+        
+        withinExtent: function(point, extent){
+            //CHECK IF GEOCODE POINT IS IN FULL EXTENT OF COUNTIES HERE
         }
     };
 });
