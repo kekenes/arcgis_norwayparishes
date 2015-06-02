@@ -265,11 +265,24 @@ require([
     + "<a target='_blank' href='" + wikiURL + "'><button type='button' class='btn btn-primary btn-sm' >General Information</button></a><br><br>";
      
     dom.byId("infoContent").innerHTML = content;
- }  
+ }
+    
+ function getFarmList(county){
+    var farmList;
+    for(i = 0; i < countiesLayer.graphics.length; i++){
+        if(countiesLayer.graphics[i].attributes.COUNTY === county){
+            farmList = countiesLayer.graphics[i].attributes.FARMS;
+            break;
+        }
+    }
+    return farmList;
+ }    
     
  function setParishInfo(info){
     infoHeight = "50%";
     animateInfoBox(infoHeight); 
+     
+     console.log("counties FARMS: ", countiesLayer);
      
     var parishName = info.Par_NAME;
     var municipalityName = info.MUNICIPALITY;
@@ -277,7 +290,7 @@ require([
     var photoURL = info.PHOTO;
     var photoOr = info.PHOTO_O;
     var FSwiki = info.FAM_SEARCH;
-    var farmList = info.FARMS;
+    var farmList = getFarmList(countyName);
     var churchURL = info.CHURCH;
     var da1_url = info.DA_1;
     var da1_name = info.DA_1_NAME;
@@ -293,6 +306,7 @@ require([
     var photoWidth, photoHeight;
      
      console.log("FARM LINK: ", info.FARMS);
+     console.log("GETFARM LIST: ", getFarmList(countyName));
      
     if(photoOr == "L"){
         photoHeight = "150";
@@ -359,7 +373,9 @@ require([
         map: map,
         attachTo: "top-left",
         baseLayer: topoLayer,
-        expandFactor: 3
+        expandFactor: 3,
+        height: 400,
+        width: 500
     });
     overviewMap.startup();
       
@@ -535,7 +551,9 @@ require([
     on(search, "select-result", function(evt){
         addressLayer.clear();
         console.log("Locator search result: ", evt);
-        if(!evt.result.feature.attributes.COUNTY){
+        console.log("countiesLayer: ", countiesLayer);
+        var inExtent = NorwayPlaces.withinExtent(evt.result.feature.geometry, countiesLayer.fullExtent);
+        if(!evt.result.feature.attributes.COUNTY && inExtent){
             var queryTask = new QueryTask(parishesLayer.url);
             var searchQuery = new Query();
             searchQuery.geometry = evt.result.feature.geometry;
@@ -549,7 +567,10 @@ require([
             });
         }
         else{
-            setAllDropdowns(evt.result.feature.attributes);
+            if(!inExtent)
+                return;
+            else
+                setAllDropdowns(evt.result.feature.attributes);
         }
     });
     
@@ -806,8 +827,15 @@ require([
     var placeGeoCheckBox = dom.byId("useGeoSelection");
     
     on(placeSearchBtn, "click", function(){
+        loading.style.visibility = "visible";
         var propName = dom.byId("propTextBox").value;
         var geoFilter = null;
+        
+        if(propName.length < 1){
+            alert("You must enter a property name to perform this operation.");
+            loading.style.visibility = "hidden";
+            return;
+        }
         
         if(placeGeoCheckBox.checked && selectionLayer.graphics.length > 0)
             geoFilter = selectionLayer.graphics[0].geometry;
@@ -817,7 +845,7 @@ require([
             console.log("response layer: ", properties);
 //            map.addLayer(responseLyr);
             
-            dom.byId("results").style.height = "35%";
+            dom.byId("results").style.height = "30%";
             dom.byId("results").style.visibility = "visible";
             dom.byId("resultsMinIcon").style.visibility = "visible";
             
@@ -825,7 +853,12 @@ require([
             
             return properties;
 //            showSearchResults(responseLyr.graphics);
-        }).then(showSearchResults)
+        }, function(rejected){
+            console.log("search rejected!");
+            loading.style.visibility = "hidden";
+        }).then(showSearchResults, function(rejected){
+            console.log("Rejected. Don't show results.");
+        });
 //        .then(addFeaturesToMap);  //hardcode for testing purposes
     });
     
@@ -835,6 +868,7 @@ require([
         
         if(typeof response === "string"){
             dom.byId("resultsContent").innerHTML = response + "<div class='clearBtnCenter'><button onclick='clearPropSearch()' type='button' class='btn btn-default btn-sm'>Clear Search Results</button></div>";
+            loading.style.visibility = "hidden";
             return;
         }
         
@@ -859,6 +893,7 @@ require([
         map.setExtent(graphicsUtils.graphicsExtent(propertiesLayer.graphics), true);
         
         dom.byId("resultsContent").innerHTML += "</ul>";
+        loading.style.visibility = "hidden";
         
         return response;
     }
@@ -1018,7 +1053,7 @@ require([
     on(dom.byId("resultsHeader"), "click", function(){
         
       if(dom.byId("results").style.height == "25px"){    
-          dom.byId("results").style.height = "35%";
+          dom.byId("results").style.height = "30%";
           dom.byId("resultsMinIcon").style.visibility = "visible";
           dom.byId("resultsMaxIcon").style.visibility = "hidden";
           dom.byId("resultsContent").style.visibility = "visible";

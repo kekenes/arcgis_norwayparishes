@@ -9,6 +9,7 @@ require([
         openContent();
         request("./about_v2.html").then(function(content){
             dom.byId("aboutContent").innerHTML = content;
+            on(dom.byId("exitButton"), "click", closeContent);
         });
     });
     
@@ -16,6 +17,7 @@ require([
         openContent();
         request("./Acknowledgements_v2.html").then(function(content){
             dom.byId("aboutContent").innerHTML = content;
+            on(dom.byId("exitButton"), "click", closeContent);
         });
     });
     
@@ -23,6 +25,7 @@ require([
         openContent();
         request("./resources_v2.html").then(function(content){
             dom.byId("aboutContent").innerHTML = content;
+            on(dom.byId("exitButton"), "click", closeContent);
         });
     });
     
@@ -30,6 +33,7 @@ require([
         openContent();
         request("./contact_v2.html").then(function(content){
             dom.byId("aboutContent").innerHTML = content;
+            on(dom.byId("exitButton"), "click", closeContent);
         });
     });
     
@@ -55,5 +59,4 @@ require([
             }, 1000);
         }
     }
-    
 });

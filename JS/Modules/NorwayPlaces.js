@@ -26,9 +26,11 @@ define([
         },
         
         search: function(propertyName, geoFilter){
+            var dfd = new Deferred();
+            
             if(propertyName.length < 1){
                 alert("You must enter a property name to perform this operation.");
-                return;
+                dfd.reject();
             }
             
             esriConfig.defaults.io.corsEnabledServers.push("tasks.arcgisonline.com");
@@ -37,8 +39,6 @@ define([
                 urlPrefix: "http://tasks.arcgisonline.com/ArcGIS/rest/services",
                 proxyUrl: "./proxy/DotNet/proxy.ashx"
             });
-            
-            var dfd = new Deferred();
             
             var geometryService = new GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
             
@@ -142,6 +142,15 @@ define([
         
         withinExtent: function(point, extent){
             //CHECK IF GEOCODE POINT IS IN FULL EXTENT OF COUNTIES HERE
+//            console.log("WITHIN EXTENT: ", geometryEngine.within(point, extent));
+//            return geometryEngine.within(point, extent);
+            var within = geometryEngine.within(point, extent);
+            if(within){
+                return within;
+            }
+            else{
+                alert("Address not located in Norway.");
+            }
         }
     };
 });
