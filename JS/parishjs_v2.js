@@ -165,7 +165,8 @@ require([
   });
     
   var topoLayer = new ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/arcgis/rest/services/World_Topo_Map/MapServer", {
-    opacity: 0.4
+    opacity: 0.4,
+    displayLevels: [1,2,3,4,5,6,7]
   });    
     
   var propertiesLayer = new GraphicsLayer();
@@ -269,9 +270,10 @@ require([
     
  function getFarmList(county){
     var farmList;
-    for(i = 0; i < countiesLayer.graphics.length; i++){
-        if(countiesLayer.graphics[i].attributes.COUNTY === county){
-            farmList = countiesLayer.graphics[i].attributes.FARMS;
+    for(i = 0; i < old_county_data.length; i++){
+        if(old_county_data[i].name === county){
+            farmList = old_county_data[i].farms;
+            console.log("FARM LIST FROM OLD COUNTY JSON: ", farmList);
             break;
         }
     }
@@ -422,6 +424,10 @@ require([
     });
       
   }
+   //PLAY WITH THIS FOR A WHILE 
+  on(parishLabels, 'graphic-node-add', function (graphic) {
+    graphic.node.style.textShadow = "1px 1px 1px white, 1px -1px 1px white, -1px 1px 1px white, -1px -1px 1px white";
+  });
     
   on(document.getElementsByName("baseLayers")[1], "click", function(evt){
     if(dom.byId("radioSat").checked){
@@ -550,10 +556,14 @@ require([
     
     on(search, "select-result", function(evt){
         addressLayer.clear();
+        var inExtent = null;
         console.log("Locator search result: ", evt);
         console.log("countiesLayer: ", countiesLayer);
-        var inExtent = NorwayPlaces.withinExtent(evt.result.feature.geometry, countiesLayer.fullExtent);
-        if(!evt.result.feature.attributes.COUNTY && inExtent){
+        var geomType = evt.result.feature.geometry.type;
+        if(geomType === "point")
+            inExtent = NorwayPlaces.withinExtent(evt.result.feature.geometry, countiesLayer.fullExtent);
+        
+        if(geomType === "point" && inExtent){
             var queryTask = new QueryTask(parishesLayer.url);
             var searchQuery = new Query();
             searchQuery.geometry = evt.result.feature.geometry;
@@ -563,13 +573,15 @@ require([
             queryTask.execute(searchQuery, function(queryResult){
                 console.log("search query result after LOCATOR: ", queryResult);
                 setAllDropdowns(queryResult.features[0].attributes);
-                addressLayer.add(new Graphic(searchQuery.geometry, new SimpleMarkerSymbol()));
+                addressLayer.add(new Graphic(searchQuery.geometry, new SimpleMarkerSymbol(
+                SimpleMarkerSymbol.STYLE_CIRCLE, 15, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,0]), 1), new Color([52,250,237])
+                )));
             });
         }
         else{
             if(!inExtent)
                 return;
-            else
+            if(geomType != "point")
                 setAllDropdowns(evt.result.feature.attributes);
         }
     });
@@ -820,15 +832,17 @@ require([
     ////////////////////////////FARM SEARCH TOOLS///////////////////////////////
 
     NorwayPlaces.test();
-    
-    var pointSymbol = new SimpleMarkerSymbol(SimpleLineSymbol.STYLE_CIRCLE, 7, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("red"), 0.5), new Color([0,255,0,1]));
+                                                                                                                                                                    //145 100 15
+    var farmSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 12, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,0]), 2), new Color([255,255,0]));
+    var farmHighlightSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 24, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,0]), 2), new Color([255,0,0]));
     
     var placeSearchBtn = dom.byId("farmSearchBtn");
     var placeGeoCheckBox = dom.byId("useGeoSelection");
+    var propName;
     
     on(placeSearchBtn, "click", function(){
         loading.style.visibility = "visible";
-        var propName = dom.byId("propTextBox").value;
+        propName = dom.byId("propTextBox").value;
         var geoFilter = null;
         
         if(propName.length < 1){
@@ -866,8 +880,17 @@ require([
         console.log("show search results called: ", response);
         propertiesLayer.clear();
         
-        if(typeof response === "string"){
-            dom.byId("resultsContent").innerHTML = response + "<div class='clearBtnCenter'><button onclick='clearPropSearch()' type='button' class='btn btn-default btn-sm'>Clear Search Results</button></div>";
+        var noResultMessage = "<p><i>No properties could be identified by the name: <b>" + propName + "</b></i>. The following"
+                    + " are suggestions for improving your search:</p><ol>"
+                    + "<li>Check the spelling of the search entry to ensure it is correct, including the usage of Norwegain characters (&aelig;, &oslash;, &aring;). "
+                    + "If necessary, <a target='_blank' href='https://familysearch.org/learn/wiki/en/Norway:_Typing_%C3%86,_%C3%98,_and_%C3%85'>"
+                    + "activate the Norwegian keyboard</a> on your computer.</li><br>"
+                    + "<li>If searching for farms, use <a target='_blank' href='http://www.dokpro.uio.no/rygh_ng/rygh_form.html'>Oluf Rygh's Farm Gazetteer</a>"
+                    + " to find alternate spellings of the desired farm name.</li><br>"
+                    + "<li>If necessary, uncheck the checkbox to remove geographic filtering to broaden the search.</li></ol>";
+        
+        if((response === 0) || (response.length === 0)){
+            dom.byId("resultsContent").innerHTML = noResultMessage + "<div class='clearBtnCenter'><button onclick='clearPropSearch()' type='button' class='btn btn-default btn-sm'>Clear Search Results</button></div>";
             loading.style.visibility = "hidden";
             return;
         }
@@ -878,13 +901,13 @@ require([
         array.forEach(response, function(item, i){
             console.log("show search results: ", i, ".) ", item);
             var id = item.ssrId;
-            dom.byId("resultsContent").innerHTML += "<a href='#' onclick='selectProperty(" + id + ");' class='list-group-item' id='" + id + "'>"
+            dom.byId("resultsContent").innerHTML += "<a href='#' onmouseout='removeHighlightProperty(" + id + ");' onmouseover='highlightProperty(" + id + ");' onclick='selectProperty(" + id + ");' class='list-group-item' id='" + id + "'>"
             + "<b>" + item.name + "</b><br>"
             + "<span style='padding: 15px;'><i>" + item.type + "</i></span><br>"
             + "<span style='padding: 15px;'>" + item.municipality + ", " + item.county + "</span>"
             + "</a>";
             
-            var propFeature = new Graphic(item.geom, pointSymbol, item);
+            var propFeature = new Graphic(item.geom, farmSymbol, item);
             console.log("new graphic: ", propFeature);
             propertiesLayer.add(propFeature);
         });
@@ -901,6 +924,8 @@ require([
     window.clearPropSearch = function (){
         dom.byId("resultsContent").innerHTML = "";
         dom.byId("results").style.visibility = "hidden";
+//        dom.byId("resultsMaxIcon").style.visibility = "hidden";
+        dom.byId("resultsMinIcon").style.visibility = "hidden";
         propertiesLayer.clear();
         dom.byId("propTextBox").value = "";
     }
@@ -961,6 +986,37 @@ require([
 //            return dfd.promise;
 //    }
     
+    on(propertiesLayer, "click", function(evt){
+        console.log("property: ", evt);
+        selectProperty(evt.graphic.attributes.ssrId);
+    });
+    
+    window.highlightProperty = function(propId){
+        var propLayer = map.getLayer(map.graphicsLayerIds[map.graphicsLayerIds.length-1]);
+//        var propLayer = map.getLayer("graphicsLayer9");
+        var propFeatures = propLayer.graphics;
+        
+        array.forEach(propFeatures, function(item, i){
+            if(item.attributes.ssrId === propId){
+                console.log("A MATCH!", item);
+                item.setSymbol(farmHighlightSymbol);
+            }
+        });
+    };
+    
+    window.removeHighlightProperty = function(propId){
+        var propLayer = map.getLayer(map.graphicsLayerIds[map.graphicsLayerIds.length-1]);
+//        var propLayer = map.getLayer("graphicsLayer9");
+        var propFeatures = propLayer.graphics;
+        
+        array.forEach(propFeatures, function(item, i){
+            if(item.attributes.ssrId === propId){
+                console.log("A MATCH!", item);
+                item.setSymbol(farmSymbol);
+            }
+        });
+    };
+    
     window.selectProperty = function (propId){
         console.log("select property: ", propId);
         console.log("map layers: ", map.graphicsLayerIds);
@@ -978,7 +1034,7 @@ require([
                 setFarmInfo(item.attributes);
             }
         });
-    }
+    };
     
     ///////////////////////////LAYOUT EVENTS//////////////////////////////////
     dom.byId("legend").style.height = "35%";

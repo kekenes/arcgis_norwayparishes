@@ -86,7 +86,7 @@ html, body, #map{
     position: absolute;
     bottom: 20px;
     left: 350px;
-    z-index: 40;
+    z-index: 40; 
 }
 
 #loading{
@@ -131,7 +131,7 @@ html, body, #map{
     margin: 0;
     position: absolute;
     z-index: 90;
-    opacity: 0.85;
+    opacity: 0.92;
     background-color: white;
     border-radius: 8px;
     transition: height 0.6s linear 0s, bottom 0.6s linear 0s;
@@ -154,7 +154,7 @@ html, body, #map{
     margin: 0;
     position: absolute;
     z-index: 92;
-    opacity: 0.85;
+    opacity: 0.92;
     background-color: white;
     border-radius: 8px;
     transition: height 0.6s linear 0s;
@@ -225,7 +225,7 @@ html, body, #map{
     margin: 0;
     position: absolute;
     z-index: 92;
-    opacity: 0.85;
+    opacity: 0.92;
     background-color: white;
     border-radius: 8px;
     transition: height 0.6s linear 0s;
@@ -247,7 +247,7 @@ html, body, #map{
     margin: 0;
     position: absolute;
     z-index: 90;
-    opacity: 0.85;
+    opacity: 0.92;
     background-color: white;
     border-radius: 8px;
     transition: height 0.6s linear 0s, bottom 0.6s linear 0s;

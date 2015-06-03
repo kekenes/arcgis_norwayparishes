@@ -69,15 +69,15 @@ define([
                 var rawResults = jsonResponse.sokRes[0].stedsnavn;
                 
                 if(!rawResults){
-                    var noResultMessage = "<p><i>No properties could be identified by the name: <b>" + propertyName + "</b></i>. The following"
-                    + " are suggestions for improving your search:</p><ol>"
-                    + "<li>Check the spelling of the search entry to ensure it is correct, including the usage of Norwegain characters (Æ, Ø, Å). "
-                    + "If necessary, <a target='_blank' href='https://familysearch.org/learn/wiki/en/Norway:_Typing_%C3%86,_%C3%98,_and_%C3%85'>"
-                    + "activate the Norwegian keyboard</a> on your computer.</li><br>"
-                    + "<li>If searching for farms, use <a target='_blank' href='http://www.dokpro.uio.no/rygh_ng/rygh_form.html'>Oluf Rygh's Farm Gazetteer</a>"
-                    + " to find alternate spellings of the desired farm name.</li><br>"
-                    + "<li>If necessary, uncheck the checkbox to remove geographic filtering in the search.</li></ol>";
-                    dfd.resolve(noResultMessage);
+//                    var noResultMessage = "<p><i>No properties could be identified by the name: <b>" + propertyName + "</b></i>. The following"
+//                    + " are suggestions for improving your search:</p><ol>"
+//                    + "<li>Check the spelling of the search entry to ensure it is correct, including the usage of Norwegain characters (Æ, Ø, Å). "
+//                    + "If necessary, <a target='_blank' href='https://familysearch.org/learn/wiki/en/Norway:_Typing_%C3%86,_%C3%98,_and_%C3%85'>"
+//                    + "activate the Norwegian keyboard</a> on your computer.</li><br>"
+//                    + "<li>If searching for farms, use <a target='_blank' href='http://www.dokpro.uio.no/rygh_ng/rygh_form.html'>Oluf Rygh's Farm Gazetteer</a>"
+//                    + " to find alternate spellings of the desired farm name.</li><br>"
+//                    + "<li>If necessary, uncheck the checkbox to remove geographic filtering to broaden the search.</li></ol>";
+                    dfd.resolve(0);
                 }
                 
                 var projectParams = new ProjectParameters();
@@ -144,12 +144,15 @@ define([
             //CHECK IF GEOCODE POINT IS IN FULL EXTENT OF COUNTIES HERE
 //            console.log("WITHIN EXTENT: ", geometryEngine.within(point, extent));
 //            return geometryEngine.within(point, extent);
+            
             var within = geometryEngine.within(point, extent);
+//            var within = geometryEngine.intersects(point, extent);
             if(within){
                 return within;
             }
             else{
                 alert("Address not located in Norway.");
+                return false;
             }
         }
     };
