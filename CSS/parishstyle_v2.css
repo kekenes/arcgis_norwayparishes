@@ -11,13 +11,7 @@ html, body, #map{
     font-weight: bold;
 }
 
-/*
-.visibleBar{
-    background-color: red;
-}
-*/
 .glyphicon-collapse-down{
-/*    visibility: visible;*/
     float: right;
 }
 .glyphicon-collapse-up{
@@ -27,20 +21,6 @@ html, body, #map{
 
 #results .glyphicon-collapse-down{
     visibility: hidden;
-}
-
-/*
-#photoCredit{
-    text-align: right;
-    font-size: 9px;
-*/
-/*    position: absolute;*/
-/*    right: 80px;*/
-/*    top: 240px;*/
-/*}*/
-
-#results .glyphicon-collapse-up{
-/*    visibility: visible;*/
 }
 
 #info .content{
@@ -196,14 +176,11 @@ html, body, #map{
 #aboutContent .content h1{
     font-size: 36px;
     font-weight: bold;
-/*    color: #5A0000;*/
     text-align: left;
 }
 
 #aboutContent .content h3{
     font-size: 24px;
-/*    font-weight: bold;*/
-/*    color: #5A0000;*/
     text-align: left;
 }
 
@@ -263,7 +240,8 @@ html, body, #map{
 }
 
 .content{
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 h4{
@@ -289,7 +267,6 @@ font-weight: bold;
 }
 .agsjsTOCIcon{
     padding-left: 8px;
-/*    padding-right: 8px;*/
 }
 /*
 .agsjsTOCGroupLayer,

@@ -98,6 +98,8 @@ require([
 //    var parishRenderer = new SimpleRenderer(parishSymbol);
 //    var municipalityRenderer = new SimpleRenderer(municipalitySymbol);
 //    var countyRenderer = new SimpleRenderer(countySymbol);
+    var officeSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 12, null, new Color([0,0,0]));
+    var officeRenderer = new SimpleRenderer(officeSymbol);
     
     var selectionLayer = new GraphicsLayer();
     
@@ -116,6 +118,11 @@ require([
     outFields: ["*"]
   });
 
+  var officesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/NA_Regional_Offices_2/FeatureServer/0", {
+    outFields: ["*"]
+  });
+  officesLayer.setRenderer(officeRenderer);
+
     //These renderers don't allow for on click events to work on layers
     //May have to republish services
 //    countiesLayer.setRenderer(countyRenderer);
@@ -126,14 +133,27 @@ require([
     var parishText = new TextSymbol("filler text", parishFont, new Color([148,0,211]));
     var parishTextRenderer = new SimpleRenderer(parishText);
 
+    var officeFont = new Font("12pt", Font.STYLE_NORMAL, Font.VARIANT_NORMAL, Font.WEIGHT_BOLD, "Arial");
+    var officeText = new TextSymbol("filler text", officeFont, new Color([148,0,211]));
+    var officeTextRenderer = new SimpleRenderer(officeText);
+
 //    var parishSatText = new TextSymbol("filler text", parishFont, new Color([0,0,0]));
 //    var parishSatRenderer = new SimpleRenderer(parishSatText);
     
   var parishLabels = new LabelLayer({
     mode: "DYNAMIC"
   });
+    var officeLabels = new LabelLayer({
+        mode: "DYNAMIC"
+    });
+    
     parishLabels.addFeatureLayer(parishesLayer, parishTextRenderer, "{Par_NAME}");
+    officeLabels.addFeatureLayer(officesLayer, officeTextRenderer, "{NAME}");
+//    officeLabels.setRenderer(officeTextRenderer);
+    
+    console.log("office labels 1: ", officeLabels);
 
+    
 //  var euroInfo = new WMTSLayerInfo({
 //          identifier: "europa",
 //          tileMatrixSet: "EPSG:3857",  //3857, 4326, 900913, 32635, 32633, 32632
@@ -353,6 +373,32 @@ require([
         dom.byId("infoContent").style.visibility = "visible";
     }
     
+    function setOfficeInfo(attributes){
+        infoHeight = "38%";
+        animateInfoBox(infoHeight); 
+        
+        var content;
+        var name = attributes.NAME;
+        var photoURL = attributes.PHOTO;
+        var website = attributes.WEBSITE;
+        var address = attributes.ADDRESS;
+        var phone = attributes.PHONE;
+        var email = attributes.EMAIL;
+        
+        content = "<h4>" + name + " Regional Office of the National Archives</h4>"
+        + "<div class='photo'><img src='" + photoURL + "' height='113px' width='150px'></div>"
+        + "<br><b>Address: </b>" + address
+        + "<br><b>Phone: </b>" + phone
+        + "<br><a target='_blank' href='mailto:" + email + "'><button type='button' class='btn btn-success btn-sm'>Send Email</button></a>"
+        + "<br><a target='_blank' href='" + website + "'><button type='button' class='btn btn-success btn-sm'>Visit Website</button></a>";
+        
+        dom.byId("infoContent").innerHTML = content;
+    }
+    
+    on(officesLayer, "click", function(evt){
+        setOfficeInfo(evt.graphic.attributes);
+    });
+    
     ////////////////////////END POPUPS//////////////////////////////////
     
   /////////////////////MAP AND LEGEND///////////////////////////////////////
@@ -388,7 +434,11 @@ require([
     map.addLayer(norTopoLayer); 
     map.addLayer(streetLayer); 
       
-    map.addLayers([selectionLayer, parishesLayer, parishLabels, municipalitiesLayer, countiesLayer, addressLayer, propertiesLayer]);
+    map.addLayers([selectionLayer, parishesLayer, municipalitiesLayer, countiesLayer, officesLayer, parishLabels, addressLayer, propertiesLayer]);
+    
+       map.addLayer(officeLabels);    
+      
+      console.log("office labels: ", officeLabels);
       satelliteLayer.hide();
       streetLayer.hide();
       
@@ -408,7 +458,11 @@ require([
               {
                 layer: parishesLayer,
                 title: "Parishes"
-              }              
+              },
+              {
+                layer: officesLayer,
+                title: "Regional Offices"
+              }
           ]
         }, "legendContent");
         toc.startup();

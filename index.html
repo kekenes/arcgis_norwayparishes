@@ -1,24 +1,14 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
-
     <title>Norway's Parishes</title>
-    
-
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 
-    
     <!-- Bootstrap Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-    <!-- Bootstrap Latest compiled and minified JavaScript -->
-<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
-
-   <link rel="stylesheet" href="http://js.arcgis.com/3.13/dijit/themes/claro/claro.css">
-    <link rel="stylesheet" type="text/css" href="./JS/Modules/src/agsjs/css/agsjs.css">
     
+    <link rel="stylesheet" type="text/css" href="./JS/Modules/src/agsjs/css/agsjs.css">    
     <script>
       var dojoConfig = { 
         paths: {
@@ -33,17 +23,12 @@
     <script src="http://js.arcgis.com/3.13/"></script>
 
     <link href="CSS/parishstyle_v2.css" rel="stylesheet" type="text/css">
-    
     <link rel="shortcut icon" type="image/x-icon" href="/flag_1-20140714-favicon.ico">
     
-<!--    <script src="JS/Census_searches.js"></script>-->
     <script src="JS/old_county_data.js"></script>
     <script src="JS/navigation.js"></script>
     <script src="JS/parishjs_v2.js"></script>
-    <script src="JS/NA_Regional_Offices_data.js"></script> 
-    <script src="JS/Modules/xml2json.js"></script>
     <script src="JS/Modules/xmltojson.js"></script>
-
 </head>
     
 <body>
@@ -74,13 +59,12 @@
     
     <div id="tools">
         <img src="IMG/loading.gif" id="loading">
-        <div id="toolsHeader" class="divTitle" title="Click to minimize and maximize this toolbox">Tools <span id="toolsMinIcon" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span><span id="toolsMaxIcon" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></div>
+        <div id="toolsHeader" class="divTitle" title="Click to minimize and maximize this toolbox">Tools<span id="toolsMinIcon" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span><span id="toolsMaxIcon" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></div>
         <div id="toolsContent" class="content"><h4>Parish Search</h4>
         County: <select id="countyDropdown" class="form-control" data-toggle="tooltip" title="Select county to view parishes by county"></select><br>
         Municipality: <select id="municipalityDropdown" class="form-control" data-toggle="tooltip" title="Select municipality to view parishes by municipality"></select><br>
         Parish: <select id="parishDropdown" class="form-control" data-toggle="tooltip" title="Select parish"></select><br>
-            <h4>Property/Farm Search</h4>
-<!--        <input type="text" id="propInput" value="Enter property name here"><br>-->
+        <h4>Property/Farm Search</h4>
         <div class="row">
           <div class="col-lg-12">
             <div class="input-group">
