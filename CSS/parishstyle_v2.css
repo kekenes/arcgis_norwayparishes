@@ -11,13 +11,7 @@ html, body, #map{
     font-weight: bold;
 }
 
-/*
-.visibleBar{
-    background-color: red;
-}
-*/
 .glyphicon-collapse-down{
-/*    visibility: visible;*/
     float: right;
 }
 .glyphicon-collapse-up{
@@ -27,20 +21,6 @@ html, body, #map{
 
 #results .glyphicon-collapse-down{
     visibility: hidden;
-}
-
-/*
-#photoCredit{
-    text-align: right;
-    font-size: 9px;
-*/
-/*    position: absolute;*/
-/*    right: 80px;*/
-/*    top: 240px;*/
-/*}*/
-
-#results .glyphicon-collapse-up{
-/*    visibility: visible;*/
 }
 
 #info .content{
@@ -63,7 +43,7 @@ html, body, #map{
     border-radius: 8px;
 }
 
-#tools .clearBtnCenter{
+.clearBtnCenter{
     text-align: center;
     padding-top: 15px;
 }
@@ -77,8 +57,8 @@ html, body, #map{
 
 #searchWidget{
     position: absolute;
-    top: 128px;
-    left: 12px;
+    top: 20px;
+    left: 65px;
     z-index: 30;
 }
 
@@ -86,7 +66,7 @@ html, body, #map{
     position: absolute;
     bottom: 20px;
     left: 350px;
-    z-index: 40;
+    z-index: 40; 
 }
 
 #loading{
@@ -131,7 +111,7 @@ html, body, #map{
     margin: 0;
     position: absolute;
     z-index: 90;
-    opacity: 0.85;
+    opacity: 0.92;
     background-color: white;
     border-radius: 8px;
     transition: height 0.6s linear 0s, bottom 0.6s linear 0s;
@@ -154,7 +134,7 @@ html, body, #map{
     margin: 0;
     position: absolute;
     z-index: 92;
-    opacity: 0.85;
+    opacity: 0.92;
     background-color: white;
     border-radius: 8px;
     transition: height 0.6s linear 0s;
@@ -196,15 +176,22 @@ html, body, #map{
 #aboutContent .content h1{
     font-size: 36px;
     font-weight: bold;
-/*    color: #5A0000;*/
     text-align: left;
 }
 
 #aboutContent .content h3{
     font-size: 24px;
-/*    font-weight: bold;*/
-/*    color: #5A0000;*/
     text-align: left;
+}
+
+#exitButton{
+    float: right; 
+    position: relative; 
+    right: -5%; 
+    top: -5px; 
+    padding: 4px;
+    background: transparent;
+    border: none;
 }
 
 #legend{
@@ -215,7 +202,7 @@ html, body, #map{
     margin: 0;
     position: absolute;
     z-index: 92;
-    opacity: 0.85;
+    opacity: 0.92;
     background-color: white;
     border-radius: 8px;
     transition: height 0.6s linear 0s;
@@ -237,7 +224,7 @@ html, body, #map{
     margin: 0;
     position: absolute;
     z-index: 90;
-    opacity: 0.85;
+    opacity: 0.92;
     background-color: white;
     border-radius: 8px;
     transition: height 0.6s linear 0s, bottom 0.6s linear 0s;
@@ -253,7 +240,8 @@ html, body, #map{
 }
 
 .content{
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 h4{
@@ -279,7 +267,6 @@ font-weight: bold;
 }
 .agsjsTOCIcon{
     padding-left: 8px;
-/*    padding-right: 8px;*/
 }
 /*
 .agsjsTOCGroupLayer,

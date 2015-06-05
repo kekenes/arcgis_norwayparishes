@@ -7,18 +7,21 @@ require([
     "esri/layers/ArcGISTiledMapServiceLayer",
     "esri/layers/LabelLayer",
     "esri/layers/GraphicsLayer",
+    
     "esri/config",
-    "esri/dijit/Legend",
     "esri/tasks/query",
     "esri/tasks/QueryTask",
     "esri/tasks/locator",
+    
     "esri/graphicsUtils",
     "esri/graphic",
+    
     "esri/symbols/SimpleFillSymbol",
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleMarkerSymbol",
     "esri/symbols/TextSymbol",
     "esri/symbols/Font",
+    
     "esri/Color",
     "esri/dijit/HomeButton",
     "esri/dijit/Scalebar",
@@ -27,12 +30,11 @@ require([
     "dojo/i18n!esri/nls/jsapi",
     "esri/renderers/SimpleRenderer",
     
-    "agsjs/dijit/TOC", 
+    "agsjs/dijit/TOC",
+    "Modules/NorwayPlaces",
     
-    "dojo/query",
     "dojo/Deferred",
     "dojo/_base/array",
-    "dojo/request",
     "dojo/dom-construct",
     "dojo/dom",
     "dojo/on", 
@@ -45,11 +47,12 @@ require([
         ArcGISTiledMapServiceLayer,
         LabelLayer,
         GraphicsLayer,
+         
         esriConfig,
-        Legend,
         Query,
         QueryTask,
         Locator,
+         
         graphicsUtils,
         Graphic,
         SimpleFillSymbol,
@@ -57,6 +60,7 @@ require([
         SimpleMarkerSymbol,
         TextSymbol,
         Font,
+         
         Color,
         HomeButton,
         Scalebar,
@@ -66,74 +70,67 @@ require([
         SimpleRenderer,
          
         TOC,
+        NorwayPlaces,
           
-        $,
         Deferred,
         array,
-        request, 
         domConstruct, 
         dom, 
         on){
     
   //////////CONFIG SETTINGS AND OPTIONS/////////////////////////////////////////
-//  esriConfig.defaults.io.proxyUrl = "/proxy/";
 //  esriConfig.defaults.io.proxyUrl = "./proxy/PHP/proxy.php";
     esriConfig.defaults.io.proxyUrl = "./proxy/DotNet/proxy.ashx";
-//    $("[data-toggle='tooltip']").tooltip();
     
   ///////////////////LAYERS AND LAYER INFO///////////////////////////////////////
-//  var parishSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0.25]));
-//  var municipalitySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([217,95,2]), 6), new Color([0,0,0,0.25]));
-//  var countySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,100,0]), 6), new Color([0,0,0,0.25]));
+//  var parishSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_FILL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0]));
+//  var municipalitySymbol = new SimpleFillSymbol(null, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([217,95,2]), 6), new Color([0,0,0,0]));
+//  var countySymbol = new SimpleFillSymbol(null, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,100,0]), 6), new Color([0,0,0,0]));
 //    var parishRenderer = new SimpleRenderer(parishSymbol);
 //    var municipalityRenderer = new SimpleRenderer(municipalitySymbol);
 //    var countyRenderer = new SimpleRenderer(countySymbol);
+    var officeSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 12, null, new Color([0,0,0]));
+    var officeRenderer = new SimpleRenderer(officeSymbol);
     
-    var selectionLayer = new GraphicsLayer();
-    
-  //"http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/0"    
+  var selectionLayer = new GraphicsLayer();
+      
   var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/0", {
     outFields: ["*"]
-  });
-   
-  //http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/1    
+  }); 
   var municipalitiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/1", {
     outFields: ["*"]
-  });
-    
-  //http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326/FeatureServer/2    
+  });   
   var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/2", {
     outFields: ["*"]
   });
+  var officesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/NA_Regional_Offices_2/FeatureServer/0", {
+    outFields: ["*"],
+    visible: false
+  });
+  officesLayer.setRenderer(officeRenderer);
 
-    //These renderers don't allow for on click events to work on layers
-    //May have to republish services
 //    countiesLayer.setRenderer(countyRenderer);
 //    municipalitiesLayer.setRenderer(municipalityRenderer);
 //    parishesLayer.setRenderer(parishRenderer);
     
-    var parishFont = new Font("12pt", Font.STYLE_NORMAL, Font.VARIANT_NORMAL, Font.WEIGHT_BOLD, "Arial");
-    var parishText = new TextSymbol("filler text", parishFont, new Color([148,0,211]));
-    var parishTextRenderer = new SimpleRenderer(parishText);
+  var parishFont = new Font("12pt", Font.STYLE_NORMAL, Font.VARIANT_NORMAL, Font.WEIGHT_BOLD, "Arial");
+  var parishText = new TextSymbol("filler text", parishFont, new Color([148,0,211]));
+  var parishTextRenderer = new SimpleRenderer(parishText);
 
-//    var parishSatText = new TextSymbol("filler text", parishFont, new Color([0,0,0]));
-//    var parishSatRenderer = new SimpleRenderer(parishSatText);
+  var officeFont = new Font("12pt", Font.STYLE_NORMAL, Font.VARIANT_NORMAL, Font.WEIGHT_BOLD, "Arial");
+  var officeText = new TextSymbol("filler text", officeFont, new Color([148,0,211]));
+  var officeTextRenderer = new SimpleRenderer(officeText);
     
   var parishLabels = new LabelLayer({
     mode: "DYNAMIC"
   });
-    parishLabels.addFeatureLayer(parishesLayer, parishTextRenderer, "{Par_NAME}");
+  var officeLabels = new LabelLayer({
+    mode: "DYNAMIC"
+  });
+    
+  parishLabels.addFeatureLayer(parishesLayer, parishTextRenderer, "{Par_NAME}");
+  officeLabels.addFeatureLayer(officesLayer, officeTextRenderer, "{NAME}");
 
-//  var euroInfo = new WMTSLayerInfo({
-//          identifier: "europa",
-//          tileMatrixSet: "EPSG:3857",  //3857, 4326, 900913, 32635, 32633, 32632
-//          format: "png"
-//        });
-//  var euroOptions = {
-//          serviceMode: "KVP",
-//          layerInfo: euroInfo
-//        };
-        
   var topoInfo = new WMTSLayerInfo({
           identifier: "topo2",
           tileMatrixSet: "EPSG:3857",  //3857, 4326, 25832, 25833, 25835, 3035, 900913, 32635, 32633, 32632
@@ -145,29 +142,67 @@ require([
           opacity: 1
         };
   var norTopoLayer = new WMTSLayer("http://opencache.statkart.no/gatekeeper/gk/gk.open_wmts?Version=1.0.0&service=wmts&request=getcapabilities", topoOptions);
-        
-//  var europeBaseLayer = new WMTSLayer("http://opencache.statkart.no/gatekeeper/gk/gk.open_wmts?Version=1.0.0&service=wmts&request=getcapabilities", euroOptions);
-
   var streetLayer = new ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/arcgis/rest/services/Reference/World_Transportation/MapServer");
-    
   var satelliteLayer = new ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer", {
     opacity: 0.9
   });
-    
   var topoLayer = new ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/arcgis/rest/services/World_Topo_Map/MapServer", {
-    opacity: 0.4
-  });    
-
+    opacity: 0.4,
+    displayLevels: [1,2,3,4,5,6,7]
+  });       
+  var propertiesLayer = new GraphicsLayer();
+  var addressLayer = new GraphicsLayer();
     
-  //////////////////////END LAYERS AND LAYER INFO///////////////////////////
-    
-    /////////////////////////POPUPs///////////////////////////////////  
+    //////////////////////////////////POPUPS/////////////////////////////////////////////////////  
  var infoHeight = "25px";
+    
+ function setFarmInfo(info){
+    infoHeight = "30%";
+    animateInfoBox(infoHeight);
+    var content = "";
+    var propName = info.name;
+    var county = info.county;
+    var municipality = info.municipality;
+    var type = info.type;
+    var parish;
+    var queryTask = new QueryTask(parishesLayer.url);
+    var parishQuery = new Query();
+    parishQuery.geometry = info.geom;
+    parishQuery.returnGeometry = false;
+    parishQuery.outFields = ["Par_NAME", "COUNTY", "MUNICIPALITY"];
+    parishQuery.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
+    queryTask.execute(parishQuery, function(result){
+        parish = result.features[0].attributes.Par_NAME;
+        county = result.features[0].attributes.COUNTY;
+        municipality = result.features[0].attributes.MUNICIPALITY;
+        
+        content = "<h4>" + propName + "</h4>"
+        + "<i>" + type + "</i><br>"
+        + parish + " Parish<br>"
+        + municipality + ", " + county + " County<br><br>"
+        + "<a href='#'><button type='button' id='addFarmInfo' class='btn btn-primary btn-sm' >View Propety Information</button></a><br>"
+        + "<a href='#'><button type='button' id='farmParish' class='btn btn-primary btn-sm' >View " + parish + " Parish Records</button></a><br>";
+        
+        dom.byId("infoContent").innerHTML = content;
+        
+        on(dom.byId("farmParish"), "click", function(){
+            setAllDropdowns({
+                COUNTY: county,
+                MUNICIPALITY: municipality,
+                Par_NAME: parish
+            });
+        });
+        
+        on(dom.byId("addFarmInfo"), "click", function(){
+            NorwayPlaces.getFactSheet(info.ssrId);
+        });
+    });
+ }
     
  function setCountyInfo(info){
     infoHeight = "30%";
     animateInfoBox(infoHeight);
-    console.log("set county info called: ", info);
+
     var countyName = info.COUNTY;
     var wikiURL = info.WIKI;
     var FSwiki = info.FS_WIKI;
@@ -195,19 +230,30 @@ require([
     + "<a target='_blank' href='" + wikiURL + "'><button type='button' class='btn btn-primary btn-sm' >General Information</button></a><br><br>";
      
     dom.byId("infoContent").innerHTML = content;
- }  
+ }
+    
+ function getFarmList(county){
+    var farmList;
+    for(i = 0; i < old_county_data.length; i++){
+        if(old_county_data[i].name === county){
+            farmList = old_county_data[i].farms;
+            break;
+        }
+    }
+    return farmList;
+ }    
     
  function setParishInfo(info){
     infoHeight = "50%";
     animateInfoBox(infoHeight); 
-     
+
     var parishName = info.Par_NAME;
     var municipalityName = info.MUNICIPALITY;
     var countyName = info.COUNTY;
     var photoURL = info.PHOTO;
     var photoOr = info.PHOTO_O;
     var FSwiki = info.FAM_SEARCH;
-    var farmList = info.FARMS;
+    var farmList = getFarmList(countyName);
     var churchURL = info.CHURCH;
     var da1_url = info.DA_1;
     var da1_name = info.DA_1_NAME;
@@ -221,7 +267,7 @@ require([
     var da5_name = info.DA_5_NAME;
      
     var photoWidth, photoHeight;
-     
+
     if(photoOr == "L"){
         photoHeight = "150";
         photoWidth = "200";
@@ -256,7 +302,6 @@ require([
      }
      
      dom.byId("infoContent").innerHTML = content;
-//     dom.byId("infoContent").style.overflowY = "scroll";
  }
     
     function animateInfoBox(height){
@@ -265,19 +310,43 @@ require([
         dom.byId("infoContent").style.visibility = "visible";
     }
     
+    function setOfficeInfo(attributes){
+        infoHeight = "38%";
+        animateInfoBox(infoHeight); 
+        
+        var content;
+        var name = attributes.NAME;
+        var photoURL = attributes.PHOTO;
+        var website = attributes.WEBSITE;
+        var address = attributes.ADDRESS;
+        var phone = attributes.PHONE;
+        var email = attributes.EMAIL;
+        
+        content = "<h4>" + name + " Regional Office of the National Archives</h4>"
+        + "<div class='photo'><img src='" + photoURL + "' height='113px' width='150px'></div>"
+        + "<br><b>Address: </b>" + address
+        + "<br><b>Phone: </b>" + phone
+        + "<br><a target='_blank' href='mailto:" + email + "'><button type='button' class='btn btn-success btn-sm'>Send Email</button></a>"
+        + "<br><a target='_blank' href='" + website + "'><button type='button' class='btn btn-success btn-sm'>Visit Website</button></a>";
+        
+        dom.byId("infoContent").innerHTML = content;
+    }
+    
+    on(officesLayer, "click", function(evt){
+        setOfficeInfo(evt.graphic.attributes);
+    });
+    
     ////////////////////////END POPUPS//////////////////////////////////
     
   /////////////////////MAP AND LEGEND///////////////////////////////////////
   var loading = dom.byId("loading");
   on(countiesLayer, "load", initMap);
+    
   var homeButton, scalebar, overviewMap;
   function initMap(){
-      
     map = new Map("map", {
-      extent: countiesLayer.fullExtent//,
-//      basemap: "topo"
+      extent: countiesLayer.fullExtent
     });
-      
     homeButton = new HomeButton({
         map: map
     }, "homeButton");
@@ -287,18 +356,22 @@ require([
         map: map,
         attachTo: "top-left",
         baseLayer: topoLayer,
-        expandFactor: 3
+        expandFactor: 3,
+        height: 400,
+        width: 500
     });
     overviewMap.startup();
-      
-    console.log("map extent: ", map.extent);
-      
-    map.addLayers([satelliteLayer, topoLayer, norTopoLayer, streetLayer, selectionLayer, parishesLayer, parishLabels, municipalitiesLayer, countiesLayer]);
-      satelliteLayer.hide();
-      streetLayer.hide();
+
+    map.addLayer(satelliteLayer); 
+    map.addLayer(topoLayer); 
+    map.addLayer(norTopoLayer); 
+    map.addLayer(streetLayer); 
+    map.addLayers([selectionLayer, parishesLayer, municipalitiesLayer, countiesLayer, officesLayer, parishLabels, addressLayer, propertiesLayer]);
+    map.addLayer(officeLabels);    
+    satelliteLayer.hide();
+    streetLayer.hide();
       
     on(map, "layers-add-result", function(evt){
-
         var toc = new TOC({
           map: map,
           layerInfos: [
@@ -313,7 +386,11 @@ require([
               {
                 layer: parishesLayer,
                 title: "Parishes"
-              }              
+              },
+              {
+                layer: officesLayer,
+                title: "Regional Offices"
+              }
           ]
         }, "legendContent");
         toc.startup();
@@ -321,34 +398,29 @@ require([
       scalebar = new Scalebar({
         map: map,
         attachTo: "bottom-center",
-//        scalebarUnit: "dual",
         scalebarStyle: "ruler"
         });
-      scalebar.startup();
-        
-    });
-      
+      scalebar.startup(); 
+    });  
   }
+
+  on(parishLabels, 'graphic-node-add', function (graphic) {
+    graphic.node.style.textShadow = "1px 1px 1px white, 1px -1px 1px white, -1px 1px 1px white, -1px -1px 1px white";
+  });
     
   on(document.getElementsByName("baseLayers")[1], "click", function(evt){
     if(dom.byId("radioSat").checked){
-//        map.setBasemap("satellite");
         satelliteLayer.show();
         topoLayer.hide();
         norTopoLayer.hide();
-//        parishLabels.setRenderer(parishSatRenderer);
-//        parishLabels.redraw();
     }
   });
     
   on(document.getElementsByName("baseLayers")[0], "click", function(evt){
     if(dom.byId("radioTopo").checked){
-//        map.setBasemap("topo");
         satelliteLayer.hide();
         topoLayer.show();
         norTopoLayer.show();
-//        parishLabels.setRenderer(parishTextRenderer);
-//        parishLabels.redraw();
     }
   });
     
@@ -360,34 +432,12 @@ require([
         streetLayer.hide();
     }
   });    
-    
-  function calcOffset(){
-    return (map.extent.getWidth() / map.width);
-  }
-  
-  ////////////////////END MAP AND LEGEND///////////////////////////
 
-    /////////////////////////SEARCH WIDGET////////////////////////////////
+//////////////////////////////////SEARCH WIDGET////////////////////////////////////
     
-     esriBundle.widgets.Search.main.placeholder = "Search parish, city, county";
-     console.log("esri bundle: ", esriBundle);
+    esriBundle.widgets.Search.main.placeholder = "Search parish, city, county";
     
     var searchSources = [
-//        {  //Geocoder
-//            locator: new Locator("//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
-//            singleLineFieldName: "SingleLine",
-//            outFields: ["Addr_type"],
-//            name: "Places",
-//            localSearchOptions: {
-//              minScale: 300000,
-//              distance: 50000
-//            },
-//            placeholder: "Search place or address",
-//            maxResults: 5,
-//            minCharacters: 1,
-//            maxSuggestions: 2,
-//            autoNavigate: true
-//        },
         {  //COUNTIES LAYER
             featureLayer: countiesLayer,
             autoNavigate: true,
@@ -395,7 +445,7 @@ require([
             enableHighlight: true,
             enableInfoWindow: false,
             maxResults: 5,
-            maxSuggestions: 5,
+            maxSuggestions: 3,
             minCharacters: 1,
             name: "Counties",
             outFields: ["COUNTY"],
@@ -410,7 +460,7 @@ require([
             enableHighlight: true,
             enableInfoWindow: false,
             maxResults: 5,
-            maxSuggestions: 5,
+            maxSuggestions: 3,
             minCharacters: 1,
             name: "Municipalities",
             outFields: ["MUNICIPALITY", "COUNTY"],
@@ -432,21 +482,32 @@ require([
             placeholder: "e.g. Tvedestrand",
             searchFields: ["Par_NAME", "MUNICIPALITY", "COUNTY"],
             showInfoWindowOnSelect: false
+        },
+        {  //Geocoder
+            locator: new Locator("//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
+            singleLineFieldName: "SingleLine",
+            outFields: ["Addr_type"],
+            name: "Addresses",
+            localSearchOptions: {
+              minScale: 300000,
+              distance: 50000
+            },
+            placeholder: "Street address",
+            maxResults: 5,
+            minCharacters: 1,
+            maxSuggestions: 2,
+            autoNavigate: true
         }
     ];
     
     var search = new Search({
         activeSourceIndex: "all",
         map: map,
-//        autoNavigate: false,
-        enableButtonMode: true,
-//        enableHighlight: false,
+        enableButtonMode: false,
         enableInfoWindow: false,
         enableSuggestions: true,
         enableSuggestionsMenu: true,
         expanded: false,
-//        graphicsLayer: selectionLayer,
-//        highlightSymbol: selectSymbol,
         maxResults: 5,
         maxSuggestions: 5,
         minCharacters: 1,
@@ -456,65 +517,34 @@ require([
     search.startup();
     
     on(search, "select-result", function(evt){
-        var result = evt.result.feature.attributes;
+        addressLayer.clear();
+        var inExtent = null;
+        var geomType = evt.result.feature.geometry.type;
+        if(geomType === "point")
+            inExtent = NorwayPlaces.withinExtent(evt.result.feature.geometry, countiesLayer.fullExtent);
         
-        if(result.COUNTY && !result.MUNICIPALITY){
-            selectRegion(countiesLayer, result.COUNTY);
-            
-            countyDropdown.value = result.COUNTY;
-            setDropdown(municipalityDropdown, result.COUNTY);
-            setDropdown(parishDropdown, result.COUNTY);
+        if(geomType === "point" && inExtent){
+            var queryTask = new QueryTask(parishesLayer.url);
+            var searchQuery = new Query();
+            searchQuery.geometry = evt.result.feature.geometry;
+            searchQuery.returnGeometry = false;
+            searchQuery.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
+            searchQuery.outFields = ["Par_NAME", "COUNTY", "MUNICIPALITY"];
+            queryTask.execute(searchQuery, function(queryResult){
+                setAllDropdowns(queryResult.features[0].attributes);
+                addressLayer.add(new Graphic(searchQuery.geometry, new SimpleMarkerSymbol(
+                    SimpleMarkerSymbol.STYLE_CIRCLE, 15, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,0]), 1), new Color([52,250,237])
+                )));
+            });
         }
-        if(result.MUNICIPALITY && !result.Par_NAME){
-            selectRegion(municipalitiesLayer, result.COUNTY, result.MUNICIPALITY);
-            
-            if(countyDropdown.value != result.COUNTY)
-            {
-                countyDropdown.value = result.COUNTY;
-                setDropdown(municipalityDropdown, result.COUNTY).then(function(resolved){
-                    if(resolved){
-                        municipalityDropdown.value = result.MUNICIPALITY;
-                        setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY);
-                    }
-                    else
-                        consle.error("Municipality dropdown not set! Promise needs to resolve.");
-                });            
-            }
-            else{
-                municipalityDropdown.value = result.MUNICIPALITY;
-                setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY);
-            }
-        }
-        if(result.Par_NAME){
-            selectRegion(parishesLayer, result.COUNTY, result.Par_NAME);
-            
-            if((municipalityDropdown.value != result.MUNICIPALITY) && (countyDropdown.value != result.COUNTY)){
-                countyDropdown.value = result.COUNTY;
-                setDropdown(municipalityDropdown, result.COUNTY).then(function(resolved){
-                    if(resolved){
-                        municipalityDropdown.value = result.MUNICIPALITY;
-                        return setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY);
-                    }
-                    else
-                        consle.error("Municipality dropdown not set! Promise needs to resolve.");
-                }).then(function(resolved){
-                    if(resolved)
-                        parishDropdown.value = result.Par_NAME;
-                });         
-            }
-            else if((municipalityDropdown.value != result.MUNICIPALITY) && (countyDropdown.value == result.COUNTY)){
-                municipalityDropdown.value = result.MUNICIPALITY;
-                setDropdown(parishDropdown, result.COUNTY, result.MUNICIPALITY, result.Par_NAME).then(function(resolve){
-                    parishDropdown.value = result.Par_NAME;
-                });
-            }
-            else{
-                parishDropdown.value = result.Par_NAME;
-            }
+        else{
+            setAllDropdowns(evt.result.feature.attributes);
         }
     });
     
-    /////////////////////////END SEARCH WIDGET//////////////////////////////  
+    on(search, "clear-search", function(evt){
+        addressLayer.clear();
+    });
     
 /////////////////////////TOOLS - DROPDOWN SETUP//////////////////////////////
     
@@ -526,16 +556,14 @@ require([
         var dfd = new Deferred();
         loading.style.visibility = "visible";
         
-        console.log("set dropdown: ", dropdown, " county dropdown: ", countyDropdown);
         var dropQuery = new Query();
         var dropQueryTask = new QueryTask();
         var selectLayer, attribute;
         
         dropQuery.outFields = [ "COUNTY" , "MUNICIPALITY" , "Par_NAME" ];
-//        dropQuery.returnGeometry = true;
+        dropQuery.returnGeometry = false;
     
         if(dropdown === countyDropdown){
-            console.log("county where set!!!", municipalitiesLayer);
             dropQuery.where = "1=1";
             selectLayer = countiesLayer;  //apply this to counties layer
             attribute = "county";
@@ -559,7 +587,6 @@ require([
         selectLayer.queryFeatures(dropQuery, function(results){   //execute query
             dropdown.options.length = 0;
             var options = [];
-            console.log("results: ", results);
             var features = results.features;
             array.forEach(features, function(item, i){
                 if(attribute === "county")
@@ -585,14 +612,11 @@ require([
                     dfd.resolve(true);
                 }
             });
-            
-            console.log("list: ", options);
         });
         return dfd.promise;
     }
     
     on(countiesLayer, "load", function(){
-        console.log("on counties layer load.");
         setDropdown(countyDropdown);
     });
     
@@ -602,15 +626,12 @@ require([
            map.setExtent(homeButton.extent);
            return;
         }
-        console.log("county dropdown selection made.", evt.target.value);
         selectRegion(countiesLayer, evt.target.value);
         setDropdown(municipalityDropdown, evt.target.value);
         setDropdown(parishDropdown, evt.target.value);
     });
     
     on(municipalityDropdown, "change", function(evt){
-        console.log("municipality dropdown selection made: ", evt.target.value);
-        console.log("county val: ", countyDropdown.value);
         selectRegion(municipalitiesLayer, countyDropdown.value, evt.target.value);
         setDropdown(parishDropdown, countyDropdown.value, evt.target.value);
     });
@@ -619,7 +640,53 @@ require([
         selectRegion(parishesLayer, countyDropdown.value, evt.target.value);
     });
     
-    //////////////////////////SELECT REGIONS AND ZOOM////////////////////
+    function setAllDropdowns(selectAtt){
+        if(selectAtt.COUNTY && !selectAtt.MUNICIPALITY){
+            selectRegion(countiesLayer, selectAtt.COUNTY);
+            countyDropdown.value = selectAtt.COUNTY;
+            setDropdown(municipalityDropdown, selectAtt.COUNTY);
+            setDropdown(parishDropdown, selectAtt.COUNTY);
+        }
+        if(selectAtt.MUNICIPALITY && !selectAtt.Par_NAME){
+            selectRegion(municipalitiesLayer, selectAtt.COUNTY, selectAtt.MUNICIPALITY);
+            if(countyDropdown.value != selectAtt.COUNTY)
+            {
+                countyDropdown.value = selectAtt.COUNTY;
+                setDropdown(municipalityDropdown, selectAtt.COUNTY).then(function(resolved){
+                    municipalityDropdown.value = selectAtt.MUNICIPALITY;
+                    setDropdown(parishDropdown, selectAtt.COUNTY, selectAtt.MUNICIPALITY);
+                });            
+            }
+            else{
+                municipalityDropdown.value = selectAtt.MUNICIPALITY;
+                setDropdown(parishDropdown, selectAtt.COUNTY, selectAtt.MUNICIPALITY);
+            }
+        }
+        if(selectAtt.Par_NAME){
+            selectRegion(parishesLayer, selectAtt.COUNTY, selectAtt.Par_NAME);
+            
+            if((municipalityDropdown.value != selectAtt.MUNICIPALITY) && (countyDropdown.value != selectAtt.COUNTY)){
+                countyDropdown.value = selectAtt.COUNTY;
+                setDropdown(municipalityDropdown, selectAtt.COUNTY).then(function(resolved){
+                    municipalityDropdown.value = selectAtt.MUNICIPALITY;
+                    return setDropdown(parishDropdown, selectAtt.COUNTY, selectAtt.MUNICIPALITY);
+                }).then(function(resolved){
+                    parishDropdown.value = selectAtt.Par_NAME;
+                });         
+            }
+            else if((municipalityDropdown.value != selectAtt.MUNICIPALITY) && (countyDropdown.value == selectAtt.COUNTY)){
+                municipalityDropdown.value = selectAtt.MUNICIPALITY;
+                setDropdown(parishDropdown, selectAtt.COUNTY, selectAtt.MUNICIPALITY, selectAtt.Par_NAME).then(function(resolve){
+                    parishDropdown.value = selectAtt.Par_NAME;
+                });
+            }
+            else{
+                parishDropdown.value = selectAtt.Par_NAME;
+            }
+        }
+    }
+    
+    ///////////////////////////////////////SELECT REGIONS AND ZOOM///////////////////////////////////////////////
     var selectSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,0]), 6), new Color([0,0,0,0.25]));
     
     function selectRegion(layer, county, name){
@@ -638,20 +705,15 @@ require([
         if(layer === countiesLayer){
             selectQuery.where = "COUNTY = '" + county + "'";
         }
-        
-        console.log("where statement: ", selectQuery.where);
-        console.log("layer: ", layer);
         queryTask.execute(selectQuery, zoomTo);
     }
     
     function zoomTo(result){
         var selectedGeom = result.features[0].geometry;
-        console.log("query task result: ", result);
         selectionLayer.clear();
         selectionLayer.add(new Graphic(selectedGeom, selectSymbol));
         var extent = graphicsUtils.graphicsExtent(result.features);
         map.setExtent(extent, true);
-        console.log("zoom to result: ", result);
         var selectionInfo = result.features[0].attributes;
         
         //set content here!!!!!!!!!!!!!!!!!!!!!!!
@@ -661,76 +723,22 @@ require([
             setMunicipalityInfo(selectionInfo);
         if(selectionInfo.Par_NAME)
             setParishInfo(selectionInfo);
-        
-        return;
     }
     
     on(countiesLayer, "click", function(evt){
-        console.log("counties clicked!!!!!!!!!!!!");
-        selectRegion(countiesLayer, evt.graphic.attributes.COUNTY);
-        
-        countyDropdown.value = evt.graphic.attributes.COUNTY;
-        setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY);
-        setDropdown(parishDropdown, evt.graphic.attributes.COUNTY);
+        setAllDropdowns(evt.graphic.attributes);
     });
     on(municipalitiesLayer, "click", function(evt){
-        console.log("munis clicked!!!!!!!!!!!!");
-        selectRegion(municipalitiesLayer, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-        
-        if(countyDropdown.value != evt.graphic.attributes.COUNTY)
-        {
-            countyDropdown.value = evt.graphic.attributes.COUNTY;
-            setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY).then(function(resolved){
-                if(resolved){
-                    municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-                    setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-                }
-                else
-                    consle.error("Municipality dropdown not set! Promise needs to resolve.");
-            });            
-        }
-        else{
-            municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-        }
-        
+        setAllDropdowns(evt.graphic.attributes);
     });
     on(parishesLayer, "click", function(evt){
-        console.log("parish click event: ", evt);
-        selectRegion(parishesLayer, evt.graphic.attributes.COUNTY, evt.graphic.attributes.Par_NAME);
-        
-        if((municipalityDropdown.value != evt.graphic.attributes.MUNICIPALITY) && (countyDropdown.value != evt.graphic.attributes.COUNTY)){
-            countyDropdown.value = evt.graphic.attributes.COUNTY;
-            setDropdown(municipalityDropdown, evt.graphic.attributes.COUNTY).then(function(resolved){
-                if(resolved){
-                    municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-                    return setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY);
-                }
-                else
-                    consle.error("Municipality dropdown not set! Promise needs to resolve.");
-            }).then(function(resolved){
-                if(resolved)
-                    parishDropdown.value = evt.graphic.attributes.Par_NAME;
-            });         
-        }
-        else if((municipalityDropdown.value != evt.graphic.attributes.MUNICIPALITY) && (countyDropdown.value == evt.graphic.attributes.COUNTY)){
-            municipalityDropdown.value = evt.graphic.attributes.MUNICIPALITY;
-            setDropdown(parishDropdown, evt.graphic.attributes.COUNTY, evt.graphic.attributes.MUNICIPALITY, evt.graphic.attributes.Par_NAME).then(function(resolve){
-                parishDropdown.value = evt.graphic.attributes.Par_NAME;
-            });
-        }
-        else{
-            parishDropdown.value = evt.graphic.attributes.Par_NAME;
-        }
+        setAllDropdowns(evt.graphic.attributes);
     });
     
     function clearSelection(){
         selectionLayer.clear();
-//        dom.byId("info").style.height = "25px";
+        addressLayer.clear();
         dom.byId("info").style.visibility = "hidden";
-//        dom.byId("infoMinIcon").style.visibility = "hidden";
-//        dom.byId("infoMaxIcon").style.visibility = "visible";
-//        dom.byId("infoContent").style.visibility = "hidden";
         municipalityDropdown.length = 0;
         parishDropdown.length = 0;
         countyDropdown.value = "";
@@ -739,7 +747,125 @@ require([
     on(dom.byId('clearBtn'), "click", clearSelection);
     
     ////////////////////////////FARM SEARCH TOOLS///////////////////////////////
+                                                                                                                                                                    //145 100 15
+    var farmSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 12, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,0]), 2), new Color([255,255,0]));
+    var farmHighlightSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 24, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,0]), 2), new Color([255,0,0]));
+    
+    var placeSearchBtn = dom.byId("farmSearchBtn");
+    var placeGeoCheckBox = dom.byId("useGeoSelection");
+    var propName;
+    
+    on(placeSearchBtn, "click", function(){
+        loading.style.visibility = "visible";
+        propName = dom.byId("propTextBox").value;
+        var geoFilter = null;
+        
+        if(propName.length < 1){
+            alert("You must enter a property name to perform this operation.");
+            loading.style.visibility = "hidden";
+            return;
+        }
+        
+        if(placeGeoCheckBox.checked && selectionLayer.graphics.length > 0)
+            geoFilter = selectionLayer.graphics[0].geometry;
+        
+        NorwayPlaces.search(propName, geoFilter).then(function(properties){
+            dom.byId("results").style.height = "30%";
+            dom.byId("results").style.visibility = "visible";
+            dom.byId("resultsMinIcon").style.visibility = "visible";
+            return properties;
+        }, function(rejected){
+            console.error("search rejected!");
+            loading.style.visibility = "hidden";
+        }).then(showSearchResults, function(rejected){
+            console.log("Rejected. Don't show results.");
+        });
+    });
+    
+    function showSearchResults(response){
+        propertiesLayer.clear();
+        
+        var noResultMessage = "<p><i>No properties could be identified by the name: <b>" + propName + "</b></i>. The following"
+                    + " are suggestions for improving your search:</p><ol>"
+                    + "<li>Check the spelling of the search entry to ensure it is correct, including the usage of Norwegain characters (&aelig;, &oslash;, &aring;). "
+                    + "If necessary, <a target='_blank' href='https://familysearch.org/learn/wiki/en/Norway:_Typing_%C3%86,_%C3%98,_and_%C3%85'>"
+                    + "activate the Norwegian keyboard</a> on your computer.</li><br>"
+                    + "<li>If searching for farms, use <a target='_blank' href='http://www.dokpro.uio.no/rygh_ng/rygh_form.html'>Oluf Rygh's Farm Gazetteer</a>"
+                    + " to find alternate spellings of the desired farm name.</li><br>"
+                    + "<li>If necessary, uncheck the checkbox to remove geographic filtering to broaden the search.</li></ol>";
+        
+        if((response === 0) || (response.length === 0)){
+            dom.byId("resultsContent").innerHTML = noResultMessage + "<div class='clearBtnCenter'><button onclick='clearPropSearch()' type='button' class='btn btn-default btn-sm'>Clear Search Results</button></div>";
+            loading.style.visibility = "hidden";
+            return;
+        }
+        
+        dom.byId("resultsContent").innerHTML = "<span style='padding-left:25%'><b>" + response.length + "</b> properties found</span>"
+            + "<ul class='list-group'>";
+             
+        array.forEach(response, function(item, i){
+            var id = item.ssrId;
+            dom.byId("resultsContent").innerHTML += "<a href='#' onmouseout='removeHighlightProperty(" + id + ");' onmouseover='highlightProperty(" + id + ");' onclick='selectProperty(" + id + ");' class='list-group-item' id='" + id + "'>"
+            + "<b>" + item.name + "</b><br>"
+            + "<span style='padding: 15px;'><i>" + item.type + "</i></span><br>"
+            + "<span style='padding: 15px;'>" + item.municipality + ", " + item.county + "</span>"
+            + "</a>";
+            
+            var propFeature = new Graphic(item.geom, farmSymbol, item);
+            propertiesLayer.add(propFeature);
+        });
+        dom.byId("resultsContent").innerHTML += "<div class='clearBtnCenter'><button onclick='clearPropSearch()' type='button' class='btn btn-default btn-sm'>Clear Search Results</button></div>";
+        map.setExtent(graphicsUtils.graphicsExtent(propertiesLayer.graphics), true);
+        dom.byId("resultsContent").innerHTML += "</ul>";
+        loading.style.visibility = "hidden";
+        
+        return response;
+    }
+    
+    window.clearPropSearch = function (){
+        dom.byId("resultsContent").innerHTML = "";
+        dom.byId("results").style.visibility = "hidden";
+        dom.byId("resultsMinIcon").style.visibility = "hidden";
+        propertiesLayer.clear();
+        dom.byId("propTextBox").value = "";
+    }
 
+    on(propertiesLayer, "click", function(evt){
+        selectProperty(evt.graphic.attributes.ssrId);
+    });
+    
+    window.highlightProperty = function(propId){
+        var propLayer = map.getLayer(map.graphicsLayerIds[map.graphicsLayerIds.length-1]);
+        var propFeatures = propLayer.graphics;
+        array.forEach(propFeatures, function(item, i){
+            if(item.attributes.ssrId === propId){
+                item.setSymbol(farmHighlightSymbol);
+            }
+        });
+    };
+    
+    window.removeHighlightProperty = function(propId){
+        var propLayer = map.getLayer(map.graphicsLayerIds[map.graphicsLayerIds.length-1]);
+        var propFeatures = propLayer.graphics;
+        array.forEach(propFeatures, function(item, i){
+            if(item.attributes.ssrId === propId){
+                item.setSymbol(farmSymbol);
+            }
+        });
+    };
+    
+    window.selectProperty = function (propId){
+        var propLayer = map.getLayer(map.graphicsLayerIds[map.graphicsLayerIds.length-1]);
+        var propFeatures = propLayer.graphics;
+        
+        array.forEach(propFeatures, function(item, i){
+            if(item.attributes.ssrId === propId){
+                map.centerAndZoom(item.attributes.geom, 18);
+                setFarmInfo(item.attributes);
+            }
+        });
+    };
+    
     ///////////////////////////LAYOUT EVENTS//////////////////////////////////
     dom.byId("legend").style.height = "35%";
     dom.byId("tools").style.height = "50%";
@@ -747,14 +873,12 @@ require([
     dom.byId("results").style.height = "25px";
     
     on(dom.byId("toolsHeader"), "click", function(){
-        
       if(dom.byId("tools").style.height == "50%"){  
           dom.byId("tools").style.height = "25px";
           dom.byId("toolsMinIcon").style.visibility = "hidden";
           dom.byId("toolsMaxIcon").style.visibility = "visible";
           dom.byId("toolsContent").style.visibility = "hidden";
-//          dom.byId("tools").style.overflowY = "initial";
-          
+
           dom.byId("results").style.bottom = "60px";
       }
       else{
@@ -762,21 +886,18 @@ require([
           dom.byId("toolsMinIcon").style.visibility = "visible";
           dom.byId("toolsMaxIcon").style.visibility = "hidden";
           dom.byId("toolsContent").style.visibility = "visible";
-//          dom.byId("tools").style.overflowY = "auto";
           
           dom.byId("results").style.bottom = "55%";
       }
     });
     
     on(dom.byId("legendHeader"), "click", function(){
-        
       if(dom.byId("legend").style.height == "35%"){    
           dom.byId("legend").style.height = "25px";
           dom.byId("legendMinIcon").style.visibility = "hidden";
           dom.byId("legendMaxIcon").style.visibility = "visible";
           dom.byId("legendContent").style.visibility = "hidden";
           dom.byId("legendContentBase").style.visibility = "hidden";
-//          dom.byId("legend").style.overflowY = "initial";
           
           dom.byId("info").style.bottom = "75px";
       }
@@ -786,46 +907,38 @@ require([
           dom.byId("legendMaxIcon").style.visibility = "hidden";
           dom.byId("legendContent").style.visibility = "visible";
           dom.byId("legendContentBase").style.visibility = "visible";
-//          dom.byId("legend").style.overflowY = "auto";
           
           dom.byId("info").style.bottom = "41%";
       }
     });
     
     on(dom.byId("infoHeader"), "click", function(){
-        
       if(dom.byId("info").style.height == infoHeight){    
           dom.byId("info").style.height = "25px";
           dom.byId("infoMinIcon").style.visibility = "hidden";
           dom.byId("infoMaxIcon").style.visibility = "visible";
           dom.byId("infoContent").style.visibility = "hidden";
-//          dom.byId("info").style.overflow = "initial";
       }
       else{
           dom.byId("info").style.height = infoHeight;
           dom.byId("infoMinIcon").style.visibility = "visible";
           dom.byId("infoMaxIcon").style.visibility = "hidden";
           dom.byId("infoContent").style.visibility = "visible";
-//          dom.byId("info").style.overflowY = "auto";
       }
     });
     
     on(dom.byId("resultsHeader"), "click", function(){
-        
       if(dom.byId("results").style.height == "25px"){    
-          dom.byId("results").style.height = "35%";
+          dom.byId("results").style.height = "30%";
           dom.byId("resultsMinIcon").style.visibility = "visible";
           dom.byId("resultsMaxIcon").style.visibility = "hidden";
           dom.byId("resultsContent").style.visibility = "visible";
-//          dom.byId("results").style.overflowY = "auto";
       }
       else{
           dom.byId("results").style.height = "25px";
           dom.byId("resultsMinIcon").style.visibility = "hidden";
           dom.byId("resultsMaxIcon").style.visibility = "visible";
           dom.byId("resultsContent").style.visibility = "hidden";
-//          dom.byId("results").style.overflowY = "initial";
       }
     });
-   
 });
