@@ -27,7 +27,7 @@ var old_county_data = [
    {
      name: "Hordaland",
      old: "Søndre Bergenhus amt",
-     farms: "http://goo.gl/f2TqSD"
+     farms: "http://bit.ly/1PVKZbv"
    },
    {
      name: "Møre og Romsdal",
