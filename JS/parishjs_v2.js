@@ -79,8 +79,8 @@ require([
         on){
     
   //////////CONFIG SETTINGS AND OPTIONS/////////////////////////////////////////
-//  esriConfig.defaults.io.proxyUrl = "./proxy/PHP/proxy.php";
-    esriConfig.defaults.io.proxyUrl = "./proxy/DotNet/proxy.ashx";
+  esriConfig.defaults.io.proxyUrl = "./proxy/PHP/proxy.php";
+//    esriConfig.defaults.io.proxyUrl = "./proxy/DotNet/proxy.ashx";
     
   ///////////////////LAYERS AND LAYER INFO///////////////////////////////////////
 //  var parishSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_FILL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0]));

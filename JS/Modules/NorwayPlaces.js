@@ -28,7 +28,7 @@ define([
             
             urlUtils.addProxyRule({
                 urlPrefix: "http://tasks.arcgisonline.com/ArcGIS/rest/services",
-                proxyUrl: "./proxy/DotNet/proxy.ashx"
+                proxyUrl: "./proxy/PHP/proxy.php"
             });
             
             var geometryService = new GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
