@@ -181,7 +181,7 @@ require([
         + parish + " Parish<br>"
         + municipality + ", " + county + " County<br><br>"
         + "<a href='#'><button type='button' id='addFarmInfo' class='btn btn-primary btn-sm' >View Propety Information</button></a><br>"
-        + "<a href='#'><button type='button' id='farmParish' class='btn btn-primary btn-sm' >View " + parish + " Parish Records</button></a><br>";
+        + "<a href='#'><button type='button' id='farmParish' class='btn btn-primary btn-sm' >View " + parish + " Parish Records</button></a><br><br><br>";
         
         dom.byId("infoContent").innerHTML = content;
         
@@ -311,7 +311,7 @@ require([
     }
     
     function setOfficeInfo(attributes){
-        infoHeight = "38%";
+        infoHeight = "43%";
         animateInfoBox(infoHeight); 
         
         var content;
@@ -327,7 +327,7 @@ require([
         + "<br><b>Address: </b>" + address
         + "<br><b>Phone: </b>" + phone
         + "<br><a target='_blank' href='mailto:" + email + "'><button type='button' class='btn btn-success btn-sm'>Send Email</button></a>"
-        + "<br><a target='_blank' href='" + website + "'><button type='button' class='btn btn-success btn-sm'>Visit Website</button></a>";
+        + "<br><a target='_blank' href='" + website + "'><button type='button' class='btn btn-success btn-sm'>Visit Website</button></a><br><br><br>";
         
         dom.byId("infoContent").innerHTML = content;
     }
