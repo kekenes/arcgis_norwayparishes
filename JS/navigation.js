@@ -8,16 +8,12 @@ require([
     on(dom.byId("aboutNav"), "click", function(){
         openContent();
         request("./about_v2.html").then(function(content){
-            dom.byId("aboutContent").innerHTML = content;
-            on(dom.byId("exitButton"), "click", closeContent);
-        });
-    });
-    
-    on(dom.byId("acknowledgementsNav"), "click", function(){
-        openContent();
-        request("./Acknowledgements_v2.html").then(function(content){
-            dom.byId("aboutContent").innerHTML = content;
-            on(dom.byId("exitButton"), "click", closeContent);
+            return content;
+        }).then(function(content){
+            request("./Acknowledgements_v2.html").then(function(acknowledge){
+                dom.byId("aboutContent").innerHTML = content + acknowledge;
+                on(dom.byId("exitButton"), "click", closeContent);
+            });
         });
     });
     

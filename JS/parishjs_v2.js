@@ -301,7 +301,7 @@ require([
         content += "<a target='_blank' href='" + da5_url + "'><button type='button' class='btn btn-success btn-sm'>" + da5_name + "</button></a>";
      }
      
-     dom.byId("infoContent").innerHTML = content;
+     dom.byId("infoContent").innerHTML = content + "<br><br><br>";
  }
     
     function animateInfoBox(height){
@@ -795,12 +795,12 @@ require([
                     + "<li>If necessary, uncheck the checkbox to remove geographic filtering to broaden the search.</li></ol>";
         
         if((response === 0) || (response.length === 0)){
-            dom.byId("resultsContent").innerHTML = noResultMessage + "<div class='clearBtnCenter'><button onclick='clearPropSearch()' type='button' class='btn btn-default btn-sm'>Clear Search Results</button></div>";
+            dom.byId("resultsContent").innerHTML = noResultMessage + "<div class='clearBtnCenter'><button onclick='clearPropSearch()' type='button' class='btn btn-default btn-sm'>Clear Search Results</button></div><br><br>";
             loading.style.visibility = "hidden";
             return;
         }
         
-        dom.byId("resultsContent").innerHTML = "<span style='padding-left:25%'><b>" + response.length + "</b> properties found</span>"
+        dom.byId("resultsContent").innerHTML = "<br><span style='padding-left:25%'><b>" + response.length + "</b> properties found</span>"
             + "<ul class='list-group'>";
              
         array.forEach(response, function(item, i){
@@ -814,7 +814,7 @@ require([
             var propFeature = new Graphic(item.geom, farmSymbol, item);
             propertiesLayer.add(propFeature);
         });
-        dom.byId("resultsContent").innerHTML += "<div class='clearBtnCenter'><button onclick='clearPropSearch()' type='button' class='btn btn-default btn-sm'>Clear Search Results</button></div>";
+        dom.byId("resultsContent").innerHTML += "<div class='clearBtnCenter'><button onclick='clearPropSearch()' type='button' class='btn btn-default btn-sm'>Clear Search Results</button></div><br><br>";
         map.setExtent(graphicsUtils.graphicsExtent(propertiesLayer.graphics), true);
         dom.byId("resultsContent").innerHTML += "</ul>";
         loading.style.visibility = "hidden";

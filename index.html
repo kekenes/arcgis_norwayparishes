@@ -13,8 +13,8 @@
     <script>
       var dojoConfig = { 
         paths: {
-          Modules: location.pathname.replace(/\/[^/]+$/, "") + "/JS/Modules",
-          agsjs: location.pathname.replace(/\/[^/]+$/, "") + "/JS/Modules/src/agsjs"
+          Modules: location.pathname.replace(/\/[^/]+$/, "") + "./JS/Modules",
+          agsjs: location.pathname.replace(/\/[^/]+$/, "") + "./JS/Modules/src/agsjs"
         }
       };
     </script>
@@ -48,8 +48,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a id="mapNav" href="#">Map</a></li>
-              <li><a id="aboutNav" href="#">About</a></li>
-              <li><a id="acknowledgementsNav" href="#">Acknowledgements</a></li> 
+              <li><a id="aboutNav" href="#">About</a></li> 
               <li><a id="resourcesNav" href="#">Research Helps</a></li>    
               <li><a id="contactNav" href="#">Contact</a></li>  
             </ul>
@@ -78,7 +77,7 @@
         <input type="checkbox" id="useGeoSelection" checked>&nbsp;&nbsp;&nbsp;Filter by selected geographic region<br>
         <div class='clearBtnCenter'>
             <button id='clearBtn' type="button" class="btn btn-default btn-sm">Clear Selected Features</button>
-        </div>
+        </div><br>
         </div>
     </div>
     <div id="legend">
@@ -90,7 +89,7 @@
         <input type="checkbox" id="streetCheck">&nbsp;&nbsp;&nbsp;Highways and Streets<br> 
         <input type="radio" name="baseLayers" id="radioTopo" checked>&nbsp;&nbsp;&nbsp;Topographic Map<br>
         <input type="radio" name="baseLayers" id="radioSat">&nbsp;&nbsp;&nbsp;Satellite Imagery<br>   
-        </div>
+        </div><br><br>
         </div>
     </div>
     <div id="info">
