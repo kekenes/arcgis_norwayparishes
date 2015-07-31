@@ -1,3 +1,24 @@
+.navbar{
+  background-color: rgb(66, 132, 188);
+  border-color: darkblue;
+}
+
+.navbar-default .navbar-brand{
+  color: floralwhite;
+}
+
+.navbar-default .navbar-nav>li>a{
+  color: floralwhite;
+}
+
+.navbar-toggle {
+  background-color: beige;
+}
+
+.esriSimpleSliderTL{
+  top: 60px;
+}
+
 html, body, #map{
     margin: 0;
     padding: 0;
@@ -50,14 +71,14 @@ html, body, #map{
 
 #homeButton{
     position: absolute;
-    top: 90px;
-    left: 21px;
+    top: 130px;
+    left: 20px;
     z-index: 50;
 }
 
 #searchWidget{
     position: absolute;
-    top: 20px;
+    top: 60px;
     left: 65px;
     z-index: 30;
 }
@@ -80,7 +101,7 @@ html, body, #map{
 }
 
 .divTitle{
-    background-color: darkgray;
+    background-color: rgb(66, 132, 188);
     color: white;
     height: 25px;
     width: 100%;
@@ -92,12 +113,11 @@ html, body, #map{
     text-align: center;
     cursor: pointer;
 }
-
 #header{
-    height: 75px;
-    width: 40%;             /*45*/
-    margin: 0 0 0 30%;     /*27*/
-    top: 10px;
+/*    height: 75px;*/
+    width: 100%;             
+/*    margin: 0 0 0 30%;     */
+/*    top: 10px;*/
     position: absolute;
     z-index: 98;
     opacity: 0.9;    

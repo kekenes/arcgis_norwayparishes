@@ -95,10 +95,12 @@ require([
   var selectionLayer = new GraphicsLayer();
       
   var countiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/0", {
-    outFields: ["*"]
+    outFields: ["*"],
+    visible: false
   }); 
   var municipalitiesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/1", {
-    outFields: ["*"]
+    outFields: ["*"],
+    visible: false
   });   
   var parishesLayer = new FeatureLayer("http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/2", {
     outFields: ["*"]
@@ -503,7 +505,7 @@ require([
     var search = new Search({
         activeSourceIndex: "all",
         map: map,
-        enableButtonMode: false,
+        enableButtonMode: true,
         enableInfoWindow: false,
         enableSuggestions: true,
         enableSuggestionsMenu: true,
@@ -739,6 +741,7 @@ require([
         selectionLayer.clear();
         addressLayer.clear();
         dom.byId("info").style.visibility = "hidden";
+        dom.byId("info").innerHTML = "";
         municipalityDropdown.length = 0;
         parishDropdown.length = 0;
         countyDropdown.value = "";
