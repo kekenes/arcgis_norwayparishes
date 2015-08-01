@@ -79,8 +79,8 @@ require([
         on){
     
   //////////CONFIG SETTINGS AND OPTIONS/////////////////////////////////////////
-  esriConfig.defaults.io.proxyUrl = "./proxy/PHP/proxy.php";
-//    esriConfig.defaults.io.proxyUrl = "./proxy/DotNet/proxy.ashx";
+//  esriConfig.defaults.io.proxyUrl = "./proxy/PHP/proxy.php";
+    esriConfig.defaults.io.proxyUrl = "./proxy/DotNet/proxy.ashx";
     
   ///////////////////LAYERS AND LAYER INFO///////////////////////////////////////
 //  var parishSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_FILL, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([148,0,211]), 6), new Color([0,0,0,0]));
@@ -246,8 +246,8 @@ require([
  }    
     
  function setParishInfo(info){
-    infoHeight = "50%";
-    animateInfoBox(infoHeight); 
+    infoHeight = "80%";
+    animateInfoBox(infoHeight);  
 
     var parishName = info.Par_NAME;
     var municipalityName = info.MUNICIPALITY;
@@ -310,6 +310,9 @@ require([
         dom.byId("info").style.visibility = "visible";
         dom.byId("info").style.height = height;
         dom.byId("infoContent").style.visibility = "visible";
+        dom.byId("info").style.bottom = "75px";
+        dom.byId("legend").style.height = "25px";
+        dom.byId("legend").style.bottom = "40px";
     }
     
     function setOfficeInfo(attributes){
@@ -542,10 +545,35 @@ require([
         else{
             setAllDropdowns(evt.result.feature.attributes);
         }
+        
+        if(dom.byId("tools").style.height == "25px"){
+          dom.byId("tools").style.height = "65%"; 
+        }
+        
+        if(dom.byId("results").style.visibility == "visible"){
+            dom.byId("tools").style.bottom = "55px";
+            dom.byId("results").style.bottom = "20px";
+            dom.byId("results").style.height = "25px";
+        }
     });
     
     on(search, "clear-search", function(evt){
-        addressLayer.clear();
+      addressLayer.clear();
+        
+      if(dom.byId("results").style.visibility == "visible"){
+        dom.byId("tools").style.bottom = "55px";
+        dom.byId("results").style.bottom = "20px";
+        dom.byId("results").style.height = "25px";
+      }    
+        
+      if(dom.byId("tools").style.height == "25px"){
+        dom.byId("tools").style.height = "65%";
+        dom.byId("toolsContent").style.visibility = "visible";
+        return;
+      }
+      else{
+        return;
+      }
     });
     
 /////////////////////////TOOLS - DROPDOWN SETUP//////////////////////////////
@@ -773,9 +801,13 @@ require([
             geoFilter = selectionLayer.graphics[0].geometry;
         
         NorwayPlaces.search(propName, geoFilter).then(function(properties){
-            dom.byId("results").style.height = "30%";
+            dom.byId("results").style.height = "65%";
+            dom.byId("results").style.bottom = "55px";
             dom.byId("results").style.visibility = "visible";
             dom.byId("resultsMinIcon").style.visibility = "visible";
+            
+            dom.byId("tools").style.height = "25px";
+            dom.byId("tools").style.bottom = "20px";
             return properties;
         }, function(rejected){
             console.error("search rejected!");
@@ -870,78 +902,116 @@ require([
     };
     
     ///////////////////////////LAYOUT EVENTS//////////////////////////////////
-    dom.byId("legend").style.height = "35%";
-    dom.byId("tools").style.height = "50%";
+    dom.byId("legend").style.height = "50%";
+    dom.byId("tools").style.height = "65%";
     dom.byId("info").style.height = "25px";
     dom.byId("results").style.height = "25px";
     
     on(dom.byId("toolsHeader"), "click", function(){
-      if(dom.byId("tools").style.height == "50%"){  
+        //minimize tools
+      if(dom.byId("tools").style.height != "25px"){  
           dom.byId("tools").style.height = "25px";
           dom.byId("toolsMinIcon").style.visibility = "hidden";
           dom.byId("toolsMaxIcon").style.visibility = "visible";
           dom.byId("toolsContent").style.visibility = "hidden";
 
-          dom.byId("results").style.bottom = "60px";
+//          dom.byId("results").style.bottom = "55px";
       }
-      else{
-          dom.byId("tools").style.height = "50%";
+      else{  //maximize tools
+          dom.byId("tools").style.height = "65%";
+          
           dom.byId("toolsMinIcon").style.visibility = "visible";
           dom.byId("toolsMaxIcon").style.visibility = "hidden";
           dom.byId("toolsContent").style.visibility = "visible";
           
-          dom.byId("results").style.bottom = "55%";
+//          dom.byId("results").style.bottom = "20px";
+//          dom.byId("results").style.height = "25px";
+          
+          if(dom.byId("results").style.visibility == "visible"){
+            dom.byId("tools").style.bottom = "55px";
+            dom.byId("results").style.bottom = "20px";
+            dom.byId("results").style.height = "25px";
+          }
       }
     });
     
     on(dom.byId("legendHeader"), "click", function(){
-      if(dom.byId("legend").style.height == "35%"){    
+        //minimize legend
+      if(dom.byId("legend").style.height != "25px"){    
           dom.byId("legend").style.height = "25px";
           dom.byId("legendMinIcon").style.visibility = "hidden";
           dom.byId("legendMaxIcon").style.visibility = "visible";
           dom.byId("legendContent").style.visibility = "hidden";
           dom.byId("legendContentBase").style.visibility = "hidden";
           
-          dom.byId("info").style.bottom = "75px";
+//          dom.byId("info").style.bottom = "75px";
       }
-      else{
-          dom.byId("legend").style.height = "35%";
+      else{  //maximize legend
+          dom.byId("legend").style.height = "50%";
           dom.byId("legendMinIcon").style.visibility = "visible";
           dom.byId("legendMaxIcon").style.visibility = "hidden";
           dom.byId("legendContent").style.visibility = "visible";
           dom.byId("legendContentBase").style.visibility = "visible";
           
-          dom.byId("info").style.bottom = "41%";
+          dom.byId("info").style.bottom = "40px";  //41%
+          dom.byId("info").style.height = "25px";
+          
+          if(dom.byId("info").style.visibility == "visible"){
+            dom.byId("legend").style.bottom = "75px";
+          }
       }
     });
     
     on(dom.byId("infoHeader"), "click", function(){
-      if(dom.byId("info").style.height == infoHeight){    
+        //minimize info
+      if(dom.byId("info").style.height != "25px"){    
           dom.byId("info").style.height = "25px";
           dom.byId("infoMinIcon").style.visibility = "hidden";
           dom.byId("infoMaxIcon").style.visibility = "visible";
           dom.byId("infoContent").style.visibility = "hidden";
       }
-      else{
+      else{  //maximize info
           dom.byId("info").style.height = infoHeight;
           dom.byId("infoMinIcon").style.visibility = "visible";
           dom.byId("infoMaxIcon").style.visibility = "hidden";
           dom.byId("infoContent").style.visibility = "visible";
+          
+          dom.byId("legend").style.height = "25px";
+          dom.byId("legend").style.bottom = "40px";
+          dom.byId("info").style.bottom = "75px";
       }
     });
     
     on(dom.byId("resultsHeader"), "click", function(){
+        //maximize farm results
       if(dom.byId("results").style.height == "25px"){    
-          dom.byId("results").style.height = "30%";
+          dom.byId("results").style.height = "65%";
+          dom.byId("results").style.bottom = "55px";
           dom.byId("resultsMinIcon").style.visibility = "visible";
           dom.byId("resultsMaxIcon").style.visibility = "hidden";
           dom.byId("resultsContent").style.visibility = "visible";
+          
+          dom.byId("tools").style.height = "25px";
+          dom.byId("tools").style.bottom = "20px";
       }
-      else{
+      else{  //minimize farm results
           dom.byId("results").style.height = "25px";
           dom.byId("resultsMinIcon").style.visibility = "hidden";
           dom.byId("resultsMaxIcon").style.visibility = "visible";
           dom.byId("resultsContent").style.visibility = "hidden";
+      }
+    });
+    
+    on(search, "suggest-results", function(evt){
+      if(dom.byId("tools").style.height != "25px"){
+        dom.byId("tools").style.height = "25px";
+        return;
+      } else if(dom.byId("results").style.height != "25px"){
+        dom.byId("results").style.height = "25px";
+        return;
+      }
+      else{
+        return;
       }
     });
 });
