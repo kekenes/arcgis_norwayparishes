@@ -25,6 +25,14 @@ require([
         });
     });
     
+    on(dom.byId("helpNav"), "click", function(){
+        openContent();
+        request("./help_v2.html").then(function(content){
+            dom.byId("aboutContent").innerHTML = content;
+            on(dom.byId("exitButton"), "click", closeContent);
+        });
+    });
+    
     on(dom.byId("contactNav"), "click", function(){
         openContent();
         request("./contact_v2.html").then(function(content){

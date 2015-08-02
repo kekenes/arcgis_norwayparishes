@@ -69,6 +69,10 @@ html, body, #map{
     padding-top: 15px;
 }
 
+.content img{
+  padding: 4px;
+}
+
 #homeButton{
     position: absolute;
     top: 130px;
