@@ -69,8 +69,14 @@ html, body, #map{
     padding-top: 15px;
 }
 
-.content img{
-  padding: 4px;
+#aboutContent .content img{
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.fullImage{
+  width: 100%;
+  height: 100%;
 }
 
 #homeButton{
