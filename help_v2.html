@@ -1,20 +1,22 @@
 <div class="content" class="bg-warning"><button id="exitButton" class="glyphicon glyphicon-remove-circle"></button>
     <h1>Using this application</h1>	
-    <p>This page gives instructions on how to use the various tools in this application including the basic map controls and the various search options. The following topics are covered: </p>
+    <p>This page gives instructions on how to use the various tools available in this website, including the basic map controls and the various search options. The following topics are covered: </p>
     <ul>
         <li><a href="#mapControls">Map Controls</a></li>
         <li><a href="#parishSearch">Parish Search Methods</a></li>
-        <li><a href="#farm">Farm Search Tool</a></li>
-        <li><a href="#farmExample">Farm Search Example</a></li>
+        <li><a href="#farm">Property (Farm) Search</a></li>
+        <li><a href="#farmExample">Example: Farm Search</a></li>
     </ul>
 
     <a name="mapControls"></a>
     <h2>Map Controls</h2> <hr>
-    <p> <img src="IMG/map-controls.PNG" align="left" class="img-rounded">The image to the left resembles the top left portion of the home screen. The buttons available here are primarily for map navigation purposes. The plus and minus buttons allow you to zoom in and out, while the "home" button will return you to the initial extent of the map. <img src="IMG/legend.PNG" align="right"> You'll also notice a small arrow in the top left corner of the image pointing towards the bottom right corner. When clicked, this opens an overview map that gives geographic context to the current extent of the map. This is particularly useful when the map is zoomed in very closely on the parish, city and property levels.</p>
-    
-    <p>The button symbolized with a magnifying glass allows you to search and zoom to parishes, municipalities, counties, or street addresses. See the <a href="#searchBar">Parish Search</a> topic below for more details on this tool. It is important to note that this button is not designed for searching farm or property names. To search farm names, see the <a href="#farm">Property (Farm) Search topic</a> below.</p>
-    
-    <p>The image on the right depicts the legend, which is located on the bottom right portion of the map. Here you can toggle various layers on and off, including parishes, municipalities, counties, and satellite imagery.</p>
+    <p> <img src="IMG/map-controls.PNG" align="left" class="img-rounded"> The image to the left resembles the top left portion of the home screen. The buttons available here are primarily for map navigation purposes. Match the labels in the image to the corresponding tool's description below.</p>
+        <p><strong>1. Overview map</strong> - Clicking this small arrow opens an overview map that gives geographic context to the current extent of the map. This is particularly useful when the map is zoomed in very closely on the parish, city and property levels.</p>
+        <p><strong>2. Zoom controls</strong> - clicking (+) zooms in one level to the center of the map. Clicking (-) zooms out one level.</p>
+        <p><strong>3. Home button</strong> - Click this button to return to the initial extent of the map.</p>
+        <p><strong>4. Search bar</strong> - Click this button to open the search bar, allowing you to search any parish, municipality, county, or address from one location. See the <a href="#searchBar">section below</a> for details and tips on using this tool. It is important to note that this button is not designed for searching farm or property names. To search farm names, see the <a href="#farm">Property (Farm) Search topic</a> below.</p>
+    <img src="IMG/legend.PNG" align="right">  
+    <p>The image to the right depicts the legend, which is located on the bottom right portion of the map. Here you can toggle various layers on and off, including parishes, municipalities, counties, and satellite imagery.</p>
     
     <a name="parishSearch"></a>
     <h2>Parish Search Methods</h2> <hr>
@@ -27,7 +29,7 @@
     </p>
 <a name="dropdown"></a>
 <h4>Dropdown menus</h4>
-<p>The dropdown menus in the <strong>Tools</strong> section to the left of the map allow you to select counties, municipalities, and parishes by jurisdiction. As you select a value from one dropdown, the remaining dropdowns will automatically populate with their appropriate values and the map will highlight and zoom to the selected geography. <img src="IMG/info.PNG" class="fullImage"> In addition to zooming to the region, a side panel will appear on the right side of the map displaying information for the region. On the parish level you will see links to general, historical and farm information for the parish along with links to the <a href="http://www.arkivverket.no/eng/Digitalarkivet">Norwegian Digital Archives</a> to search vital records filtered by the parish.</p>
+<p>The dropdown menus in the <strong>Tools</strong> section to the left of the map allow you to select counties, municipalities, and parishes by jurisdiction. As you select a value from one dropdown, the remaining dropdowns will automatically populate with their appropriate values and the map will highlight and zoom to the selected geography. <img src="IMG/info.PNG" class="fullImage"> In addition to zooming to the region, a side panel will appear on the right side of the map displaying information for the region. On the parish level you will see links to general, historical and farm information for the parish along with links to the <a href="http://www.arkivverket.no/eng/Digitalarkivet" target="_blank">Norwegian Digital Archives</a> to search vital records filtered by the parish.</p>
 
 <blockquote>This side panel will appear when a region is selected via any of the methods listed in this section. </blockquote>
 
@@ -36,7 +38,7 @@
 
 <img src="IMG/parish-search-2.png" align="right">
 
-<p> The search bar allows you to search any county, municipality, and parish in Norway with text input. As you type text, the names of geographic regions that match the spelling will appear in a suggestion dropdown in bold. You will notice that other suggestions are made for regions whose names don't match the search text. These results indicate regions under the jurisdiction of higher-level regions (e.g. parishes within counties). For example, in the image to the right, the user is typing "Hedmark" in the search bar for Hedmark County. Exact matches are made for "Hedmark" county and "Heddal" parish. The other municipalities and parishes being suggested belong to Hedmark County. </p>
+<p> The search bar is opened by clicking the button symbolized with a magnifying glass in the top left portion of the screen. This allows you to search any county, municipality, and parish in Norway with text input. As you type text, the names of geographic regions that match the spelling will appear in a suggestion dropdown in bold. You will notice that other suggestions are made for regions whose names don't match the search text. These results indicate regions under the jurisdiction of higher-level regions (e.g. parishes within counties). For example, in the image to the right, the user is typing "Hedmark" in the search bar for Hedmark County. Exact matches are made for "Hedmark" county and "Heddal" parish. The other municipalities and parishes being suggested belong to Hedmark County. </p>
 
 <!--<img src="IMG/parish-search-1.png" align="left">-->
 
@@ -48,14 +50,14 @@
 
 <a name="zoom"></a>
 <h4>Zoom and click</h4>
-<p>Upon zooming to an appropriate level in the map, you will notice the boundaries of parishes appear as purple lines along with their names. You can center and zoom to a parish and view its pertinent geographic information by simply clicking the region directly on the map. You may also do the same for counties and municipalities. To do so, however, you must turn on each of those sets of boundaries in the legend. Note that if multiple boundaries are turned on simultaneously, the highest geographic level will be selected when clicked. For example, if municipal and parish boundaries are both turned on, the municpality will be selected. If all layers are turned on, the county will be selected. Only the parishes are on by default.</p>
+<p>Upon zooming to an appropriate level in the map, you will notice the boundaries of parishes appear as purple lines along with their names. You can center and zoom to a parish and view its pertinent geographic information by simply clicking the region directly on the map. You may also do the same for counties and municipalities. To do so, however, you must turn on each of those sets of boundaries in the legend. Note that if multiple boundaries are turned on simultaneously, the highest geographic level will be selected when clicked. For example, if municipal and parish boundaries are both turned on, the municipality will be selected. If all layers are turned on, the county will be selected. Only the parishes are on by default.</p>
     
 <a name="farm"></a>
     <h2>Property (Farm) Search</h2> <hr>
 
  <img src="IMG/farm-search.PNG" align="left"> 
 
-    <p>Below the dropdown menus in the <strong>Tools</strong> section you will see a text box for searching farm/property names. This allows you to search any property nationwide by its <a href="http://www.borgos.nndata.no/FARMS.HTM">name</a>.</p>
+    <p>Below the dropdown menus in the <strong>Tools</strong> section you will see a text box for searching farm/property names. This allows you to search any property nationwide by its <a href="http://www.borgos.nndata.no/FARMS.HTM" target="_blank">name</a>.</p>
 
 <p>A nice feature of this search is that you can filter your results based on the region you have selected on the map. This is enabled when the checkbox below the search bar is checked (it is checked by default). If you would rather not limit your results based on your selected county or parish, simply uncheck the box. Be aware, however, that this may increase the time for performing the search. Because the search can be exhaustive, farm searches may take several seconds to complete.</p>
 
@@ -63,24 +65,24 @@
 
 <p>If you aren't seeing the farm results you expect, it may be because of several reasons. Because geographic boundaries have changed over time (these boundaries reflect parishes as they were in 1979) the property may not reside in the current boundary you are using to filter. Uncheck the filter option and run the search again to broaden your search geographically.</p>
     
-<p>You may have also mispelled the name. Many property names have multiple spellings, only one of which is used in this search. You can review alternate spellings by viewing information about the farm in <a href="http://www.dokpro.uio.no/rygh_ng/rygh_form.html">Oluf Rygh's Norwegian farm name database</a>. You can view his list of farms in the county by clicking the farm list option in the county or parish information box in the map.</p>
+<p>You may have also misspelled the name. Many property names have multiple spellings, only one of which is used in this search. You can review alternate spellings by viewing information about the farm in <a href="http://www.dokpro.uio.no/rygh_ng/rygh_form.html" target="_blank">Oluf Rygh's Norwegian farm name database</a>. You can view his list of farms in the county by clicking the farm list option in the county or parish information box in the map.</p>
 
-<p>It may also be helpful to use the asterisk character as a wildcard symbol in the search. For example, you may not recall the spelling of the farm name "Dønnestad" in Tveit, Tveit, Vest-Agder. Does it have one "n" or two? Does it use an "o" or an "ø". To overcome this issue, simply type "d*n*" in the search box after selecting Tveit parish. By doing this you are essentially saying, "I know the farm starts with a 'd', and 'n' is the third letter, but I don't know any of the other letters". Now click "Go" and you will get one result for the correct farm name. Very convenient! This is especially useful when dealing with the special characters "Æ", "Ø", and "Å". </p>
+<p>It may also be helpful to use the asterisk character as a wildcard symbol in the search. For example, you may not recall the spelling of the farm name "Dønnestad" in Tveit, Tveit, Vest-Agder. Does it have one "n" or two? Does it use an "o" or an "ø"? To overcome this issue, simply type "d*n*" in the search box after selecting Tveit parish. By doing this you are essentially saying, "I know the farm name starts with a 'd' followed by other letter(s) and 'n' is one of them, but not the last one." Now click "Go" and you will get one result for the correct farm name. This can be very convenient when dealing with the special characters "Æ", "Ø", and "Å". </p>
 
-<blockquote>The farm search only finds exact matches, so special characters must be used if they appear in the property name. To access special Norwegian characters, you must enable the Norwegian keyboard on your computer. You can accomplish this by following the steps in <a href="https://familysearch.org/learn/wiki/en/Norway:_Typing_%C3%86,_%C3%98,_and_%C3%85">this article</a> or you can use the asterisk as a replacement as a work around.</blockquote>
+<blockquote>The farm search only finds exact matches, so special characters must be used if they appear in the property name. To type special Norwegian characters, you must enable the Norwegian keyboard on your computer. You can accomplish this by following the steps in <a href="https://familysearch.org/learn/wiki/en/Norway:_Typing_%C3%86,_%C3%98,_and_%C3%85" target="_blank">this article</a> or you can use the asterisk as a work around.</blockquote>
 
 <a name="farmExample"></a>
 <h2>Example: Farm Search</h2> <hr>
 
 <img src="IMG/farm-search-result.png" class="fullImage">
 
-<p>See the above image for reference. Here I typed a very popular property name in Norway: "Nes". And searched the entire country. I received 50 results, which is the maximum number for any given search. A list appears on the left side of the screen and the locations of each property are plotted on the map. As you hover over names in the list, the property is highlighted in red on the map. </p>
+<p>In the image above, I typed a very popular property name in Norway - "Nes" - and searched the entire country. I received 50 results, which is the maximum number for any given search. A list appears on the left side of the screen and the locations of each property are plotted on the map. As you hover over names in the list, the property is highlighted in red on the map. </p>
 
 <p>In this example, I'm looking for a farm in Sogn og Fjordane County. I scroll through the list until I find it. I click it and the map immediately zooms to the location of the farm. This is also accomplished by clicking on the point in the map. See the image below.<blockquote>Note: this is not a best practice for searching common property names. It is usually better to filter by county or parish when performing searches to avoid sifting through dozens of property names.</blockquote></p>
 
 <img src="IMG/farm-search-result-2.png" class="fullImage">
 
-<p>Notice the new information available in the box to the right of the map. You can click a link to view current information about the property, which may be useful in your research. You can also click a link to view the pertinent parish information for the parish the farm belongs to. Clicking this option will zoom to the parish level, giving you context to the farm's location in the parish. You also have access to all the vital records in the parish to faciliate searches for official vital records via the <a href="http://www.arkivverket.no/eng/Digitalarkivet">Norwegian Digital Archives</a>.</p>
+<p>Notice the new information available in the box to the right of the map. You can click a link to view current information about the property, which may be useful in your research. You can also click a link to view the pertinent parish information for the parish the farm belongs to. Clicking this option will zoom to the parish level (see image below), giving you context to the farm's location in the parish. You also have access to all the vital records in the parish to facilitate searches for official vital records via the <a href="http://www.arkivverket.no/eng/Digitalarkivet" target="_blank">Norwegian Digital Archives</a>.</p>
 
 <img src="IMG/farm-search-result-3.png" class="fullImage">
     
