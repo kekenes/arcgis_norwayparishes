@@ -547,7 +547,8 @@ require([
         }
         
         if(dom.byId("tools").style.height == "25px"){
-          dom.byId("tools").style.height = "65%"; 
+          dom.byId("tools").style.height = "65%";
+          dom.byId("toolsContent").style.visibility = "visible";
         }
         
         if(dom.byId("results").style.visibility == "visible"){
@@ -769,7 +770,7 @@ require([
         selectionLayer.clear();
         addressLayer.clear();
         dom.byId("info").style.visibility = "hidden";
-        dom.byId("info").innerHTML = "";
+        dom.byId("infoContent").innerHTML = "";
         municipalityDropdown.length = 0;
         parishDropdown.length = 0;
         countyDropdown.value = "";
