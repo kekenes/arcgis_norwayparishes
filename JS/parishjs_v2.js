@@ -32,6 +32,7 @@ require([
     
     "agsjs/dijit/TOC",
     "Modules/NorwayPlaces",
+    "Modules/FindWiki",
     
     "dojo/Deferred",
     "dojo/_base/array",
@@ -71,6 +72,7 @@ require([
          
         TOC,
         NorwayPlaces,
+        FindWiki,
           
         Deferred,
         array,
@@ -225,7 +227,7 @@ require([
     animateInfoBox(infoHeight);
     var municipalityName = info.MUNICIPALITY;
     var countyName = info.COUNTY;
-    var wikiURL = "http://en.wikipedia.org/wiki/" + municipalityName;
+    var wikiURL = FindWiki.compare(municipalityName, countyName);
      
     var content = "<h4>" + municipalityName + " Municipality</h4>"
     + "<p>" + countyName + " County</p>"
