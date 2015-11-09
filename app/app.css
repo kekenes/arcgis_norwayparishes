@@ -1,0 +1,237 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+header {
+  background: #ffffff;
+  color: #333333;
+}
+header .title p {
+  color: #555555;
+  font-size: 1.5em;
+  font-weight: 300;
+  margin: 0;
+  padding: 0.5em 0.5em 0.5em 0;
+}
+header .title p img {
+  width: 1.5em;
+  display: inline-block;
+  margin-top: -0.2em;
+}
+header ul {
+  text-align: right;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 300;
+}
+header ul li {
+  display: inline-block;
+  padding: 1.1em;
+}
+header ul li a {
+  text-decoration: none;
+  color: #777777;
+}
+header ul li a:hover {
+  text-decoration: none;
+  color: #777777;
+}
+.map-container {
+  position: relative;
+}
+.map-container .views {
+  z-index: 9999;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  list-style: none;
+  background: rgba(236, 240, 241, 0.5);
+  padding: 0.5em 1em;
+  margin: 0;
+}
+.map-container .views li {
+  display: inline-block;
+  font-size: 1.15em;
+  font-weight: bold;
+}
+.map-container .views li a {
+  text-decoration: none;
+  color: #333333;
+  opacity: 0.5;
+}
+.map-container .views li a:hover {
+  opacity: 1;
+}
+.map-container .views li:first-child {
+  padding-right: 0.35em;
+}
+.map-container .views li:last-child {
+  padding-left: 0.5em;
+  border-left: 1px solid #777777;
+}
+.map-container .views .active a {
+  opacity: 0.85;
+}
+#leaguesContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #ffffff;
+  display: none;
+}
+#leaguesContainer .leagues-menu {
+  background: #ecf0f1;
+}
+#leaguesContainer .leagues-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+#leaguesContainer .leagues-menu ul li {
+  display: inline-block;
+  padding: 1em;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+#leaguesContainer .leagues-menu ul li a {
+  text-decoration: none;
+  color: #7f8c8d;
+}
+#leaguesContainer .leagues-menu ul .active {
+  background: #ffffff;
+}
+#leaguesContainer .leagues-menu .close-block {
+  text-align: right;
+  color: #7f8c8d;
+}
+#leaguesContainer .leagues-menu .close-block .close-container {
+  text-align: right;
+  margin: 0.5em 0;
+  padding: 0;
+}
+#leaguesContainer .leagues-menu .close-block .close-container i {
+  cursor: pointer;
+  padding: 0.3em 0.6em;
+  background: #ffffff;
+  font-size: 1.25em;
+}
+#leaguesContainer #leagues {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 1em 0;
+}
+#leaguesContainer #leagues ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+#leaguesContainer #leagues ul li {
+  display: inline-block;
+  padding: 0 1em;
+}
+#toolsContainer {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  width: auto;
+  background: #ffffff;
+  display: none;
+}
+#toolsContainer .tools-header {
+  background: #ecf0f1;
+}
+#toolsContainer .tools-header .title {
+  margin: 0;
+  padding: 0.6em 0.2em;
+  color: #777777;
+  font-size: 1.15em;
+  font-weight: 300;
+}
+#toolsContainer .tools-header .close-block {
+  text-align: right;
+  color: #7f8c8d;
+}
+#toolsContainer .tools-header .close-block .close-container {
+  text-align: right;
+  margin: 0.5em 0;
+  padding: 0;
+}
+#toolsContainer .tools-header .close-block .close-container i {
+  cursor: pointer;
+  padding: 0.3em 0.6em;
+  background: #ffffff;
+  font-size: 1.25em;
+}
+#toolsContainer .tools-body {
+  padding: 1em;
+  color: #555555;
+}
+#toolsContainer .tools-body label {
+  padding: 0.75em 0;
+}
+#toolsContainer .tools-body select {
+  width: 10em;
+  background: #ecf0f1;
+  margin: 0.5em 0;
+  padding: 0.25em 0.75em;
+  border: none;
+  box-shadow: none;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+#toolsContainer .tools-body select:focus {
+  outline: none;
+}
+#toggleLeagues {
+  position: absolute;
+  appearance: none;
+  cursor: pointer;
+  left: -100%;
+  top: -100%;
+}
+#toggleLeagues + label {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  padding: 0.75em 1.5em;
+  background: rgba(245, 245, 245, 0.75);
+  font-size: 1em;
+  font-weight: bolder;
+  color: #999999;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  transition: all 500ms ease;
+}
+#toggleLeagues + label i {
+  margin-left: 0.25em;
+}
+#toggleLeagues:checked ~ #toolsContainer {
+  display: block;
+}
+::-webkit-scrollbar {
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: none;
+}
+::-webkit-scrollbar-thumb {
+  background: #bdc3c7;
+}
+.esri-zoom-in,
+.esri-zoom-out {
+  border: none !important;
+  border-radius: 0 !important;
+  background: rgba(245, 245, 245, 0.75) !important;
+}
+.esri-zoom-in {
+  border-bottom: 1px solid #cccccc !important;
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Norway's Parishes</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Fontawesome CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- ESRI CSS -->
+  <link rel="stylesheet" href="https://jsdev.arcgis.com/4.0beta2/esri/css/main.css">
+  <!-- app CSS -->
+  <link rel="stylesheet" href="app.css">
+  <link rel="shortcut icon" type="image/x-icon" href="../IMG/flag_1-20140714-favicon.ico">
+
+  <script src="https://jsdev.arcgis.com/4.0beta2/"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+<header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-8">
+        <div class="title">
+          <p>
+             <img alt="Norway's Parishes" src="../IMG/norway-flag.png">
+             <span>Norway's Parishes</span>
+          </p>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <ul>
+          <li><a href="#">about</a></li>
+          <li><a href="#">resources</a></li>
+          <li><a href="#">contact</a></li>
+          <li><a href="#"><i class="fa fa-paper-plane-o"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="map-container">
+  <ul class="views">
+    <li class="active" role="presentation">
+      <a href="#2D" data-toggle="tab">
+        2D
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#3D" data-toggle="tab">
+        3D
+      </a>
+    </li>
+  </ul>
+        
+  <div class="tab-content">
+    <div class="tab-pane active" id="2D">
+      <div id="view2D"></div>
+    </div>
+    <div class="tab-pane" id="3D">
+      <div id="view3D"></div>
+    </div>
+  </div>
+</div>
+
+<input type="checkbox" name="toggleLeagues" id="toggleLeagues"/>
+<label for="toggleLeagues"> tools <i class="fa fa-angle-up"></i></label>
+
+<div id="toolsContainer">
+  <div class="tools-header container-fluid">
+    <div class="row">
+      <div class="col-xs-7">
+        <p class="title">tools</p>
+      </div>
+      <div class="col-xs-5 close-block">
+        <label class="close-container" for="toggleLeagues"> <i class="fa fa-angle-down"></i></label>
+      </div>
+    </div>
+  </div>
+  <div class="tools-body">
+    Parish Search
+    <form id="toolsForm" class="container-fluid">
+      <div class="row">
+        <div class="col-xs-5">
+          <label for="">county</label>
+        </div>
+        <div class="col-xs-7">
+          <select name="county" form="toolsForm">
+            <option value="volvo">Volvo</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-5">
+          <label for="">municipality</label>
+        </div>
+        <div class="col-xs-7">
+          <select name="municipality" form="toolsForm">
+            <option value="volvo">Volvo</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-5">
+          <label for="">parish</label>
+        </div>
+        <div class="col-xs-7">
+          <select name="parish" form="toolsForm">
+            <option value="volvo">Volvo</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="leaguesContainer">
+  <div class="leagues-menu container-fluid">
+    <div class="row">
+      <div class="col-xs-10">
+        <ul>
+          <li class="active" role="presentation">
+            <a href="#leagues" data-toggle="tab">
+              leagues
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#options" data-toggle="tab">
+              options
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-xs-2 close-block">
+        <label class="close-container" for="toggleLeagues"> <i class="fa fa-angle-down"></i></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="leagues">
+      <ul>
+        <li>
+          <img src="http://placehold.it/350x150">
+        </li>
+        <li>
+          <img src="http://placehold.it/350x150">
+        </li>
+        <li>
+          <img src="http://placehold.it/350x150">
+        </li>
+        <li>
+          <img src="http://placehold.it/350x150">
+        </li>
+        <li>
+          <img src="http://placehold.it/350x150">
+        </li>
+        <li>
+          <img src="http://placehold.it/350x150">
+        </li>
+        <li>
+          <img src="http://placehold.it/350x150">
+        </li>
+        <li>
+          <img src="http://placehold.it/350x150">
+        </li>
+        <li>
+          <img src="http://placehold.it/350x150">
+        </li>
+        <li>
+          <img src="http://placehold.it/350x150">
+        </li>
+      </ul>
+    </div>
+
+    <div class="tab-pane" id="options">
+      <h1>test</h1>
+    </div>
+  </div>
+</div>
+
+<span id="info" style="position:absolute; right:15px; bottom:5px; color:#000; z-index:50;"></span>
+
+<!-- jQuery first, then Bootstrap JS. -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
