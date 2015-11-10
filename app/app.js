@@ -18,6 +18,7 @@ require(
     
     "esri/symbols/SimpleLineSymbol", 
     "esri/symbols/SimpleFillSymbol",
+    "esri/symbols/SimpleMarkerSymbol",
 
     "esri/tasks/QueryTask",
     "esri/tasks/support/Query",
@@ -30,7 +31,7 @@ require(
     Extent, SpatialReference, webMercatorUtils,
     ArcGISTiledLayer, FeatureLayer, GraphicsLayer,
     SimpleRenderer,
-    SimpleLineSymbol, SimpleFillSymbol,
+    SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol,
     QueryTask, Query,
     on
   ) {
@@ -61,41 +62,117 @@ require(
     /**** Layer ****/
 
     var countiesUrl = "http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/0";
-
+    var municipalitiesUrl = "http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/1";
+    var parishesUrl = "http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/2";
+    var officesUrl = "http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/NA_Regional_Offices_2/FeatureServer/0";
+    
     var countiesLyr = new FeatureLayer({
       url: countiesUrl,
       opacity: 0.95
     });
     
-    map1.add(countiesLyr);
+    var municipalitiesLyr = new FeatureLayer({
+      url: municipalitiesUrl,
+      opacity: 0.95
+    });
+    
+    var parishesLyr = new FeatureLayer({
+      url: parishesUrl,
+      opacity: 0.95
+    });
+    
+    var officesLyr = new FeatureLayer({
+      url: officesUrl,
+      opacity: 0.95
+    });
+    
+    map1.add([officesLyr, parishesLyr, municipalitiesLyr, countiesLyr]);
 
     var graphicsLayer = new GraphicsLayer();
     map1.add(graphicsLayer);
 
     view2D.then(function() {
+      
+      //counties
       countiesLyr.then(function() {
+        view2D.animateTo(countiesLyr.fullExtent);
 
-        var line = new SimpleLineSymbol({
+        var countiesLine = new SimpleLineSymbol({
+          width: 4.25,
+          color: [230, 126, 34,1.0]
+        });
+
+        var countiesSymbol = new SimpleFillSymbol({
+          color: [52, 152, 219, 0.1],
+          outline: countiesLine
+        });
+
+        var countiesRndr = new SimpleRenderer({
+          symbol: countiesSymbol
+        });
+
+        countiesLyr.renderer = countiesRndr;
+      });
+      
+      //muncipalities
+      municipalitiesLyr.then(function() {
+
+        var muncipalitiesLine = new SimpleLineSymbol({
           width: 4.25,
           color: [52, 152, 219,1.0]
         });
 
-        var symbol = new SimpleFillSymbol({
+        var muncipalitiesSymbol = new SimpleFillSymbol({
           color: [52, 152, 219, 0.1],
-          outline: line
+          outline: muncipalitiesLine
         });
 
-        var countiesRndr = new SimpleRenderer({
-          symbol: symbol
+        var muncipalitiesRndr = new SimpleRenderer({
+          symbol: muncipalitiesSymbol
         });
 
-        countiesLyr.renderer = countiesRndr;
+        municipalitiesLyr.renderer = muncipalitiesRndr;
+      });
+      
+      //parishes
+      parishesLyr.then(function() {
 
-        view2D.animateTo(countiesLyr.fullExtent);
+        var parishesLine = new SimpleLineSymbol({
+          width: 4.25,
+          color: [241, 196, 15,1.0]
+        });
+
+        var parishesSymbol = new SimpleFillSymbol({
+          color: [52, 152, 219, 0.1],
+          outline: parishesLine
+        });
+
+        var parishesRndr = new SimpleRenderer({
+          symbol: parishesSymbol
+        });
+
+        parishesLyr.renderer = parishesRndr;
+      });
+      
+      //offices
+      officesLyr.then(function() {
+
+        var officesSymbol = new SimpleMarkerSymbol({
+          color: [46, 204, 113,1.0]
+        });
+
+        var officesRndr = new SimpleRenderer({
+          symbol: officesSymbol
+        });
+
+        officesLyr.renderer = officesRndr;
       });
     });
 
-
+    var basemapElm = document.getElementById("basemap");
+    on(basemapElm, "change", function() {
+      map1.basemap = basemapElm.value;
+    });
 
     /**** 3D ****/
     

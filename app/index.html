@@ -75,20 +75,28 @@
           <p class="title">options</p>
         </div>
         <div class="col-xs-5 close-block">
-          <label class="close-container" for="tools"> <i class="fa fa-angle-down"></i></label>
+          <label class="close-container" for="options"> <i class="fa fa-angle-up"></i></label>
         </div>
       </div>
     </div>
     <div class="box-body">
-      Parish Search
       <form id="optionsForm" class="container-fluid">
         <div class="row">
           <div class="col-xs-5">
-            <label for="">county</label>
+            <label for="">basemap</label>
           </div>
           <div class="col-xs-7">
-            <select name="county" form="optionsForm">
-              <option value="volvo">Volvo</option>
+            <select name="basemap" form="optionsForm" id="basemap">
+              <option value="streets">streets</option>
+              <option value="satellite">satellite</option>
+              <option value="hybrid">hybrid</option>
+              <option value="terrain">terrain</option>
+              <option value="topo">topo</option>
+              <option value="gray">gray</option>
+              <option value="dark-gray" selected>dark-gray</option>
+              <option value="oceans">oceans</option>
+              <option value="national-geographic">national-geographic</option>
+              <option value="osm">osm</option>
             </select>
           </div>
         </div>

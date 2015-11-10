@@ -144,6 +144,12 @@ header ul li a:hover {
 .map-container #optionsContainer .box-body select:focus {
   outline: none;
 }
+.map-container #optionsContainer {
+  top: 4em;
+  bottom: auto;
+  left: auto;
+  right: 1em;
+}
 .map-container #tools,
 .map-container #options {
   position: absolute;
