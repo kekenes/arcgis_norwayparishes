@@ -4,6 +4,9 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 header {
   background: #ffffff;
@@ -12,7 +15,7 @@ header {
 header .title p {
   color: #555555;
   font-size: 1.5em;
-  font-weight: 300;
+  font-weight: 400;
   margin: 0;
   padding: 0.5em 0.5em 0.5em 0;
 }
@@ -26,7 +29,7 @@ header ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-weight: 300;
+  font-weight: 400;
 }
 header ul li {
   display: inline-block;
@@ -47,9 +50,9 @@ header ul li a:hover {
   z-index: 9999;
   position: absolute;
   top: 1em;
-  right: 1em;
+  right: 6em;
   list-style: none;
-  background: rgba(236, 240, 241, 0.5);
+  background: rgba(236, 240, 241, 0.75);
   padding: 0.5em 1em;
   margin: 0;
 }
@@ -76,67 +79,8 @@ header ul li a:hover {
 .map-container .views .active a {
   opacity: 0.85;
 }
-#leaguesContainer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: #ffffff;
-  display: none;
-}
-#leaguesContainer .leagues-menu {
-  background: #ecf0f1;
-}
-#leaguesContainer .leagues-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-}
-#leaguesContainer .leagues-menu ul li {
-  display: inline-block;
-  padding: 1em;
-  font-size: 0.9em;
-  font-weight: 400;
-}
-#leaguesContainer .leagues-menu ul li a {
-  text-decoration: none;
-  color: #7f8c8d;
-}
-#leaguesContainer .leagues-menu ul .active {
-  background: #ffffff;
-}
-#leaguesContainer .leagues-menu .close-block {
-  text-align: right;
-  color: #7f8c8d;
-}
-#leaguesContainer .leagues-menu .close-block .close-container {
-  text-align: right;
-  margin: 0.5em 0;
-  padding: 0;
-}
-#leaguesContainer .leagues-menu .close-block .close-container i {
-  cursor: pointer;
-  padding: 0.3em 0.6em;
-  background: #ffffff;
-  font-size: 1.25em;
-}
-#leaguesContainer #leagues {
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  padding: 1em 0;
-}
-#leaguesContainer #leagues ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-#leaguesContainer #leagues ul li {
-  display: inline-block;
-  padding: 0 1em;
-}
-#toolsContainer {
+.map-container #toolsContainer,
+.map-container #optionsContainer {
   position: absolute;
   bottom: 1em;
   left: 1em;
@@ -144,39 +88,47 @@ header ul li a:hover {
   background: #ffffff;
   display: none;
 }
-#toolsContainer .tools-header {
+.map-container #toolsContainer .box-header,
+.map-container #optionsContainer .box-header {
   background: #ecf0f1;
 }
-#toolsContainer .tools-header .title {
+.map-container #toolsContainer .box-header .title,
+.map-container #optionsContainer .box-header .title {
   margin: 0;
   padding: 0.6em 0.2em;
   color: #777777;
   font-size: 1.15em;
   font-weight: 300;
 }
-#toolsContainer .tools-header .close-block {
+.map-container #toolsContainer .box-header .close-block,
+.map-container #optionsContainer .box-header .close-block {
   text-align: right;
   color: #7f8c8d;
 }
-#toolsContainer .tools-header .close-block .close-container {
+.map-container #toolsContainer .box-header .close-block .close-container,
+.map-container #optionsContainer .box-header .close-block .close-container {
   text-align: right;
   margin: 0.5em 0;
   padding: 0;
 }
-#toolsContainer .tools-header .close-block .close-container i {
+.map-container #toolsContainer .box-header .close-block .close-container i,
+.map-container #optionsContainer .box-header .close-block .close-container i {
   cursor: pointer;
   padding: 0.3em 0.6em;
   background: #ffffff;
   font-size: 1.25em;
 }
-#toolsContainer .tools-body {
+.map-container #toolsContainer .box-body,
+.map-container #optionsContainer .box-body {
   padding: 1em;
   color: #555555;
 }
-#toolsContainer .tools-body label {
+.map-container #toolsContainer .box-body label,
+.map-container #optionsContainer .box-body label {
   padding: 0.75em 0;
 }
-#toolsContainer .tools-body select {
+.map-container #toolsContainer .box-body select,
+.map-container #optionsContainer .box-body select {
   width: 10em;
   background: #ecf0f1;
   margin: 0.5em 0;
@@ -188,33 +140,46 @@ header ul li a:hover {
   -moz-appearance: none;
   appearance: none;
 }
-#toolsContainer .tools-body select:focus {
+.map-container #toolsContainer .box-body select:focus,
+.map-container #optionsContainer .box-body select:focus {
   outline: none;
 }
-#toggleLeagues {
+.map-container #tools,
+.map-container #options {
   position: absolute;
   appearance: none;
   cursor: pointer;
   left: -100%;
   top: -100%;
 }
-#toggleLeagues + label {
+.map-container #tools + label,
+.map-container #options + label {
   position: absolute;
-  bottom: 1em;
+  bottom: 0.5em;
   left: 1em;
-  padding: 0.75em 1.5em;
+  padding: 0.575em 1.15em;
   background: rgba(245, 245, 245, 0.75);
   font-size: 1em;
   font-weight: bolder;
-  color: #999999;
+  color: #555555;
   -webkit-font-smoothing: antialiased;
   cursor: pointer;
   transition: all 500ms ease;
 }
-#toggleLeagues + label i {
+.map-container #tools + label i:last-child,
+.map-container #options + label i:last-child {
   margin-left: 0.25em;
 }
-#toggleLeagues:checked ~ #toolsContainer {
+.map-container #options + label {
+  top: 1em;
+  bottom: auto;
+  left: auto;
+  right: 1em;
+}
+.map-container #tools:checked ~ #toolsContainer {
+  display: block;
+}
+.map-container #options:checked ~ #optionsContainer {
   display: block;
 }
 ::-webkit-scrollbar {

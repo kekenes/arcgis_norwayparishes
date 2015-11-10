@@ -21,7 +21,7 @@
 <header>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-8">
+      <div class="col-xs-6">
         <div class="title">
           <p>
              <img alt="Norway's Parishes" src="../IMG/norway-flag.png">
@@ -29,10 +29,11 @@
           </p>
         </div>
       </div>
-      <div class="col-xs-4">
+      <div class="col-xs-6">
         <ul>
           <li><a href="#">about</a></li>
           <li><a href="#">resources</a></li>
+          <li><a href="#">help</a></li>
           <li><a href="#">contact</a></li>
           <li><a href="#"><i class="fa fa-paper-plane-o"></i></a></li>
         </ul>
@@ -63,125 +64,109 @@
       <div id="view3D"></div>
     </div>
   </div>
-</div>
 
-<input type="checkbox" name="toggleLeagues" id="toggleLeagues"/>
-<label for="toggleLeagues"> tools <i class="fa fa-angle-up"></i></label>
+  <input type="checkbox" name="options" id="options"/>
+  <label for="options"> <i class="fa fa-cog"></i> <i class="fa fa-angle-down"></i></label>
 
-<div id="toolsContainer">
-  <div class="tools-header container-fluid">
-    <div class="row">
-      <div class="col-xs-7">
-        <p class="title">tools</p>
-      </div>
-      <div class="col-xs-5 close-block">
-        <label class="close-container" for="toggleLeagues"> <i class="fa fa-angle-down"></i></label>
+  <div id="optionsContainer">
+    <div class="box-header container-fluid">
+      <div class="row">
+        <div class="col-xs-7">
+          <p class="title">options</p>
+        </div>
+        <div class="col-xs-5 close-block">
+          <label class="close-container" for="tools"> <i class="fa fa-angle-down"></i></label>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="tools-body">
-    Parish Search
-    <form id="toolsForm" class="container-fluid">
-      <div class="row">
-        <div class="col-xs-5">
-          <label for="">county</label>
+    <div class="box-body">
+      Parish Search
+      <form id="optionsForm" class="container-fluid">
+        <div class="row">
+          <div class="col-xs-5">
+            <label for="">county</label>
+          </div>
+          <div class="col-xs-7">
+            <select name="county" form="optionsForm">
+              <option value="volvo">Volvo</option>
+            </select>
+          </div>
         </div>
-        <div class="col-xs-7">
-          <select name="county" form="toolsForm">
-            <option value="volvo">Volvo</option>
-          </select>
+        <div class="row">
+          <div class="col-xs-5">
+            <label for="">municipality</label>
+          </div>
+          <div class="col-xs-7">
+            <select name="municipality" form="optionsForm">
+              <option value="volvo">Volvo</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-5">
-          <label for="">municipality</label>
+        <div class="row">
+          <div class="col-xs-5">
+            <label for="">parish</label>
+          </div>
+          <div class="col-xs-7">
+            <select name="parish" form="optionsForm">
+              <option value="volvo">Volvo</option>
+            </select>
+          </div>
         </div>
-        <div class="col-xs-7">
-          <select name="municipality" form="toolsForm">
-            <option value="volvo">Volvo</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-5">
-          <label for="">parish</label>
-        </div>
-        <div class="col-xs-7">
-          <select name="parish" form="toolsForm">
-            <option value="volvo">Volvo</option>
-          </select>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div id="leaguesContainer">
-  <div class="leagues-menu container-fluid">
-    <div class="row">
-      <div class="col-xs-10">
-        <ul>
-          <li class="active" role="presentation">
-            <a href="#leagues" data-toggle="tab">
-              leagues
-            </a>
-          </li>
-          <li role="presentation">
-            <a href="#options" data-toggle="tab">
-              options
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-xs-2 close-block">
-        <label class="close-container" for="toggleLeagues"> <i class="fa fa-angle-down"></i></label>
-      </div>
+      </form>
     </div>
   </div>
 
-  <div class="tab-content">
-    <div class="tab-pane active" id="leagues">
-      <ul>
-        <li>
-          <img src="http://placehold.it/350x150">
-        </li>
-        <li>
-          <img src="http://placehold.it/350x150">
-        </li>
-        <li>
-          <img src="http://placehold.it/350x150">
-        </li>
-        <li>
-          <img src="http://placehold.it/350x150">
-        </li>
-        <li>
-          <img src="http://placehold.it/350x150">
-        </li>
-        <li>
-          <img src="http://placehold.it/350x150">
-        </li>
-        <li>
-          <img src="http://placehold.it/350x150">
-        </li>
-        <li>
-          <img src="http://placehold.it/350x150">
-        </li>
-        <li>
-          <img src="http://placehold.it/350x150">
-        </li>
-        <li>
-          <img src="http://placehold.it/350x150">
-        </li>
-      </ul>
-    </div>
+  <input type="checkbox" name="tools" id="tools"/>
+  <label for="tools"> tools <i class="fa fa-angle-up"></i></label>
 
-    <div class="tab-pane" id="options">
-      <h1>test</h1>
+  <div id="toolsContainer">
+    <div class="box-header container-fluid">
+      <div class="row">
+        <div class="col-xs-7">
+          <p class="title">tools</p>
+        </div>
+        <div class="col-xs-5 close-block">
+          <label class="close-container" for="tools"> <i class="fa fa-angle-down"></i></label>
+        </div>
+      </div>
+    </div>
+    <div class="box-body">
+      Parish Search
+      <form id="toolsForm" class="container-fluid">
+        <div class="row">
+          <div class="col-xs-5">
+            <label for="">county</label>
+          </div>
+          <div class="col-xs-7">
+            <select name="county" form="toolsForm">
+              <option value="volvo">Volvo</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5">
+            <label for="">municipality</label>
+          </div>
+          <div class="col-xs-7">
+            <select name="municipality" form="toolsForm">
+              <option value="volvo">Volvo</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5">
+            <label for="">parish</label>
+          </div>
+          <div class="col-xs-7">
+            <select name="parish" form="toolsForm">
+              <option value="volvo">Volvo</option>
+            </select>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-
-<span id="info" style="position:absolute; right:15px; bottom:5px; color:#000; z-index:50;"></span>
 
 <!-- jQuery first, then Bootstrap JS. -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

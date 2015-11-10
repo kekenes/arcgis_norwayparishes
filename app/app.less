@@ -4,6 +4,9 @@ html, body {
   padding: 0;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 
 header {
@@ -20,7 +23,7 @@ header {
 
       color: #555555;
       font-size: 1.5em;
-      font-weight: 300;
+      font-weight: 400;
       margin: 0;
       padding: 0.5em 0.5em 0.5em 0;
     }
@@ -31,7 +34,7 @@ header {
     list-style: none;
     padding: 0;
     margin: 0;
-    font-weight: 300;
+    font-weight: 400;
     
     li {
       display: inline-block;
@@ -56,9 +59,9 @@ header {
     z-index: 9999;
     position: absolute;
     top: 1em;
-    right: 1em;
+    right: 6em;
     list-style: none;
-    background: rgba(236, 240, 241,0.5);
+    background: rgba(236, 240, 241,0.75);
     padding: 0.5em 1em;
     margin: 0;
     
@@ -90,170 +93,111 @@ header {
       }    
     }
   }
-}
 
-#leaguesContainer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: #ffffff;
-  display: none;
 
-  .leagues-menu {
-    background: #ecf0f1;
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      text-align: left;
+  #toolsContainer, #optionsContainer {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    width: auto;
+    background: #ffffff;
+    display: none;
 
-      li {
-        display: inline-block;
-        padding: 1em;
-        font-size: 0.9em;
-        font-weight: 400;
-
-        a {
-          text-decoration: none;
-          color: #7f8c8d;
-        }
-      }
-
-      .active {
-        background: #ffffff;
-      }
-    }
-
-    .close-block {
-      text-align: right;
-      color: #7f8c8d;
-
-      .close-container {
-        text-align: right;
-        margin: 0.5em 0;
-        padding: 0;
-
-        i{
-          cursor: pointer;
-          padding: 0.3em 0.6em;
-          background: #ffffff;
-          font-size: 1.25em;
-        }
-      }
-    }
-  }
-
-  #leagues {
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    padding: 1em 0;
-
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-
-      li {
-        display: inline-block;
-        padding: 0 1em;
-      }
-    }
-  }
-}
-
-#toolsContainer {
-  position: absolute;
-  bottom: 1em;
-  left: 1em;
-  width: auto;
-  background: #ffffff;
-  display: none;
-  
-  .tools-header {
-    background: #ecf0f1;
-    
-    .title {
-      margin: 0;
-      padding: 0.6em 0.2em;
-      color: #777777;
-      font-size: 1.15em;
-      font-weight: 300;
-    }
-    
-    .close-block {
-      text-align: right;
-      color: #7f8c8d;
-
-      .close-container {
-        text-align: right;
-        margin: 0.5em 0;
-        padding: 0;
-
-        i{
-          cursor: pointer;
-          padding: 0.3em 0.6em;
-          background: #ffffff;
-          font-size: 1.25em;
-        }
-      }
-    }
-  }
-  
-  .tools-body {
-    padding: 1em;
-    color: #555555;
-    label {
-      padding: 0.75em 0;
-    }
-    select {
-      width: 10em;
+    .box-header {
       background: #ecf0f1;
-      margin: 0.5em 0;
-      padding: 0.25em 0.75em;
-      border: none;
-      box-shadow: none;
-      background-image: none;
-      -webkit-appearance: none;
+
+      .title {
+        margin: 0;
+        padding: 0.6em 0.2em;
+        color: #777777;
+        font-size: 1.15em;
+        font-weight: 300;
+      }
+
+      .close-block {
+        text-align: right;
+        color: #7f8c8d;
+
+        .close-container {
+          text-align: right;
+          margin: 0.5em 0;
+          padding: 0;
+
+          i{
+            cursor: pointer;
+            padding: 0.3em 0.6em;
+            background: #ffffff;
+            font-size: 1.25em;
+          }
+        }
+      }
+    }
+
+    .box-body {
+      padding: 1em;
+      color: #555555;
+      label {
+        padding: 0.75em 0;
+      }
+      select {
+        width: 10em;
+        background: #ecf0f1;
+        margin: 0.5em 0;
+        padding: 0.25em 0.75em;
+        border: none;
+        box-shadow: none;
+        background-image: none;
+        -webkit-appearance: none;
         -moz-appearance: none;
-              appearance: none;
-    }
-    
-    select:focus {
-      outline: none;
+        appearance: none;
+      }
+
+      select:focus {
+        outline: none;
+      }
     }
   }
-}
 
-#toggleLeagues {
-  position:absolute;
-  appearance:none;
-  cursor:pointer;
-  left:-100%;
-  top:-100%;
-}
-
-#toggleLeagues + label {
-  position:absolute;
-  bottom: 1em;
-  left: 1em;
-  padding:0.75em 1.5em;
-  background: rgba(245, 245, 245,0.75);
-  font-size: 1em;
-  font-weight: bolder;
-  color: #999999;
-  -webkit-font-smoothing: antialiased;
-  cursor: pointer;
-  transition:all 500ms ease;
-
-  i {
-    margin-left: 0.25em;
+  #tools, #options{
+    position:absolute;
+    appearance:none;
+    cursor:pointer;
+    left:-100%;
+    top:-100%;
   }
-}
 
-#toggleLeagues:checked ~ #toolsContainer {
-  display: block;
+  #tools + label, #options + label {
+    position:absolute;
+    bottom: 0.5em;
+    left: 1em;
+    padding:0.575em 1.15em;
+    background: rgba(245, 245, 245,0.75);
+    font-size: 1em;
+    font-weight: bolder;
+    color: #555555;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    transition:all 500ms ease;
+
+    i:last-child {
+      margin-left: 0.25em;
+    }
+  }
+
+  #options + label {
+    top: 1em;
+    bottom: auto;
+    left: auto;
+    right: 1em;
+  }
+
+  #tools:checked ~ #toolsContainer {
+    display: block;
+  }
+
+  #options:checked ~ #optionsContainer {
+    display: block;
+  }
 }
 
 ::-webkit-scrollbar {
