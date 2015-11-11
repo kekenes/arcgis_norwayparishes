@@ -1,0 +1,48 @@
+[	
+	{
+		"name": "offices",
+		"url": "http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/NA_Regional_Offices_2/FeatureServer/0",
+		"type": "FeatureLayer",
+		"visible": true,
+		"symbol": {
+			"type": "SimpleMarkerSymbol",
+			"color": [46, 204, 113, 1.0]
+		}
+	},
+	{
+		"name": "parishes",
+		"url": "http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/2",
+		"type": "FeatureLayer",
+		"visible": false,
+		"symbol": {
+			"type": "SimpleFillSymbol",
+			"outline": {
+				"color": [241, 196, 15, 1.0]
+			}
+		}
+	},
+	{
+		"name": "municipalities",
+		"url": "http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/1",
+		"type": "FeatureLayer",
+		"visible": false,
+		"symbol": {
+			"type": "SimpleFillSymbol",
+			"outline": {
+				"color": [52, 152, 219, 1.0]
+			}
+		}
+	},
+	{
+		"name": "counties",
+		"url": "http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/0",
+		"type": "FeatureLayer",
+		"visible": true,
+		"symbol": {
+			"type": "SimpleFillSymbol",
+			"outline": {
+				"color": [230, 126, 34, 1.0]
+			}
+		}
+	}
+]

@@ -11,11 +11,11 @@
   <!-- ESRI CSS -->
   <link rel="stylesheet" href="https://jsdev.arcgis.com/4.0beta2/esri/css/main.css">
   <!-- app CSS -->
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="resources/css/app.css">
   <link rel="shortcut icon" type="image/x-icon" href="../IMG/flag_1-20140714-favicon.ico">
 
   <script src="https://jsdev.arcgis.com/4.0beta2/"></script>
-  <script src="app.js"></script>
+  <script src="resources/js/app.js"></script>
 </head>
 <body>
 <header>
@@ -33,7 +33,7 @@
         <ul>
           <li><a href="#">about</a></li>
           <li><a href="#">resources</a></li>
-          <li><a href="#">help </a></li>
+          <li><a href="#">help</a></li>
           <li><a href="#">contact</a></li>
           <li><a href="#"><i class="fa fa-paper-plane-o"></i></a></li>
         </ul>
@@ -101,23 +101,27 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-5">
-            <label for="">municipality</label>
-          </div>
-          <div class="col-xs-7">
-            <select name="municipality" form="optionsForm">
-              <option value="volvo">Volvo</option>
-            </select>
+          <div class="col-xs-12">
+            <input type="checkbox" name="counties" id="counties"/>
+            <label for="counties">counties</label>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-5">
-            <label for="">parish</label>
+          <div class="col-xs-12">
+            <input type="checkbox" name="municipalities" id="municipalities"/>
+            <label for="municipalities">municipalities</label>
           </div>
-          <div class="col-xs-7">
-            <select name="parish" form="optionsForm">
-              <option value="volvo">Volvo</option>
-            </select>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <input type="checkbox" name="parishes" id="parishes"/>
+            <label for="parishes">parishes</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <input type="checkbox" name="offices" id="offices"/>
+            <label for="offices">offices</label>
           </div>
         </div>
       </form>
