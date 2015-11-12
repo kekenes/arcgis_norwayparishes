@@ -6,7 +6,7 @@
 		"visible": true,
 		"symbol": {
 			"type": "SimpleMarkerSymbol",
-			"color": [46, 204, 113, 1.0]
+			"color": [161, 215, 126]
 		}
 	},
 	{
@@ -17,8 +17,15 @@
 		"symbol": {
 			"type": "SimpleFillSymbol",
 			"outline": {
-				"color": [241, 196, 15, 1.0]
+				"color": [251, 222, 127]
 			}
+		},
+		"search": {
+			"name": "Parishes",
+			"displayField": "Par_NAME",
+			"outFields": ["Par_NAME", "MUNICIPALITY", "COUNTY"],
+            "placeholder": "e.g. Tvedestrand",
+            "searchFields": ["Par_NAME", "MUNICIPALITY", "COUNTY"]
 		}
 	},
 	{
@@ -29,8 +36,15 @@
 		"symbol": {
 			"type": "SimpleFillSymbol",
 			"outline": {
-				"color": [52, 152, 219, 1.0]
+				"color": [55, 169, 183]
 			}
+		},
+		"search": {
+			"name": "Municipalities",
+			"displayField": "MUNICIPALITY",
+			"outFields": ["MUNICIPALITY", "COUNTY"],
+            "placeholder": "e.g. Oslo",
+            "searchFields": ["MUNICIPALITY", "COUNTY"]
 		}
 	},
 	{
@@ -41,8 +55,15 @@
 		"symbol": {
 			"type": "SimpleFillSymbol",
 			"outline": {
-				"color": [230, 126, 34, 1.0]
+				"color": [249, 123, 96]
 			}
+		},
+		"search": {
+			"name": "Counties",
+			"displayField": "COUNTY",
+			"outFields": ["COUNTY"],
+            "placeholder": "e.g. Aust-Agder",
+            "searchFields": ["COUNTY"]
 		}
 	}
 ]

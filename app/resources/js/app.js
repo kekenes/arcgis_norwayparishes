@@ -18,6 +18,7 @@ require(
     "esri/tasks/support/Query",
     
     "./resources/js/utils/LayersManager.js",
+    "./resources/js/utils/SearchManager.js",
 
     "dojo/on",
     "dojo/domReady!"
@@ -27,7 +28,7 @@ require(
     Extent, SpatialReference, webMercatorUtils,
     ArcGISTiledLayer, FeatureLayer, GraphicsLayer,
     QueryTask, Query,
-    LayersManager,
+    LayersManager, SearchManager,
     on
   ) {
 
@@ -77,7 +78,16 @@ require(
               layer.visible = false;
             }
           });
+          
+          if(layer.id === "counties") {
+            layer.then(function() {
+              view2D.animateTo(layer.fullExtent);
+            })
+          }
         })
+        
+        /**** start search widget ****/
+        SearchManager.startSearch(view2D, layers);
       });
   
       var graphicsLayer = new GraphicsLayer();

@@ -79,6 +79,11 @@ header ul li a:hover {
 .map-container .views .active a {
   opacity: 0.85;
 }
+.map-container #search {
+  position: absolute;
+  top: 0.65em;
+  left: 3.5em;
+}
 .map-container #toolsContainer,
 .map-container #optionsContainer {
   position: absolute;
@@ -205,4 +210,9 @@ header ul li a:hover {
 }
 .esri-zoom-in {
   border-bottom: 1px solid #cccccc !important;
+}
+.esri-search {
+  text-shadow: 0;
+  outline: none;
+  border: none;
 }
