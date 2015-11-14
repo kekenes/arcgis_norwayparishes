@@ -43,6 +43,23 @@ header ul li a:hover {
   text-decoration: none;
   color: #777777;
 }
+header ul li a:focus {
+  outline: none;
+}
+header ul li:last-child a {
+  text-decoration: none;
+  color: #ffffff;
+  background: #f06060;
+  border-radius: 10em;
+  padding: 0.4em 0.5em;
+}
+header ul li:last-child a i {
+  margin-right: 0.15em;
+}
+header ul li:last-child a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
 .map-container {
   position: relative;
 }
@@ -192,6 +209,38 @@ header ul li a:hover {
 }
 .map-container #options:checked ~ #optionsContainer {
   display: block;
+}
+.modal-body {
+  text-align: center;
+}
+.modal-body .share-link {
+  padding-top: 2em;
+}
+.modal-body .share-link label {
+  padding: 0.5em 1em;
+  color: #bbbbbb;
+}
+.modal-body .share-link input {
+  outline: none;
+  border: none;
+  padding: 0.5em 1em;
+  color: #999999;
+  background: #eeeeee;
+}
+.modal-body .social {
+  list-style: none;
+  margin: 1em;
+  padding: 0;
+}
+.modal-body .social li {
+  display: inline-block;
+  font-size: 2em;
+  padding: 0.5em 1em;
+  color: #bbbbbb;
+}
+.modal-body .social li:hover {
+  background: #bbbbbb;
+  color: #ffffff;
 }
 ::-webkit-scrollbar {
   height: 8px;

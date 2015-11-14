@@ -48,6 +48,28 @@ header {
         text-decoration: none;
         color: #777777;
       }
+      a:focus {
+        outline: none;
+      }
+    }
+    
+    li:last-child {
+      
+      a {
+        text-decoration: none;
+        color: #ffffff;
+        background: #f06060;
+        border-radius: 10em;
+        padding: 0.4em 0.5em;
+        
+        i {
+          margin-right: 0.15em;
+        }
+      }
+      a:hover {
+        text-decoration: none;
+         color: #ffffff;
+      }
     }
   }
 }
@@ -210,6 +232,42 @@ header {
 
   #options:checked ~ #optionsContainer {
     display: block;
+  }
+}
+
+.modal-body {
+  text-align: center;
+  .share-link {
+    padding-top: 2em;
+    label {
+      padding: 0.5em 1em;
+      color: #bbbbbb;
+    }
+    input {
+      outline: none;
+      border: none;
+      padding: 0.5em 1em;
+      color: #999999;
+      background: #eeeeee;
+    }
+  }
+  
+  .social {
+    list-style: none;
+    margin: 1em;
+    padding: 0;
+    
+    li{
+      display: inline-block;  
+      font-size: 2em;
+      padding: 0.5em 1em;
+      color: #bbbbbb;
+    }
+    
+    li:hover {
+      background: #bbbbbb;
+      color: #ffffff;
+    }
   }
 }
 
