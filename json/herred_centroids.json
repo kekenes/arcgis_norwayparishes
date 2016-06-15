@@ -1,0 +1,6912 @@
+{
+  "displayFieldName" : "",
+  "fieldAliases" : {
+    "OBJECTID" : "OBJECTID",
+    "poly_id" : "poly_id",
+    "komm" : "komm",
+    "MUNICIPALITY" : "MUNICIPALITY",
+    "COUNTY" : "COUNTY",
+    "x" : "x",
+    "y" : "y",
+    "ORIG_FID" : "ORIG_FID"
+  },
+  "geometryType" : "esriGeometryPoint",
+  "spatialReference" : {
+    "wkid" : 102100,
+    "latestWkid" : 3857
+  },
+  "fields" : [
+    {
+      "name" : "OBJECTID",
+      "type" : "esriFieldTypeOID",
+      "alias" : "OBJECTID"
+    },
+    {
+      "name" : "poly_id",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "poly_id"
+    },
+    {
+      "name" : "komm",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "komm"
+    },
+    {
+      "name" : "MUNICIPALITY",
+      "type" : "esriFieldTypeString",
+      "alias" : "MUNICIPALITY",
+      "length" : 75
+    },
+    {
+      "name" : "COUNTY",
+      "type" : "esriFieldTypeString",
+      "alias" : "COUNTY",
+      "length" : 30
+    },
+    {
+      "name" : "x",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "x"
+    },
+    {
+      "name" : "y",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "y"
+    },
+    {
+      "name" : "ORIG_FID",
+      "type" : "esriFieldTypeInteger",
+      "alias" : "ORIG_FID"
+    }
+  ],
+  "features" : [
+    {
+      "attributes" : {
+        "OBJECTID" : 1,
+        "poly_id" : 172760,
+        "komm" : 1253,
+        "MUNICIPALITY" : "Osterøy",
+        "COUNTY" : "Hordaland",
+        "x" : 5.5470220924216003,
+        "y" : 60.538069283978103,
+        "ORIG_FID" : 1
+      },
+      "geometry" : {
+        "x" : 614504.07189999893,
+        "y" : 8517530.1897
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 2,
+        "poly_id" : 172763,
+        "komm" : 831,
+        "MUNICIPALITY" : "Fyresdal",
+        "COUNTY" : "Telemark",
+        "x" : 8.0553537670030995,
+        "y" : 59.161390732238303,
+        "ORIG_FID" : 2
+      },
+      "geometry" : {
+        "x" : 896697.65799999982,
+        "y" : 8215462.7752000019
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 3,
+        "poly_id" : 172783,
+        "komm" : 1260,
+        "MUNICIPALITY" : "Radøy",
+        "COUNTY" : "Hordaland",
+        "x" : 4.9758576822760796,
+        "y" : 60.677115772355698,
+        "ORIG_FID" : 3
+      },
+      "geometry" : {
+        "x" : 553900.57690000162,
+        "y" : 8552076.8730000034
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 4,
+        "poly_id" : 172784,
+        "komm" : 1263,
+        "MUNICIPALITY" : "Lindås",
+        "COUNTY" : "Hordaland",
+        "x" : 5.3453976973515003,
+        "y" : 60.694134121819502,
+        "ORIG_FID" : 4
+      },
+      "geometry" : {
+        "x" : 593651.37099999934,
+        "y" : 8544371.0945999995
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 5,
+        "poly_id" : 172789,
+        "komm" : 1037,
+        "MUNICIPALITY" : "Kvinesdal",
+        "COUNTY" : "Vest-Agder",
+        "x" : 6.9781250985122902,
+        "y" : 58.510983582167299,
+        "ORIG_FID" : 5
+      },
+      "geometry" : {
+        "x" : 776819.29699999839,
+        "y" : 8075703.1933000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 6,
+        "poly_id" : 172793,
+        "komm" : 631,
+        "MUNICIPALITY" : "Flesberg",
+        "COUNTY" : "Buskerud",
+        "x" : 9.4925097182647296,
+        "y" : 59.8480242504763,
+        "ORIG_FID" : 6
+      },
+      "geometry" : {
+        "x" : 1056697.8742999993,
+        "y" : 8366016.6897
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 7,
+        "poly_id" : 172797,
+        "komm" : 1576,
+        "MUNICIPALITY" : "Aure",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 8.4151516620924394,
+        "y" : 63.259361263538601,
+        "ORIG_FID" : 7
+      },
+      "geometry" : {
+        "x" : 936818.72780000046,
+        "y" : 9164204.3175999969
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 8,
+        "poly_id" : 172774,
+        "komm" : 1433,
+        "MUNICIPALITY" : "Naustdal",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 5.8150779668635799,
+        "y" : 61.553429314011701,
+        "ORIG_FID" : 8
+      },
+      "geometry" : {
+        "x" : 647369.17639999837,
+        "y" : 8754050.4825000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 9,
+        "poly_id" : 172775,
+        "komm" : 1516,
+        "MUNICIPALITY" : "Ulstein",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 5.8285782534266897,
+        "y" : 62.377242777765296,
+        "ORIG_FID" : 9
+      },
+      "geometry" : {
+        "x" : 648824.73059999943,
+        "y" : 8949214.5301999971
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 10,
+        "poly_id" : 172776,
+        "komm" : 1517,
+        "MUNICIPALITY" : "Hareid",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.0113041710079198,
+        "y" : 62.358944913376298,
+        "ORIG_FID" : 10
+      },
+      "geometry" : {
+        "x" : 669174.83509999886,
+        "y" : 8944778.1281000003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 11,
+        "poly_id" : 172842,
+        "komm" : 1531,
+        "MUNICIPALITY" : "Sula",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.1899618185139103,
+        "y" : 62.415139751463698,
+        "ORIG_FID" : 11
+      },
+      "geometry" : {
+        "x" : 689062.78669999912,
+        "y" : 8958262.2166000009
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 12,
+        "poly_id" : 172855,
+        "komm" : 1234,
+        "MUNICIPALITY" : "Granvin",
+        "COUNTY" : "Hordaland",
+        "x" : 6.6900247243728899,
+        "y" : 60.543096843109602,
+        "ORIG_FID" : 12
+      },
+      "geometry" : {
+        "x" : 744738.35000000149,
+        "y" : 8521687.8117000014
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 13,
+        "poly_id" : 172856,
+        "komm" : 1441,
+        "MUNICIPALITY" : "Selje",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 5.0543150037807303,
+        "y" : 62.170723718850603,
+        "ORIG_FID" : 13
+      },
+      "geometry" : {
+        "x" : 562590.25200000033,
+        "y" : 8899850.8901999965
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 14,
+        "poly_id" : 172778,
+        "komm" : 617,
+        "MUNICIPALITY" : "Gol",
+        "COUNTY" : "Buskerud",
+        "x" : 8.9990678628657896,
+        "y" : 60.746829640432999,
+        "ORIG_FID" : 14
+      },
+      "geometry" : {
+        "x" : 1001765.4913000017,
+        "y" : 8567950.8268000036
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 15,
+        "poly_id" : 172781,
+        "komm" : 544,
+        "MUNICIPALITY" : "Øystre Slidre",
+        "COUNTY" : "Oppland",
+        "x" : 9.0977294855793005,
+        "y" : 61.244819510049901,
+        "ORIG_FID" : 15
+      },
+      "geometry" : {
+        "x" : 1012722.3979999982,
+        "y" : 8682351.1123000011
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 16,
+        "poly_id" : 172808,
+        "komm" : 619,
+        "MUNICIPALITY" : "Ål",
+        "COUNTY" : "Buskerud",
+        "x" : 8.3867275819924707,
+        "y" : 60.711971630401202,
+        "ORIG_FID" : 16
+      },
+      "geometry" : {
+        "x" : 933541.63800000027,
+        "y" : 8560109.1449000016
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 17,
+        "poly_id" : 172809,
+        "komm" : 633,
+        "MUNICIPALITY" : "Nore og Uvdal",
+        "COUNTY" : "Buskerud",
+        "x" : 8.44857396266619,
+        "y" : 60.276524186663799,
+        "ORIG_FID" : 17
+      },
+      "geometry" : {
+        "x" : 940513.08040000126,
+        "y" : 8461644.8601000011
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 18,
+        "poly_id" : 172810,
+        "komm" : 1233,
+        "MUNICIPALITY" : "Ulvik",
+        "COUNTY" : "Hordaland",
+        "x" : 7.1738436613054697,
+        "y" : 60.606855633293897,
+        "ORIG_FID" : 18
+      },
+      "geometry" : {
+        "x" : 778829.53500000015,
+        "y" : 8538634.821800001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 19,
+        "poly_id" : 172816,
+        "komm" : 814,
+        "MUNICIPALITY" : "Bamble",
+        "COUNTY" : "Telemark",
+        "x" : 9.5589741722898207,
+        "y" : 59.0074661891056,
+        "ORIG_FID" : 19
+      },
+      "geometry" : {
+        "x" : 1064098.4816999994,
+        "y" : 8182021.7709999979
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 20,
+        "poly_id" : 172818,
+        "komm" : 1524,
+        "MUNICIPALITY" : "Norddal",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 7.4385098345984098,
+        "y" : 62.259877692997001,
+        "ORIG_FID" : 20
+      },
+      "geometry" : {
+        "x" : 828064.06489999965,
+        "y" : 8921115.4047999978
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 21,
+        "poly_id" : 172841,
+        "komm" : 1420,
+        "MUNICIPALITY" : "Sogndal",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 6.93862423854375,
+        "y" : 61.302653898846998,
+        "ORIG_FID" : 21
+      },
+      "geometry" : {
+        "x" : 754606.3302000016,
+        "y" : 8726482.813000001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 22,
+        "poly_id" : 172827,
+        "komm" : 1535,
+        "MUNICIPALITY" : "Vestnes",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 7.0264708835258904,
+        "y" : 62.581008376986098,
+        "ORIG_FID" : 22
+      },
+      "geometry" : {
+        "x" : 782170.90740000084,
+        "y" : 8998283.7142999992
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 23,
+        "poly_id" : 172830,
+        "komm" : 1526,
+        "MUNICIPALITY" : "Stordal",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 7.10790991806976,
+        "y" : 62.395272389982203,
+        "ORIG_FID" : 23
+      },
+      "geometry" : {
+        "x" : 802440.28759999946,
+        "y" : 8953797.6942000017
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 24,
+        "poly_id" : 172832,
+        "komm" : 1251,
+        "MUNICIPALITY" : "Vaksdal",
+        "COUNTY" : "Hordaland",
+        "x" : 5.9051324417904096,
+        "y" : 60.673422955648597,
+        "ORIG_FID" : 24
+      },
+      "geometry" : {
+        "x" : 642161.84470000118,
+        "y" : 8535201.1587999985
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 25,
+        "poly_id" : 172833,
+        "komm" : 1431,
+        "MUNICIPALITY" : "Jølster",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 6.4402242254935196,
+        "y" : 61.553124729498101,
+        "ORIG_FID" : 25
+      },
+      "geometry" : {
+        "x" : 716946.71020000055,
+        "y" : 8753984.9016999975
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 26,
+        "poly_id" : 172834,
+        "komm" : 1430,
+        "MUNICIPALITY" : "Gaular",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 5.9116473416301298,
+        "y" : 61.341465377766099,
+        "ORIG_FID" : 26
+      },
+      "geometry" : {
+        "x" : 658204.04080000147,
+        "y" : 8699307.8505999967
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 27,
+        "poly_id" : 172835,
+        "komm" : 1429,
+        "MUNICIPALITY" : "Fjaler",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 5.3683413078665403,
+        "y" : 61.285311387421203,
+        "ORIG_FID" : 27
+      },
+      "geometry" : {
+        "x" : 597597.35979999974,
+        "y" : 8691650.992399998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 28,
+        "poly_id" : 172836,
+        "komm" : 819,
+        "MUNICIPALITY" : "Nome",
+        "COUNTY" : "Telemark",
+        "x" : 9.1253136115828397,
+        "y" : 59.274381489842497,
+        "ORIG_FID" : 28
+      },
+      "geometry" : {
+        "x" : 1015705.0196999982,
+        "y" : 8240123.4936999977
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 29,
+        "poly_id" : 172837,
+        "komm" : 821,
+        "MUNICIPALITY" : "Bø",
+        "COUNTY" : "Telemark",
+        "x" : 9.0075250191732295,
+        "y" : 59.441125428575901,
+        "ORIG_FID" : 29
+      },
+      "geometry" : {
+        "x" : 1002718.5910999998,
+        "y" : 8276368.6731999964
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 30,
+        "poly_id" : 172839,
+        "komm" : 1432,
+        "MUNICIPALITY" : "Førde",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 6.0951252636253104,
+        "y" : 61.445971847045499,
+        "ORIG_FID" : 30
+      },
+      "geometry" : {
+        "x" : 708361.51429999992,
+        "y" : 8723815.1401000023
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 31,
+        "poly_id" : 172840,
+        "komm" : 1445,
+        "MUNICIPALITY" : "Gloppen",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 6.1601620421974896,
+        "y" : 61.725142492081197,
+        "ORIG_FID" : 31
+      },
+      "geometry" : {
+        "x" : 685751.98840000108,
+        "y" : 8794304.4864000008
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 32,
+        "poly_id" : 172843,
+        "komm" : 1617,
+        "MUNICIPALITY" : "Hitra",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 8.7116748475398893,
+        "y" : 63.561087665652501,
+        "ORIG_FID" : 32
+      },
+      "geometry" : {
+        "x" : 969827.96590000018,
+        "y" : 9239257.311999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 33,
+        "poly_id" : 172844,
+        "komm" : 1545,
+        "MUNICIPALITY" : "Midsund",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.7283193955679801,
+        "y" : 62.700737375411897,
+        "ORIG_FID" : 33
+      },
+      "geometry" : {
+        "x" : 748560.45740000159,
+        "y" : 9029704.9450000003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 34,
+        "poly_id" : 172845,
+        "komm" : 1504,
+        "MUNICIPALITY" : "Ålesund",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.3331042740647199,
+        "y" : 62.468974201553799,
+        "ORIG_FID" : 34
+      },
+      "geometry" : {
+        "x" : 704994.07050000131,
+        "y" : 8971220.3056999967
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 35,
+        "poly_id" : 172847,
+        "komm" : 1223,
+        "MUNICIPALITY" : "Tysnes",
+        "COUNTY" : "Hordaland",
+        "x" : 5.5488074469045596,
+        "y" : 60.0056894377311,
+        "ORIG_FID" : 35
+      },
+      "geometry" : {
+        "x" : 617682.0271999985,
+        "y" : 8401046.1547999978
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 36,
+        "poly_id" : 172848,
+        "komm" : 1238,
+        "MUNICIPALITY" : "Kvam",
+        "COUNTY" : "Hordaland",
+        "x" : 6.1350662008909396,
+        "y" : 60.372000568634398,
+        "ORIG_FID" : 36
+      },
+      "geometry" : {
+        "x" : 682978.08080000058,
+        "y" : 8483126.1216000021
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 37,
+        "poly_id" : 172852,
+        "komm" : 935,
+        "MUNICIPALITY" : "Iveland",
+        "COUNTY" : "Aust-Agder",
+        "x" : 7.9436610954720503,
+        "y" : 58.436927412630503,
+        "ORIG_FID" : 37
+      },
+      "geometry" : {
+        "x" : 884280.63879999891,
+        "y" : 8059690.4987000003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 38,
+        "poly_id" : 172853,
+        "komm" : 938,
+        "MUNICIPALITY" : "Bygland",
+        "COUNTY" : "Aust-Agder",
+        "x" : 7.6576876450467699,
+        "y" : 58.884823903153297,
+        "ORIG_FID" : 38
+      },
+      "geometry" : {
+        "x" : 865039.18910000101,
+        "y" : 8152500.2665000036
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 39,
+        "poly_id" : 172858,
+        "komm" : 1018,
+        "MUNICIPALITY" : "Søgne",
+        "COUNTY" : "Vest-Agder",
+        "x" : 7.8450549469025699,
+        "y" : 57.989707689034901,
+        "ORIG_FID" : 39
+      },
+      "geometry" : {
+        "x" : 873287.16750000045,
+        "y" : 7965231.4959999993
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 40,
+        "poly_id" : 172859,
+        "komm" : 1243,
+        "MUNICIPALITY" : "Os",
+        "COUNTY" : "Hordaland",
+        "x" : 5.4465513739603297,
+        "y" : 60.196329291672697,
+        "ORIG_FID" : 40
+      },
+      "geometry" : {
+        "x" : 606315.68210000172,
+        "y" : 8443605.4615999982
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 41,
+        "poly_id" : 172860,
+        "komm" : 1411,
+        "MUNICIPALITY" : "Gulen",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 5.1232947206906099,
+        "y" : 60.967264883651197,
+        "ORIG_FID" : 41
+      },
+      "geometry" : {
+        "x" : 570348.53370000049,
+        "y" : 8618357.4214000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 42,
+        "poly_id" : 172861,
+        "komm" : 1252,
+        "MUNICIPALITY" : "Modalen",
+        "COUNTY" : "Hordaland",
+        "x" : 5.9296474054873602,
+        "y" : 60.887488611488997,
+        "ORIG_FID" : 42
+      },
+      "geometry" : {
+        "x" : 660106.18320000172,
+        "y" : 8600085.5982000008
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 43,
+        "poly_id" : 172862,
+        "komm" : 616,
+        "MUNICIPALITY" : "Nes",
+        "COUNTY" : "Buskerud",
+        "x" : 9.0725237877940099,
+        "y" : 60.551418492934602,
+        "ORIG_FID" : 43
+      },
+      "geometry" : {
+        "x" : 1009954.4140999988,
+        "y" : 8523588.3304999992
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 44,
+        "poly_id" : 172865,
+        "komm" : 1201,
+        "MUNICIPALITY" : "Bergen",
+        "COUNTY" : "Hordaland",
+        "x" : 5.3711186121885302,
+        "y" : 60.359926112679503,
+        "ORIG_FID" : 44
+      },
+      "geometry" : {
+        "x" : 597916.59349999949,
+        "y" : 8480375.9089000002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 45,
+        "poly_id" : 172882,
+        "komm" : 940,
+        "MUNICIPALITY" : "Valle",
+        "COUNTY" : "Aust-Agder",
+        "x" : 7.4321228293749702,
+        "y" : 59.164733680733697,
+        "ORIG_FID" : 45
+      },
+      "geometry" : {
+        "x" : 827351.21579999849,
+        "y" : 8216166.9921000004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 46,
+        "poly_id" : 172883,
+        "komm" : 833,
+        "MUNICIPALITY" : "Tokke",
+        "COUNTY" : "Telemark",
+        "x" : 7.9113551929638897,
+        "y" : 59.461999185295298,
+        "ORIG_FID" : 46
+      },
+      "geometry" : {
+        "x" : 882458.10130000114,
+        "y" : 8272945.8645000011
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 47,
+        "poly_id" : 172890,
+        "komm" : 815,
+        "MUNICIPALITY" : "Kragerø",
+        "COUNTY" : "Telemark",
+        "x" : 9.5652811586967292,
+        "y" : 58.811914164222998,
+        "ORIG_FID" : 47
+      },
+      "geometry" : {
+        "x" : 1064778.6620000005,
+        "y" : 8139909.4632000029
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 48,
+        "poly_id" : 172891,
+        "komm" : 901,
+        "MUNICIPALITY" : "Risør",
+        "COUNTY" : "Aust-Agder",
+        "x" : 9.3231783032746502,
+        "y" : 58.681034142929498,
+        "ORIG_FID" : 48
+      },
+      "geometry" : {
+        "x" : 1037826.4210000001,
+        "y" : 8111803.8161000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 49,
+        "poly_id" : 172892,
+        "komm" : 1256,
+        "MUNICIPALITY" : "Meland",
+        "COUNTY" : "Hordaland",
+        "x" : 5.1091821695444901,
+        "y" : 60.563364923525299,
+        "ORIG_FID" : 49
+      },
+      "geometry" : {
+        "x" : 568745.14039999992,
+        "y" : 8526256.9474999979
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 50,
+        "poly_id" : 172868,
+        "komm" : 513,
+        "MUNICIPALITY" : "Skjåk",
+        "COUNTY" : "Oppland",
+        "x" : 7.8863388460234498,
+        "y" : 61.933653271570499,
+        "ORIG_FID" : 50
+      },
+      "geometry" : {
+        "x" : 877890.88379999995,
+        "y" : 8843567.7146999985
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 51,
+        "poly_id" : 172869,
+        "komm" : 828,
+        "MUNICIPALITY" : "Seljord",
+        "COUNTY" : "Telemark",
+        "x" : 8.5342888360767795,
+        "y" : 59.566058597990299,
+        "ORIG_FID" : 51
+      },
+      "geometry" : {
+        "x" : 933332.30530000106,
+        "y" : 8324567.5252000019
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 52,
+        "poly_id" : 172871,
+        "komm" : 632,
+        "MUNICIPALITY" : "Rollag",
+        "COUNTY" : "Buskerud",
+        "x" : 9.2173046011523692,
+        "y" : 60.010644767524703,
+        "ORIG_FID" : 52
+      },
+      "geometry" : {
+        "x" : 1026060.4726000018,
+        "y" : 8402141.4117999971
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 53,
+        "poly_id" : 172872,
+        "komm" : 1422,
+        "MUNICIPALITY" : "Lærdal",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 7.7226195252992902,
+        "y" : 61.044752079757899,
+        "ORIG_FID" : 53
+      },
+      "geometry" : {
+        "x" : 859666.33430000022,
+        "y" : 8636168.5200999975
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 54,
+        "poly_id" : 172873,
+        "komm" : 826,
+        "MUNICIPALITY" : "Tinn",
+        "COUNTY" : "Telemark",
+        "x" : 8.5619053782020291,
+        "y" : 59.997277718274297,
+        "ORIG_FID" : 54
+      },
+      "geometry" : {
+        "x" : 953068.69920000061,
+        "y" : 8399238.5860000029
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 55,
+        "poly_id" : 172874,
+        "komm" : 919,
+        "MUNICIPALITY" : "Froland",
+        "COUNTY" : "Aust-Agder",
+        "x" : 8.4157085294972198,
+        "y" : 58.598114325482001,
+        "ORIG_FID" : 55
+      },
+      "geometry" : {
+        "x" : 952755.32999999821,
+        "y" : 8086220.2282000035
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 56,
+        "poly_id" : 172875,
+        "komm" : 929,
+        "MUNICIPALITY" : "Åmli",
+        "COUNTY" : "Aust-Agder",
+        "x" : 8.3389836632625194,
+        "y" : 58.803888307388,
+        "ORIG_FID" : 56
+      },
+      "geometry" : {
+        "x" : 928273.5447999984,
+        "y" : 8138180.9668999985
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 57,
+        "poly_id" : 172884,
+        "komm" : 1227,
+        "MUNICIPALITY" : "Jondal",
+        "COUNTY" : "Hordaland",
+        "x" : 6.2788882922439102,
+        "y" : 60.2526504072571,
+        "ORIG_FID" : 57
+      },
+      "geometry" : {
+        "x" : 698979.91970000044,
+        "y" : 8456244.0249999985
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 58,
+        "poly_id" : 172904,
+        "komm" : 1003,
+        "MUNICIPALITY" : "Farsund",
+        "COUNTY" : "Vest-Agder",
+        "x" : 6.6319683231770199,
+        "y" : 58.029249062933403,
+        "ORIG_FID" : 58
+      },
+      "geometry" : {
+        "x" : 738275.23860000074,
+        "y" : 7973539.4997999966
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 59,
+        "poly_id" : 172900,
+        "komm" : 1245,
+        "MUNICIPALITY" : "Sund",
+        "COUNTY" : "Hordaland",
+        "x" : 4.8598565546127697,
+        "y" : 60.202111859990197,
+        "ORIG_FID" : 59
+      },
+      "geometry" : {
+        "x" : 541006.82690000162,
+        "y" : 8444893.4028000012
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 60,
+        "poly_id" : 172903,
+        "komm" : 1032,
+        "MUNICIPALITY" : "Lyngdal",
+        "COUNTY" : "Vest-Agder",
+        "x" : 7.0286809122617804,
+        "y" : 58.0849214105031,
+        "ORIG_FID" : 60
+      },
+      "geometry" : {
+        "x" : 796495.27019999921,
+        "y" : 8005900.5362000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 61,
+        "poly_id" : 172915,
+        "komm" : 806,
+        "MUNICIPALITY" : "Skien",
+        "COUNTY" : "Telemark",
+        "x" : 9.4866206473611303,
+        "y" : 59.2547309036608,
+        "ORIG_FID" : 61
+      },
+      "geometry" : {
+        "x" : 1057944.3172999993,
+        "y" : 8245645.4619999975
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 62,
+        "poly_id" : 172916,
+        "komm" : 1235,
+        "MUNICIPALITY" : "Voss",
+        "COUNTY" : "Hordaland",
+        "x" : 6.4387216654966197,
+        "y" : 60.7059896442411,
+        "ORIG_FID" : 62
+      },
+      "geometry" : {
+        "x" : 716788.15700000152,
+        "y" : 8558747.8994000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 63,
+        "poly_id" : 172919,
+        "komm" : 1417,
+        "MUNICIPALITY" : "Vik",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 6.5505705007139499,
+        "y" : 61.034149207549,
+        "ORIG_FID" : 63
+      },
+      "geometry" : {
+        "x" : 729225.8825000003,
+        "y" : 8633716.7524000034
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 64,
+        "poly_id" : 172926,
+        "komm" : 1426,
+        "MUNICIPALITY" : "Luster",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 7.4428824409678302,
+        "y" : 61.533890018817601,
+        "ORIG_FID" : 64
+      },
+      "geometry" : {
+        "x" : 828545.70289999992,
+        "y" : 8749657.4979000017
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 65,
+        "poly_id" : 172927,
+        "komm" : 515,
+        "MUNICIPALITY" : "Vågå",
+        "COUNTY" : "Oppland",
+        "x" : 8.9526476351482192,
+        "y" : 61.67330408518,
+        "ORIG_FID" : 65
+      },
+      "geometry" : {
+        "x" : 996671.36690000072,
+        "y" : 8782442.1436000019
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 66,
+        "poly_id" : 172929,
+        "komm" : 514,
+        "MUNICIPALITY" : "Lom",
+        "COUNTY" : "Oppland",
+        "x" : 8.4804169616694693,
+        "y" : 61.714478032054203,
+        "ORIG_FID" : 66
+      },
+      "geometry" : {
+        "x" : 944097.92480000108,
+        "y" : 8791978.4452000037
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 67,
+        "poly_id" : 172932,
+        "komm" : 1241,
+        "MUNICIPALITY" : "Fusa",
+        "COUNTY" : "Hordaland",
+        "x" : 5.7472666862799704,
+        "y" : 60.2021889054718,
+        "ORIG_FID" : 67
+      },
+      "geometry" : {
+        "x" : 639787.86400000006,
+        "y" : 8444946.5407999977
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 68,
+        "poly_id" : 172946,
+        "komm" : 1523,
+        "MUNICIPALITY" : "Ørskog",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.9053293494000698,
+        "y" : 62.4786512119259,
+        "ORIG_FID" : 68
+      },
+      "geometry" : {
+        "x" : 768694.30409999937,
+        "y" : 8973551.6489000022
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 69,
+        "poly_id" : 172947,
+        "komm" : 1520,
+        "MUNICIPALITY" : "Ørsta",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.3692180315431797,
+        "y" : 62.215015415004899,
+        "ORIG_FID" : 69
+      },
+      "geometry" : {
+        "x" : 708993.40269999951,
+        "y" : 8910379.8672999963
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 70,
+        "poly_id" : 172948,
+        "komm" : 1519,
+        "MUNICIPALITY" : "Volda",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.0804498060494696,
+        "y" : 62.072758446712598,
+        "ORIG_FID" : 70
+      },
+      "geometry" : {
+        "x" : 676862.79919999838,
+        "y" : 8876463.4552000016
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 71,
+        "poly_id" : 172949,
+        "komm" : 1539,
+        "MUNICIPALITY" : "Rauma",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 7.7356668812439304,
+        "y" : 62.463232174541197,
+        "ORIG_FID" : 71
+      },
+      "geometry" : {
+        "x" : 885565.77969999984,
+        "y" : 8953416.5411000028
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 72,
+        "poly_id" : 172950,
+        "komm" : 1443,
+        "MUNICIPALITY" : "Eid",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 6.0015184567478297,
+        "y" : 61.924609346546497,
+        "ORIG_FID" : 72
+      },
+      "geometry" : {
+        "x" : 668085.88369999826,
+        "y" : 8841302.4751999974
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 73,
+        "poly_id" : 172951,
+        "komm" : 1449,
+        "MUNICIPALITY" : "Stryn",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 6.8990961503470496,
+        "y" : 61.8495755290134,
+        "ORIG_FID" : 73
+      },
+      "geometry" : {
+        "x" : 768021.42100000009,
+        "y" : 8823649.7322999984
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 74,
+        "poly_id" : 172952,
+        "komm" : 1502,
+        "MUNICIPALITY" : "Molde",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 7.4048484304539297,
+        "y" : 62.742398832714699,
+        "ORIG_FID" : 74
+      },
+      "geometry" : {
+        "x" : 824325.1576000005,
+        "y" : 9037394.7854000032
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 75,
+        "poly_id" : 172961,
+        "komm" : 1421,
+        "MUNICIPALITY" : "Aurland",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 7.2336622152070698,
+        "y" : 60.861552122375201,
+        "ORIG_FID" : 75
+      },
+      "geometry" : {
+        "x" : 805223.20309999958,
+        "y" : 8594191.9324000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 76,
+        "poly_id" : 172962,
+        "komm" : 620,
+        "MUNICIPALITY" : "Hol",
+        "COUNTY" : "Buskerud",
+        "x" : 8.0109546359282096,
+        "y" : 60.570323210961597,
+        "ORIG_FID" : 76
+      },
+      "geometry" : {
+        "x" : 891732.96090000123,
+        "y" : 8527979.8592000008
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 77,
+        "poly_id" : 172934,
+        "komm" : 1571,
+        "MUNICIPALITY" : "Halsa",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 8.4593642352775191,
+        "y" : 63.110250888848398,
+        "ORIG_FID" : 77
+      },
+      "geometry" : {
+        "x" : 921996.05710000172,
+        "y" : 9123019.8558000028
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 78,
+        "poly_id" : 172967,
+        "komm" : 1265,
+        "MUNICIPALITY" : "Fedje",
+        "COUNTY" : "Hordaland",
+        "x" : 4.4741103749890403,
+        "y" : 60.789737726316901,
+        "ORIG_FID" : 78
+      },
+      "geometry" : {
+        "x" : 498059.54989999905,
+        "y" : 8577724.6838999987
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 79,
+        "poly_id" : 172935,
+        "komm" : 1222,
+        "MUNICIPALITY" : "Fitjar",
+        "COUNTY" : "Hordaland",
+        "x" : 5.3031841469330603,
+        "y" : 59.910835812338,
+        "ORIG_FID" : 79
+      },
+      "geometry" : {
+        "x" : 590346.30449999869,
+        "y" : 8379928.3232999966
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 80,
+        "poly_id" : 173019,
+        "komm" : 937,
+        "MUNICIPALITY" : "Evje og Hornnes",
+        "COUNTY" : "Aust-Agder",
+        "x" : 7.7448610812491498,
+        "y" : 58.580270321912103,
+        "ORIG_FID" : 80
+      },
+      "geometry" : {
+        "x" : 862159.96200000122,
+        "y" : 8090252.931599997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 81,
+        "poly_id" : 173020,
+        "komm" : 928,
+        "MUNICIPALITY" : "Birkenes",
+        "COUNTY" : "Aust-Agder",
+        "x" : 8.1885716510342696,
+        "y" : 58.455037555594402,
+        "ORIG_FID" : 81
+      },
+      "geometry" : {
+        "x" : 911543.99749999866,
+        "y" : 8063604.7656000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 82,
+        "poly_id" : 172937,
+        "komm" : 1221,
+        "MUNICIPALITY" : "Stord",
+        "COUNTY" : "Hordaland",
+        "x" : 5.4825305407833804,
+        "y" : 59.8153434433654,
+        "ORIG_FID" : 82
+      },
+      "geometry" : {
+        "x" : 610316.07869999856,
+        "y" : 8358760.1322999969
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 83,
+        "poly_id" : 172941,
+        "komm" : 1525,
+        "MUNICIPALITY" : "Stranda",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.98364476344892,
+        "y" : 62.140122437644301,
+        "ORIG_FID" : 83
+      },
+      "geometry" : {
+        "x" : 783523.96139999852,
+        "y" : 8882591.1832000017
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 84,
+        "poly_id" : 172942,
+        "komm" : 1557,
+        "MUNICIPALITY" : "Gjemnes",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 7.8313039514115097,
+        "y" : 62.904703100043598,
+        "ORIG_FID" : 84
+      },
+      "geometry" : {
+        "x" : 885029.63720000163,
+        "y" : 9076925.1680999994
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 85,
+        "poly_id" : 172943,
+        "komm" : 1543,
+        "MUNICIPALITY" : "Nesset",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 8.1404468191476695,
+        "y" : 62.601009523446002,
+        "ORIG_FID" : 85
+      },
+      "geometry" : {
+        "x" : 882765.95529999956,
+        "y" : 9031545.264200002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 86,
+        "poly_id" : 172944,
+        "komm" : 1529,
+        "MUNICIPALITY" : "Skodje",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.6397589091958098,
+        "y" : 62.504507928396499,
+        "ORIG_FID" : 86
+      },
+      "geometry" : {
+        "x" : 739140.18789999932,
+        "y" : 8979783.3475999981
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 87,
+        "poly_id" : 172945,
+        "komm" : 1563,
+        "MUNICIPALITY" : "Sunndal",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 8.7021845517701895,
+        "y" : 62.594807647454097,
+        "ORIG_FID" : 87
+      },
+      "geometry" : {
+        "x" : 968662.68919999897,
+        "y" : 9001770.0080000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 88,
+        "poly_id" : 172979,
+        "komm" : 912,
+        "MUNICIPALITY" : "Vegårshei",
+        "COUNTY" : "Aust-Agder",
+        "x" : 8.8241698243873898,
+        "y" : 58.7588443980585,
+        "ORIG_FID" : 88
+      },
+      "geometry" : {
+        "x" : 982304.06019999832,
+        "y" : 8128468.2678000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 89,
+        "poly_id" : 172982,
+        "komm" : 1418,
+        "MUNICIPALITY" : "Balestrand",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 6.4366870402213001,
+        "y" : 61.229590327134098,
+        "ORIG_FID" : 89
+      },
+      "geometry" : {
+        "x" : 698332.93620000035,
+        "y" : 8665910.0046999976
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 90,
+        "poly_id" : 172983,
+        "komm" : 1419,
+        "MUNICIPALITY" : "Leikanger",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 6.7780903333073903,
+        "y" : 61.2310382359355,
+        "ORIG_FID" : 90
+      },
+      "geometry" : {
+        "x" : 754535.05649999902,
+        "y" : 8679082.2131000012
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 91,
+        "poly_id" : 172984,
+        "komm" : 1413,
+        "MUNICIPALITY" : "Hyllestad",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 5.23544651326735,
+        "y" : 61.179540797817303,
+        "ORIG_FID" : 91
+      },
+      "geometry" : {
+        "x" : 582797.70529999956,
+        "y" : 8667193.3383999988
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 92,
+        "poly_id" : 172985,
+        "komm" : 827,
+        "MUNICIPALITY" : "Hjartdal",
+        "COUNTY" : "Telemark",
+        "x" : 8.7068008336436993,
+        "y" : 59.7009229445176,
+        "ORIG_FID" : 92
+      },
+      "geometry" : {
+        "x" : 969219.96709999815,
+        "y" : 8333516.2087000012
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 93,
+        "poly_id" : 172986,
+        "komm" : 1560,
+        "MUNICIPALITY" : "Tingvoll",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 8.1587467620735694,
+        "y" : 62.962757327806997,
+        "ORIG_FID" : 93
+      },
+      "geometry" : {
+        "x" : 908193.50180000067,
+        "y" : 9091223.8408999965
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 94,
+        "poly_id" : 172987,
+        "komm" : 1266,
+        "MUNICIPALITY" : "Masfjorden",
+        "COUNTY" : "Hordaland",
+        "x" : 5.4642457887712297,
+        "y" : 60.857301749501197,
+        "ORIG_FID" : 94
+      },
+      "geometry" : {
+        "x" : 608297.23000000045,
+        "y" : 8593171.5353000015
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 95,
+        "poly_id" : 173013,
+        "komm" : 1244,
+        "MUNICIPALITY" : "Austevoll",
+        "COUNTY" : "Hordaland",
+        "x" : 4.9498109404689199,
+        "y" : 60.040250752710001,
+        "ORIG_FID" : 95
+      },
+      "geometry" : {
+        "x" : 551023.09090000018,
+        "y" : 8408744.0415000021
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 96,
+        "poly_id" : 173014,
+        "komm" : 1259,
+        "MUNICIPALITY" : "Øygarden",
+        "COUNTY" : "Hordaland",
+        "x" : 4.6183582315761198,
+        "y" : 60.580259649708097,
+        "ORIG_FID" : 96
+      },
+      "geometry" : {
+        "x" : 514108.70809999853,
+        "y" : 8530144.942400001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 97,
+        "poly_id" : 173021,
+        "komm" : 1014,
+        "MUNICIPALITY" : "Vennesla",
+        "COUNTY" : "Vest-Agder",
+        "x" : 7.8290519959906,
+        "y" : 58.330963289948201,
+        "ORIG_FID" : 97
+      },
+      "geometry" : {
+        "x" : 871517.79879999906,
+        "y" : 8037195.9301000014
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 98,
+        "poly_id" : 172990,
+        "komm" : 830,
+        "MUNICIPALITY" : "Nissedal",
+        "COUNTY" : "Telemark",
+        "x" : 8.5409068606298,
+        "y" : 59.059785347417801,
+        "ORIG_FID" : 98
+      },
+      "geometry" : {
+        "x" : 950750.85610000044,
+        "y" : 8193433.5847999975
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 99,
+        "poly_id" : 172991,
+        "komm" : 829,
+        "MUNICIPALITY" : "Kviteseid",
+        "COUNTY" : "Telemark",
+        "x" : 8.4912712861087503,
+        "y" : 59.370272362296099,
+        "ORIG_FID" : 99
+      },
+      "geometry" : {
+        "x" : 945232.52829999849,
+        "y" : 8260897.9952000007
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 100,
+        "poly_id" : 172993,
+        "komm" : 807,
+        "MUNICIPALITY" : "Notodden",
+        "COUNTY" : "Telemark",
+        "x" : 9.1335335198663099,
+        "y" : 59.662888444811898,
+        "ORIG_FID" : 100
+      },
+      "geometry" : {
+        "x" : 1016729.821800001,
+        "y" : 8325156.9839000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 101,
+        "poly_id" : 172994,
+        "komm" : 817,
+        "MUNICIPALITY" : "Drangedal",
+        "COUNTY" : "Telemark",
+        "x" : 8.9779368732585905,
+        "y" : 59.100180778286003,
+        "ORIG_FID" : 101
+      },
+      "geometry" : {
+        "x" : 999392.37970000133,
+        "y" : 8202149.7314999998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 102,
+        "poly_id" : 172995,
+        "komm" : 911,
+        "MUNICIPALITY" : "Gjerstad",
+        "COUNTY" : "Aust-Agder",
+        "x" : 8.9785835878962992,
+        "y" : 58.888833175876101,
+        "ORIG_FID" : 102
+      },
+      "geometry" : {
+        "x" : 999482.01449999958,
+        "y" : 8156423.2225999981
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 103,
+        "poly_id" : 172996,
+        "komm" : 618,
+        "MUNICIPALITY" : "Hemsedal",
+        "COUNTY" : "Buskerud",
+        "x" : 8.46700712286105,
+        "y" : 60.910873910797399,
+        "ORIG_FID" : 103
+      },
+      "geometry" : {
+        "x" : 942521.49419999868,
+        "y" : 8605436.1938999966
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 104,
+        "poly_id" : 172998,
+        "komm" : 822,
+        "MUNICIPALITY" : "Sauherad",
+        "COUNTY" : "Telemark",
+        "x" : 9.2963389765876308,
+        "y" : 59.438026747655599,
+        "ORIG_FID" : 104
+      },
+      "geometry" : {
+        "x" : 1034874.0166000016,
+        "y" : 8275701.3427999988
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 105,
+        "poly_id" : 173015,
+        "komm" : 1264,
+        "MUNICIPALITY" : "Austrheim",
+        "COUNTY" : "Hordaland",
+        "x" : 4.8756260184879299,
+        "y" : 60.798109180289202,
+        "ORIG_FID" : 105
+      },
+      "geometry" : {
+        "x" : 542747.10289999843,
+        "y" : 8579622.7616999969
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 106,
+        "poly_id" : 173023,
+        "komm" : 1416,
+        "MUNICIPALITY" : "Høyanger",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 5.8723382688071197,
+        "y" : 61.1335928077525,
+        "ORIG_FID" : 106
+      },
+      "geometry" : {
+        "x" : 653726.66600000113,
+        "y" : 8656638.1366000026
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 107,
+        "poly_id" : 173029,
+        "komm" : 1444,
+        "MUNICIPALITY" : "Hornindal",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 6.5914119641329103,
+        "y" : 61.994216823479,
+        "ORIG_FID" : 107
+      },
+      "geometry" : {
+        "x" : 733754.39919999987,
+        "y" : 8857783.050999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 108,
+        "poly_id" : 173032,
+        "komm" : 1242,
+        "MUNICIPALITY" : "Samnanger",
+        "COUNTY" : "Hordaland",
+        "x" : 5.7889399995159998,
+        "y" : 60.396881849047197,
+        "ORIG_FID" : 108
+      },
+      "geometry" : {
+        "x" : 644433.5821999982,
+        "y" : 8488662.6490999982
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 109,
+        "poly_id" : 173033,
+        "komm" : 1232,
+        "MUNICIPALITY" : "Eidfjord",
+        "COUNTY" : "Hordaland",
+        "x" : 7.3554222157528999,
+        "y" : 60.370000515001699,
+        "ORIG_FID" : 109
+      },
+      "geometry" : {
+        "x" : 818789.0223999992,
+        "y" : 8482719.9403000027
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 110,
+        "poly_id" : 173035,
+        "komm" : 1528,
+        "MUNICIPALITY" : "Sykkylven",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.6438817250136299,
+        "y" : 62.359157419442198,
+        "ORIG_FID" : 110
+      },
+      "geometry" : {
+        "x" : 739594.14330000058,
+        "y" : 8944844.7871000022
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 111,
+        "poly_id" : 173036,
+        "komm" : 1511,
+        "MUNICIPALITY" : "Vanylven",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 5.6297672188984897,
+        "y" : 62.094878606195898,
+        "ORIG_FID" : 111
+      },
+      "geometry" : {
+        "x" : 626702.17330000177,
+        "y" : 8881720.4439999983
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 112,
+        "poly_id" : 173049,
+        "komm" : 1026,
+        "MUNICIPALITY" : "Åseral",
+        "COUNTY" : "Vest-Agder",
+        "x" : 7.3999091883518204,
+        "y" : 58.699773834936103,
+        "ORIG_FID" : 112
+      },
+      "geometry" : {
+        "x" : 823752.87579999864,
+        "y" : 8115861.8127999976
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 113,
+        "poly_id" : 173052,
+        "komm" : 1428,
+        "MUNICIPALITY" : "Askvoll",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 4.6823033261074398,
+        "y" : 61.367346656127403,
+        "ORIG_FID" : 113
+      },
+      "geometry" : {
+        "x" : 521258.5549999997,
+        "y" : 8710715.4679000005
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 114,
+        "poly_id" : 173066,
+        "komm" : 1546,
+        "MUNICIPALITY" : "Sandøy",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.3484917066067803,
+        "y" : 62.888928016210201,
+        "ORIG_FID" : 114
+      },
+      "geometry" : {
+        "x" : 706689.8387000002,
+        "y" : 9073158.2980000004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 115,
+        "poly_id" : 173067,
+        "komm" : 1573,
+        "MUNICIPALITY" : "Smøla",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 7.7528037614185497,
+        "y" : 63.463500563454602,
+        "ORIG_FID" : 115
+      },
+      "geometry" : {
+        "x" : 863013.62099999934,
+        "y" : 9215020.7586999983
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 116,
+        "poly_id" : 173130,
+        "komm" : 1001,
+        "MUNICIPALITY" : "Kristiansand",
+        "COUNTY" : "Vest-Agder",
+        "x" : 8.0972137238921391,
+        "y" : 58.066419469486597,
+        "ORIG_FID" : 116
+      },
+      "geometry" : {
+        "x" : 901360.60819999874,
+        "y" : 7981395.9814999998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 117,
+        "poly_id" : 173051,
+        "komm" : 1401,
+        "MUNICIPALITY" : "Flora",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 4.8696333392148698,
+        "y" : 61.602585510754899,
+        "ORIG_FID" : 117
+      },
+      "geometry" : {
+        "x" : 542086.51999999955,
+        "y" : 8765579.311499998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 118,
+        "poly_id" : 173083,
+        "komm" : 545,
+        "MUNICIPALITY" : "Vang",
+        "COUNTY" : "Oppland",
+        "x" : 8.47485854591954,
+        "y" : 61.217986488504202,
+        "ORIG_FID" : 118
+      },
+      "geometry" : {
+        "x" : 943405.59450000152,
+        "y" : 8676181.4636999965
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 119,
+        "poly_id" : 173053,
+        "komm" : 1439,
+        "MUNICIPALITY" : "Vågsøy",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 4.9196574759629197,
+        "y" : 62.0192116505767,
+        "ORIG_FID" : 119
+      },
+      "geometry" : {
+        "x" : 547611.95419999957,
+        "y" : 8863753.2444000021
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 120,
+        "poly_id" : 173062,
+        "komm" : 1002,
+        "MUNICIPALITY" : "Mandal",
+        "COUNTY" : "Vest-Agder",
+        "x" : 7.5254815413240097,
+        "y" : 57.918330565984803,
+        "ORIG_FID" : 120
+      },
+      "geometry" : {
+        "x" : 837729.31700000167,
+        "y" : 7950265.6204999983
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 121,
+        "poly_id" : 173068,
+        "komm" : 1554,
+        "MUNICIPALITY" : "Averøy",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 7.3653936147677603,
+        "y" : 63.123587304058198,
+        "ORIG_FID" : 121
+      },
+      "geometry" : {
+        "x" : 819844.95740000159,
+        "y" : 9130752.6551999971
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 122,
+        "poly_id" : 173071,
+        "komm" : 906,
+        "MUNICIPALITY" : "Arendal",
+        "COUNTY" : "Aust-Agder",
+        "x" : 8.9619782695440708,
+        "y" : 58.433327914914599,
+        "ORIG_FID" : 122
+      },
+      "geometry" : {
+        "x" : 997630.11609999835,
+        "y" : 8058950.7386000007
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 123,
+        "poly_id" : 173088,
+        "komm" : 1424,
+        "MUNICIPALITY" : "Årdal",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 7.8062862199029199,
+        "y" : 61.290222944102197,
+        "ORIG_FID" : 123
+      },
+      "geometry" : {
+        "x" : 869016.36239999905,
+        "y" : 8692845.7004000023
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 124,
+        "poly_id" : 173081,
+        "komm" : 1532,
+        "MUNICIPALITY" : "Giske",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 5.7841494887140001,
+        "y" : 62.615056346561197,
+        "ORIG_FID" : 124
+      },
+      "geometry" : {
+        "x" : 643855.41310000047,
+        "y" : 9006562.6407999992
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 125,
+        "poly_id" : 173095,
+        "komm" : 1551,
+        "MUNICIPALITY" : "Eide",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 7.2138131914335002,
+        "y" : 63.051642422558501,
+        "ORIG_FID" : 125
+      },
+      "geometry" : {
+        "x" : 779553.55689999834,
+        "y" : 9142922.126500003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 126,
+        "poly_id" : 173096,
+        "komm" : 1548,
+        "MUNICIPALITY" : "Fræna",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.9645791680408298,
+        "y" : 62.992740928329603,
+        "ORIG_FID" : 126
+      },
+      "geometry" : {
+        "x" : 775232.71119999886,
+        "y" : 9098651.010300003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 127,
+        "poly_id" : 173097,
+        "komm" : 1534,
+        "MUNICIPALITY" : "Haram",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.1877348489803996,
+        "y" : 62.6940709355788,
+        "ORIG_FID" : 127
+      },
+      "geometry" : {
+        "x" : 688736.62209999934,
+        "y" : 9025754.9113000035
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 128,
+        "poly_id" : 173098,
+        "komm" : 1547,
+        "MUNICIPALITY" : "Aukra",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 6.6873220542218297,
+        "y" : 62.9387511337668,
+        "ORIG_FID" : 128
+      },
+      "geometry" : {
+        "x" : 725291.53909999877,
+        "y" : 9114992.8198999986
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 129,
+        "poly_id" : 173099,
+        "komm" : 1514,
+        "MUNICIPALITY" : "Sande",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 5.3177242986635198,
+        "y" : 62.279495918179101,
+        "ORIG_FID" : 129
+      },
+      "geometry" : {
+        "x" : 591919.64970000088,
+        "y" : 8925770.612999998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 130,
+        "poly_id" : 173100,
+        "komm" : 1515,
+        "MUNICIPALITY" : "Herøy",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 5.3968218187942103,
+        "y" : 62.439697204475898,
+        "ORIG_FID" : 130
+      },
+      "geometry" : {
+        "x" : 600739.45149999857,
+        "y" : 8964277.4795999974
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 131,
+        "poly_id" : 173117,
+        "komm" : 904,
+        "MUNICIPALITY" : "Grimstad",
+        "COUNTY" : "Aust-Agder",
+        "x" : 8.6715692931884796,
+        "y" : 58.284633976714197,
+        "ORIG_FID" : 131
+      },
+      "geometry" : {
+        "x" : 965288.51319999993,
+        "y" : 8027417.9411000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 132,
+        "poly_id" : 173119,
+        "komm" : 1231,
+        "MUNICIPALITY" : "Ullensvang",
+        "COUNTY" : "Hordaland",
+        "x" : 6.8906882391582398,
+        "y" : 60.248458099133401,
+        "ORIG_FID" : 132
+      },
+      "geometry" : {
+        "x" : 767000.42990000173,
+        "y" : 8455405.0925000012
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 133,
+        "poly_id" : 173108,
+        "komm" : 1412,
+        "MUNICIPALITY" : "Solund",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 4.5207629166879997,
+        "y" : 61.070349741876797,
+        "ORIG_FID" : 133
+      },
+      "geometry" : {
+        "x" : 503276.98200000077,
+        "y" : 8642104.6141000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 134,
+        "poly_id" : 173110,
+        "komm" : 1027,
+        "MUNICIPALITY" : "Audnedal",
+        "COUNTY" : "Vest-Agder",
+        "x" : 7.38281353151039,
+        "y" : 58.372027527384098,
+        "ORIG_FID" : 134
+      },
+      "geometry" : {
+        "x" : 821860.05790000036,
+        "y" : 8045935.6673000008
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 135,
+        "poly_id" : 173111,
+        "komm" : 1021,
+        "MUNICIPALITY" : "Marnardal",
+        "COUNTY" : "Vest-Agder",
+        "x" : 7.5456309371237804,
+        "y" : 58.290274660512601,
+        "ORIG_FID" : 135
+      },
+      "geometry" : {
+        "x" : 841605.68490000069,
+        "y" : 8010952.2867000028
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 136,
+        "poly_id" : 173122,
+        "komm" : 914,
+        "MUNICIPALITY" : "Tvedestrand",
+        "COUNTY" : "Aust-Agder",
+        "x" : 9.1467869491812408,
+        "y" : 58.577760567165001,
+        "ORIG_FID" : 136
+      },
+      "geometry" : {
+        "x" : 1018188.2870999984,
+        "y" : 8089715.0574999973
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 137,
+        "poly_id" : 173112,
+        "komm" : 1438,
+        "MUNICIPALITY" : "Bremanger",
+        "COUNTY" : "Sogn og Fjordane",
+        "x" : 4.9846281383669604,
+        "y" : 61.827899837929401,
+        "ORIG_FID" : 137
+      },
+      "geometry" : {
+        "x" : 516432.51889999956,
+        "y" : 8823709.0785999969
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 138,
+        "poly_id" : 173126,
+        "komm" : 1034,
+        "MUNICIPALITY" : "Hægebostad",
+        "COUNTY" : "Vest-Agder",
+        "x" : 7.1999516673408701,
+        "y" : 58.472590258389197,
+        "ORIG_FID" : 138
+      },
+      "geometry" : {
+        "x" : 801489.80649999902,
+        "y" : 8067338.8037
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 139,
+        "poly_id" : 173127,
+        "komm" : 1017,
+        "MUNICIPALITY" : "Songdalen",
+        "COUNTY" : "Vest-Agder",
+        "x" : 7.7192630824434003,
+        "y" : 58.237226721712098,
+        "ORIG_FID" : 139
+      },
+      "geometry" : {
+        "x" : 869570.64380000159,
+        "y" : 8007480.5746000037
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 140,
+        "poly_id" : 173128,
+        "komm" : 1029,
+        "MUNICIPALITY" : "Lindesnes",
+        "COUNTY" : "Vest-Agder",
+        "x" : 7.1929719478543497,
+        "y" : 57.985047088477998,
+        "ORIG_FID" : 140
+      },
+      "geometry" : {
+        "x" : 800752.52010000125,
+        "y" : 7964329.7193000019
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 141,
+        "poly_id" : 173129,
+        "komm" : 926,
+        "MUNICIPALITY" : "Lillesand",
+        "COUNTY" : "Aust-Agder",
+        "x" : 8.4164204715957602,
+        "y" : 58.1208498143559,
+        "ORIG_FID" : 141
+      },
+      "geometry" : {
+        "x" : 936902.02320000157,
+        "y" : 7992823.6184
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 142,
+        "poly_id" : 173144,
+        "komm" : 1247,
+        "MUNICIPALITY" : "Askøy",
+        "COUNTY" : "Hordaland",
+        "x" : 5.09316765946802,
+        "y" : 60.4837959634878,
+        "ORIG_FID" : 142
+      },
+      "geometry" : {
+        "x" : 566955.63500000164,
+        "y" : 8508277.4654999971
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 143,
+        "poly_id" : 173160,
+        "komm" : 1120,
+        "MUNICIPALITY" : "Klepp",
+        "COUNTY" : "Rogaland",
+        "x" : 5.3747255221559902,
+        "y" : 58.743002815237297,
+        "ORIG_FID" : 143
+      },
+      "geometry" : {
+        "x" : 598320.88529999927,
+        "y" : 8125067.4160000011
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 144,
+        "poly_id" : 173161,
+        "komm" : 1145,
+        "MUNICIPALITY" : "Bokn",
+        "COUNTY" : "Rogaland",
+        "x" : 5.4606780454857997,
+        "y" : 59.1949757202607,
+        "ORIG_FID" : 144
+      },
+      "geometry" : {
+        "x" : 607881.53669999912,
+        "y" : 8222662.4556000009
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 145,
+        "poly_id" : 173145,
+        "komm" : 1246,
+        "MUNICIPALITY" : "Fjell",
+        "COUNTY" : "Hordaland",
+        "x" : 4.7957407287744003,
+        "y" : 60.354768006621001,
+        "ORIG_FID" : 145
+      },
+      "geometry" : {
+        "x" : 533862.73299999908,
+        "y" : 8479181.1442999989
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 146,
+        "poly_id" : 173188,
+        "komm" : 1114,
+        "MUNICIPALITY" : "Bjerkreim",
+        "COUNTY" : "Rogaland",
+        "x" : 6.2011016354749398,
+        "y" : 58.662601197244598,
+        "ORIG_FID" : 146
+      },
+      "geometry" : {
+        "x" : 690323.85240000114,
+        "y" : 8107849.2168999985
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 147,
+        "poly_id" : 173149,
+        "komm" : 1505,
+        "MUNICIPALITY" : "Kristiansund",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 7.4844905282648604,
+        "y" : 63.227536445408099,
+        "ORIG_FID" : 147
+      },
+      "geometry" : {
+        "x" : 829472.41710000113,
+        "y" : 9162110.753899999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 148,
+        "poly_id" : 173153,
+        "komm" : 512,
+        "MUNICIPALITY" : "Lesja",
+        "COUNTY" : "Oppland",
+        "x" : 8.6359188838465499,
+        "y" : 62.191400069038799,
+        "ORIG_FID" : 148
+      },
+      "geometry" : {
+        "x" : 961369.1229000017,
+        "y" : 8904783.6736000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 149,
+        "poly_id" : 173158,
+        "komm" : 1122,
+        "MUNICIPALITY" : "Gjesdal",
+        "COUNTY" : "Rogaland",
+        "x" : 6.2522678845032402,
+        "y" : 58.813425251273301,
+        "ORIG_FID" : 149
+      },
+      "geometry" : {
+        "x" : 717887.20659999922,
+        "y" : 8144328.5143000036
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 150,
+        "poly_id" : 173159,
+        "komm" : 1121,
+        "MUNICIPALITY" : "Time",
+        "COUNTY" : "Rogaland",
+        "x" : 5.7707950103429697,
+        "y" : 58.708257661780898,
+        "ORIG_FID" : 150
+      },
+      "geometry" : {
+        "x" : 642398.2388000004,
+        "y" : 8117611.5524000004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 151,
+        "poly_id" : 173162,
+        "komm" : 1141,
+        "MUNICIPALITY" : "Finnøy",
+        "COUNTY" : "Rogaland",
+        "x" : 5.8540604973033803,
+        "y" : 59.210796302498999,
+        "ORIG_FID" : 151
+      },
+      "geometry" : {
+        "x" : 651675.13360000029,
+        "y" : 8226119.4638999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 152,
+        "poly_id" : 173189,
+        "komm" : 1101,
+        "MUNICIPALITY" : "Eigersund",
+        "COUNTY" : "Rogaland",
+        "x" : 5.9545239741611402,
+        "y" : 58.398251105632902,
+        "ORIG_FID" : 152
+      },
+      "geometry" : {
+        "x" : 662905.07539999858,
+        "y" : 8051555.7308999971
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 153,
+        "poly_id" : 173190,
+        "komm" : 1004,
+        "MUNICIPALITY" : "Flekkefjord",
+        "COUNTY" : "Vest-Agder",
+        "x" : 6.5884952125602103,
+        "y" : 58.299528471094803,
+        "ORIG_FID" : 153
+      },
+      "geometry" : {
+        "x" : 727808.66750000045,
+        "y" : 8018297.2434
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 154,
+        "poly_id" : 173191,
+        "komm" : 1135,
+        "MUNICIPALITY" : "Sauda",
+        "COUNTY" : "Rogaland",
+        "x" : 6.4469415429881298,
+        "y" : 59.700447660825297,
+        "ORIG_FID" : 154
+      },
+      "geometry" : {
+        "x" : 717686.19379999861,
+        "y" : 8333391.7330000028
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 155,
+        "poly_id" : 173192,
+        "komm" : 1134,
+        "MUNICIPALITY" : "Suldal",
+        "COUNTY" : "Rogaland",
+        "x" : 6.5638343222713402,
+        "y" : 59.509214266499598,
+        "ORIG_FID" : 155
+      },
+      "geometry" : {
+        "x" : 730763.49709999934,
+        "y" : 8291395.1604000032
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 156,
+        "poly_id" : 173163,
+        "komm" : 1130,
+        "MUNICIPALITY" : "Strand",
+        "COUNTY" : "Rogaland",
+        "x" : 6.0089494421019998,
+        "y" : 59.044985044994498,
+        "ORIG_FID" : 156
+      },
+      "geometry" : {
+        "x" : 668914.11419999972,
+        "y" : 8190134.5363000035
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 157,
+        "poly_id" : 173164,
+        "komm" : 1119,
+        "MUNICIPALITY" : "Hå",
+        "COUNTY" : "Rogaland",
+        "x" : 5.5507216907522503,
+        "y" : 58.540143780331,
+        "ORIG_FID" : 157
+      },
+      "geometry" : {
+        "x" : 617902.32470000163,
+        "y" : 8081712.4957000017
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 158,
+        "poly_id" : 173165,
+        "komm" : 1129,
+        "MUNICIPALITY" : "Forsand",
+        "COUNTY" : "Rogaland",
+        "x" : 6.4640317358759898,
+        "y" : 59.017922561932302,
+        "ORIG_FID" : 158
+      },
+      "geometry" : {
+        "x" : 719622.38069999963,
+        "y" : 8184325.5443999991
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 159,
+        "poly_id" : 173166,
+        "komm" : 1146,
+        "MUNICIPALITY" : "Tysvær",
+        "COUNTY" : "Rogaland",
+        "x" : 5.6149772909806597,
+        "y" : 59.360311490924602,
+        "ORIG_FID" : 159
+      },
+      "geometry" : {
+        "x" : 625052.59129999951,
+        "y" : 8258712.3365999982
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 160,
+        "poly_id" : 173167,
+        "komm" : 1149,
+        "MUNICIPALITY" : "Karmøy",
+        "COUNTY" : "Rogaland",
+        "x" : 5.0612758505519704,
+        "y" : 59.230040189732101,
+        "ORIG_FID" : 160
+      },
+      "geometry" : {
+        "x" : 579458.41420000046,
+        "y" : 8232033.2150000036
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 161,
+        "poly_id" : 173168,
+        "komm" : 834,
+        "MUNICIPALITY" : "Vinje",
+        "COUNTY" : "Telemark",
+        "x" : 7.7285101583708604,
+        "y" : 59.821705845082199,
+        "ORIG_FID" : 161
+      },
+      "geometry" : {
+        "x" : 860315.70760000125,
+        "y" : 8360355.7309999987
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 162,
+        "poly_id" : 173169,
+        "komm" : 941,
+        "MUNICIPALITY" : "Bykle",
+        "COUNTY" : "Aust-Agder",
+        "x" : 7.2037525533852396,
+        "y" : 59.437631376440201,
+        "ORIG_FID" : 162
+      },
+      "geometry" : {
+        "x" : 801950.43400000036,
+        "y" : 8275716.7396000028
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 163,
+        "poly_id" : 173170,
+        "komm" : 1102,
+        "MUNICIPALITY" : "Sandnes",
+        "COUNTY" : "Rogaland",
+        "x" : 5.8643345196986596,
+        "y" : 58.874093340604098,
+        "ORIG_FID" : 163
+      },
+      "geometry" : {
+        "x" : 652820.22890000045,
+        "y" : 8153243.9751999974
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 164,
+        "poly_id" : 173171,
+        "komm" : 1211,
+        "MUNICIPALITY" : "Etne",
+        "COUNTY" : "Hordaland",
+        "x" : 6.1715042846886901,
+        "y" : 59.7714305749872,
+        "ORIG_FID" : 164
+      },
+      "geometry" : {
+        "x" : 662856.33280000091,
+        "y" : 8330346.7120999992
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 165,
+        "poly_id" : 173172,
+        "komm" : 1216,
+        "MUNICIPALITY" : "Sveio",
+        "COUNTY" : "Hordaland",
+        "x" : 5.4041688919381796,
+        "y" : 59.597970094765401,
+        "ORIG_FID" : 165
+      },
+      "geometry" : {
+        "x" : 601600.42060000077,
+        "y" : 8310811.9316999987
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 166,
+        "poly_id" : 173173,
+        "komm" : 1046,
+        "MUNICIPALITY" : "Sirdal",
+        "COUNTY" : "Vest-Agder",
+        "x" : 6.8402106906220501,
+        "y" : 58.866768875696899,
+        "ORIG_FID" : 166
+      },
+      "geometry" : {
+        "x" : 761505.06819999963,
+        "y" : 8151904.9597999975
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 167,
+        "poly_id" : 173174,
+        "komm" : 1160,
+        "MUNICIPALITY" : "Vindafjord",
+        "COUNTY" : "Rogaland",
+        "x" : 5.7861203216263704,
+        "y" : 59.552323171488901,
+        "ORIG_FID" : 167
+      },
+      "geometry" : {
+        "x" : 644098.54850000143,
+        "y" : 8300780.2677000016
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 168,
+        "poly_id" : 173175,
+        "komm" : 1133,
+        "MUNICIPALITY" : "Hjelmeland",
+        "COUNTY" : "Rogaland",
+        "x" : 6.4180288372255596,
+        "y" : 59.225106537844802,
+        "ORIG_FID" : 168
+      },
+      "geometry" : {
+        "x" : 714472.11199999973,
+        "y" : 8229255.7238999978
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 169,
+        "poly_id" : 173176,
+        "komm" : 1127,
+        "MUNICIPALITY" : "Randaberg",
+        "COUNTY" : "Rogaland",
+        "x" : 5.5584202178765496,
+        "y" : 59.011877093053997,
+        "ORIG_FID" : 169
+      },
+      "geometry" : {
+        "x" : 618759.71920000017,
+        "y" : 8182960.0068999976
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 170,
+        "poly_id" : 173177,
+        "komm" : 1142,
+        "MUNICIPALITY" : "Rennesøy",
+        "COUNTY" : "Rogaland",
+        "x" : 5.6560607764156803,
+        "y" : 59.101984127380398,
+        "ORIG_FID" : 170
+      },
+      "geometry" : {
+        "x" : 629627.12959999964,
+        "y" : 8202476.8621999994
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 171,
+        "poly_id" : 173178,
+        "komm" : 1103,
+        "MUNICIPALITY" : "Stavanger",
+        "COUNTY" : "Rogaland",
+        "x" : 5.7311834057587401,
+        "y" : 58.973553791467602,
+        "ORIG_FID" : 171
+      },
+      "geometry" : {
+        "x" : 637994.32180000097,
+        "y" : 8174687.5433999971
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 172,
+        "poly_id" : 173179,
+        "komm" : 1224,
+        "MUNICIPALITY" : "Kvinnherad",
+        "COUNTY" : "Hordaland",
+        "x" : 6.0135361847830398,
+        "y" : 59.960040711594999,
+        "ORIG_FID" : 172
+      },
+      "geometry" : {
+        "x" : 669485.70630000159,
+        "y" : 8391020.9900000021
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 173,
+        "poly_id" : 173180,
+        "komm" : 1111,
+        "MUNICIPALITY" : "Sokndal",
+        "COUNTY" : "Rogaland",
+        "x" : 6.1997702121111997,
+        "y" : 58.262379311456797,
+        "ORIG_FID" : 173
+      },
+      "geometry" : {
+        "x" : 690182.73770000041,
+        "y" : 8022740.9937999994
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 174,
+        "poly_id" : 173181,
+        "komm" : 1228,
+        "MUNICIPALITY" : "Odda",
+        "COUNTY" : "Hordaland",
+        "x" : 6.7993804794261301,
+        "y" : 59.958622888667598,
+        "ORIG_FID" : 174
+      },
+      "geometry" : {
+        "x" : 756883.5775000006,
+        "y" : 8390658.0283000022
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 175,
+        "poly_id" : 173182,
+        "komm" : 1151,
+        "MUNICIPALITY" : "Utsira",
+        "COUNTY" : "Rogaland",
+        "x" : 4.7060884286372797,
+        "y" : 59.270686055633902,
+        "ORIG_FID" : 175
+      },
+      "geometry" : {
+        "x" : 523878.55310000107,
+        "y" : 8239191.2985000014
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 176,
+        "poly_id" : 173183,
+        "komm" : 1144,
+        "MUNICIPALITY" : "Kvitsøy",
+        "COUNTY" : "Rogaland",
+        "x" : 5.2830344047112998,
+        "y" : 59.016288393617799,
+        "ORIG_FID" : 176
+      },
+      "geometry" : {
+        "x" : 588119.63910000026,
+        "y" : 8183931.3400999978
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 177,
+        "poly_id" : 173184,
+        "komm" : 1124,
+        "MUNICIPALITY" : "Sola",
+        "COUNTY" : "Rogaland",
+        "x" : 5.3467511550647204,
+        "y" : 58.885856161271299,
+        "ORIG_FID" : 177
+      },
+      "geometry" : {
+        "x" : 595205.59230000153,
+        "y" : 8155774.300499998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 178,
+        "poly_id" : 173185,
+        "komm" : 1219,
+        "MUNICIPALITY" : "Bømlo",
+        "COUNTY" : "Hordaland",
+        "x" : 4.9751671210625599,
+        "y" : 59.720353793429197,
+        "ORIG_FID" : 178
+      },
+      "geometry" : {
+        "x" : 553829.14490000159,
+        "y" : 8337865.0508999974
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 179,
+        "poly_id" : 173186,
+        "komm" : 1112,
+        "MUNICIPALITY" : "Lund",
+        "COUNTY" : "Rogaland",
+        "x" : 6.4722040859239902,
+        "y" : 58.490203351873099,
+        "ORIG_FID" : 179
+      },
+      "geometry" : {
+        "x" : 717757.57510000095,
+        "y" : 8078688.3492000028
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 180,
+        "poly_id" : 173187,
+        "komm" : 1106,
+        "MUNICIPALITY" : "Haugesund",
+        "COUNTY" : "Rogaland",
+        "x" : 5.0138546969138398,
+        "y" : 59.473658064932899,
+        "ORIG_FID" : 180
+      },
+      "geometry" : {
+        "x" : 577767.4990000017,
+        "y" : 8282443.5234000012
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 181,
+        "poly_id" : 172802,
+        "komm" : 2018,
+        "MUNICIPALITY" : "Måsøy",
+        "COUNTY" : "Finnmark",
+        "x" : 24.456307087047101,
+        "y" : 71.001986004181106,
+        "ORIG_FID" : 181
+      },
+      "geometry" : {
+        "x" : 2722283.2729999982,
+        "y" : 11403742.736699998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 182,
+        "poly_id" : 172820,
+        "komm" : 1917,
+        "MUNICIPALITY" : "Ibestad",
+        "COUNTY" : "Troms",
+        "x" : 17.0944118019519,
+        "y" : 68.842409454726607,
+        "ORIG_FID" : 182
+      },
+      "geometry" : {
+        "x" : 1902970.5568999983,
+        "y" : 10702102.734499998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 183,
+        "poly_id" : 172821,
+        "komm" : 1839,
+        "MUNICIPALITY" : "Beiarn",
+        "COUNTY" : "Nordland",
+        "x" : 14.6561514331989,
+        "y" : 66.889374684597797,
+        "ORIG_FID" : 183
+      },
+      "geometry" : {
+        "x" : 1631495.0069999993,
+        "y" : 10124857.738200001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 184,
+        "poly_id" : 172777,
+        "komm" : 1852,
+        "MUNICIPALITY" : "Tjeldsund",
+        "COUNTY" : "Nordland",
+        "x" : 16.287425865298299,
+        "y" : 68.497014339385998,
+        "ORIG_FID" : 184
+      },
+      "geometry" : {
+        "x" : 1813108.9567000009,
+        "y" : 10596381.051899999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 185,
+        "poly_id" : 172779,
+        "komm" : 2004,
+        "MUNICIPALITY" : "Hammerfest",
+        "COUNTY" : "Finnmark",
+        "x" : 23.230848345392001,
+        "y" : 70.786795833081499,
+        "ORIG_FID" : 185
+      },
+      "geometry" : {
+        "x" : 2585975.677099999,
+        "y" : 11330666.2971
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 186,
+        "poly_id" : 172803,
+        "komm" : 2022,
+        "MUNICIPALITY" : "Lebesby",
+        "COUNTY" : "Finnmark",
+        "x" : 26.8881164860552,
+        "y" : 70.663781760739994,
+        "ORIG_FID" : 186
+      },
+      "geometry" : {
+        "x" : 2993722.2465999983,
+        "y" : 11291246.894000001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 187,
+        "poly_id" : 172804,
+        "komm" : 2025,
+        "MUNICIPALITY" : "Deatnu – Tana",
+        "COUNTY" : "Finnmark",
+        "x" : 27.6723766956929,
+        "y" : 70.240927397868802,
+        "ORIG_FID" : 187
+      },
+      "geometry" : {
+        "x" : 3081136.8401999995,
+        "y" : 11148715.060999997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 188,
+        "poly_id" : 172805,
+        "komm" : 2003,
+        "MUNICIPALITY" : "Vadsø",
+        "COUNTY" : "Finnmark",
+        "x" : 29.8705744500202,
+        "y" : 70.171061098627902,
+        "ORIG_FID" : 188
+      },
+      "geometry" : {
+        "x" : 3325027.502700001,
+        "y" : 11124940.142099999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 189,
+        "poly_id" : 172814,
+        "komm" : 2014,
+        "MUNICIPALITY" : "Loppa",
+        "COUNTY" : "Finnmark",
+        "x" : 21.4629913286321,
+        "y" : 70.405703901619802,
+        "ORIG_FID" : 189
+      },
+      "geometry" : {
+        "x" : 2388907.0590999983,
+        "y" : 11202797.343199998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 190,
+        "poly_id" : 172817,
+        "komm" : 1866,
+        "MUNICIPALITY" : "Hadsel",
+        "COUNTY" : "Nordland",
+        "x" : 14.875875766317399,
+        "y" : 68.498372852999097,
+        "ORIG_FID" : 190
+      },
+      "geometry" : {
+        "x" : 1655981.2569999993,
+        "y" : 10596840.104999997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 191,
+        "poly_id" : 172819,
+        "komm" : 1926,
+        "MUNICIPALITY" : "Dyrøy",
+        "COUNTY" : "Troms",
+        "x" : 17.619944304788401,
+        "y" : 69.037961341683499,
+        "ORIG_FID" : 191
+      },
+      "geometry" : {
+        "x" : 1942026.9039999992,
+        "y" : 10753508.386100002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 192,
+        "poly_id" : 172822,
+        "komm" : 1828,
+        "MUNICIPALITY" : "Nesna",
+        "COUNTY" : "Nordland",
+        "x" : 12.966969796630201,
+        "y" : 66.242298326094101,
+        "ORIG_FID" : 192
+      },
+      "geometry" : {
+        "x" : 1443474.4096999988,
+        "y" : 9943504.4457999989
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 193,
+        "poly_id" : 172823,
+        "komm" : 1834,
+        "MUNICIPALITY" : "Lurøy",
+        "COUNTY" : "Nordland",
+        "x" : 12.6615096875961,
+        "y" : 66.414265251482405,
+        "ORIG_FID" : 193
+      },
+      "geometry" : {
+        "x" : 1409481.6700999998,
+        "y" : 9991280.3307000026
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 194,
+        "poly_id" : 172828,
+        "komm" : 1837,
+        "MUNICIPALITY" : "Meløy",
+        "COUNTY" : "Nordland",
+        "x" : 13.3177292384654,
+        "y" : 66.926782475456406,
+        "ORIG_FID" : 194
+      },
+      "geometry" : {
+        "x" : 1482253.7542999983,
+        "y" : 10135696.083800003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 195,
+        "poly_id" : 172831,
+        "komm" : 1848,
+        "MUNICIPALITY" : "Steigen",
+        "COUNTY" : "Nordland",
+        "x" : 14.766056289326601,
+        "y" : 67.814441499476104,
+        "ORIG_FID" : 195
+      },
+      "geometry" : {
+        "x" : 1643818.7778999992,
+        "y" : 10392344.041599996
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 196,
+        "poly_id" : 172846,
+        "komm" : 1865,
+        "MUNICIPALITY" : "Vågan",
+        "COUNTY" : "Nordland",
+        "x" : 14.433895544113,
+        "y" : 68.251607101412304,
+        "ORIG_FID" : 196
+      },
+      "geometry" : {
+        "x" : 1606649.6152999997,
+        "y" : 10522611.785400003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 197,
+        "poly_id" : 172857,
+        "komm" : 1827,
+        "MUNICIPALITY" : "Dønna",
+        "COUNTY" : "Nordland",
+        "x" : 12.3738397427182,
+        "y" : 66.172836932342605,
+        "ORIG_FID" : 197
+      },
+      "geometry" : {
+        "x" : 1377414.4910000004,
+        "y" : 9924404.3242999986
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 198,
+        "poly_id" : 172863,
+        "komm" : 1833,
+        "MUNICIPALITY" : "Rana",
+        "COUNTY" : "Nordland",
+        "x" : 14.4884450665398,
+        "y" : 66.411161218137593,
+        "ORIG_FID" : 198
+      },
+      "geometry" : {
+        "x" : 1612896.9941999987,
+        "y" : 9990651.5691
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 199,
+        "poly_id" : 172889,
+        "komm" : 1853,
+        "MUNICIPALITY" : "Evenes",
+        "COUNTY" : "Nordland",
+        "x" : 16.973299303767899,
+        "y" : 68.491026108129105,
+        "ORIG_FID" : 199
+      },
+      "geometry" : {
+        "x" : 1889463.9389000013,
+        "y" : 10594513.470700003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 200,
+        "poly_id" : 172893,
+        "komm" : 1927,
+        "MUNICIPALITY" : "Tranøy",
+        "COUNTY" : "Troms",
+        "x" : 17.228287411670198,
+        "y" : 69.1320258311099,
+        "ORIG_FID" : 200
+      },
+      "geometry" : {
+        "x" : 1892011.9472999983,
+        "y" : 10770671.277500004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 201,
+        "poly_id" : 172894,
+        "komm" : 1903,
+        "MUNICIPALITY" : "Harstad",
+        "COUNTY" : "Troms",
+        "x" : 16.4978786729875,
+        "y" : 68.949031562294294,
+        "ORIG_FID" : 201
+      },
+      "geometry" : {
+        "x" : 1836526.4112000018,
+        "y" : 10735609.778300002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 202,
+        "poly_id" : 172895,
+        "komm" : 1929,
+        "MUNICIPALITY" : "Berg",
+        "COUNTY" : "Troms",
+        "x" : 17.1685880460665,
+        "y" : 69.531699892663198,
+        "ORIG_FID" : 202
+      },
+      "geometry" : {
+        "x" : 1911126.4946999997,
+        "y" : 10918209.299900003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 203,
+        "poly_id" : 172896,
+        "komm" : 1931,
+        "MUNICIPALITY" : "Lenvik",
+        "COUNTY" : "Troms",
+        "x" : 17.866818199431702,
+        "y" : 69.454873510316801,
+        "ORIG_FID" : 203
+      },
+      "geometry" : {
+        "x" : 2023284.8724000007,
+        "y" : 10862465.343800001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 204,
+        "poly_id" : 172897,
+        "komm" : 1751,
+        "MUNICIPALITY" : "Nærøy",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 11.7321694877191,
+        "y" : 64.882105277055103,
+        "ORIG_FID" : 204
+      },
+      "geometry" : {
+        "x" : 1306080.4408,
+        "y" : 9577497.6595999971
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 205,
+        "poly_id" : 172914,
+        "komm" : 1824,
+        "MUNICIPALITY" : "Vefsn",
+        "COUNTY" : "Nordland",
+        "x" : 13.2166130933154,
+        "y" : 65.857703105168099,
+        "ORIG_FID" : 205
+      },
+      "geometry" : {
+        "x" : 1471331.5733999982,
+        "y" : 9838352.2485999987
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 206,
+        "poly_id" : 172913,
+        "komm" : 1804,
+        "MUNICIPALITY" : "Bodø",
+        "COUNTY" : "Nordland",
+        "x" : 14.1584689185021,
+        "y" : 67.368257269408304,
+        "ORIG_FID" : 206
+      },
+      "geometry" : {
+        "x" : 1563679.1722999997,
+        "y" : 10271653.139300004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 207,
+        "poly_id" : 172917,
+        "komm" : 1825,
+        "MUNICIPALITY" : "Grane",
+        "COUNTY" : "Nordland",
+        "x" : 13.4503151529672,
+        "y" : 65.399670972979294,
+        "ORIG_FID" : 207
+      },
+      "geometry" : {
+        "x" : 1497295.4096999988,
+        "y" : 9714876.7215000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 208,
+        "poly_id" : 172920,
+        "komm" : 1813,
+        "MUNICIPALITY" : "Brønnøy",
+        "COUNTY" : "Nordland",
+        "x" : 12.220540960864099,
+        "y" : 65.435529628694695,
+        "ORIG_FID" : 208
+      },
+      "geometry" : {
+        "x" : 1325198.5923000015,
+        "y" : 9720146.373499997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 209,
+        "poly_id" : 172953,
+        "komm" : 1924,
+        "MUNICIPALITY" : "Målselv",
+        "COUNTY" : "Troms",
+        "x" : 19.370717735338101,
+        "y" : 68.915799684982801,
+        "ORIG_FID" : 209
+      },
+      "geometry" : {
+        "x" : 2203733.4607999995,
+        "y" : 10689034.722000003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 210,
+        "poly_id" : 172954,
+        "komm" : 1922,
+        "MUNICIPALITY" : "Bardu",
+        "COUNTY" : "Troms",
+        "x" : 18.8881335509233,
+        "y" : 68.663868957299698,
+        "ORIG_FID" : 210
+      },
+      "geometry" : {
+        "x" : 2102326.5212999992,
+        "y" : 10647628.377400003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 211,
+        "poly_id" : 172955,
+        "komm" : 1805,
+        "MUNICIPALITY" : "Narvik",
+        "COUNTY" : "Nordland",
+        "x" : 17.673137649020401,
+        "y" : 68.320151567411699,
+        "ORIG_FID" : 211
+      },
+      "geometry" : {
+        "x" : 1967357.4976000004,
+        "y" : 10543267.009199999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 212,
+        "poly_id" : 172956,
+        "komm" : 1849,
+        "MUNICIPALITY" : "Hamarøy",
+        "COUNTY" : "Nordland",
+        "x" : 15.8158273488409,
+        "y" : 67.967110930738599,
+        "ORIG_FID" : 212
+      },
+      "geometry" : {
+        "x" : 1718162.8792000003,
+        "y" : 10471108.398999996
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 213,
+        "poly_id" : 172957,
+        "komm" : 1845,
+        "MUNICIPALITY" : "Sørfold",
+        "COUNTY" : "Nordland",
+        "x" : 15.7505694945056,
+        "y" : 67.514872451275195,
+        "ORIG_FID" : 213
+      },
+      "geometry" : {
+        "x" : 1753332.3225999996,
+        "y" : 10304597.297200002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 214,
+        "poly_id" : 172958,
+        "komm" : 1841,
+        "MUNICIPALITY" : "Fauske",
+        "COUNTY" : "Nordland",
+        "x" : 15.7693473511157,
+        "y" : 67.224032060808298,
+        "ORIG_FID" : 214
+      },
+      "geometry" : {
+        "x" : 1786161.6944000013,
+        "y" : 10202248.655199997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 215,
+        "poly_id" : 172959,
+        "komm" : 1840,
+        "MUNICIPALITY" : "Saltdal",
+        "COUNTY" : "Nordland",
+        "x" : 15.526151100051999,
+        "y" : 66.892082507670395,
+        "ORIG_FID" : 215
+      },
+      "geometry" : {
+        "x" : 1728395.5315000005,
+        "y" : 10125785.611299999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 216,
+        "poly_id" : 172960,
+        "komm" : 1832,
+        "MUNICIPALITY" : "Hemnes",
+        "COUNTY" : "Nordland",
+        "x" : 14.030185654500199,
+        "y" : 66.014683616329904,
+        "ORIG_FID" : 216
+      },
+      "geometry" : {
+        "x" : 1561796.5769000016,
+        "y" : 9881095.8011000007
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 217,
+        "poly_id" : 172968,
+        "komm" : 2012,
+        "MUNICIPALITY" : "Alta",
+        "COUNTY" : "Finnmark",
+        "x" : 23.218495881977201,
+        "y" : 70.015509120554299,
+        "ORIG_FID" : 217
+      },
+      "geometry" : {
+        "x" : 2584581.7598999999,
+        "y" : 11074678.449600004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 218,
+        "poly_id" : 172969,
+        "komm" : 1923,
+        "MUNICIPALITY" : "Salangen",
+        "COUNTY" : "Troms",
+        "x" : 17.848836346851499,
+        "y" : 68.892930193624196,
+        "ORIG_FID" : 218
+      },
+      "geometry" : {
+        "x" : 1986922.3049999997,
+        "y" : 10717677.566600002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 219,
+        "poly_id" : 172970,
+        "komm" : 1838,
+        "MUNICIPALITY" : "Gildeskål",
+        "COUNTY" : "Nordland",
+        "x" : 13.922931841998,
+        "y" : 67.048942714178494,
+        "ORIG_FID" : 219
+      },
+      "geometry" : {
+        "x" : 1549841.4593000002,
+        "y" : 10170224.396300003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 220,
+        "poly_id" : 172971,
+        "komm" : 1919,
+        "MUNICIPALITY" : "Gratangen",
+        "COUNTY" : "Troms",
+        "x" : 17.495445990158402,
+        "y" : 68.696330891980907,
+        "ORIG_FID" : 220
+      },
+      "geometry" : {
+        "x" : 1947559.1457000002,
+        "y" : 10657161.749600001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 221,
+        "poly_id" : 172972,
+        "komm" : 1920,
+        "MUNICIPALITY" : "Lavangen",
+        "COUNTY" : "Troms",
+        "x" : 17.800613682352399,
+        "y" : 68.731417329997498,
+        "ORIG_FID" : 221
+      },
+      "geometry" : {
+        "x" : 1974686.3728,
+        "y" : 10678687.320200004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 222,
+        "poly_id" : 172973,
+        "komm" : 1925,
+        "MUNICIPALITY" : "Sørreisa",
+        "COUNTY" : "Troms",
+        "x" : 18.157836304658499,
+        "y" : 69.097365194434403,
+        "ORIG_FID" : 222
+      },
+      "geometry" : {
+        "x" : 2021321.3011000007,
+        "y" : 10781167.001800001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 223,
+        "poly_id" : 172974,
+        "komm" : 1913,
+        "MUNICIPALITY" : "Skånland",
+        "COUNTY" : "Troms",
+        "x" : 16.974069973820001,
+        "y" : 68.623010168738901,
+        "ORIG_FID" : 223
+      },
+      "geometry" : {
+        "x" : 1896914.0124000013,
+        "y" : 10642309.979800001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 224,
+        "poly_id" : 172976,
+        "komm" : 1822,
+        "MUNICIPALITY" : "Leirfjord",
+        "COUNTY" : "Nordland",
+        "x" : 13.0344418121476,
+        "y" : 66.093197956191304,
+        "ORIG_FID" : 224
+      },
+      "geometry" : {
+        "x" : 1451024.5839999989,
+        "y" : 9902468.7388999984
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 225,
+        "poly_id" : 172977,
+        "komm" : 1820,
+        "MUNICIPALITY" : "Alstahaug",
+        "COUNTY" : "Nordland",
+        "x" : 12.4190458126645,
+        "y" : 65.864332380367301,
+        "ORIG_FID" : 225
+      },
+      "geometry" : {
+        "x" : 1382513.9265000001,
+        "y" : 9839924.9891000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 226,
+        "poly_id" : 172978,
+        "komm" : 1816,
+        "MUNICIPALITY" : "Vevelstad",
+        "COUNTY" : "Nordland",
+        "x" : 12.6465712895699,
+        "y" : 65.645734325833601,
+        "ORIG_FID" : 226
+      },
+      "geometry" : {
+        "x" : 1406405.993900001,
+        "y" : 9792229.8533999994
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 227,
+        "poly_id" : 172980,
+        "komm" : 1851,
+        "MUNICIPALITY" : "Lødingen",
+        "COUNTY" : "Nordland",
+        "x" : 15.6207825707215,
+        "y" : 68.3806072753531,
+        "ORIG_FID" : 227
+      },
+      "geometry" : {
+        "x" : 1741414.5430000015,
+        "y" : 10548618.910899997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 228,
+        "poly_id" : 172981,
+        "komm" : 1870,
+        "MUNICIPALITY" : "Sortland",
+        "COUNTY" : "Nordland",
+        "x" : 15.509642034591,
+        "y" : 68.7432220141757,
+        "ORIG_FID" : 228
+      },
+      "geometry" : {
+        "x" : 1719897.4316999987,
+        "y" : 10656366.097400002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 229,
+        "poly_id" : 173007,
+        "komm" : 1941,
+        "MUNICIPALITY" : "Skjervøy",
+        "COUNTY" : "Troms",
+        "x" : 20.718255049015202,
+        "y" : 70.142630490998599,
+        "ORIG_FID" : 229
+      },
+      "geometry" : {
+        "x" : 2306327.6495999992,
+        "y" : 11115904.397100002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 230,
+        "poly_id" : 173008,
+        "komm" : 1911,
+        "MUNICIPALITY" : "Kvæfjord",
+        "COUNTY" : "Troms",
+        "x" : 16.028733383584601,
+        "y" : 68.696787580695997,
+        "ORIG_FID" : 230
+      },
+      "geometry" : {
+        "x" : 1784370.0454000011,
+        "y" : 10657467.411300004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 231,
+        "poly_id" : 173009,
+        "komm" : 2027,
+        "MUNICIPALITY" : "Unjárga – Nesseby",
+        "COUNTY" : "Finnmark",
+        "x" : 28.799098681029399,
+        "y" : 70.133183041237004,
+        "ORIG_FID" : 231
+      },
+      "geometry" : {
+        "x" : 3205944.9664999992,
+        "y" : 11112599.353699997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 232,
+        "poly_id" : 173010,
+        "komm" : 1940,
+        "MUNICIPALITY" : "Gáivuotna – Kåfjord",
+        "COUNTY" : "Troms",
+        "x" : 20.740732736236101,
+        "y" : 69.478881227163399,
+        "ORIG_FID" : 232
+      },
+      "geometry" : {
+        "x" : 2308763.8322999999,
+        "y" : 10901511.828199998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 233,
+        "poly_id" : 173037,
+        "komm" : 1939,
+        "MUNICIPALITY" : "Storfjord",
+        "COUNTY" : "Troms",
+        "x" : 20.3631432028765,
+        "y" : 69.230680165509796,
+        "ORIG_FID" : 233
+      },
+      "geometry" : {
+        "x" : 2266761.2600000016,
+        "y" : 10823036.384499997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 234,
+        "poly_id" : 173038,
+        "komm" : 1854,
+        "MUNICIPALITY" : "Ballangen",
+        "COUNTY" : "Nordland",
+        "x" : 16.730385981956001,
+        "y" : 68.282042580638006,
+        "ORIG_FID" : 234
+      },
+      "geometry" : {
+        "x" : 1862352.0639000013,
+        "y" : 10531475.867799997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 235,
+        "poly_id" : 173039,
+        "komm" : 1850,
+        "MUNICIPALITY" : "Tysfjord",
+        "COUNTY" : "Nordland",
+        "x" : 16.423598929731099,
+        "y" : 68.022482470207095,
+        "ORIG_FID" : 235
+      },
+      "geometry" : {
+        "x" : 1828219.7168000005,
+        "y" : 10454100.971100003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 236,
+        "poly_id" : 173040,
+        "komm" : 1826,
+        "MUNICIPALITY" : "Hattfjelldal",
+        "COUNTY" : "Nordland",
+        "x" : 14.1375671943727,
+        "y" : 65.505440270602307,
+        "ORIG_FID" : 236
+      },
+      "geometry" : {
+        "x" : 1573825.6160999984,
+        "y" : 9743442.2049999982
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 237,
+        "poly_id" : 173042,
+        "komm" : 1942,
+        "MUNICIPALITY" : "Nordreisa",
+        "COUNTY" : "Troms",
+        "x" : 21.5308680598461,
+        "y" : 69.535986568110502,
+        "ORIG_FID" : 237
+      },
+      "geometry" : {
+        "x" : 2448567.7956000008,
+        "y" : 10847434.6536
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 238,
+        "poly_id" : 173043,
+        "komm" : 2020,
+        "MUNICIPALITY" : "Porsanger – Porsanki",
+        "COUNTY" : "Finnmark",
+        "x" : 25.182316043510099,
+        "y" : 70.207925422942907,
+        "ORIG_FID" : 238
+      },
+      "geometry" : {
+        "x" : 2803557.0535999984,
+        "y" : 11138305.607299998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 239,
+        "poly_id" : 173045,
+        "komm" : 2021,
+        "MUNICIPALITY" : "Kárásjohka – Karasjok",
+        "COUNTY" : "Finnmark",
+        "x" : 25.1383198816788,
+        "y" : 69.411034766769006,
+        "ORIG_FID" : 239
+      },
+      "geometry" : {
+        "x" : 2798384.7721999995,
+        "y" : 10881073.363200001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 240,
+        "poly_id" : 173046,
+        "komm" : 2011,
+        "MUNICIPALITY" : "Guovdageaidnu – Kautokeino",
+        "COUNTY" : "Finnmark",
+        "x" : 23.550623788470698,
+        "y" : 69.133920881048994,
+        "ORIG_FID" : 240
+      },
+      "geometry" : {
+        "x" : 2621448.5344999991,
+        "y" : 10794245.354599997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 241,
+        "poly_id" : 173047,
+        "komm" : 1943,
+        "MUNICIPALITY" : "Kvænangen",
+        "COUNTY" : "Troms",
+        "x" : 21.9660010544047,
+        "y" : 69.8460370027979,
+        "ORIG_FID" : 241
+      },
+      "geometry" : {
+        "x" : 2444974.9926999994,
+        "y" : 11019691.740500003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 242,
+        "poly_id" : 173048,
+        "komm" : 2017,
+        "MUNICIPALITY" : "Kvalsund",
+        "COUNTY" : "Finnmark",
+        "x" : 24.163221619423702,
+        "y" : 70.439719426805993,
+        "ORIG_FID" : 242
+      },
+      "geometry" : {
+        "x" : 2689924.1099000014,
+        "y" : 11213865.349799998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 243,
+        "poly_id" : 173050,
+        "komm" : 1836,
+        "MUNICIPALITY" : "Rødøy",
+        "COUNTY" : "Nordland",
+        "x" : 12.7288180444638,
+        "y" : 66.763025169866907,
+        "ORIG_FID" : 243
+      },
+      "geometry" : {
+        "x" : 1360140.9734000005,
+        "y" : 10134436.602899998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 244,
+        "poly_id" : 173082,
+        "komm" : 1811,
+        "MUNICIPALITY" : "Bindal",
+        "COUNTY" : "Nordland",
+        "x" : 12.2937617276112,
+        "y" : 65.160576694759001,
+        "ORIG_FID" : 244
+      },
+      "geometry" : {
+        "x" : 1392835.0903999992,
+        "y" : 9642719.865699999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 245,
+        "poly_id" : 173054,
+        "komm" : 1902,
+        "MUNICIPALITY" : "Tromsø",
+        "COUNTY" : "Troms",
+        "x" : 18.6234078490386,
+        "y" : 69.744741567191994,
+        "ORIG_FID" : 245
+      },
+      "geometry" : {
+        "x" : 2072761.8759000003,
+        "y" : 10986898.4692
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 246,
+        "poly_id" : 173059,
+        "komm" : 1856,
+        "MUNICIPALITY" : "Røst",
+        "COUNTY" : "Nordland",
+        "x" : 11.9873202052386,
+        "y" : 67.3866896582539,
+        "ORIG_FID" : 246
+      },
+      "geometry" : {
+        "x" : 1334419.2672000006,
+        "y" : 10267647.535499997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 247,
+        "poly_id" : 173060,
+        "komm" : 1818,
+        "MUNICIPALITY" : "Herøy",
+        "COUNTY" : "Nordland",
+        "x" : 11.6322010397078,
+        "y" : 66.114134163405893,
+        "ORIG_FID" : 247
+      },
+      "geometry" : {
+        "x" : 1294835.9600000009,
+        "y" : 9908396.9113999978
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 248,
+        "poly_id" : 173061,
+        "komm" : 1815,
+        "MUNICIPALITY" : "Vega",
+        "COUNTY" : "Nordland",
+        "x" : 11.4863630839252,
+        "y" : 65.726855029954507,
+        "ORIG_FID" : 248
+      },
+      "geometry" : {
+        "x" : 1278660.2884000018,
+        "y" : 9802729.6903000027
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 249,
+        "poly_id" : 173055,
+        "komm" : 1936,
+        "MUNICIPALITY" : "Karlsøy",
+        "COUNTY" : "Troms",
+        "x" : 19.416928841298201,
+        "y" : 70.258092673739995,
+        "ORIG_FID" : 249
+      },
+      "geometry" : {
+        "x" : 2161657.5491000004,
+        "y" : 11154179.989
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 250,
+        "poly_id" : 173056,
+        "komm" : 1835,
+        "MUNICIPALITY" : "Træna",
+        "COUNTY" : "Nordland",
+        "x" : 11.8977962289212,
+        "y" : 66.552381214951893,
+        "ORIG_FID" : 250
+      },
+      "geometry" : {
+        "x" : 1324481.4560999982,
+        "y" : 10029928.2645
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 251,
+        "poly_id" : 173057,
+        "komm" : 1867,
+        "MUNICIPALITY" : "Bø",
+        "COUNTY" : "Nordland",
+        "x" : 14.196335590011,
+        "y" : 68.718518263194994,
+        "ORIG_FID" : 251
+      },
+      "geometry" : {
+        "x" : 1580360.3618000001,
+        "y" : 10664184.538900003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 252,
+        "poly_id" : 173058,
+        "komm" : 1857,
+        "MUNICIPALITY" : "Værøy",
+        "COUNTY" : "Nordland",
+        "x" : 12.760702117244699,
+        "y" : 67.649577480631194,
+        "ORIG_FID" : 252
+      },
+      "geometry" : {
+        "x" : 1420447.2767999992,
+        "y" : 10343870.607000001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 253,
+        "poly_id" : 173063,
+        "komm" : 1812,
+        "MUNICIPALITY" : "Sømna",
+        "COUNTY" : "Nordland",
+        "x" : 11.781496248932401,
+        "y" : 65.339290122777697,
+        "ORIG_FID" : 253
+      },
+      "geometry" : {
+        "x" : 1335911.0339000002,
+        "y" : 9682198.9139999971
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 254,
+        "poly_id" : 173064,
+        "komm" : 1868,
+        "MUNICIPALITY" : "Øksnes",
+        "COUNTY" : "Nordland",
+        "x" : 14.896878621982699,
+        "y" : 69.017606294839197,
+        "ORIG_FID" : 254
+      },
+      "geometry" : {
+        "x" : 1658320.1876999997,
+        "y" : 10756617.818000004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 255,
+        "poly_id" : 173065,
+        "komm" : 1871,
+        "MUNICIPALITY" : "Andøy",
+        "COUNTY" : "Nordland",
+        "x" : 15.812410006278901,
+        "y" : 69.234436219979003,
+        "ORIG_FID" : 255
+      },
+      "geometry" : {
+        "x" : 1760331.3709000014,
+        "y" : 10824727.18
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 256,
+        "poly_id" : 173077,
+        "komm" : 1928,
+        "MUNICIPALITY" : "Torsken",
+        "COUNTY" : "Troms",
+        "x" : 16.795510471465999,
+        "y" : 69.379865477833803,
+        "ORIG_FID" : 256
+      },
+      "geometry" : {
+        "x" : 1869569.8797000013,
+        "y" : 10870123.705600001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 257,
+        "poly_id" : 173080,
+        "komm" : 1755,
+        "MUNICIPALITY" : "Leka",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 11.1333453854434,
+        "y" : 65.225589534153201,
+        "ORIG_FID" : 257
+      },
+      "geometry" : {
+        "x" : 1239228.0373000018,
+        "y" : 9668226.367399998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 258,
+        "poly_id" : 173114,
+        "komm" : 1860,
+        "MUNICIPALITY" : "Vestvågøy",
+        "COUNTY" : "Nordland",
+        "x" : 13.6718248657749,
+        "y" : 68.193402694290498,
+        "ORIG_FID" : 258
+      },
+      "geometry" : {
+        "x" : 1521859.8599999994,
+        "y" : 10505357.424099997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 259,
+        "poly_id" : 173101,
+        "komm" : 2002,
+        "MUNICIPALITY" : "Vardø",
+        "COUNTY" : "Finnmark",
+        "x" : 31.065904736966299,
+        "y" : 70.314216171181002,
+        "ORIG_FID" : 259
+      },
+      "geometry" : {
+        "x" : 3458287.0029000007,
+        "y" : 11172238.678800002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 260,
+        "poly_id" : 173102,
+        "komm" : 2015,
+        "MUNICIPALITY" : "Hasvik",
+        "COUNTY" : "Finnmark",
+        "x" : 22.132812574632101,
+        "y" : 70.651465125914498,
+        "ORIG_FID" : 260
+      },
+      "geometry" : {
+        "x" : 2463742.5925999992,
+        "y" : 11284721.967799999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 261,
+        "poly_id" : 173106,
+        "komm" : 2023,
+        "MUNICIPALITY" : "Gamvik",
+        "COUNTY" : "Finnmark",
+        "x" : 28.136704783730298,
+        "y" : 70.949339119745503,
+        "ORIG_FID" : 261
+      },
+      "geometry" : {
+        "x" : 3132398.7588,
+        "y" : 11386203.836000003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 262,
+        "poly_id" : 173113,
+        "komm" : 1874,
+        "MUNICIPALITY" : "Moskenes",
+        "COUNTY" : "Nordland",
+        "x" : 12.889971713282501,
+        "y" : 67.908650493447098,
+        "ORIG_FID" : 262
+      },
+      "geometry" : {
+        "x" : 1434787.3564999998,
+        "y" : 10420102.123099998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 263,
+        "poly_id" : 173115,
+        "komm" : 1859,
+        "MUNICIPALITY" : "Flakstad",
+        "COUNTY" : "Nordland",
+        "x" : 13.0530911326449,
+        "y" : 68.155046423190896,
+        "ORIG_FID" : 263
+      },
+      "geometry" : {
+        "x" : 1453000.5795999989,
+        "y" : 10493461.168300003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 264,
+        "poly_id" : 173116,
+        "komm" : 1933,
+        "MUNICIPALITY" : "Balsfjord",
+        "COUNTY" : "Troms",
+        "x" : 19.2131336499342,
+        "y" : 69.262445459308694,
+        "ORIG_FID" : 264
+      },
+      "geometry" : {
+        "x" : 2138643.2283000015,
+        "y" : 10833111.665899999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 265,
+        "poly_id" : 173138,
+        "komm" : 2019,
+        "MUNICIPALITY" : "Nordkapp",
+        "COUNTY" : "Finnmark",
+        "x" : 25.966178612416801,
+        "y" : 71.084580969850094,
+        "ORIG_FID" : 265
+      },
+      "geometry" : {
+        "x" : 2890552.1253000014,
+        "y" : 11432161.826499999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 266,
+        "poly_id" : 173139,
+        "komm" : 2024,
+        "MUNICIPALITY" : "Berlevåg",
+        "COUNTY" : "Finnmark",
+        "x" : 29.182946048060401,
+        "y" : 70.796989964877298,
+        "ORIG_FID" : 266
+      },
+      "geometry" : {
+        "x" : 3248705.431499999,
+        "y" : 11333742.380000003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 267,
+        "poly_id" : 173140,
+        "komm" : 2028,
+        "MUNICIPALITY" : "Båtsfjord",
+        "COUNTY" : "Finnmark",
+        "x" : 30.1896354938496,
+        "y" : 70.599757255789399,
+        "ORIG_FID" : 267
+      },
+      "geometry" : {
+        "x" : 3360787.6977000013,
+        "y" : 11267292.6294
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 268,
+        "poly_id" : 173143,
+        "komm" : 2030,
+        "MUNICIPALITY" : "Sør-Varanger",
+        "COUNTY" : "Finnmark",
+        "x" : 29.7731413796776,
+        "y" : 69.689848793715797,
+        "ORIG_FID" : 268
+      },
+      "geometry" : {
+        "x" : 3314555.4888999984,
+        "y" : 10969704.614799999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 269,
+        "poly_id" : 173148,
+        "komm" : 1938,
+        "MUNICIPALITY" : "Lyngen",
+        "COUNTY" : "Troms",
+        "x" : 20.131527161483501,
+        "y" : 69.727791529485899,
+        "ORIG_FID" : 269
+      },
+      "geometry" : {
+        "x" : 2241062.3896999992,
+        "y" : 10981264.979800001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 270,
+        "poly_id" : 172761,
+        "komm" : 228,
+        "MUNICIPALITY" : "Rælingen",
+        "COUNTY" : "Akershus",
+        "x" : 11.077243668461801,
+        "y" : 59.882331635111001,
+        "ORIG_FID" : 270
+      },
+      "geometry" : {
+        "x" : 1233111.9615999982,
+        "y" : 8373595.6745999977
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 271,
+        "poly_id" : 172762,
+        "komm" : 415,
+        "MUNICIPALITY" : "Løten",
+        "COUNTY" : "Hedmark",
+        "x" : 11.3901732589177,
+        "y" : 60.8494408319686,
+        "ORIG_FID" : 271
+      },
+      "geometry" : {
+        "x" : 1267924.4160999991,
+        "y" : 8591416.264700003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 272,
+        "poly_id" : 172764,
+        "komm" : 211,
+        "MUNICIPALITY" : "Vestby",
+        "COUNTY" : "Akershus",
+        "x" : 10.725787491857,
+        "y" : 59.5672701357839,
+        "ORIG_FID" : 272
+      },
+      "geometry" : {
+        "x" : 1193990.3370000012,
+        "y" : 8304034.7305999994
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 273,
+        "poly_id" : 172765,
+        "komm" : 615,
+        "MUNICIPALITY" : "Flå",
+        "COUNTY" : "Buskerud",
+        "x" : 9.5025421507750707,
+        "y" : 60.415914176769398,
+        "ORIG_FID" : 273
+      },
+      "geometry" : {
+        "x" : 1057814.4794999994,
+        "y" : 8492962.807099998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 274,
+        "poly_id" : 172766,
+        "komm" : 602,
+        "MUNICIPALITY" : "Drammen",
+        "COUNTY" : "Buskerud",
+        "x" : 10.1663683955969,
+        "y" : 59.711948922795401,
+        "ORIG_FID" : 274
+      },
+      "geometry" : {
+        "x" : 1131715.6611000001,
+        "y" : 8335897.2981999964
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 275,
+        "poly_id" : 172767,
+        "komm" : 711,
+        "MUNICIPALITY" : "Svelvik",
+        "COUNTY" : "Vestfold",
+        "x" : 10.370066618333301,
+        "y" : 59.6219904916587,
+        "ORIG_FID" : 275
+      },
+      "geometry" : {
+        "x" : 1154389.0513999984,
+        "y" : 8316073.4074999988
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 276,
+        "poly_id" : 172768,
+        "komm" : 728,
+        "MUNICIPALITY" : "Lardal",
+        "COUNTY" : "Vestfold",
+        "x" : 9.9023762623322202,
+        "y" : 59.382832151936803,
+        "ORIG_FID" : 276
+      },
+      "geometry" : {
+        "x" : 1102330.7862000018,
+        "y" : 8263620.5121999979
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 277,
+        "poly_id" : 172769,
+        "komm" : 811,
+        "MUNICIPALITY" : "Siljan",
+        "COUNTY" : "Telemark",
+        "x" : 9.7253288441110897,
+        "y" : 59.310067531500998,
+        "ORIG_FID" : 277
+      },
+      "geometry" : {
+        "x" : 1082611.1933999993,
+        "y" : 8247740.5922999978
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 278,
+        "poly_id" : 172770,
+        "komm" : 720,
+        "MUNICIPALITY" : "Stokke",
+        "COUNTY" : "Vestfold",
+        "x" : 10.2683170767792,
+        "y" : 59.240368426019998,
+        "ORIG_FID" : 278
+      },
+      "geometry" : {
+        "x" : 1143061.8057000004,
+        "y" : 8232533.2868999988
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 279,
+        "poly_id" : 172771,
+        "komm" : 719,
+        "MUNICIPALITY" : "Andebu",
+        "COUNTY" : "Vestfold",
+        "x" : 10.104367414618499,
+        "y" : 59.294340384404499,
+        "ORIG_FID" : 279
+      },
+      "geometry" : {
+        "x" : 1124813.3498999998,
+        "y" : 8244301.757100001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 280,
+        "poly_id" : 172772,
+        "komm" : 704,
+        "MUNICIPALITY" : "Tønsberg",
+        "COUNTY" : "Vestfold",
+        "x" : 10.448820077436,
+        "y" : 59.2990469908097,
+        "ORIG_FID" : 280
+      },
+      "geometry" : {
+        "x" : 1163157.5359999985,
+        "y" : 8245312.1076999977
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 281,
+        "poly_id" : 172782,
+        "komm" : 101,
+        "MUNICIPALITY" : "Halden",
+        "COUNTY" : "Østfold",
+        "x" : 11.491860178934701,
+        "y" : 59.086322968737903,
+        "ORIG_FID" : 281
+      },
+      "geometry" : {
+        "x" : 1279251.8627000004,
+        "y" : 8199153.8715000004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 282,
+        "poly_id" : 172785,
+        "komm" : 436,
+        "MUNICIPALITY" : "Tolga",
+        "COUNTY" : "Hedmark",
+        "x" : 11.0804670283185,
+        "y" : 62.357080423144303,
+        "ORIG_FID" : 282
+      },
+      "geometry" : {
+        "x" : 1233370.6402000003,
+        "y" : 8944464.1442999989
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 283,
+        "poly_id" : 172786,
+        "komm" : 502,
+        "MUNICIPALITY" : "Gjøvik",
+        "COUNTY" : "Oppland",
+        "x" : 10.4703754588192,
+        "y" : 60.887706157667097,
+        "ORIG_FID" : 283
+      },
+      "geometry" : {
+        "x" : 1165540.0529000014,
+        "y" : 8600150.3778000027
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 284,
+        "poly_id" : 172787,
+        "komm" : 426,
+        "MUNICIPALITY" : "Våler",
+        "COUNTY" : "Hedmark",
+        "x" : 11.952465067765599,
+        "y" : 60.785026328467097,
+        "ORIG_FID" : 284
+      },
+      "geometry" : {
+        "x" : 1330614.1515000015,
+        "y" : 8576797.0778999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 285,
+        "poly_id" : 172788,
+        "komm" : 412,
+        "MUNICIPALITY" : "Ringsaker",
+        "COUNTY" : "Hedmark",
+        "x" : 10.8504479894735,
+        "y" : 60.996159461510402,
+        "ORIG_FID" : 285
+      },
+      "geometry" : {
+        "x" : 1207852.2127999999,
+        "y" : 8625149.2833999991
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 286,
+        "poly_id" : 172790,
+        "komm" : 522,
+        "MUNICIPALITY" : "Gausdal",
+        "COUNTY" : "Oppland",
+        "x" : 9.8599504770409307,
+        "y" : 61.271557845668198,
+        "ORIG_FID" : 286
+      },
+      "geometry" : {
+        "x" : 1097588.1578000002,
+        "y" : 8688503.4341000021
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 287,
+        "poly_id" : 172791,
+        "komm" : 623,
+        "MUNICIPALITY" : "Modum",
+        "COUNTY" : "Buskerud",
+        "x" : 9.9619054488339192,
+        "y" : 59.9848596293849,
+        "ORIG_FID" : 287
+      },
+      "geometry" : {
+        "x" : 1108952.2595000006,
+        "y" : 8396417.0816999972
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 288,
+        "poly_id" : 172792,
+        "komm" : 604,
+        "MUNICIPALITY" : "Kongsberg",
+        "COUNTY" : "Buskerud",
+        "x" : 9.6679754522017305,
+        "y" : 59.578276294013499,
+        "ORIG_FID" : 288
+      },
+      "geometry" : {
+        "x" : 1076207.8110000007,
+        "y" : 8306509.9113000035
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 289,
+        "poly_id" : 172794,
+        "komm" : 429,
+        "MUNICIPALITY" : "Åmot",
+        "COUNTY" : "Hedmark",
+        "x" : 11.5000842177077,
+        "y" : 61.255244071395502,
+        "ORIG_FID" : 289
+      },
+      "geometry" : {
+        "x" : 1280224.1625000015,
+        "y" : 8684814.0617000014
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 290,
+        "poly_id" : 172795,
+        "komm" : 229,
+        "MUNICIPALITY" : "Enebakk",
+        "COUNTY" : "Akershus",
+        "x" : 11.1028549182858,
+        "y" : 59.766613753928901,
+        "ORIG_FID" : 290
+      },
+      "geometry" : {
+        "x" : 1235962.4609999992,
+        "y" : 8347977.4596000016
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 291,
+        "poly_id" : 172796,
+        "komm" : 1665,
+        "MUNICIPALITY" : "Tydal",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 11.807645180047601,
+        "y" : 63.008121353910198,
+        "ORIG_FID" : 291
+      },
+      "geometry" : {
+        "x" : 1314405.6317999996,
+        "y" : 9102364.7929999977
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 292,
+        "poly_id" : 172773,
+        "komm" : 628,
+        "MUNICIPALITY" : "Hurum",
+        "COUNTY" : "Buskerud",
+        "x" : 10.514924583373199,
+        "y" : 59.579695875407197,
+        "ORIG_FID" : 292
+      },
+      "geometry" : {
+        "x" : 1170516.6750999987,
+        "y" : 8306782.9746000022
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 293,
+        "poly_id" : 172798,
+        "komm" : 520,
+        "MUNICIPALITY" : "Ringebu",
+        "COUNTY" : "Oppland",
+        "x" : 10.319316219127399,
+        "y" : 61.557527276254099,
+        "ORIG_FID" : 293
+      },
+      "geometry" : {
+        "x" : 1148741.7879999988,
+        "y" : 8755082.5860000029
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 294,
+        "poly_id" : 172799,
+        "komm" : 430,
+        "MUNICIPALITY" : "Stor-Elvdal",
+        "COUNTY" : "Hedmark",
+        "x" : 10.781140207633401,
+        "y" : 61.589860471974298,
+        "ORIG_FID" : 294
+      },
+      "geometry" : {
+        "x" : 1199957.6713999994,
+        "y" : 8762991.4158999994
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 295,
+        "poly_id" : 172800,
+        "komm" : 236,
+        "MUNICIPALITY" : "Nes",
+        "COUNTY" : "Akershus",
+        "x" : 11.4999287642216,
+        "y" : 60.140199520181497,
+        "ORIG_FID" : 295
+      },
+      "geometry" : {
+        "x" : 1280150.8848999999,
+        "y" : 8431098.1603000015
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 296,
+        "poly_id" : 172801,
+        "komm" : 417,
+        "MUNICIPALITY" : "Stange",
+        "COUNTY" : "Hedmark",
+        "x" : 11.3331144508526,
+        "y" : 60.644043487074597,
+        "ORIG_FID" : 296
+      },
+      "geometry" : {
+        "x" : 1261583.6642000005,
+        "y" : 8544605.4747999981
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 297,
+        "poly_id" : 172780,
+        "komm" : 234,
+        "MUNICIPALITY" : "Gjerdrum",
+        "COUNTY" : "Akershus",
+        "x" : 11.013043991258501,
+        "y" : 60.080809585932002,
+        "ORIG_FID" : 297
+      },
+      "geometry" : {
+        "x" : 1225965.8242999986,
+        "y" : 8417756.9623999968
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 298,
+        "poly_id" : 172806,
+        "komm" : 235,
+        "MUNICIPALITY" : "Ullensaker",
+        "COUNTY" : "Akershus",
+        "x" : 11.1964459768895,
+        "y" : 60.150689171425903,
+        "ORIG_FID" : 298
+      },
+      "geometry" : {
+        "x" : 1246381.2866999991,
+        "y" : 8433388.9763000011
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 299,
+        "poly_id" : 172807,
+        "komm" : 221,
+        "MUNICIPALITY" : "Aurskog-Høland",
+        "COUNTY" : "Akershus",
+        "x" : 11.576570001202599,
+        "y" : 59.840434228163602,
+        "ORIG_FID" : 299
+      },
+      "geometry" : {
+        "x" : 1288705.6130999997,
+        "y" : 8364389.3198999986
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 300,
+        "poly_id" : 172811,
+        "komm" : 216,
+        "MUNICIPALITY" : "Nesodden",
+        "COUNTY" : "Akershus",
+        "x" : 10.6435523053769,
+        "y" : 59.807629270801797,
+        "ORIG_FID" : 300
+      },
+      "geometry" : {
+        "x" : 1184837.6990999989,
+        "y" : 8357046.7631999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 301,
+        "poly_id" : 172812,
+        "komm" : 230,
+        "MUNICIPALITY" : "Lørenskog",
+        "COUNTY" : "Akershus",
+        "x" : 10.969317000644001,
+        "y" : 59.892486108921503,
+        "ORIG_FID" : 301
+      },
+      "geometry" : {
+        "x" : 1221098.9437999986,
+        "y" : 8375849.2216999978
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 302,
+        "poly_id" : 172813,
+        "komm" : 439,
+        "MUNICIPALITY" : "Folldal",
+        "COUNTY" : "Hedmark",
+        "x" : 10.019208965632201,
+        "y" : 62.174294150778003,
+        "ORIG_FID" : 302
+      },
+      "geometry" : {
+        "x" : 1115341.6086000018,
+        "y" : 8900772.2498999983
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 303,
+        "poly_id" : 172815,
+        "komm" : 423,
+        "MUNICIPALITY" : "Grue",
+        "COUNTY" : "Hedmark",
+        "x" : 12.225472106589001,
+        "y" : 60.441293141453102,
+        "ORIG_FID" : 303
+      },
+      "geometry" : {
+        "x" : 1360934.2010000013,
+        "y" : 8498679.5789000019
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 304,
+        "poly_id" : 172878,
+        "komm" : 136,
+        "MUNICIPALITY" : "Rygge",
+        "COUNTY" : "Østfold",
+        "x" : 10.682353953444,
+        "y" : 59.365735529382398,
+        "ORIG_FID" : 304
+      },
+      "geometry" : {
+        "x" : 1189156.2679000013,
+        "y" : 8259870.0582000017
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 305,
+        "poly_id" : 172824,
+        "komm" : 1721,
+        "MUNICIPALITY" : "Verdal",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 12.007484832785799,
+        "y" : 63.786647299175698,
+        "ORIG_FID" : 305
+      },
+      "geometry" : {
+        "x" : 1336701.6246000007,
+        "y" : 9295901.9509999976
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 306,
+        "poly_id" : 172825,
+        "komm" : 1663,
+        "MUNICIPALITY" : "Malvik",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 10.734995229112601,
+        "y" : 63.395902848113003,
+        "ORIG_FID" : 306
+      },
+      "geometry" : {
+        "x" : 1194937.0560000017,
+        "y" : 9198080.1128999963
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 307,
+        "poly_id" : 172826,
+        "komm" : 1622,
+        "MUNICIPALITY" : "Agdenes",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 9.6788286814008,
+        "y" : 63.534125875707502,
+        "ORIG_FID" : 307
+      },
+      "geometry" : {
+        "x" : 1077423.3947999999,
+        "y" : 9232493.9606000036
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 308,
+        "poly_id" : 172829,
+        "komm" : 1756,
+        "MUNICIPALITY" : "Inderøy",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 11.0730106560172,
+        "y" : 63.857309234575901,
+        "ORIG_FID" : 308
+      },
+      "geometry" : {
+        "x" : 1233476.5639000013,
+        "y" : 9318016.6547999978
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 309,
+        "poly_id" : 172838,
+        "komm" : 626,
+        "MUNICIPALITY" : "Lier",
+        "COUNTY" : "Buskerud",
+        "x" : 10.2345839766382,
+        "y" : 59.860050177535101,
+        "ORIG_FID" : 309
+      },
+      "geometry" : {
+        "x" : 1139308.4417999983,
+        "y" : 8368681.1318999976
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 310,
+        "poly_id" : 172850,
+        "komm" : 215,
+        "MUNICIPALITY" : "Frogn",
+        "COUNTY" : "Akershus",
+        "x" : 10.645897448709899,
+        "y" : 59.703755343070597,
+        "ORIG_FID" : 310
+      },
+      "geometry" : {
+        "x" : 1185086.1283,
+        "y" : 8334108.9484999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 311,
+        "poly_id" : 172851,
+        "komm" : 220,
+        "MUNICIPALITY" : "Asker",
+        "COUNTY" : "Akershus",
+        "x" : 10.448487970849399,
+        "y" : 59.834153696708803,
+        "ORIG_FID" : 311
+      },
+      "geometry" : {
+        "x" : 1163119.8652999997,
+        "y" : 8362914.4563999996
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 312,
+        "poly_id" : 172849,
+        "komm" : 714,
+        "MUNICIPALITY" : "Hof",
+        "COUNTY" : "Vestfold",
+        "x" : 10.052889788369299,
+        "y" : 59.554251730331103,
+        "ORIG_FID" : 312
+      },
+      "geometry" : {
+        "x" : 1119077.7782000005,
+        "y" : 8301181.8716000021
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 313,
+        "poly_id" : 172854,
+        "komm" : 713,
+        "MUNICIPALITY" : "Sande",
+        "COUNTY" : "Vestfold",
+        "x" : 10.2331703748343,
+        "y" : 59.600740007716702,
+        "ORIG_FID" : 313
+      },
+      "geometry" : {
+        "x" : 1139145.6981999986,
+        "y" : 8311396.2540000007
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 314,
+        "poly_id" : 172864,
+        "komm" : 111,
+        "MUNICIPALITY" : "Hvaler",
+        "COUNTY" : "Østfold",
+        "x" : 10.8786709207398,
+        "y" : 59.018286621442599,
+        "ORIG_FID" : 314
+      },
+      "geometry" : {
+        "x" : 1211023.2186999992,
+        "y" : 8184376.0411999971
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 315,
+        "poly_id" : 172866,
+        "komm" : 403,
+        "MUNICIPALITY" : "Hamar",
+        "COUNTY" : "Hedmark",
+        "x" : 11.142869233848399,
+        "y" : 60.9508403689197,
+        "ORIG_FID" : 315
+      },
+      "geometry" : {
+        "x" : 1240408.7111000009,
+        "y" : 8614690.1664000005
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 316,
+        "poly_id" : 172879,
+        "komm" : 137,
+        "MUNICIPALITY" : "Våler",
+        "COUNTY" : "Østfold",
+        "x" : 10.932635619039401,
+        "y" : 59.458472320896,
+        "ORIG_FID" : 316
+      },
+      "geometry" : {
+        "x" : 1217013.1783000007,
+        "y" : 8280161.4497999996
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 317,
+        "poly_id" : 172880,
+        "komm" : 124,
+        "MUNICIPALITY" : "Askim",
+        "COUNTY" : "Østfold",
+        "x" : 11.173993329660499,
+        "y" : 59.593697102853703,
+        "ORIG_FID" : 317
+      },
+      "geometry" : {
+        "x" : 1243883.8427000009,
+        "y" : 8309835.9006000012
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 318,
+        "poly_id" : 172881,
+        "komm" : 239,
+        "MUNICIPALITY" : "Hurdal",
+        "COUNTY" : "Akershus",
+        "x" : 10.949241748786299,
+        "y" : 60.4304644617376,
+        "ORIG_FID" : 318
+      },
+      "geometry" : {
+        "x" : 1218857.4747000001,
+        "y" : 8496224.8637999967
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 319,
+        "poly_id" : 172876,
+        "komm" : 1717,
+        "MUNICIPALITY" : "Frosta",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 10.7068407069922,
+        "y" : 63.587924548311499,
+        "ORIG_FID" : 319
+      },
+      "geometry" : {
+        "x" : 1191894.2641999982,
+        "y" : 9245917.3969999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 320,
+        "poly_id" : 172877,
+        "komm" : 138,
+        "MUNICIPALITY" : "Hobøl",
+        "COUNTY" : "Østfold",
+        "x" : 10.9395435319502,
+        "y" : 59.601309850455401,
+        "ORIG_FID" : 320
+      },
+      "geometry" : {
+        "x" : 1217792.0828000009,
+        "y" : 8311525.925999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 321,
+        "poly_id" : 172885,
+        "komm" : 612,
+        "MUNICIPALITY" : "Hole",
+        "COUNTY" : "Buskerud",
+        "x" : 10.294665483764399,
+        "y" : 60.044868376478803,
+        "ORIG_FID" : 321
+      },
+      "geometry" : {
+        "x" : 1145993.2575999983,
+        "y" : 8409748.3796999976
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 322,
+        "poly_id" : 172886,
+        "komm" : 135,
+        "MUNICIPALITY" : "Råde",
+        "COUNTY" : "Østfold",
+        "x" : 10.811713849502601,
+        "y" : 59.331383285121703,
+        "ORIG_FID" : 322
+      },
+      "geometry" : {
+        "x" : 1203563.2087999992,
+        "y" : 8252371.1396000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 323,
+        "poly_id" : 172887,
+        "komm" : 1718,
+        "MUNICIPALITY" : "Leksvik",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 10.481020480054401,
+        "y" : 63.647149320003102,
+        "ORIG_FID" : 323
+      },
+      "geometry" : {
+        "x" : 1166776.2115000002,
+        "y" : 9260793.561999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 324,
+        "poly_id" : 172888,
+        "komm" : 701,
+        "MUNICIPALITY" : "Horten",
+        "COUNTY" : "Vestfold",
+        "x" : 10.4667748825297,
+        "y" : 59.406114696498697,
+        "ORIG_FID" : 324
+      },
+      "geometry" : {
+        "x" : 1165154.2320000008,
+        "y" : 8268698.0156000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 325,
+        "poly_id" : 172898,
+        "komm" : 1748,
+        "MUNICIPALITY" : "Fosnes",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 11.6465013517602,
+        "y" : 64.696668320540596,
+        "ORIG_FID" : 325
+      },
+      "geometry" : {
+        "x" : 1287724.7225000001,
+        "y" : 9526713.1440000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 326,
+        "poly_id" : 172899,
+        "komm" : 1703,
+        "MUNICIPALITY" : "Namsos",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 11.4226338312154,
+        "y" : 64.492778819911805,
+        "ORIG_FID" : 326
+      },
+      "geometry" : {
+        "x" : 1271519.3024000004,
+        "y" : 9476222.1292999983
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 327,
+        "poly_id" : 172905,
+        "komm" : 1739,
+        "MUNICIPALITY" : "Røyrvik",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 13.639212252223899,
+        "y" : 64.901514214637601,
+        "ORIG_FID" : 327
+      },
+      "geometry" : {
+        "x" : 1518447.5168000013,
+        "y" : 9582770.2217999995
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 328,
+        "poly_id" : 172901,
+        "komm" : 438,
+        "MUNICIPALITY" : "Alvdal",
+        "COUNTY" : "Hedmark",
+        "x" : 10.5078181616006,
+        "y" : 62.067689551625499,
+        "ORIG_FID" : 328
+      },
+      "geometry" : {
+        "x" : 1169724.7274000011,
+        "y" : 8875293.7994000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 329,
+        "poly_id" : 172902,
+        "komm" : 437,
+        "MUNICIPALITY" : "Tynset",
+        "COUNTY" : "Hedmark",
+        "x" : 10.5391496386081,
+        "y" : 62.400497871468801,
+        "ORIG_FID" : 329
+      },
+      "geometry" : {
+        "x" : 1181280.8585000001,
+        "y" : 8937060.6711999997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 330,
+        "poly_id" : 172906,
+        "komm" : 1738,
+        "MUNICIPALITY" : "Lierne",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 13.627143100763501,
+        "y" : 64.368709612799506,
+        "ORIG_FID" : 330
+      },
+      "geometry" : {
+        "x" : 1516926.9715000018,
+        "y" : 9444529.5468000025
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 331,
+        "poly_id" : 172907,
+        "komm" : 1638,
+        "MUNICIPALITY" : "Orkdal",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 9.7133457326905308,
+        "y" : 63.2785607115866,
+        "ORIG_FID" : 331
+      },
+      "geometry" : {
+        "x" : 1081305.7637000009,
+        "y" : 9168958.445100002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 332,
+        "poly_id" : 172908,
+        "komm" : 1711,
+        "MUNICIPALITY" : "Meråker",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 11.8318257905499,
+        "y" : 63.404313560498103,
+        "ORIG_FID" : 332
+      },
+      "geometry" : {
+        "x" : 1317135.0441000015,
+        "y" : 9200250.8549000025
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 333,
+        "poly_id" : 172909,
+        "komm" : 1736,
+        "MUNICIPALITY" : "Snåsa",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 12.628087723714,
+        "y" : 64.204769510811005,
+        "ORIG_FID" : 333
+      },
+      "geometry" : {
+        "x" : 1405772.9538999982,
+        "y" : 9402126.4745000005
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 334,
+        "poly_id" : 172910,
+        "komm" : 121,
+        "MUNICIPALITY" : "Rømskog",
+        "COUNTY" : "Østfold",
+        "x" : 11.806230442266701,
+        "y" : 59.713117531631703,
+        "ORIG_FID" : 334
+      },
+      "geometry" : {
+        "x" : 1314266.5260000005,
+        "y" : 8336156.0349000022
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 335,
+        "poly_id" : 172911,
+        "komm" : 1657,
+        "MUNICIPALITY" : "Skaun",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 10.0357470037645,
+        "y" : 63.274065608836999,
+        "ORIG_FID" : 335
+      },
+      "geometry" : {
+        "x" : 1117175.7928000018,
+        "y" : 9167799.2072999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 336,
+        "poly_id" : 172912,
+        "komm" : 1635,
+        "MUNICIPALITY" : "Rennebu",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 9.8796963583954494,
+        "y" : 62.8084390553093,
+        "ORIG_FID" : 336
+      },
+      "geometry" : {
+        "x" : 1099093.1218000017,
+        "y" : 9062448.688500002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 337,
+        "poly_id" : 172918,
+        "komm" : 1636,
+        "MUNICIPALITY" : "Meldal",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 9.6849353187283391,
+        "y" : 63.0440842063541,
+        "ORIG_FID" : 337
+      },
+      "geometry" : {
+        "x" : 1081913.7413999997,
+        "y" : 9113771.5014000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 338,
+        "poly_id" : 172921,
+        "komm" : 441,
+        "MUNICIPALITY" : "Os",
+        "COUNTY" : "Hedmark",
+        "x" : 11.3080855969752,
+        "y" : 62.446191658666997,
+        "ORIG_FID" : 338
+      },
+      "geometry" : {
+        "x" : 1225111.5720999986,
+        "y" : 8998806.1455999985
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 339,
+        "poly_id" : 172922,
+        "komm" : 521,
+        "MUNICIPALITY" : "Øyer",
+        "COUNTY" : "Oppland",
+        "x" : 10.5360330983001,
+        "y" : 61.319879730560402,
+        "ORIG_FID" : 339
+      },
+      "geometry" : {
+        "x" : 1172867.5377999991,
+        "y" : 8699683.0819000006
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 340,
+        "poly_id" : 172923,
+        "komm" : 533,
+        "MUNICIPALITY" : "Lunner",
+        "COUNTY" : "Oppland",
+        "x" : 10.663377317289401,
+        "y" : 60.244884845890098,
+        "ORIG_FID" : 340
+      },
+      "geometry" : {
+        "x" : 1187041.0190000013,
+        "y" : 8454489.8344999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 341,
+        "poly_id" : 172924,
+        "komm" : 427,
+        "MUNICIPALITY" : "Elverum",
+        "COUNTY" : "Hedmark",
+        "x" : 11.736281693747801,
+        "y" : 60.959222006984398,
+        "ORIG_FID" : 341
+      },
+      "geometry" : {
+        "x" : 1306484.3271000013,
+        "y" : 8616571.887500003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 342,
+        "poly_id" : 172925,
+        "komm" : 428,
+        "MUNICIPALITY" : "Trysil",
+        "COUNTY" : "Hedmark",
+        "x" : 12.2884113662584,
+        "y" : 61.3286381344505,
+        "ORIG_FID" : 342
+      },
+      "geometry" : {
+        "x" : 1367916.2382000014,
+        "y" : 8701949.8959999979
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 343,
+        "poly_id" : 172928,
+        "komm" : 517,
+        "MUNICIPALITY" : "Sel",
+        "COUNTY" : "Oppland",
+        "x" : 9.4755107031129597,
+        "y" : 61.774281446819899,
+        "ORIG_FID" : 343
+      },
+      "geometry" : {
+        "x" : 1039497.5088,
+        "y" : 8787561.9349000007
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 344,
+        "poly_id" : 172930,
+        "komm" : 227,
+        "MUNICIPALITY" : "Fet",
+        "COUNTY" : "Akershus",
+        "x" : 11.219975458992201,
+        "y" : 59.876824504957099,
+        "ORIG_FID" : 344
+      },
+      "geometry" : {
+        "x" : 1248993.5745999999,
+        "y" : 8372399.1071000025
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 345,
+        "poly_id" : 172963,
+        "komm" : 534,
+        "MUNICIPALITY" : "Gran",
+        "COUNTY" : "Oppland",
+        "x" : 10.514403206346101,
+        "y" : 60.429532257984398,
+        "ORIG_FID" : 345
+      },
+      "geometry" : {
+        "x" : 1170439.324000001,
+        "y" : 8496037.9196999967
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 346,
+        "poly_id" : 172964,
+        "komm" : 425,
+        "MUNICIPALITY" : "Åsnes",
+        "COUNTY" : "Hedmark",
+        "x" : 12.167627741222599,
+        "y" : 60.650256003174299,
+        "ORIG_FID" : 346
+      },
+      "geometry" : {
+        "x" : 1354509.8027000017,
+        "y" : 8546043.7673999965
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 347,
+        "poly_id" : 172933,
+        "komm" : 1621,
+        "MUNICIPALITY" : "Ørland",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 9.4826804523294292,
+        "y" : 63.686955824268402,
+        "ORIG_FID" : 347
+      },
+      "geometry" : {
+        "x" : 1055610.6066999994,
+        "y" : 9270727.6556999981
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 348,
+        "poly_id" : 172965,
+        "komm" : 1624,
+        "MUNICIPALITY" : "Rissa",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 10.094144085565301,
+        "y" : 63.6594144277731,
+        "ORIG_FID" : 348
+      },
+      "geometry" : {
+        "x" : 1123709.8139000013,
+        "y" : 9263928.6731999964
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 349,
+        "poly_id" : 172966,
+        "komm" : 1634,
+        "MUNICIPALITY" : "Oppdal",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 9.5398402519326506,
+        "y" : 62.541454658506197,
+        "ORIG_FID" : 349
+      },
+      "geometry" : {
+        "x" : 1061939.1970000006,
+        "y" : 8988911.3232000023
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 350,
+        "poly_id" : 172936,
+        "komm" : 1627,
+        "MUNICIPALITY" : "Bjugn",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 9.6340836187851,
+        "y" : 63.858093385462901,
+        "ORIG_FID" : 350
+      },
+      "geometry" : {
+        "x" : 1072446.6983999982,
+        "y" : 9313904.0100999996
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 351,
+        "poly_id" : 172975,
+        "komm" : 538,
+        "MUNICIPALITY" : "Nordre Land",
+        "COUNTY" : "Oppland",
+        "x" : 9.9690379050016897,
+        "y" : 60.946052960744602,
+        "ORIG_FID" : 351
+      },
+      "geometry" : {
+        "x" : 1109734.4655000009,
+        "y" : 8613582.2324000001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 352,
+        "poly_id" : 173018,
+        "komm" : 1702,
+        "MUNICIPALITY" : "Steinkjer",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 11.7333725277963,
+        "y" : 64.066321598537797,
+        "ORIG_FID" : 352
+      },
+      "geometry" : {
+        "x" : 1306149.074000001,
+        "y" : 9366773.0683000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 353,
+        "poly_id" : 172938,
+        "komm" : 420,
+        "MUNICIPALITY" : "Eidskog",
+        "COUNTY" : "Hedmark",
+        "x" : 12.0625054901539,
+        "y" : 59.996350248157803,
+        "ORIG_FID" : 353
+      },
+      "geometry" : {
+        "x" : 1342801.3762000017,
+        "y" : 8398967.4487999976
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 354,
+        "poly_id" : 172939,
+        "komm" : 1664,
+        "MUNICIPALITY" : "Selbu",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 11.1371106853715,
+        "y" : 63.200241560617798,
+        "ORIG_FID" : 354
+      },
+      "geometry" : {
+        "x" : 1239774.2919999994,
+        "y" : 9149593.4249000028
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 355,
+        "poly_id" : 172940,
+        "komm" : 1640,
+        "MUNICIPALITY" : "Røros",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 11.7289475429322,
+        "y" : 62.577431500212199,
+        "ORIG_FID" : 355
+      },
+      "geometry" : {
+        "x" : 1305630.2591999993,
+        "y" : 8997555.5481999964
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 356,
+        "poly_id" : 173022,
+        "komm" : 434,
+        "MUNICIPALITY" : "Engerdal",
+        "COUNTY" : "Hedmark",
+        "x" : 11.9543739155511,
+        "y" : 61.982449178709402,
+        "ORIG_FID" : 356
+      },
+      "geometry" : {
+        "x" : 1330774.0687000006,
+        "y" : 8855466.7507999986
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 357,
+        "poly_id" : 172988,
+        "komm" : 706,
+        "MUNICIPALITY" : "Sandefjord",
+        "COUNTY" : "Vestfold",
+        "x" : 10.2789091550649,
+        "y" : 59.031825247784298,
+        "ORIG_FID" : 357
+      },
+      "geometry" : {
+        "x" : 1140680.0797999986,
+        "y" : 8208912.6717000008
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 358,
+        "poly_id" : 172989,
+        "komm" : 702,
+        "MUNICIPALITY" : "Holmestrand",
+        "COUNTY" : "Vestfold",
+        "x" : 10.230511547344699,
+        "y" : 59.503433042388998,
+        "ORIG_FID" : 358
+      },
+      "geometry" : {
+        "x" : 1138853.2175000012,
+        "y" : 8290010.6256999969
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 359,
+        "poly_id" : 172992,
+        "komm" : 106,
+        "MUNICIPALITY" : "Fredrikstad",
+        "COUNTY" : "Østfold",
+        "x" : 10.856740360544601,
+        "y" : 59.192326499527901,
+        "ORIG_FID" : 359
+      },
+      "geometry" : {
+        "x" : 1209805.1977999993,
+        "y" : 8227446.1435000002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 360,
+        "poly_id" : 172997,
+        "komm" : 501,
+        "MUNICIPALITY" : "Lillehammer",
+        "COUNTY" : "Oppland",
+        "x" : 10.391294007560001,
+        "y" : 61.127956495010302,
+        "ORIG_FID" : 360
+      },
+      "geometry" : {
+        "x" : 1156765.2789000012,
+        "y" : 8655293.1152999997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 361,
+        "poly_id" : 172999,
+        "komm" : 1719,
+        "MUNICIPALITY" : "Levanger",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 11.234679183046699,
+        "y" : 63.678156889094303,
+        "ORIG_FID" : 361
+      },
+      "geometry" : {
+        "x" : 1250638.6807999983,
+        "y" : 9268564.5720999986
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 362,
+        "poly_id" : 173000,
+        "komm" : 123,
+        "MUNICIPALITY" : "Spydeberg",
+        "COUNTY" : "Østfold",
+        "x" : 11.082744340715101,
+        "y" : 59.606612410390397,
+        "ORIG_FID" : 362
+      },
+      "geometry" : {
+        "x" : 1229331.3321999982,
+        "y" : 8303326.4737000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 363,
+        "poly_id" : 173001,
+        "komm" : 127,
+        "MUNICIPALITY" : "Skiptvet",
+        "COUNTY" : "Østfold",
+        "x" : 11.1525123928384,
+        "y" : 59.479751184736301,
+        "ORIG_FID" : 363
+      },
+      "geometry" : {
+        "x" : 1241491.3583000004,
+        "y" : 8284821.6978999972
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 364,
+        "poly_id" : 173002,
+        "komm" : 122,
+        "MUNICIPALITY" : "Trøgstad",
+        "COUNTY" : "Østfold",
+        "x" : 11.3328877838089,
+        "y" : 59.662248181909703,
+        "ORIG_FID" : 364
+      },
+      "geometry" : {
+        "x" : 1261568.0284999982,
+        "y" : 8324942.5011000037
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 365,
+        "poly_id" : 173003,
+        "komm" : 622,
+        "MUNICIPALITY" : "Krødsherad",
+        "COUNTY" : "Buskerud",
+        "x" : 9.66757396367354,
+        "y" : 60.198025022422797,
+        "ORIG_FID" : 365
+      },
+      "geometry" : {
+        "x" : 1076180.1523000002,
+        "y" : 8443993.8522000015
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 366,
+        "poly_id" : 173004,
+        "komm" : 105,
+        "MUNICIPALITY" : "Sarpsborg",
+        "COUNTY" : "Østfold",
+        "x" : 11.1601837909251,
+        "y" : 59.280023782386003,
+        "ORIG_FID" : 366
+      },
+      "geometry" : {
+        "x" : 1242339.4831000008,
+        "y" : 8241211.0966999978
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 367,
+        "poly_id" : 173005,
+        "komm" : 536,
+        "MUNICIPALITY" : "Søndre Land",
+        "COUNTY" : "Oppland",
+        "x" : 10.270789964333501,
+        "y" : 60.6768538577915,
+        "ORIG_FID" : 367
+      },
+      "geometry" : {
+        "x" : 1143335.9466000013,
+        "y" : 8552067.6937000006
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 368,
+        "poly_id" : 173006,
+        "komm" : 722,
+        "MUNICIPALITY" : "Nøtterøy",
+        "COUNTY" : "Vestfold",
+        "x" : 10.509637389797801,
+        "y" : 59.193087390105902,
+        "ORIG_FID" : 368
+      },
+      "geometry" : {
+        "x" : 1169925.8944999985,
+        "y" : 8222250.0179999992
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 369,
+        "poly_id" : 173011,
+        "komm" : 1648,
+        "MUNICIPALITY" : "Midtre Gauldal",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 10.5342599881912,
+        "y" : 62.902215103304499,
+        "ORIG_FID" : 369
+      },
+      "geometry" : {
+        "x" : 1172667.6224999987,
+        "y" : 9076478.2180999964
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 370,
+        "poly_id" : 173012,
+        "komm" : 1744,
+        "MUNICIPALITY" : "Overhalla",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 11.9041898592014,
+        "y" : 64.455943662779106,
+        "ORIG_FID" : 370
+      },
+      "geometry" : {
+        "x" : 1325179.3165999986,
+        "y" : 9466614.0763000026
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 371,
+        "poly_id" : 173016,
+        "komm" : 1740,
+        "MUNICIPALITY" : "Namsskogan",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 13.0107694104576,
+        "y" : 64.865406334005897,
+        "ORIG_FID" : 371
+      },
+      "geometry" : {
+        "x" : 1448420.4156000018,
+        "y" : 9573293.1215000004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 372,
+        "poly_id" : 173017,
+        "komm" : 1743,
+        "MUNICIPALITY" : "Høylandet",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 12.3573997735507,
+        "y" : 64.744775404046706,
+        "ORIG_FID" : 372
+      },
+      "geometry" : {
+        "x" : 1375665.5450999998,
+        "y" : 9541646.2704000026
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 373,
+        "poly_id" : 173024,
+        "komm" : 516,
+        "MUNICIPALITY" : "Nord-Fron",
+        "COUNTY" : "Oppland",
+        "x" : 9.5229441120107197,
+        "y" : 61.583388910830102,
+        "ORIG_FID" : 373
+      },
+      "geometry" : {
+        "x" : 1060178.6821999997,
+        "y" : 8761187.7675999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 374,
+        "poly_id" : 173025,
+        "komm" : 519,
+        "MUNICIPALITY" : "Sør-Fron",
+        "COUNTY" : "Oppland",
+        "x" : 9.7885095582030495,
+        "y" : 61.537549382354698,
+        "ORIG_FID" : 374
+      },
+      "geometry" : {
+        "x" : 1104336.9376999997,
+        "y" : 8755764.4284999967
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 375,
+        "poly_id" : 173026,
+        "komm" : 1613,
+        "MUNICIPALITY" : "Snillfjord",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 9.3886633247717199,
+        "y" : 63.432521440883001,
+        "ORIG_FID" : 375
+      },
+      "geometry" : {
+        "x" : 1045137.2003000006,
+        "y" : 9207168.2478
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 376,
+        "poly_id" : 173027,
+        "komm" : 805,
+        "MUNICIPALITY" : "Porsgrunn",
+        "COUNTY" : "Telemark",
+        "x" : 9.7541222601008908,
+        "y" : 59.108330468619002,
+        "ORIG_FID" : 376
+      },
+      "geometry" : {
+        "x" : 1085825.0826000012,
+        "y" : 8203858.8828999996
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 377,
+        "poly_id" : 173028,
+        "komm" : 432,
+        "MUNICIPALITY" : "Rendalen",
+        "COUNTY" : "Hedmark",
+        "x" : 11.277321854473801,
+        "y" : 61.819233698828,
+        "ORIG_FID" : 377
+      },
+      "geometry" : {
+        "x" : 1255331.6162,
+        "y" : 8816815.0469999984
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 378,
+        "poly_id" : 173030,
+        "komm" : 625,
+        "MUNICIPALITY" : "Nedre Eiker",
+        "COUNTY" : "Buskerud",
+        "x" : 10.0376175182476,
+        "y" : 59.762576344099202,
+        "ORIG_FID" : 378
+      },
+      "geometry" : {
+        "x" : 1117383.692400001,
+        "y" : 8347086.7214000002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 379,
+        "poly_id" : 173031,
+        "komm" : 238,
+        "MUNICIPALITY" : "Nannestad",
+        "COUNTY" : "Akershus",
+        "x" : 10.9618182447505,
+        "y" : 60.2337756410842,
+        "ORIG_FID" : 379
+      },
+      "geometry" : {
+        "x" : 1220264.6931999996,
+        "y" : 8452005.7365999967
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 380,
+        "poly_id" : 173034,
+        "komm" : 1644,
+        "MUNICIPALITY" : "Holtålen",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 11.246470425293699,
+        "y" : 62.851494847436904,
+        "ORIG_FID" : 380
+      },
+      "geometry" : {
+        "x" : 1251954.5841000006,
+        "y" : 9064031.2074000016
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 381,
+        "poly_id" : 173041,
+        "komm" : 418,
+        "MUNICIPALITY" : "Nord-Odal",
+        "COUNTY" : "Hedmark",
+        "x" : 11.581774456784499,
+        "y" : 60.438091622937101,
+        "ORIG_FID" : 381
+      },
+      "geometry" : {
+        "x" : 1289277.7206000015,
+        "y" : 8497966.0058000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 382,
+        "poly_id" : 173044,
+        "komm" : 233,
+        "MUNICIPALITY" : "Nittedal",
+        "COUNTY" : "Akershus",
+        "x" : 10.8532246600001,
+        "y" : 60.083622711101299,
+        "ORIG_FID" : 382
+      },
+      "geometry" : {
+        "x" : 1206210.3575000018,
+        "y" : 8421336.5323000029
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 383,
+        "poly_id" : 173131,
+        "komm" : 528,
+        "MUNICIPALITY" : "Østre Toten",
+        "COUNTY" : "Oppland",
+        "x" : 10.890187758051001,
+        "y" : 60.608960172840199,
+        "ORIG_FID" : 383
+      },
+      "geometry" : {
+        "x" : 1212286.3035999984,
+        "y" : 8536633.0515000001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 384,
+        "poly_id" : 173084,
+        "komm" : 1653,
+        "MUNICIPALITY" : "Melhus",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 10.2709951432493,
+        "y" : 63.159511023195797,
+        "ORIG_FID" : 384
+      },
+      "geometry" : {
+        "x" : 1143370.943599999,
+        "y" : 9139523.8294999972
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 385,
+        "poly_id" : 173085,
+        "komm" : 119,
+        "MUNICIPALITY" : "Marker",
+        "COUNTY" : "Østfold",
+        "x" : 11.651517979469601,
+        "y" : 59.486580307632003,
+        "ORIG_FID" : 385
+      },
+      "geometry" : {
+        "x" : 1297032.0502000004,
+        "y" : 8286401.3029000014
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 386,
+        "poly_id" : 173086,
+        "komm" : 1742,
+        "MUNICIPALITY" : "Grong",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 12.5895248130824,
+        "y" : 64.514395588958394,
+        "ORIG_FID" : 386
+      },
+      "geometry" : {
+        "x" : 1401489.5740999989,
+        "y" : 9481707.7479000017
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 387,
+        "poly_id" : 173069,
+        "komm" : 1620,
+        "MUNICIPALITY" : "Frøya",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 8.7974438540477404,
+        "y" : 64.024498130793503,
+        "ORIG_FID" : 387
+      },
+      "geometry" : {
+        "x" : 979614.09120000154,
+        "y" : 9356663.1948999986
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 388,
+        "poly_id" : 173070,
+        "komm" : 621,
+        "MUNICIPALITY" : "Sigdal",
+        "COUNTY" : "Buskerud",
+        "x" : 9.4548634837462693,
+        "y" : 60.136618048382097,
+        "ORIG_FID" : 388
+      },
+      "geometry" : {
+        "x" : 1057138.9208000004,
+        "y" : 8416277.4799999967
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 389,
+        "poly_id" : 173072,
+        "komm" : 104,
+        "MUNICIPALITY" : "Moss",
+        "COUNTY" : "Østfold",
+        "x" : 10.6502751554974,
+        "y" : 59.457494047795898,
+        "ORIG_FID" : 389
+      },
+      "geometry" : {
+        "x" : 1185583.4937999994,
+        "y" : 8279941.3756000027
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 390,
+        "poly_id" : 173073,
+        "komm" : 716,
+        "MUNICIPALITY" : "Re",
+        "COUNTY" : "Vestfold",
+        "x" : 10.2503619013156,
+        "y" : 59.407075918162597,
+        "ORIG_FID" : 390
+      },
+      "geometry" : {
+        "x" : 1141066.4290999994,
+        "y" : 8268917.4307999983
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 391,
+        "poly_id" : 173074,
+        "komm" : 709,
+        "MUNICIPALITY" : "Larvik",
+        "COUNTY" : "Vestfold",
+        "x" : 10.0324203769283,
+        "y" : 58.985583754483997,
+        "ORIG_FID" : 391
+      },
+      "geometry" : {
+        "x" : 1116801.3462000005,
+        "y" : 8177487.1777999997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 392,
+        "poly_id" : 173075,
+        "komm" : 723,
+        "MUNICIPALITY" : "Tjøme",
+        "COUNTY" : "Vestfold",
+        "x" : 10.491609550907,
+        "y" : 58.965015393625798,
+        "ORIG_FID" : 392
+      },
+      "geometry" : {
+        "x" : 1167919.4244999997,
+        "y" : 8172940.6877000034
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 393,
+        "poly_id" : 173076,
+        "komm" : 1724,
+        "MUNICIPALITY" : "Verran",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 10.912621046460799,
+        "y" : 63.977306949771901,
+        "ORIG_FID" : 393
+      },
+      "geometry" : {
+        "x" : 1214847.6387999989,
+        "y" : 9344123.1027999967
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 394,
+        "poly_id" : 173078,
+        "komm" : 118,
+        "MUNICIPALITY" : "Aremark",
+        "COUNTY" : "Østfold",
+        "x" : 11.696820504752701,
+        "y" : 59.214717942832202,
+        "ORIG_FID" : 394
+      },
+      "geometry" : {
+        "x" : 1302082.6086999997,
+        "y" : 8226993.1090999991
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 395,
+        "poly_id" : 173079,
+        "komm" : 1750,
+        "MUNICIPALITY" : "Vikna",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 10.5962879197377,
+        "y" : 64.915608754389496,
+        "ORIG_FID" : 395
+      },
+      "geometry" : {
+        "x" : 1179620.5960000008,
+        "y" : 9586533.4233999997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 396,
+        "poly_id" : 173087,
+        "komm" : 627,
+        "MUNICIPALITY" : "Røyken",
+        "COUNTY" : "Buskerud",
+        "x" : 10.4324233961704,
+        "y" : 59.733710392622697,
+        "ORIG_FID" : 396
+      },
+      "geometry" : {
+        "x" : 1161331.4948000014,
+        "y" : 8340697.379900001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 397,
+        "poly_id" : 173089,
+        "komm" : 541,
+        "MUNICIPALITY" : "Etnedal",
+        "COUNTY" : "Oppland",
+        "x" : 9.6400092690888108,
+        "y" : 60.974973217938299,
+        "ORIG_FID" : 397
+      },
+      "geometry" : {
+        "x" : 1073111.5362999998,
+        "y" : 8620149.6403999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 398,
+        "poly_id" : 173090,
+        "komm" : 214,
+        "MUNICIPALITY" : "Ås",
+        "COUNTY" : "Akershus",
+        "x" : 10.7843667433207,
+        "y" : 59.678816844239499,
+        "ORIG_FID" : 398
+      },
+      "geometry" : {
+        "x" : 1200508.0064000003,
+        "y" : 8328592.322300002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 399,
+        "poly_id" : 173091,
+        "komm" : 1662,
+        "MUNICIPALITY" : "Klæbu",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 10.540959955979901,
+        "y" : 63.262806289206999,
+        "ORIG_FID" : 399
+      },
+      "geometry" : {
+        "x" : 1173407.8209000006,
+        "y" : 9165007.1557999998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 400,
+        "poly_id" : 173132,
+        "komm" : 529,
+        "MUNICIPALITY" : "Vestre Toten",
+        "COUNTY" : "Oppland",
+        "x" : 10.6227566057795,
+        "y" : 60.644452611553902,
+        "ORIG_FID" : 400
+      },
+      "geometry" : {
+        "x" : 1182520.2358999997,
+        "y" : 8544682.2052000016
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 401,
+        "poly_id" : 173133,
+        "komm" : 419,
+        "MUNICIPALITY" : "Sør-Odal",
+        "COUNTY" : "Hedmark",
+        "x" : 11.753720854179299,
+        "y" : 60.223793615781098,
+        "ORIG_FID" : 401
+      },
+      "geometry" : {
+        "x" : 1308413.1854000017,
+        "y" : 8449793.7813000008
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 402,
+        "poly_id" : 173134,
+        "komm" : 542,
+        "MUNICIPALITY" : "Nord-Aurdal",
+        "COUNTY" : "Oppland",
+        "x" : 9.2828873512674299,
+        "y" : 60.966439217510498,
+        "ORIG_FID" : 402
+      },
+      "geometry" : {
+        "x" : 1033401.510400001,
+        "y" : 8618236.7551999986
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 403,
+        "poly_id" : 173135,
+        "komm" : 1749,
+        "MUNICIPALITY" : "Flatanger",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 10.5891968944946,
+        "y" : 64.521936430069204,
+        "ORIG_FID" : 403
+      },
+      "geometry" : {
+        "x" : 1178689.5859000012,
+        "y" : 9483716.8554000035
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 404,
+        "poly_id" : 173136,
+        "komm" : 402,
+        "MUNICIPALITY" : "Kongsvinger",
+        "COUNTY" : "Hedmark",
+        "x" : 12.2187217180108,
+        "y" : 60.215580668507798,
+        "ORIG_FID" : 404
+      },
+      "geometry" : {
+        "x" : 1360171.2116999999,
+        "y" : 8447970.2544
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 405,
+        "poly_id" : 173092,
+        "komm" : 1632,
+        "MUNICIPALITY" : "Roan",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 10.148993641143299,
+        "y" : 64.214681553857503,
+        "ORIG_FID" : 405
+      },
+      "geometry" : {
+        "x" : 1129734.1042999998,
+        "y" : 9404569.7915999964
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 406,
+        "poly_id" : 173093,
+        "komm" : 231,
+        "MUNICIPALITY" : "Skedsmo",
+        "COUNTY" : "Akershus",
+        "x" : 11.040194941074899,
+        "y" : 59.986347260454103,
+        "ORIG_FID" : 406
+      },
+      "geometry" : {
+        "x" : 1228988.5300999992,
+        "y" : 8396704.7360000014
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 407,
+        "poly_id" : 173094,
+        "komm" : 1633,
+        "MUNICIPALITY" : "Osen",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 10.09508145367,
+        "y" : 64.441734073223699,
+        "ORIG_FID" : 407
+      },
+      "geometry" : {
+        "x" : 1123607.3859999999,
+        "y" : 9463072.7440000027
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 408,
+        "poly_id" : 173118,
+        "komm" : 125,
+        "MUNICIPALITY" : "Eidsberg",
+        "COUNTY" : "Østfold",
+        "x" : 11.3730811730938,
+        "y" : 59.531293369146901,
+        "ORIG_FID" : 408
+      },
+      "geometry" : {
+        "x" : 1266045.6876000017,
+        "y" : 8296128.6865999997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 409,
+        "poly_id" : 173120,
+        "komm" : 540,
+        "MUNICIPALITY" : "Sør-Aurdal",
+        "COUNTY" : "Oppland",
+        "x" : 9.6317484361226402,
+        "y" : 60.679389606591997,
+        "ORIG_FID" : 409
+      },
+      "geometry" : {
+        "x" : 1072184.9057999998,
+        "y" : 8552668.4509999976
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 410,
+        "poly_id" : 173121,
+        "komm" : 128,
+        "MUNICIPALITY" : "Rakkestad",
+        "COUNTY" : "Østfold",
+        "x" : 11.416586761697999,
+        "y" : 59.371690206658997,
+        "ORIG_FID" : 410
+      },
+      "geometry" : {
+        "x" : 1270884.3172000013,
+        "y" : 8261197.7031999975
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 411,
+        "poly_id" : 173103,
+        "komm" : 226,
+        "MUNICIPALITY" : "Sørum",
+        "COUNTY" : "Akershus",
+        "x" : 11.258078864039,
+        "y" : 59.995172651682701,
+        "ORIG_FID" : 411
+      },
+      "geometry" : {
+        "x" : 1253238.4906000011,
+        "y" : 8398681.0793000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 412,
+        "poly_id" : 173104,
+        "komm" : 219,
+        "MUNICIPALITY" : "Bærum",
+        "COUNTY" : "Akershus",
+        "x" : 10.5067755065719,
+        "y" : 59.933283689353303,
+        "ORIG_FID" : 412
+      },
+      "geometry" : {
+        "x" : 1169605.3095999993,
+        "y" : 8384917.1530999988
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 413,
+        "poly_id" : 173105,
+        "komm" : 301,
+        "MUNICIPALITY" : "Oslo",
+        "COUNTY" : "Oslo",
+        "x" : 10.738490542520401,
+        "y" : 59.975541373319501,
+        "ORIG_FID" : 413
+      },
+      "geometry" : {
+        "x" : 1195388.1339999996,
+        "y" : 8394358.633100003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 414,
+        "poly_id" : 173107,
+        "komm" : 1630,
+        "MUNICIPALITY" : "Åfjord",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 10.217115502535901,
+        "y" : 64.005140483714598,
+        "ORIG_FID" : 414
+      },
+      "geometry" : {
+        "x" : 1140722.9378000014,
+        "y" : 9338529.5273000002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 415,
+        "poly_id" : 173109,
+        "komm" : 624,
+        "MUNICIPALITY" : "Øvre Eiker",
+        "COUNTY" : "Buskerud",
+        "x" : 9.8481411621845201,
+        "y" : 59.753459110415697,
+        "ORIG_FID" : 415
+      },
+      "geometry" : {
+        "x" : 1096287.6601000018,
+        "y" : 8345110.1805000007
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 416,
+        "poly_id" : 173124,
+        "komm" : 1725,
+        "MUNICIPALITY" : "Namdalseid",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 11.1357653052329,
+        "y" : 64.282724869307003,
+        "ORIG_FID" : 416
+      },
+      "geometry" : {
+        "x" : 1239643.309700001,
+        "y" : 9422089.4345000014
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 417,
+        "poly_id" : 173125,
+        "komm" : 543,
+        "MUNICIPALITY" : "Vestre Slidre",
+        "COUNTY" : "Oppland",
+        "x" : 8.8845912586097402,
+        "y" : 61.034565176051601,
+        "ORIG_FID" : 417
+      },
+      "geometry" : {
+        "x" : 989035.36160000041,
+        "y" : 8633813.6643999964
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 418,
+        "poly_id" : 173137,
+        "komm" : 237,
+        "MUNICIPALITY" : "Eidsvoll",
+        "COUNTY" : "Akershus",
+        "x" : 11.227335929644401,
+        "y" : 60.392320684920598,
+        "ORIG_FID" : 418
+      },
+      "geometry" : {
+        "x" : 1252011.8713999987,
+        "y" : 8481797.9587000012
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 419,
+        "poly_id" : 173141,
+        "komm" : 532,
+        "MUNICIPALITY" : "Jevnaker",
+        "COUNTY" : "Oppland",
+        "x" : 10.3922437484496,
+        "y" : 60.280265051172798,
+        "ORIG_FID" : 419
+      },
+      "geometry" : {
+        "x" : 1156845.0975000001,
+        "y" : 8462435.5263999999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 420,
+        "poly_id" : 173142,
+        "komm" : 605,
+        "MUNICIPALITY" : "Ringerike",
+        "COUNTY" : "Buskerud",
+        "x" : 10.087041975279501,
+        "y" : 60.295018449426898,
+        "ORIG_FID" : 420
+      },
+      "geometry" : {
+        "x" : 1122833.6431999989,
+        "y" : 8465952.1629000008
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 421,
+        "poly_id" : 173146,
+        "komm" : 217,
+        "MUNICIPALITY" : "Oppegård",
+        "COUNTY" : "Akershus",
+        "x" : 10.7743355698426,
+        "y" : 59.795071707602702,
+        "ORIG_FID" : 421
+      },
+      "geometry" : {
+        "x" : 1199393.3506999984,
+        "y" : 8354257.188500002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 422,
+        "poly_id" : 173147,
+        "komm" : 213,
+        "MUNICIPALITY" : "Ski",
+        "COUNTY" : "Akershus",
+        "x" : 10.901203005169201,
+        "y" : 59.729948609334102,
+        "ORIG_FID" : 422
+      },
+      "geometry" : {
+        "x" : 1213516.5007999986,
+        "y" : 8339884.7153000012
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 423,
+        "poly_id" : 173150,
+        "komm" : 1566,
+        "MUNICIPALITY" : "Surnadal",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 8.8396531373619105,
+        "y" : 62.9227144351945,
+        "ORIG_FID" : 423
+      },
+      "geometry" : {
+        "x" : 983996.36490000039,
+        "y" : 9081444.5521000028
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 424,
+        "poly_id" : 173151,
+        "komm" : 1612,
+        "MUNICIPALITY" : "Hemne",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 9.0333768070850606,
+        "y" : 63.291673014133501,
+        "ORIG_FID" : 424
+      },
+      "geometry" : {
+        "x" : 1005584.3574000001,
+        "y" : 9172246.2555999979
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 425,
+        "poly_id" : 173152,
+        "komm" : 1567,
+        "MUNICIPALITY" : "Rindal",
+        "COUNTY" : "Møre og Romsdal",
+        "x" : 9.2925868808151595,
+        "y" : 63.032194979864997,
+        "ORIG_FID" : 425
+      },
+      "geometry" : {
+        "x" : 1034435.0056000017,
+        "y" : 9108269.3649000004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 426,
+        "poly_id" : 173154,
+        "komm" : 511,
+        "MUNICIPALITY" : "Dovre",
+        "COUNTY" : "Oppland",
+        "x" : 9.4586139645037797,
+        "y" : 62.0789101749968,
+        "ORIG_FID" : 426
+      },
+      "geometry" : {
+        "x" : 1052924.0040999986,
+        "y" : 8878007.5159000009
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 427,
+        "poly_id" : 173155,
+        "komm" : 1601,
+        "MUNICIPALITY" : "Trondheim",
+        "COUNTY" : "Sør-Trøndelag",
+        "x" : 10.3449943326777,
+        "y" : 63.407449612882303,
+        "ORIG_FID" : 427
+      },
+      "geometry" : {
+        "x" : 1151596.571800001,
+        "y" : 9200895.9648000002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 428,
+        "poly_id" : 173157,
+        "komm" : 1714,
+        "MUNICIPALITY" : "Stjørdal",
+        "COUNTY" : "Nord-Trøndelag",
+        "x" : 11.1854338689846,
+        "y" : 63.4669595204535,
+        "ORIG_FID" : 428
+      },
+      "geometry" : {
+        "x" : 1245129.1486000009,
+        "y" : 9215707.0749000013
+      }
+    }
+  ]
+}

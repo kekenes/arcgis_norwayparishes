@@ -1,0 +1,1423 @@
+{
+  "displayFieldName" : "",
+  "fieldAliases" : {
+    "OBJECTID" : "OBJECTID",
+    "poly_id" : "poly_id",
+    "COUNTY" : "COUNTY",
+    "x" : "x",
+    "y" : "y",
+    "BEGIN" : "BEGIN",
+    "END" : "END",
+    "ORIG_FID" : "ORIG_FID"
+  },
+  "geometryType" : "esriGeometryPoint",
+  "spatialReference" : {
+    "wkid" : 102100,
+    "latestWkid" : 3857
+  },
+  "fields" : [
+    {
+      "name" : "OBJECTID",
+      "type" : "esriFieldTypeOID",
+      "alias" : "OBJECTID"
+    },
+    {
+      "name" : "poly_id",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "poly_id"
+    },
+    {
+      "name" : "COUNTY",
+      "type" : "esriFieldTypeString",
+      "alias" : "COUNTY",
+      "length" : 30
+    },
+    {
+      "name" : "x",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "x"
+    },
+    {
+      "name" : "y",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "y"
+    },
+    {
+      "name" : "BEGIN",
+      "type" : "esriFieldTypeInteger",
+      "alias" : "BEGIN"
+    },
+    {
+      "name" : "END",
+      "type" : "esriFieldTypeInteger",
+      "alias" : "END"
+    },
+    {
+      "name" : "ORIG_FID",
+      "type" : "esriFieldTypeInteger",
+      "alias" : "ORIG_FID"
+    }
+  ],
+  "features" : [
+    {
+      "attributes" : {
+        "OBJECTID" : 1,
+        "poly_id" : 4594,
+        "COUNTY" : "Finnmark fylke",
+        "x" : 25.9337523744123,
+        "y" : 70.228463435783297,
+        "BEGIN" : 1925,
+        "END" : 2012,
+        "ORIG_FID" : 1
+      },
+      "geometry" : {
+        "x" : 2907727.5496999994,
+        "y" : 11257143.4648
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 2,
+        "poly_id" : 4595,
+        "COUNTY" : "Troms fylke",
+        "x" : 19.2267675601856,
+        "y" : 69.486933961109003,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 2
+      },
+      "geometry" : {
+        "x" : 2141847.8344999999,
+        "y" : 10910066.755599998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 3,
+        "poly_id" : 4596,
+        "COUNTY" : "Nordland fylke",
+        "x" : 14.0055852303921,
+        "y" : 67.175275838709197,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 3
+      },
+      "geometry" : {
+        "x" : 1563871.8284000009,
+        "y" : 10228620.838299997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 4,
+        "poly_id" : 4597,
+        "COUNTY" : "Nord-Trøndelag fylke",
+        "x" : 11.890628830011099,
+        "y" : 64.408840457819295,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 4
+      },
+      "geometry" : {
+        "x" : 1323742.2846000008,
+        "y" : 9458082.0715000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 5,
+        "poly_id" : 4598,
+        "COUNTY" : "Sør-Trøndelag fylke",
+        "x" : 9.9702351523357091,
+        "y" : 63.440794782730798,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 5
+      },
+      "geometry" : {
+        "x" : 1235982.8387000002,
+        "y" : 9101297.9236000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 6,
+        "poly_id" : 4599,
+        "COUNTY" : "Møre og Romsdal fylke",
+        "x" : 7.2874199515927103,
+        "y" : 62.730565991915398,
+        "BEGIN" : 1935,
+        "END" : 2012,
+        "ORIG_FID" : 6
+      },
+      "geometry" : {
+        "x" : 811901.20879999921,
+        "y" : 9036479.2597000003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 7,
+        "poly_id" : 4602,
+        "COUNTY" : "Sogn og Fjordane fylke",
+        "x" : 6.0411193757577903,
+        "y" : 61.441961526350603,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 7
+      },
+      "geometry" : {
+        "x" : 672178.77050000057,
+        "y" : 8729474.4619000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 8,
+        "poly_id" : 4603,
+        "COUNTY" : "Hordaland fylke",
+        "x" : 5.8877762737903296,
+        "y" : 60.290404151538503,
+        "BEGIN" : 1972,
+        "END" : 2012,
+        "ORIG_FID" : 8
+      },
+      "geometry" : {
+        "x" : 655476.05920000002,
+        "y" : 8466028.7458000034
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 9,
+        "poly_id" : 4604,
+        "COUNTY" : "Rogaland fylke",
+        "x" : 5.8692776124305599,
+        "y" : 59.038800868264197,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 9
+      },
+      "geometry" : {
+        "x" : 653396.18840000033,
+        "y" : 8190390.1340000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 10,
+        "poly_id" : 4605,
+        "COUNTY" : "Vest-Agder fylke",
+        "x" : 7.1984409340097102,
+        "y" : 58.306225072017099,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 10
+      },
+      "geometry" : {
+        "x" : 801203.2938000001,
+        "y" : 8033007.4510999992
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 11,
+        "poly_id" : 4606,
+        "COUNTY" : "Hedmark fylke",
+        "x" : 11.4142502374462,
+        "y" : 61.454262960768403,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 11
+      },
+      "geometry" : {
+        "x" : 1269661.7151999995,
+        "y" : 8736447.6164000034
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 12,
+        "poly_id" : 4607,
+        "COUNTY" : "Oppland fylke",
+        "x" : 9.3521368920847205,
+        "y" : 61.4114973881466,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 12
+      },
+      "geometry" : {
+        "x" : 1040114.7094999999,
+        "y" : 8724041.5909999982
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 13,
+        "poly_id" : 4608,
+        "COUNTY" : "Buskerud fylke",
+        "x" : 9.1084065984939997,
+        "y" : 60.287408796483199,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 13
+      },
+      "geometry" : {
+        "x" : 1005985.1101000011,
+        "y" : 8490749.5680000037
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 14,
+        "poly_id" : 4609,
+        "COUNTY" : "Akershus fylke",
+        "x" : 11.146435420452599,
+        "y" : 60.009076859296101,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 14
+      },
+      "geometry" : {
+        "x" : 1238732.4023999982,
+        "y" : 8433154.7493999973
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 15,
+        "poly_id" : 4610,
+        "COUNTY" : "Telemark fylke",
+        "x" : 8.5803410044104496,
+        "y" : 59.4809440480375,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 15
+      },
+      "geometry" : {
+        "x" : 954748.0390000008,
+        "y" : 8286427.9883000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 16,
+        "poly_id" : 4611,
+        "COUNTY" : "Oslo fylke",
+        "x" : 10.738490542520401,
+        "y" : 59.975541373319501,
+        "BEGIN" : 1925,
+        "END" : 2012,
+        "ORIG_FID" : 16
+      },
+      "geometry" : {
+        "x" : 1195388.1339999996,
+        "y" : 8394358.633100003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 17,
+        "poly_id" : 4612,
+        "COUNTY" : "Aust-Agder fylke",
+        "x" : 8.1832919365043395,
+        "y" : 58.748850309165299,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 17
+      },
+      "geometry" : {
+        "x" : 910375.57079999894,
+        "y" : 8127718.4200000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 18,
+        "poly_id" : 4613,
+        "COUNTY" : "Østfold fylke",
+        "x" : 11.22227659448,
+        "y" : 59.3262652887692,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 18
+      },
+      "geometry" : {
+        "x" : 1249303.5738000013,
+        "y" : 8251683.5349999964
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 19,
+        "poly_id" : 4614,
+        "COUNTY" : "Vestfold fylke",
+        "x" : 10.214785177939699,
+        "y" : 59.175027557888598,
+        "BEGIN" : 1919,
+        "END" : 2012,
+        "ORIG_FID" : 19
+      },
+      "geometry" : {
+        "x" : 1137096.1897,
+        "y" : 8218886.9792999998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 20,
+        "poly_id" : 4611,
+        "COUNTY" : "Kristiania fylke",
+        "x" : 10.738490542520401,
+        "y" : 59.975541373319501,
+        "BEGIN" : 1919,
+        "END" : 1925,
+        "ORIG_FID" : 20
+      },
+      "geometry" : {
+        "x" : 1195388.1339999996,
+        "y" : 8394358.633100003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 21,
+        "poly_id" : 4599,
+        "COUNTY" : "Romsdal fylke",
+        "x" : 7.2874199515927103,
+        "y" : 62.730565991915398,
+        "BEGIN" : 1919,
+        "END" : 1935,
+        "ORIG_FID" : 21
+      },
+      "geometry" : {
+        "x" : 811901.20879999921,
+        "y" : 9036479.2597000003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 22,
+        "poly_id" : 4594,
+        "COUNTY" : "Finmark fylke",
+        "x" : 25.9337523744123,
+        "y" : 70.228463435783297,
+        "BEGIN" : 1919,
+        "END" : 1925,
+        "ORIG_FID" : 22
+      },
+      "geometry" : {
+        "x" : 2907727.5496999994,
+        "y" : 11257143.4648
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 23,
+        "poly_id" : 4613,
+        "COUNTY" : "Smaalenene amt",
+        "x" : 11.22227659448,
+        "y" : 59.3262652887692,
+        "BEGIN" : 1694,
+        "END" : 1919,
+        "ORIG_FID" : 23
+      },
+      "geometry" : {
+        "x" : 1249303.5738000013,
+        "y" : 8251683.5349999964
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 24,
+        "poly_id" : 4613,
+        "COUNTY" : "Fredrikstad med Smaalenene amt",
+        "x" : 11.22227659448,
+        "y" : 59.3262652887692,
+        "BEGIN" : 1660,
+        "END" : 1694,
+        "ORIG_FID" : 24
+      },
+      "geometry" : {
+        "x" : 1249303.5738000013,
+        "y" : 8251683.5349999964
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 25,
+        "poly_id" : 4611,
+        "COUNTY" : "Christiania amt",
+        "x" : 10.738490542520401,
+        "y" : 59.975541373319501,
+        "BEGIN" : 1842,
+        "END" : 1919,
+        "ORIG_FID" : 25
+      },
+      "geometry" : {
+        "x" : 1195388.1339999996,
+        "y" : 8394358.633100003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 26,
+        "poly_id" : 4609,
+        "COUNTY" : "Akershus amt",
+        "x" : 11.146435420452599,
+        "y" : 60.009076859296101,
+        "BEGIN" : 1842,
+        "END" : 1919,
+        "ORIG_FID" : 26
+      },
+      "geometry" : {
+        "x" : 1238732.4023999982,
+        "y" : 8433154.7493999973
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 27,
+        "poly_id" : 4609,
+        "COUNTY" : "Akershus stiftamt",
+        "x" : 11.146435420452599,
+        "y" : 60.009076859296101,
+        "BEGIN" : 1757,
+        "END" : 1842,
+        "ORIG_FID" : 28
+      },
+      "geometry" : {
+        "x" : 1236924.0241999999,
+        "y" : 8401666.3630999997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 28,
+        "poly_id" : 4606,
+        "COUNTY" : "Hedmarken amt",
+        "x" : 11.4142502374462,
+        "y" : 61.454262960768403,
+        "BEGIN" : 1781,
+        "END" : 1919,
+        "ORIG_FID" : 29
+      },
+      "geometry" : {
+        "x" : 1269661.7151999995,
+        "y" : 8736447.6164000034
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 29,
+        "poly_id" : 4607,
+        "COUNTY" : "Kristian amt",
+        "x" : 9.3521368920847205,
+        "y" : 61.4114973881466,
+        "BEGIN" : 1781,
+        "END" : 1919,
+        "ORIG_FID" : 30
+      },
+      "geometry" : {
+        "x" : 1040114.7094999999,
+        "y" : 8724041.5909999982
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 30,
+        "poly_id" : 4607,
+        "COUNTY" : "Oplandene amt",
+        "x" : 9.3521368920847205,
+        "y" : 61.4114973881466,
+        "BEGIN" : 1757,
+        "END" : 1781,
+        "ORIG_FID" : 32
+      },
+      "geometry" : {
+        "x" : 1159875.5789999999,
+        "y" : 8730514.1493000016
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 31,
+        "poly_id" : 4609,
+        "COUNTY" : "Akershus stiftamt",
+        "x" : 11.146435420452599,
+        "y" : 60.009076859296101,
+        "BEGIN" : 1694,
+        "END" : 1757,
+        "ORIG_FID" : 33
+      },
+      "geometry" : {
+        "x" : 1166675.8115000017,
+        "y" : 8701490.3137999997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 32,
+        "poly_id" : 4606,
+        "COUNTY" : "Gudsbrandsdalen og Hedemarken",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1687,
+        "END" : 1694,
+        "ORIG_FID" : 46
+      },
+      "geometry" : {
+        "x" : 1178154.4028000012,
+        "y" : 8759940.2789999992
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 33,
+        "poly_id" : 4609,
+        "COUNTY" : "Akershus stiftamt",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1687,
+        "END" : 1694,
+        "ORIG_FID" : 61
+      },
+      "geometry" : {
+        "x" : 1109495.8726000004,
+        "y" : 8598775.4479999989
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 34,
+        "poly_id" : 4609,
+        "COUNTY" : "Akershus stiftamt",
+        "x" : 11.146435420452599,
+        "y" : 60.009076859296101,
+        "BEGIN" : 1680,
+        "END" : 1687,
+        "ORIG_FID" : 62
+      },
+      "geometry" : {
+        "x" : 1166675.8115000017,
+        "y" : 8701490.3137999997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 35,
+        "poly_id" : 4608,
+        "COUNTY" : "Buskerud amt",
+        "x" : 9.1084065984939997,
+        "y" : 60.287408796483199,
+        "BEGIN" : 1680,
+        "END" : 1919,
+        "ORIG_FID" : 63
+      },
+      "geometry" : {
+        "x" : 1005985.1101000011,
+        "y" : 8490749.5680000037
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 36,
+        "poly_id" : 4609,
+        "COUNTY" : "Akershus stiftamt",
+        "x" : 11.146435420452599,
+        "y" : 60.009076859296101,
+        "BEGIN" : 1660,
+        "END" : 1680,
+        "ORIG_FID" : 65
+      },
+      "geometry" : {
+        "x" : 1136706.7082000002,
+        "y" : 8655353.3756999969
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 37,
+        "poly_id" : 4614,
+        "COUNTY" : "Jarlsberg og Larvik amt",
+        "x" : 10.214785177939699,
+        "y" : 59.175027557888598,
+        "BEGIN" : 1821,
+        "END" : 1919,
+        "ORIG_FID" : 66
+      },
+      "geometry" : {
+        "x" : 1137096.1897,
+        "y" : 8218886.9792999998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 38,
+        "poly_id" : 4614,
+        "COUNTY" : "Laurvigen grevskap",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1671,
+        "END" : 1821,
+        "ORIG_FID" : 67
+      },
+      "geometry" : {
+        "x" : 1118998.4437000006,
+        "y" : 8192182.0117999986
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 39,
+        "poly_id" : 4614,
+        "COUNTY" : "Jarlsberg grevskap",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1684,
+        "END" : 1821,
+        "ORIG_FID" : 79
+      },
+      "geometry" : {
+        "x" : 1151785.933600001,
+        "y" : 8240563.1120000035
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 40,
+        "poly_id" : 4614,
+        "COUNTY" : "Tønsberg grevskap",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1676,
+        "END" : 1684,
+        "ORIG_FID" : 83
+      },
+      "geometry" : {
+        "x" : 1151785.933600001,
+        "y" : 8240563.1120000035
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 41,
+        "poly_id" : 4614,
+        "COUNTY" : "Griffenfeldt grevskap",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1673,
+        "END" : 1676,
+        "ORIG_FID" : 84
+      },
+      "geometry" : {
+        "x" : 1151785.933600001,
+        "y" : 8240563.1120000035
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 42,
+        "poly_id" : 4614,
+        "COUNTY" : "Tønsberg amt",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1671,
+        "END" : 1673,
+        "ORIG_FID" : 85
+      },
+      "geometry" : {
+        "x" : 1151785.933600001,
+        "y" : 8240563.1120000035
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 43,
+        "poly_id" : 4614,
+        "COUNTY" : "Tønsberg med Brunla amt",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1660,
+        "END" : 1671,
+        "ORIG_FID" : 87
+      },
+      "geometry" : {
+        "x" : 1137096.1900999993,
+        "y" : 8218886.9803000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 44,
+        "poly_id" : 4610,
+        "COUNTY" : "Bratsberg amt",
+        "x" : 8.5803410044104496,
+        "y" : 59.4809440480375,
+        "BEGIN" : 1660,
+        "END" : 1919,
+        "ORIG_FID" : 88
+      },
+      "geometry" : {
+        "x" : 954748.0390000008,
+        "y" : 8286427.9883000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 45,
+        "poly_id" : 4612,
+        "COUNTY" : "Nedenes amt",
+        "x" : 8.1832919365043395,
+        "y" : 58.748850309165299,
+        "BEGIN" : 1685,
+        "END" : 1919,
+        "ORIG_FID" : 89
+      },
+      "geometry" : {
+        "x" : 910375.57079999894,
+        "y" : 8127718.4200000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 46,
+        "poly_id" : 4605,
+        "COUNTY" : "Lister og Mandal amt",
+        "x" : 7.1984409340097102,
+        "y" : 58.306225072017099,
+        "BEGIN" : 1685,
+        "END" : 1919,
+        "ORIG_FID" : 90
+      },
+      "geometry" : {
+        "x" : 801203.2938000001,
+        "y" : 8033007.4510999992
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 47,
+        "poly_id" : 4605,
+        "COUNTY" : "Christiansand stiftamt",
+        "x" : 7.1984409340097102,
+        "y" : 58.306225072017099,
+        "BEGIN" : 1682,
+        "END" : 1685,
+        "ORIG_FID" : 92
+      },
+      "geometry" : {
+        "x" : 880457.91270000115,
+        "y" : 8055331.2906000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 48,
+        "poly_id" : 4605,
+        "COUNTY" : "Agdesiden amt",
+        "x" : 7.1984409340097102,
+        "y" : 58.306225072017099,
+        "BEGIN" : 1660,
+        "END" : 1682,
+        "ORIG_FID" : 93
+      },
+      "geometry" : {
+        "x" : 880457.91270000115,
+        "y" : 8055331.2906000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 49,
+        "poly_id" : 4604,
+        "COUNTY" : "Stavanger amt",
+        "x" : 5.8692776124305599,
+        "y" : 59.038800868264197,
+        "BEGIN" : 1682,
+        "END" : 1919,
+        "ORIG_FID" : 94
+      },
+      "geometry" : {
+        "x" : 653396.18840000033,
+        "y" : 8190390.1340000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 50,
+        "poly_id" : 4604,
+        "COUNTY" : "Stavanger stiftamt",
+        "x" : 5.8692776124305599,
+        "y" : 59.038800868264197,
+        "BEGIN" : 1660,
+        "END" : 1682,
+        "ORIG_FID" : 95
+      },
+      "geometry" : {
+        "x" : 653396.18840000033,
+        "y" : 8190390.1340000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 51,
+        "poly_id" : 4595,
+        "COUNTY" : "Tromsø amt",
+        "x" : 19.2267675601856,
+        "y" : 69.486933961109003,
+        "BEGIN" : 1866,
+        "END" : 1919,
+        "ORIG_FID" : 96
+      },
+      "geometry" : {
+        "x" : 2141847.8344999999,
+        "y" : 10910066.755599998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 52,
+        "poly_id" : 4594,
+        "COUNTY" : "Finmarken amt",
+        "x" : 25.9337523744123,
+        "y" : 70.228463435783297,
+        "BEGIN" : 1866,
+        "END" : 1919,
+        "ORIG_FID" : 97
+      },
+      "geometry" : {
+        "x" : 2907727.5496999994,
+        "y" : 11257143.4648
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 53,
+        "poly_id" : 4594,
+        "COUNTY" : "Finmarken amt",
+        "x" : 25.9337523744123,
+        "y" : 70.228463435783297,
+        "BEGIN" : 1789,
+        "END" : 1866,
+        "ORIG_FID" : 99
+      },
+      "geometry" : {
+        "x" : 2634342.624400001,
+        "y" : 11070602.574100003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 54,
+        "poly_id" : 4596,
+        "COUNTY" : "Nordland amt",
+        "x" : 14.0055852303921,
+        "y" : 67.175275838709197,
+        "BEGIN" : 1789,
+        "END" : 1919,
+        "ORIG_FID" : 100
+      },
+      "geometry" : {
+        "x" : 1563871.8284000009,
+        "y" : 10228620.838299997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 55,
+        "poly_id" : 4594,
+        "COUNTY" : "Finnmarken amt",
+        "x" : 25.9337523744123,
+        "y" : 70.228463435783297,
+        "BEGIN" : 1685,
+        "END" : 1789,
+        "ORIG_FID" : 101
+      },
+      "geometry" : {
+        "x" : 2907727.5496999994,
+        "y" : 11257143.4648
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 56,
+        "poly_id" : 4596,
+        "COUNTY" : "Nordlandene amt",
+        "x" : 14.0055852303921,
+        "y" : 67.175275838709197,
+        "BEGIN" : 1660,
+        "END" : 1789,
+        "ORIG_FID" : 103
+      },
+      "geometry" : {
+        "x" : 1863072.2749000005,
+        "y" : 10692927.119499996
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 57,
+        "poly_id" : 4594,
+        "COUNTY" : "Vardøhus amt",
+        "x" : 25.9337523744123,
+        "y" : 70.228463435783297,
+        "BEGIN" : 1660,
+        "END" : 1685,
+        "ORIG_FID" : 104
+      },
+      "geometry" : {
+        "x" : 2907727.5496999994,
+        "y" : 11257143.4648
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 58,
+        "poly_id" : 4597,
+        "COUNTY" : "Nordre Trondhjems amt",
+        "x" : 11.890628830011099,
+        "y" : 64.408840457819295,
+        "BEGIN" : 1804,
+        "END" : 1919,
+        "ORIG_FID" : 105
+      },
+      "geometry" : {
+        "x" : 1323742.2846000008,
+        "y" : 9458082.0715000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 59,
+        "poly_id" : 4598,
+        "COUNTY" : "Søndre Trondhjems amt",
+        "x" : 9.9702351523357091,
+        "y" : 63.440794782730798,
+        "BEGIN" : 1804,
+        "END" : 1919,
+        "ORIG_FID" : 106
+      },
+      "geometry" : {
+        "x" : 1235982.8387000002,
+        "y" : 9101297.9236000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 60,
+        "poly_id" : 4597,
+        "COUNTY" : "Trondhjem stiftamt",
+        "x" : 11.890628830011099,
+        "y" : 64.408840457819295,
+        "BEGIN" : 1660,
+        "END" : 1804,
+        "ORIG_FID" : 107
+      },
+      "geometry" : {
+        "x" : 1221298.2083999999,
+        "y" : 9341703.0683000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 61,
+        "poly_id" : 4599,
+        "COUNTY" : "Romsdal amt",
+        "x" : 7.2874199515927103,
+        "y" : 62.730565991915398,
+        "BEGIN" : 1689,
+        "END" : 1919,
+        "ORIG_FID" : 108
+      },
+      "geometry" : {
+        "x" : 811901.20879999921,
+        "y" : 9036479.2597000003
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 62,
+        "poly_id" : 4602,
+        "COUNTY" : "Nordre Bergenhus amt",
+        "x" : 6.0411193757577903,
+        "y" : 61.441961526350603,
+        "BEGIN" : 1763,
+        "END" : 1919,
+        "ORIG_FID" : 109
+      },
+      "geometry" : {
+        "x" : 672178.77050000057,
+        "y" : 8729474.4619000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 63,
+        "poly_id" : 4603,
+        "COUNTY" : "Søndre Bergenhus amt",
+        "x" : 5.8877762737903296,
+        "y" : 60.290404151538503,
+        "BEGIN" : 1763,
+        "END" : 1831,
+        "ORIG_FID" : 110
+      },
+      "geometry" : {
+        "x" : 655476.05920000002,
+        "y" : 8466028.7458000034
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 64,
+        "poly_id" : 4602,
+        "COUNTY" : "Bergenhus stiftamt",
+        "x" : 6.0411193757577903,
+        "y" : 61.441961526350603,
+        "BEGIN" : 1689,
+        "END" : 1763,
+        "ORIG_FID" : 111
+      },
+      "geometry" : {
+        "x" : 664866.05660000071,
+        "y" : 8614133.7168999985
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 65,
+        "poly_id" : 4599,
+        "COUNTY" : "Romsdal amt",
+        "x" : 7.2874199515927103,
+        "y" : 62.730565991915398,
+        "BEGIN" : 1660,
+        "END" : 1675,
+        "ORIG_FID" : 112
+      },
+      "geometry" : {
+        "x" : 775447.34499999881,
+        "y" : 8995777.9363999963
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 66,
+        "poly_id" : 4594,
+        "COUNTY" : "Vardøhus len",
+        "x" : 25.9337523744123,
+        "y" : 70.228463435783297,
+        "BEGIN" : 1600,
+        "END" : 1660,
+        "ORIG_FID" : 113
+      },
+      "geometry" : {
+        "x" : 2907727.5496999994,
+        "y" : 11257143.4648
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 67,
+        "poly_id" : 4596,
+        "COUNTY" : "Nordlandene len",
+        "x" : 14.0055852303921,
+        "y" : 67.175275838709197,
+        "BEGIN" : 1600,
+        "END" : 1660,
+        "ORIG_FID" : 114
+      },
+      "geometry" : {
+        "x" : 1863072.2749000005,
+        "y" : 10692927.119499996
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 68,
+        "poly_id" : 4597,
+        "COUNTY" : "Trondheim len",
+        "x" : 11.890628830011099,
+        "y" : 64.408840457819295,
+        "BEGIN" : 1600,
+        "END" : 1660,
+        "ORIG_FID" : 115
+      },
+      "geometry" : {
+        "x" : 1101831.4593999982,
+        "y" : 9252635.2534999996
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 69,
+        "poly_id" : 4602,
+        "COUNTY" : "Bergenhus stiftamt",
+        "x" : 6.0411193757577903,
+        "y" : 61.441961526350603,
+        "BEGIN" : 1680,
+        "END" : 1689,
+        "ORIG_FID" : 116
+      },
+      "geometry" : {
+        "x" : 670193.5577000007,
+        "y" : 8670514.6449000016
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 70,
+        "poly_id" : null,
+        "COUNTY" : "Bergen fylke",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1919,
+        "END" : 1972,
+        "ORIG_FID" : 117
+      },
+      "geometry" : {
+        "x" : 597916.59349999949,
+        "y" : 8480375.9089000002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 71,
+        "poly_id" : 4603,
+        "COUNTY" : "Hordaland fylke",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1919,
+        "END" : 1972,
+        "ORIG_FID" : 133
+      },
+      "geometry" : {
+        "x" : 762013.00039999932,
+        "y" : 8465305.2967000008
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 72,
+        "poly_id" : 4603,
+        "COUNTY" : "Søndre Bergenhus amt",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1831,
+        "END" : 1919,
+        "ORIG_FID" : 134
+      },
+      "geometry" : {
+        "x" : 762013.00039999932,
+        "y" : 8465305.2967000008
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 73,
+        "poly_id" : null,
+        "COUNTY" : "Bergen amt",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1831,
+        "END" : 1919,
+        "ORIG_FID" : 135
+      },
+      "geometry" : {
+        "x" : 597916.59349999949,
+        "y" : 8480375.9089000002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 74,
+        "poly_id" : 4602,
+        "COUNTY" : "Bergenhus len",
+        "x" : 6.0411193757577903,
+        "y" : 61.441961526350603,
+        "BEGIN" : 1600,
+        "END" : 1660,
+        "ORIG_FID" : 136
+      },
+      "geometry" : {
+        "x" : 664866.05660000071,
+        "y" : 8614133.7168999985
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 75,
+        "poly_id" : null,
+        "COUNTY" : "Hardanger amt",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1660,
+        "END" : 1664,
+        "ORIG_FID" : 143
+      },
+      "geometry" : {
+        "x" : 766249.19970000163,
+        "y" : 8460845.5841000006
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 76,
+        "poly_id" : 173029,
+        "COUNTY" : "Nordfjord amt",
+        "x" : 6.5914119641329103,
+        "y" : 61.994216823479,
+        "BEGIN" : 1675,
+        "END" : 1680,
+        "ORIG_FID" : 149
+      },
+      "geometry" : {
+        "x" : 559205.44689999893,
+        "y" : 8861348.1882999986
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 77,
+        "poly_id" : 172775,
+        "COUNTY" : "Sunnmøre amt",
+        "x" : 5.8285782534266897,
+        "y" : 62.377242777765296,
+        "BEGIN" : 1675,
+        "END" : 1680,
+        "ORIG_FID" : 150
+      },
+      "geometry" : {
+        "x" : 696132.72140000015,
+        "y" : 8945028.7342000008
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 78,
+        "poly_id" : 4602,
+        "COUNTY" : "Bergenhus stiftamt",
+        "x" : 6.0411193757577903,
+        "y" : 61.441961526350603,
+        "BEGIN" : 1660,
+        "END" : 1664,
+        "ORIG_FID" : 151
+      },
+      "geometry" : {
+        "x" : 653346.58940000087,
+        "y" : 8595111.2317000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 79,
+        "poly_id" : 4602,
+        "COUNTY" : "Bergenhus stiftamt",
+        "x" : 6.0411193757577903,
+        "y" : 61.441961526350603,
+        "BEGIN" : 1664,
+        "END" : 1680,
+        "ORIG_FID" : 152
+      },
+      "geometry" : {
+        "x" : 670641.52549999952,
+        "y" : 8574543.8083000034
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 80,
+        "poly_id" : 4599,
+        "COUNTY" : "Romsdal amt",
+        "x" : 7.2874199515927103,
+        "y" : 62.730565991915398,
+        "BEGIN" : 1675,
+        "END" : 1689,
+        "ORIG_FID" : 154
+      },
+      "geometry" : {
+        "x" : 873160.65839999914,
+        "y" : 9084870.7432999983
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 81,
+        "poly_id" : 4604,
+        "COUNTY" : "Stavanger len",
+        "x" : 5.8692776124305599,
+        "y" : 59.038800868264197,
+        "BEGIN" : 1600,
+        "END" : 1660,
+        "ORIG_FID" : 155
+      },
+      "geometry" : {
+        "x" : 653396.18840000033,
+        "y" : 8190390.1340000033
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 82,
+        "poly_id" : 4605,
+        "COUNTY" : "Agdesiden len",
+        "x" : 7.1984409340097102,
+        "y" : 58.306225072017099,
+        "BEGIN" : 1600,
+        "END" : 1660,
+        "ORIG_FID" : 156
+      },
+      "geometry" : {
+        "x" : 880457.91270000115,
+        "y" : 8055331.2906000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 83,
+        "poly_id" : 4610,
+        "COUNTY" : "Bratsberg len",
+        "x" : 8.5803410044104496,
+        "y" : 59.4809440480375,
+        "BEGIN" : 1600,
+        "END" : 1660,
+        "ORIG_FID" : 157
+      },
+      "geometry" : {
+        "x" : 954748.0390000008,
+        "y" : 8286427.9883000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 84,
+        "poly_id" : 4609,
+        "COUNTY" : "Akershus len",
+        "x" : 11.146435420452599,
+        "y" : 60.009076859296101,
+        "BEGIN" : 1600,
+        "END" : 1660,
+        "ORIG_FID" : 158
+      },
+      "geometry" : {
+        "x" : 1142799.805399999,
+        "y" : 8622624.4007000029
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 85,
+        "poly_id" : 4614,
+        "COUNTY" : "Tønsberg len",
+        "x" : null,
+        "y" : null,
+        "BEGIN" : 1600,
+        "END" : 1660,
+        "ORIG_FID" : 159
+      },
+      "geometry" : {
+        "x" : 1151785.933600001,
+        "y" : 8240563.1120000035
+      }
+    }
+  ]
+}

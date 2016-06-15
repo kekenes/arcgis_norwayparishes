@@ -1,0 +1,1049 @@
+{
+  "displayFieldName" : "",
+  "fieldAliases" : {
+    "OBJECTID" : "OBJECTID",
+    "COUNTY" : "COUNTY",
+    "MUNICIPALITY" : "MUNICIPALITY",
+    "Par_ID" : "Par_ID",
+    "x" : "x",
+    "y" : "y",
+    "BEGIN" : "BEGIN",
+    "END" : "END",
+    "NAME" : "NAME",
+    "ORIG_FID" : "ORIG_FID"
+  },
+  "geometryType" : "esriGeometryPoint",
+  "spatialReference" : {
+    "wkid" : 102100,
+    "latestWkid" : 3857
+  },
+  "fields" : [
+    {
+      "name" : "OBJECTID",
+      "type" : "esriFieldTypeOID",
+      "alias" : "OBJECTID"
+    },
+    {
+      "name" : "COUNTY",
+      "type" : "esriFieldTypeString",
+      "alias" : "COUNTY",
+      "length" : 30
+    },
+    {
+      "name" : "MUNICIPALITY",
+      "type" : "esriFieldTypeString",
+      "alias" : "MUNICIPALITY",
+      "length" : 75
+    },
+    {
+      "name" : "Par_ID",
+      "type" : "esriFieldTypeSmallInteger",
+      "alias" : "Par_ID"
+    },
+    {
+      "name" : "x",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "x"
+    },
+    {
+      "name" : "y",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "y"
+    },
+    {
+      "name" : "BEGIN",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "BEGIN"
+    },
+    {
+      "name" : "END",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "END"
+    },
+    {
+      "name" : "NAME",
+      "type" : "esriFieldTypeString",
+      "alias" : "NAME",
+      "length" : 255
+    },
+    {
+      "name" : "ORIG_FID",
+      "type" : "esriFieldTypeInteger",
+      "alias" : "ORIG_FID"
+    }
+  ],
+  "features" : [
+    {
+      "attributes" : {
+        "OBJECTID" : 1,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Bygland",
+        "Par_ID" : 144,
+        "x" : 7.8088279239164899,
+        "y" : 58.840482422622699,
+        "BEGIN" : 1725,
+        "END" : 1979,
+        "NAME" : "Bygland",
+        "ORIG_FID" : 4
+      },
+      "geometry" : {
+        "x" : 865039.18910000101,
+        "y" : 8152500.2250000015
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 2,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Froland",
+        "Par_ID" : 258,
+        "x" : 8.5918092652753195,
+        "y" : 58.566900862351503,
+        "BEGIN" : 1976,
+        "END" : 1979,
+        "NAME" : "Froland",
+        "ORIG_FID" : 6
+      },
+      "geometry" : {
+        "x" : 952755.32999999821,
+        "y" : 8086220.2282000035
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 3,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Åmli",
+        "Par_ID" : 19,
+        "x" : 8.5376687730404495,
+        "y" : 58.754775125808898,
+        "BEGIN" : 1875,
+        "END" : 1979,
+        "NAME" : "Åmli",
+        "ORIG_FID" : 7
+      },
+      "geometry" : {
+        "x" : 928273.54509999976,
+        "y" : 8138180.9701000005
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 4,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Evje og Hornnes",
+        "Par_ID" : 200,
+        "x" : 7.8975651001770997,
+        "y" : 58.5956753765863,
+        "BEGIN" : 1875,
+        "END" : 1979,
+        "NAME" : "Evje",
+        "ORIG_FID" : 9
+      },
+      "geometry" : {
+        "x" : 869249.47309999913,
+        "y" : 8080457.9082999974
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 5,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Birkenes",
+        "Par_ID" : 89,
+        "x" : 8.2002077694846705,
+        "y" : 58.343371211164801,
+        "BEGIN" : 1976,
+        "END" : 1979,
+        "NAME" : "Birkenes",
+        "ORIG_FID" : 11
+      },
+      "geometry" : {
+        "x" : 912742.58419999853,
+        "y" : 8064006.2388999984
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 6,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Gjerstad",
+        "Par_ID" : 284,
+        "x" : 8.9785838295774596,
+        "y" : 58.888833027029399,
+        "BEGIN" : 1828,
+        "END" : 1979,
+        "NAME" : "Gjerstad",
+        "ORIG_FID" : 13
+      },
+      "geometry" : {
+        "x" : 990500.32349999994,
+        "y" : 8141806.622299999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 7,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 31,
+        "x" : 8.7552880550983403,
+        "y" : 58.462693763878598,
+        "BEGIN" : 1965,
+        "END" : 1979,
+        "NAME" : "Arendal",
+        "ORIG_FID" : 14
+      },
+      "geometry" : {
+        "x" : 974634.15890000015,
+        "y" : 8065149.925499998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 8,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 62,
+        "x" : 8.7936289227474393,
+        "y" : 58.536990598303902,
+        "BEGIN" : 1972,
+        "END" : 1979,
+        "NAME" : "Austre Moland",
+        "ORIG_FID" : 15
+      },
+      "geometry" : {
+        "x" : 986283.75879999995,
+        "y" : 8078443.5243000016
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 9,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 73,
+        "x" : 8.79063116823672,
+        "y" : 58.477896352497403,
+        "BEGIN" : 1965,
+        "END" : 1979,
+        "NAME" : "Barbu",
+        "ORIG_FID" : 16
+      },
+      "geometry" : {
+        "x" : 978568.67639999837,
+        "y" : 8068386.4869000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 10,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 382,
+        "x" : 9.0126390561744607,
+        "y" : 58.3556532378214,
+        "BEGIN" : 1872,
+        "END" : 1979,
+        "NAME" : "Hisøy",
+        "ORIG_FID" : 18
+      },
+      "geometry" : {
+        "x" : 1003271.8936999999,
+        "y" : 8042419.0359999985
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 11,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Grimstad",
+        "Par_ID" : 175,
+        "x" : 8.6317973555998293,
+        "y" : 58.196010229118002,
+        "BEGIN" : 1875,
+        "END" : 1979,
+        "NAME" : "Hommedal",
+        "ORIG_FID" : 19
+      },
+      "geometry" : {
+        "x" : 958001.28889999911,
+        "y" : 8017271.1871000007
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 12,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Grimstad",
+        "Par_ID" : 224,
+        "x" : 8.7974619225497097,
+        "y" : 58.2901221256475,
+        "BEGIN" : 1968,
+        "END" : 1979,
+        "NAME" : "Fjære",
+        "ORIG_FID" : 20
+      },
+      "geometry" : {
+        "x" : 978955.45710000023,
+        "y" : 8028696.7335999981
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 13,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Tvedestrand",
+        "Par_ID" : 405,
+        "x" : 8.9052538433946609,
+        "y" : 58.638982873903501,
+        "BEGIN" : 1973,
+        "END" : 1979,
+        "NAME" : "Holt",
+        "ORIG_FID" : 23
+      },
+      "geometry" : {
+        "x" : 1018188.2272000015,
+        "y" : 8089715.0689999983
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 14,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Risør",
+        "Par_ID" : 857,
+        "x" : 9.1350314587451908,
+        "y" : 58.756754977925901,
+        "BEGIN" : 1971,
+        "END" : 1979,
+        "NAME" : "Søndeled",
+        "ORIG_FID" : 28
+      },
+      "geometry" : {
+        "x" : 1037826.4494000003,
+        "y" : 8111803.7621000037
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 15,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 716,
+        "x" : 8.6469717725200308,
+        "y" : 58.442345493400303,
+        "BEGIN" : 1872,
+        "END" : 1979,
+        "NAME" : "Øyestad",
+        "ORIG_FID" : 32
+      },
+      "geometry" : {
+        "x" : 962575.37040000036,
+        "y" : 8060826.7263000011
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 16,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 978,
+        "x" : 9.0494618513909497,
+        "y" : 58.4478647971276,
+        "BEGIN" : 1877,
+        "END" : 1979,
+        "NAME" : "Tromøy",
+        "ORIG_FID" : 34
+      },
+      "geometry" : {
+        "x" : 1007378.1809,
+        "y" : 8062002.6715999991
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 17,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Valle",
+        "Par_ID" : 1030,
+        "x" : 7.4320464434097202,
+        "y" : 59.241686827304399,
+        "BEGIN" : 1714,
+        "END" : 1979,
+        "NAME" : "Valle",
+        "ORIG_FID" : 38
+      },
+      "geometry" : {
+        "x" : 813611.93690000102,
+        "y" : 8248376.6796000004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 18,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Lillesand",
+        "Par_ID" : 1070,
+        "x" : 8.4827086305033497,
+        "y" : 58.175439047262699,
+        "BEGIN" : 1975,
+        "END" : 1979,
+        "NAME" : "Vestre Moland",
+        "ORIG_FID" : 41
+      },
+      "geometry" : {
+        "x" : 936902.05409999937,
+        "y" : 7992823.6689999998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 19,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 31,
+        "x" : 8.7552880550983403,
+        "y" : 58.462693763878598,
+        "BEGIN" : 1902,
+        "END" : 1965,
+        "NAME" : "Arendal",
+        "ORIG_FID" : 42
+      },
+      "geometry" : {
+        "x" : 977511.6436999999,
+        "y" : 8067516.9644000009
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 20,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 31,
+        "x" : 8.7552880550983403,
+        "y" : 58.462693763878598,
+        "BEGIN" : 1705,
+        "END" : 1902,
+        "NAME" : "Arendal",
+        "ORIG_FID" : 43
+      },
+      "geometry" : {
+        "x" : 974634.15890000015,
+        "y" : 8065149.925499998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 21,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 62,
+        "x" : 8.7936289227474393,
+        "y" : 58.536990598303902,
+        "BEGIN" : 1877,
+        "END" : 1972,
+        "NAME" : "Austre Moland",
+        "ORIG_FID" : 44
+      },
+      "geometry" : {
+        "x" : 980012.44759999961,
+        "y" : 8079749.4619999975
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 22,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 73,
+        "x" : 8.79063116823672,
+        "y" : 58.477896352497403,
+        "BEGIN" : 1877,
+        "END" : 1902,
+        "NAME" : "Barbu",
+        "ORIG_FID" : 45
+      },
+      "geometry" : {
+        "x" : 978568.67639999837,
+        "y" : 8068386.4869000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 23,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Birkenes",
+        "Par_ID" : 89,
+        "x" : 8.2002077694846705,
+        "y" : 58.343371211164801,
+        "BEGIN" : 1905,
+        "END" : 1976,
+        "NAME" : "Birkenes",
+        "ORIG_FID" : 46
+      },
+      "geometry" : {
+        "x" : 912845.4635999985,
+        "y" : 8039814.9425000027
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 24,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Tvedestrand",
+        "Par_ID" : 164,
+        "x" : 9.2381160257602399,
+        "y" : 58.555503914775798,
+        "BEGIN" : 1812,
+        "END" : 1972,
+        "NAME" : "Dypvåg",
+        "ORIG_FID" : 48
+      },
+      "geometry" : {
+        "x" : 1024689.1519000009,
+        "y" : 8083755.7170000002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 25,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Tvedestrand",
+        "Par_ID" : 164,
+        "x" : 9.2381160257602399,
+        "y" : 58.555503914775798,
+        "BEGIN" : 1972,
+        "END" : 1973,
+        "NAME" : "Dypvåg",
+        "ORIG_FID" : 49
+      },
+      "geometry" : {
+        "x" : 1028367.1297999993,
+        "y" : 8084956.500500001
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 26,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Evje og Hornnes",
+        "Par_ID" : 200,
+        "x" : 7.8975651001770997,
+        "y" : 58.5956753765863,
+        "BEGIN" : 1704,
+        "END" : 1875,
+        "NAME" : "Evje",
+        "ORIG_FID" : 51
+      },
+      "geometry" : {
+        "x" : 880492.62620000169,
+        "y" : 8079164.4597999975
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 27,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Grimstad",
+        "Par_ID" : 224,
+        "x" : 8.7974619225497097,
+        "y" : 58.2901221256475,
+        "BEGIN" : 1885,
+        "END" : 1968,
+        "NAME" : "Fjære",
+        "ORIG_FID" : 52
+      },
+      "geometry" : {
+        "x" : 979312.97569999844,
+        "y" : 8028544.697300002
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 28,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Grimstad",
+        "Par_ID" : 224,
+        "x" : 8.7974619225497097,
+        "y" : 58.2901221256475,
+        "BEGIN" : 1845,
+        "END" : 1885,
+        "NAME" : "Fjære",
+        "ORIG_FID" : 53
+      },
+      "geometry" : {
+        "x" : 978955.45710000023,
+        "y" : 8028696.7335999981
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 29,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Froland",
+        "Par_ID" : 258,
+        "x" : 8.5918092652753195,
+        "y" : 58.566900862351503,
+        "BEGIN" : 1849,
+        "END" : 1976,
+        "NAME" : "Froland",
+        "ORIG_FID" : 54
+      },
+      "geometry" : {
+        "x" : 956435.84739999846,
+        "y" : 8087385.1226999983
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 30,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Gjerstad",
+        "Par_ID" : 284,
+        "x" : 8.9785838295774596,
+        "y" : 58.888833027029399,
+        "BEGIN" : 1695,
+        "END" : 1745,
+        "NAME" : "Gjerstad",
+        "ORIG_FID" : 55
+      },
+      "geometry" : {
+        "x" : 1012325.5289999992,
+        "y" : 8127970.3198999986
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 31,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Gjerstad",
+        "Par_ID" : 284,
+        "x" : 8.9785838295774596,
+        "y" : 58.888833027029399,
+        "BEGIN" : 1812,
+        "END" : 1828,
+        "NAME" : "Gjerstad",
+        "ORIG_FID" : 59
+      },
+      "geometry" : {
+        "x" : 999482.04149999842,
+        "y" : 8156423.1904999986
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 32,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Grimstad",
+        "Par_ID" : 302,
+        "x" : 8.5837248366951506,
+        "y" : 58.337985116698803,
+        "BEGIN" : 1885,
+        "END" : 1968,
+        "NAME" : "Grimstad",
+        "ORIG_FID" : 60
+      },
+      "geometry" : {
+        "x" : 955536.00780000165,
+        "y" : 8038655.9584999979
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 33,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Birkenes",
+        "Par_ID" : 1056,
+        "x" : 8.1411411712535795,
+        "y" : 58.5144440192201,
+        "BEGIN" : 1875,
+        "END" : 1976,
+        "NAME" : "Herefoss",
+        "ORIG_FID" : 63
+      },
+      "geometry" : {
+        "x" : 914399.78570000082,
+        "y" : 8086796.5066
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 34,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Tvedestrand",
+        "Par_ID" : 405,
+        "x" : 8.9052538433946609,
+        "y" : 58.638982873903501,
+        "BEGIN" : 1902,
+        "END" : 1973,
+        "NAME" : "Holt",
+        "ORIG_FID" : 64
+      },
+      "geometry" : {
+        "x" : 982150.77219999954,
+        "y" : 8098929.1846000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 35,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Tvedestrand",
+        "Par_ID" : 405,
+        "x" : 8.9052538433946609,
+        "y" : 58.638982873903501,
+        "BEGIN" : 1828,
+        "END" : 1902,
+        "NAME" : "Holt",
+        "ORIG_FID" : 65
+      },
+      "geometry" : {
+        "x" : 991829.17229999974,
+        "y" : 8102037.7497999966
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 36,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Tvedestrand",
+        "Par_ID" : 405,
+        "x" : 8.9052538433946609,
+        "y" : 58.638982873903501,
+        "BEGIN" : 1747,
+        "END" : 1812,
+        "NAME" : "Holt",
+        "ORIG_FID" : 68
+      },
+      "geometry" : {
+        "x" : 1016724.8913000003,
+        "y" : 8088186.7263000011
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 37,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 62,
+        "x" : 8.7936289227474393,
+        "y" : 58.536990598303902,
+        "BEGIN" : 1705,
+        "END" : 1747,
+        "NAME" : "Holt",
+        "ORIG_FID" : 69
+      },
+      "geometry" : {
+        "x" : 1010545.0865999982,
+        "y" : 8080140.0239000022
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 38,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 62,
+        "x" : 8.7936289227474393,
+        "y" : 58.536990598303902,
+        "BEGIN" : 1699,
+        "END" : 1705,
+        "NAME" : "Holt",
+        "ORIG_FID" : 71
+      },
+      "geometry" : {
+        "x" : 1010427.7754999995,
+        "y" : 8080091.055399999
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 39,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Grimstad",
+        "Par_ID" : 527,
+        "x" : 8.5361641907062005,
+        "y" : 58.333207441127001,
+        "BEGIN" : 1690,
+        "END" : 1875,
+        "NAME" : "Hommedal",
+        "ORIG_FID" : 74
+      },
+      "geometry" : {
+        "x" : 955218.3572999984,
+        "y" : 8019875.4949000031
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 40,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Lillesand",
+        "Par_ID" : 422,
+        "x" : 8.3636600902991205,
+        "y" : 58.0762518989361,
+        "BEGIN" : 1860,
+        "END" : 1975,
+        "NAME" : "Høvåg",
+        "ORIG_FID" : 75
+      },
+      "geometry" : {
+        "x" : 931023.61740000173,
+        "y" : 7983406.9833000004
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 41,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Risør",
+        "Par_ID" : 743,
+        "x" : 9.2143089763997299,
+        "y" : 58.713868997432002,
+        "BEGIN" : 1745,
+        "END" : 1877,
+        "NAME" : "Risør",
+        "ORIG_FID" : 76
+      },
+      "geometry" : {
+        "x" : 1037826.4494000003,
+        "y" : 8111803.7621000037
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 42,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Risør",
+        "Par_ID" : 743,
+        "x" : 9.2143089763997299,
+        "y" : 58.713868997432002,
+        "BEGIN" : 1877,
+        "END" : 1971,
+        "NAME" : "Risør",
+        "ORIG_FID" : 79
+      },
+      "geometry" : {
+        "x" : 1025732.4484999999,
+        "y" : 8118798.9188999981
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 43,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Tvedestrand",
+        "Par_ID" : 405,
+        "x" : 8.9052538433946609,
+        "y" : 58.638982873903501,
+        "BEGIN" : 1812,
+        "END" : 1828,
+        "NAME" : "Holt",
+        "ORIG_FID" : 81
+      },
+      "geometry" : {
+        "x" : 985361.94029999897,
+        "y" : 8119983.1886000037
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 44,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Risør",
+        "Par_ID" : 858,
+        "x" : 9.3878532336233196,
+        "y" : 58.655248027209097,
+        "BEGIN" : 1877,
+        "END" : 1971,
+        "NAME" : "Søndeled",
+        "ORIG_FID" : 83
+      },
+      "geometry" : {
+        "x" : 1037826.4494000003,
+        "y" : 8111803.7621000037
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 45,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 978,
+        "x" : 9.0494618513909497,
+        "y" : 58.4478647971276,
+        "BEGIN" : 1747,
+        "END" : 1877,
+        "NAME" : "Tromøy",
+        "ORIG_FID" : 86
+      },
+      "geometry" : {
+        "x" : 1000617.9156999998,
+        "y" : 8066188.5494000018
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 46,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Tvedestrand",
+        "Par_ID" : 989,
+        "x" : 8.9311970086822292,
+        "y" : 58.618919989031603,
+        "BEGIN" : 1902,
+        "END" : 1973,
+        "NAME" : "Tvedestrand",
+        "ORIG_FID" : 87
+      },
+      "geometry" : {
+        "x" : 994216.07820000127,
+        "y" : 8098475.8703000024
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 47,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Lillesand",
+        "Par_ID" : 1070,
+        "x" : 8.4827086305033497,
+        "y" : 58.175439047262699,
+        "BEGIN" : 1687,
+        "END" : 1860,
+        "NAME" : "Vestre Moland",
+        "ORIG_FID" : 88
+      },
+      "geometry" : {
+        "x" : 936902.05409999937,
+        "y" : 7992823.6689999998
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 48,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Lillesand",
+        "Par_ID" : 1070,
+        "x" : 8.4827086305033497,
+        "y" : 58.175439047262699,
+        "BEGIN" : 1860,
+        "END" : 1975,
+        "NAME" : "Vestre Moland",
+        "ORIG_FID" : 89
+      },
+      "geometry" : {
+        "x" : 944163.17540000007,
+        "y" : 8004455.2828999981
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 49,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 716,
+        "x" : 8.6469717725200308,
+        "y" : 58.442345493400303,
+        "BEGIN" : 1849,
+        "END" : 1872,
+        "NAME" : "Øyestad",
+        "ORIG_FID" : 92
+      },
+      "geometry" : {
+        "x" : 993278.3359999992,
+        "y" : 8046939.2824999988
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 50,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 716,
+        "x" : 8.6469717725200308,
+        "y" : 58.442345493400303,
+        "BEGIN" : 1847,
+        "END" : 1849,
+        "NAME" : "Øyestad",
+        "ORIG_FID" : 95
+      },
+      "geometry" : {
+        "x" : 959840.34250000119,
+        "y" : 8080208.7665000036
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 51,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 716,
+        "x" : 8.6469717725200308,
+        "y" : 58.442345493400303,
+        "BEGIN" : 1845,
+        "END" : 1847,
+        "NAME" : "Øyestad",
+        "ORIG_FID" : 96
+      },
+      "geometry" : {
+        "x" : 957934.90340000018,
+        "y" : 8080900.4946999997
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 52,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Arendal",
+        "Par_ID" : 716,
+        "x" : 8.6469717725200308,
+        "y" : 58.442345493400303,
+        "BEGIN" : 1683,
+        "END" : 1845,
+        "NAME" : "Øyestad",
+        "ORIG_FID" : 101
+      },
+      "geometry" : {
+        "x" : 972028.2126000002,
+        "y" : 8035046.4756999984
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 53,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Åmli",
+        "Par_ID" : 19,
+        "x" : 8.5376687730404495,
+        "y" : 58.754775125808898,
+        "BEGIN" : 1711,
+        "END" : 1875,
+        "NAME" : "Åmli",
+        "ORIG_FID" : 102
+      },
+      "geometry" : {
+        "x" : 925880.55829999968,
+        "y" : 8130681.2514000013
+      }
+    },
+    {
+      "attributes" : {
+        "OBJECTID" : 54,
+        "COUNTY" : "Aust-Agder",
+        "MUNICIPALITY" : "Gjerstad",
+        "Par_ID" : 284,
+        "x" : 8.9785838295774596,
+        "y" : 58.888833027029399,
+        "BEGIN" : 1745,
+        "END" : 1812,
+        "NAME" : "Gjerstad",
+        "ORIG_FID" : 104
+      },
+      "geometry" : {
+        "x" : 990500.32349999994,
+        "y" : 8141806.622299999
+      }
+    }
+  ]
+}

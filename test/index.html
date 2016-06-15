@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Get started with MapView - Create a 2D map - 4.0</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    
+    #select-geog{
+      max-width: 300px;
+      max-height: 50%;
+      background-color: white;
+      color: black;
+      padding: 5px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.0/"></script>
+
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/layers/FeatureLayer",
+      "esri/geometry/geometryEngine",
+      "esri/tasks/support/FeatureSet",
+      "esri/request",
+      "dojo/dom",
+      "dojo/dom-construct",
+      "dojo/on",
+      "dojo/domReady!"
+    ], function(Map, MapView, FeatureLayer, GE, FeatureSet, esriRequest, dom, domConstruct, on) {
+      
+      var countydd = dom.byId("fylke-select");
+      var citydd = dom.byId("herred-select");
+      var parishdd = dom.byId("prestegjeld-select");
+      var localparishdd = dom.byId("sokn-select");
+      var yearInput = dom.byId("year");
+      
+      var countyJsonUrl = "../json/fylke_centroids.json";
+      var cityJsonUrl = "../json/herred_centroids.json";
+      var parishJsonUrl = "../json/prestegjeld_centroids.json";
+      var localParishJsonUrl = "../json/sokn_centroids.json";
+      
+      var COUNTYPTS, CITYPTS, PARISHPTS, LOCALPARISHPTS;
+      
+      function getCentroids() {
+        return esriRequest(countyJsonUrl)
+          .then(function(response){
+            var fs = FeatureSet.fromJSON(response.data);
+            COUNTYPTS = fs.features;
+          
+            return esriRequest(cityJsonUrl);
+          })
+          .then(function(response){
+            var fs = FeatureSet.fromJSON(response.data);
+            CITYPTS = fs.features;
+          
+            return esriRequest(parishJsonUrl);
+          })
+          .then(function(response){
+            var fs = FeatureSet.fromJSON(response.data);
+            PARISHPTS = fs.features;
+          
+            return esriRequest(localParishJsonUrl);
+          })
+          .then(function(response){
+            var fs = FeatureSet.fromJSON(response.data);
+            LOCALPARISHPTS = fs.features;
+
+            return COUNTYPTS;
+          });
+      }
+
+      var map = new Map({
+        basemap: "streets"
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        zoom: 4,
+        center: [15, 65]
+      });
+      
+      view.ui.add("select-geog", "bottom-left");
+      
+      view.then(getCentroids);
+      
+      
+      function setDropdown (node){
+      
+      }
+
+    });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+  <div id="select-geog">
+    County (fylke): <select id="fylke-select"></select><br>
+    City (herred): <select id="herred-select"></select><br>
+    Parish (prestegjeld): <select id="prestegjeld-select"></select><br>
+    Local Parish (sokn): <select id="sokn-select"></select>
+    <br><br>
+    Enter year (1600 - 1979): <input type="number" id="year" value=1800>
+  </div>
+</body>
+</html>
