@@ -1,0 +1,69 @@
+[	
+	{
+		"name": "offices",
+		"url": "http://services3.arcgis.com/KXH3vrrQAKwhcniG/arcgis/rest/services/NA_Regional_Offices_2/FeatureServer/0",
+		"type": "FeatureLayer",
+		"visible": true,
+		"symbol": {
+			"type": "SimpleMarkerSymbol",
+			"color": [161, 215, 126]
+		}
+	},
+	{
+		"name": "parishes",
+		"url": "http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/2",
+		"type": "FeatureLayer",
+		"visible": false,
+		"symbol": {
+			"type": "SimpleFillSymbol",
+			"outline": {
+				"color": [251, 222, 127]
+			}
+		},
+		"search": {
+			"name": "Parishes",
+			"displayField": "Par_NAME",
+			"outFields": ["Par_NAME", "MUNICIPALITY", "COUNTY"],
+            "placeholder": "e.g. Tvedestrand",
+            "searchFields": ["Par_NAME", "MUNICIPALITY", "COUNTY"]
+		}
+	},
+	{
+		"name": "municipalities",
+		"url": "http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/1",
+		"type": "FeatureLayer",
+		"visible": false,
+		"symbol": {
+			"type": "SimpleFillSymbol",
+			"outline": {
+				"color": [55, 169, 183]
+			}
+		},
+		"search": {
+			"name": "Municipalities",
+			"displayField": "MUNICIPALITY",
+			"outFields": ["MUNICIPALITY", "COUNTY"],
+            "placeholder": "e.g. Oslo",
+            "searchFields": ["MUNICIPALITY", "COUNTY"]
+		}
+	},
+	{
+		"name": "counties",
+		"url": "http://services3.arcgis.com/KXH3vrrQAKwhcniG/ArcGIS/rest/services/Norway_Parishes_4326_2/FeatureServer/0",
+		"type": "FeatureLayer",
+		"visible": true,
+		"symbol": {
+			"type": "SimpleFillSymbol",
+			"outline": {
+				"color": [249, 123, 96]
+			}
+		},
+		"search": {
+			"name": "Counties",
+			"displayField": "COUNTY",
+			"outFields": ["COUNTY"],
+            "placeholder": "e.g. Aust-Agder",
+            "searchFields": ["COUNTY"]
+		}
+	}
+]

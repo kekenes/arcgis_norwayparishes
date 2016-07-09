@@ -1,0 +1,300 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+header {
+  background: #ffffff;
+  color: #333333;
+
+  .title {
+    p {
+      img {
+        width: 1.5em;
+        display: inline-block;
+        margin-top: -0.2em;
+      }
+
+      color: #555555;
+      font-size: 1.5em;
+      font-weight: 400;
+      margin: 0;
+      padding: 0.5em 0.5em 0.5em 0;
+    }
+  }
+  
+  ul {
+    text-align: right;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    
+    li {
+      display: inline-block;
+      padding: 1.1em; 
+      
+      a {
+        text-decoration: none;
+        color: #777777;
+      }
+      a:hover {
+        text-decoration: none;
+        color: #777777;
+      }
+      a:focus {
+        outline: none;
+      }
+    }
+    
+    li:last-child {
+      
+      a {
+        text-decoration: none;
+        color: #ffffff;
+        background: #f06060;
+        border-radius: 10em;
+        padding: 0.4em 0.5em;
+        
+        i {
+          margin-right: 0.15em;
+        }
+      }
+      a:hover {
+        text-decoration: none;
+         color: #ffffff;
+      }
+    }
+  }
+}
+
+.map-container {
+  position: relative;
+  
+  .views {
+    z-index: 9999;
+    position: absolute;
+    top: 1em;
+    right: 6em;
+    list-style: none;
+    background: rgba(236, 240, 241,0.75);
+    padding: 0.5em 1em;
+    margin: 0;
+    
+    li {
+      display: inline-block;
+      font-size: 1.15em;
+      font-weight: bold;
+      
+      a {
+        text-decoration: none;
+        color: #333333;
+        opacity: 0.5;
+      }
+      
+      a:hover {
+        opacity: 1;
+      }
+    }
+    li:first-child {
+      padding-right: 0.35em;
+    }
+    li:last-child {
+      padding-left: 0.5em;
+      border-left: 1px solid #777777;
+    }
+    .active {
+      a {
+        opacity: 0.85;
+      }    
+    }
+  }
+  
+  #search {
+    position: absolute;
+    top: 0.65em;
+    left: 3.5em;
+  }
+
+
+  #toolsContainer, #optionsContainer {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    width: auto;
+    background: #ffffff;
+    display: none;
+
+    .box-header {
+      background: #ecf0f1;
+
+      .title {
+        margin: 0;
+        padding: 0.6em 0.2em;
+        color: #777777;
+        font-size: 1.15em;
+        font-weight: 300;
+      }
+
+      .close-block {
+        text-align: right;
+        color: #7f8c8d;
+
+        .close-container {
+          text-align: right;
+          margin: 0.5em 0;
+          padding: 0;
+
+          i{
+            cursor: pointer;
+            padding: 0.3em 0.6em;
+            background: #ffffff;
+            font-size: 1.25em;
+          }
+        }
+      }
+    }
+
+    .box-body {
+      padding: 1em;
+      color: #555555;
+      label {
+        padding: 0.75em 0;
+      }
+      select {
+        width: 10em;
+        background: #ecf0f1;
+        margin: 0.5em 0;
+        padding: 0.25em 0.75em;
+        border: none;
+        box-shadow: none;
+        background-image: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+      select:focus {
+        outline: none;
+      }
+    }
+  }
+  
+  #optionsContainer {
+    top: 4em;
+    bottom: auto;
+    left: auto;
+    right: 1em;
+  }
+
+  #tools, #options{
+    position:absolute;
+    appearance:none;
+    cursor:pointer;
+    left:-100%;
+    top:-100%;
+  }
+
+  #tools + label, #options + label {
+    position:absolute;
+    bottom: 0.5em;
+    left: 1em;
+    padding:0.575em 1.15em;
+    background: rgba(245, 245, 245,0.75);
+    font-size: 1em;
+    font-weight: bolder;
+    color: #555555;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    transition:all 500ms ease;
+
+    i:last-child {
+      margin-left: 0.25em;
+    }
+  }
+
+  #options + label {
+    top: 1em;
+    bottom: auto;
+    left: auto;
+    right: 1em;
+  }
+
+  #tools:checked ~ #toolsContainer {
+    display: block;
+  }
+
+  #options:checked ~ #optionsContainer {
+    display: block;
+  }
+}
+
+.modal-body {
+  text-align: center;
+  .share-link {
+    padding-top: 2em;
+    label {
+      padding: 0.5em 1em;
+      color: #bbbbbb;
+    }
+    input {
+      outline: none;
+      border: none;
+      padding: 0.5em 1em;
+      color: #999999;
+      background: #eeeeee;
+    }
+  }
+  
+  .social {
+    list-style: none;
+    margin: 1em;
+    padding: 0;
+    
+    li{
+      display: inline-block;  
+      font-size: 2em;
+      padding: 0.5em 1em;
+      color: #bbbbbb;
+    }
+    
+    li:hover {
+      background: #bbbbbb;
+      color: #ffffff;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bdc3c7;
+}
+
+.esri-zoom-in, .esri-zoom-out {
+  border: none !important;
+  border-radius: 0 !important;
+  background: rgba(245, 245, 245,0.75) !important;
+}
+
+.esri-zoom-in {
+  border-bottom: 1px solid #cccccc !important;
+}
+
+.esri-search {
+  text-shadow: 0;
+  outline: none;
+  border: none;
+}

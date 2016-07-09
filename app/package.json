@@ -1,0 +1,29 @@
+{
+  "name": "norwayparishes",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kekenes/arcgis_norwayparishes.git"
+  },
+  "author": "Kristian Ekenes <kristianekenes@gmail.com>",
+  "contributors": [
+    {
+      "name": "MohanRaj Balumuri",
+      "email": "balumuriraj@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kekenes/arcgis_norwayparishes/issues"
+  },
+  "homepage": "http://norwayparishes.com",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.3"
+  }
+}

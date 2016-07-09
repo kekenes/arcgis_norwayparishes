@@ -1,0 +1,19 @@
+{
+  "name": "norwayparishes",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kekenes/arcgis_norwayparishes.git",
+  "authors": [
+    "Kristian Ekenes <kristianekenes@gmail.com>"
+  ],
+  "keywords": [
+    "norway"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
