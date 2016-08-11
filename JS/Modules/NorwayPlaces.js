@@ -6,20 +6,13 @@ define([
   "esri/layers/FeatureLayer",
   "esri/renderers/SimpleRenderer",
   "esri/symbols/SimpleMarkerSymbol",
-  "esri/tasks/support/ProjectParameters",
-  "esri/tasks/GeometryService",
-  "esri/geometry/SpatialReference",
   "projection/proj4"
 ], function(
-  esriRequest, esriConfig,
-  Point, Graphic, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol,
-  ProjectParameters, GeometryService, SpatialReference, proj4
+  esriRequest, esriConfig, Point, Graphic, FeatureLayer,
+  SimpleRenderer, SimpleMarkerSymbol, proj4
 ){
 
   // service urls
-  var gs = new GeometryService({
-    url: "https://utility.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
-  });
   esriConfig.request.proxyUrl = "../proxy/PHP/proxy.php";
   esriConfig.request.corsEnabledServers.push("https://ws.geonorge.no/SKWS3Index/ssr/sok");
 
@@ -115,8 +108,8 @@ define([
           console.log("no raw results");
           return 0;
         }
-        start = performance.now();
-       /* graphics =*/ return rawResults.map(function(item, i){
+
+        return rawResults.map(function(item, i){
           var att = {};
           att.ObjectId = i++;
           att.x = item.aust[0]._text;
@@ -130,10 +123,8 @@ define([
           att.county = item.fylkesnavn[0]._text;
           att.wkid = item.epsgKode[0]._text;
 
-
+          // project points to web mercator
           var geoCoords = project(att.x, att.y);
-
-          console.log(geoCoords);
 
           var geom = new Point({
             x: geoCoords.x,
@@ -144,56 +135,14 @@ define([
           att.lon = round(geom.longitude, 6);
           att.lat = round(geom.latitude, 6);
 
-//          var geom = new Point({
-//            x: att.x,
-//            y: att.y,
-//            spatialReference: { wkid: att.wkid }
-//          });
-
           return new Graphic({
             attributes: att,
             geometry: geom
           });
         });
-//        console.log("performance: ", performance.now() - start);
-//        console.log("graphics: ", graphics);
-//        return graphics;
 
-//        var projectParams = new ProjectParameters({
-//          outSR: new SpatialReference({ wkid: 3857 }),
-//          // ETRS_1989_To_WGS_1984
-//          transformation: { wkid: 1149 },
-//          transformForward: true,
-//          geometries: graphics.map(function(graphic, i){
-//            return graphic.geometry;
-//          })
-//        });
-//
-//        start = performance.now();
-//
-//        return gs.project(projectParams);
-//      }).then(function(response){
-//        console.log("project time: ", performance.now() - start);
-//
-//        var properties = [];
-//        response.forEach(function(geom, i){
-//          graphics[i].geometry = geom;
-//          graphics[i].attributes.lon = round(geom.longitude, 6);
-//          graphics[i].attributes.lat = round(geom.latitude, 6);
-//
-//          if (geoFilter){
-//            if (geoFilter.contains(geom)){
-//              properties.push(graphics[i]);
-//            }
-//          } else {
-//            properties.push(graphics[i]);
-//          }
-//
-//        });
-//        return properties;
       }).then(function(features){
-        console.log("performance: ", performance.now() - start);
-        console.log("features: ", features);
+
         return new FeatureLayer({
           title: "Property results",
           fields: fields,
@@ -206,6 +155,8 @@ define([
           popupTemplate: popupTemplate
         }).load();
 
+      }).otherwise(function(err){
+        console.error("search failed. Layer was not created: ", err);
       });
     },
 
