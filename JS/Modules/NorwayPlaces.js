@@ -16,14 +16,60 @@ define([
   esriConfig.request.proxyUrl = "../proxy/PHP/proxy.php";
   esriConfig.request.corsEnabledServers.push("https://ws.geonorge.no/SKWS3Index/ssr/sok");
 
+  ///////////////////////////////////////
+  //
+  // FeatureLayer schema
+  //
+  ///////////////////////////////////////
+
+  var fields = [
+    { name: "ObjectID", alias: "ObjectID", type: "short" },
+    { name: "x", alias: "easting", type: "double" },
+    { name: "y", alias: "northing", type: "double" },
+    { name: "lon", alias: "longitude", type: "double" },
+    { name: "lat", alias: "latitude", type: "double" },
+    { name: "name", alias: "name", type: "string" },
+    { name: "ssrId", alias: "ssrId", type: "double" },
+    { name: "status", alias: "status", type: "string" },
+    { name: "propertyName", alias: "Property Name", type: "string" },
+    { name: "type", alias: "Property Type", type: "double" },
+    { name: "municipality", alias: "Municipality", type: "string" },
+    { name: "county", alias: "County", type: "string" },
+    { name: "wkid", alias: "wkid", type: "string" }
+  ];
+
+  var popupTemplate = {
+    title: "{name}",
+    content: "Name: {name}<br>"
+      + "{municipality}, {county}<br>"
+      + "Coordinates: {lat}° N, {lon}° E",
+    actions: [{
+      title: "Fact Sheet",
+      id: "fact-sheet"
+    }]
+  };
+
+  var renderer = new SimpleRenderer({
+    symbol: new SimpleMarkerSymbol({
+      style: "circle",
+      size: 6,
+      color: "blue",
+      outline: {
+        size: 10,
+        color: [ 0, 0, 255, 0.5 ]
+      }
+    }),
+    label: "Properties"
+  });
+
   function round (num, places){
     var factor = Math.pow(10, places);
     return Math.round(num * factor) / factor;
   }
 
+  // projects coordinates from EPSG_25833 to Web Mercator
   function project (x, y){
     var EPSG_25833 = 'PROJCS["ETRS_1989_UTM_Zone_33N",GEOGCS["GCS_ETRS_1989",DATUM["D_ETRS_1989",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["False_Easting",500000.0],PARAMETER["False_Northing",0.0],PARAMETER["Central_Meridian",15.0],PARAMETER["Scale_Factor",0.9996],PARAMETER["Latitude_Of_Origin",0.0],UNIT["Meter",1.0]]';
-
     var WebMercator =  'PROJCS["WGS_1984_Web_Mercator_Auxiliary_Sphere",GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137.0,298.257223563]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Mercator_Auxiliary_Sphere"],PARAMETER["False_Easting",0.0],PARAMETER["False_Northing",0.0],PARAMETER["Central_Meridian",0.0],PARAMETER["Standard_Parallel_1",0.0],PARAMETER["Auxiliary_Sphere_Type",0.0],UNIT["Meter",1.0]]';
 
     return proj4(EPSG_25833, WebMercator, { x: x, y: y });
@@ -39,52 +85,6 @@ define([
       if(propertyName.length < 1){
         alert("You must enter a property name to perform this operation.");
       }
-
-      ///////////////////////////////////////
-      //
-      // FeatureLayer schema
-      //
-      ///////////////////////////////////////
-
-      var fields = [
-        { name: "ObjectID", alias: "ObjectID", type: "short" },
-        { name: "x", alias: "easting", type: "double" },
-        { name: "y", alias: "northing", type: "double" },
-        { name: "lon", alias: "longitude", type: "double" },
-        { name: "lat", alias: "latitude", type: "double" },
-        { name: "name", alias: "name", type: "string" },
-        { name: "ssrId", alias: "ssrId", type: "double" },
-        { name: "status", alias: "status", type: "string" },
-        { name: "propertyName", alias: "Property Name", type: "string" },
-        { name: "type", alias: "Property Type", type: "double" },
-        { name: "municipality", alias: "Municipality", type: "string" },
-        { name: "county", alias: "County", type: "string" },
-        { name: "wkid", alias: "wkid", type: "string" }
-      ];
-
-      var popupTemplate = {
-        title: "{name}",
-        content: "Name: {name}<br>"
-          + "{municipality}, {county}<br>"
-          + "Coordinates: {lat}° N, {lon}° E",
-        actions: [{
-          title: "Fact Sheet",
-          id: "fact-sheet"
-        }]
-      };
-
-      var renderer = new SimpleRenderer({
-        symbol: new SimpleMarkerSymbol({
-          style: "circle",
-          size: 6,
-          color: "blue",
-          outline: {
-            size: 10,
-            color: [ 0, 0, 255, 0.5 ]
-          }
-        }),
-        label: "Properties"
-      });
 
       // exampleRequestUrl => "https://ws.geonorge.no/SKWS3Index/ssr/sok?navn=Ask*&maxAnt=50&tilSosiKoordSyst=4258&fylkeKommuneListe=605,612&eksakteForst=true";
 
@@ -171,13 +171,9 @@ define([
 
     withinExtent: function(point, extent){
       var within = extent.contains(point);
-      if(within){
-        return within;
-      }
-      else{
-        alert("Address not located in Norway.");
-        return false;
-      }
+      if(!within){ alert("Address not located in Norway."); }
+
+      return within;
     }
   };
 });
