@@ -23,23 +23,32 @@
     }
   </style>
 
-  <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
-  <script src="https://js.arcgis.com/4.0/"></script>
+  <script>
+    var dojoConfig = {
+      paths: {
+        Modules: location.pathname.replace(/\/[^/]+$/, "") + "../JS/Modules",
+        projection: location.pathname.replace(/\/[^/]+$/, "") + "../JS/Modules/proj4js-2.3.14/dist"
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="https://jsdev.arcgis.com/4.0/esri/css/main.css">
+  <script src="https://jsdev.arcgis.com/4.0/"></script>
+  <script src="../JS/Modules/xmltojson.js"></script>
 
   <script>
     require([
       "esri/WebMap",
       "esri/views/MapView",
-      "esri/layers/FeatureLayer",
-      "esri/geometry/geometryEngine",
       "esri/tasks/support/FeatureSet",
       "esri/tasks/support/Query",
       "esri/request",
       "dojo/dom",
       "dojo/dom-construct",
       "dojo/on",
+      "Modules/NorwayPlaces",
       "dojo/domReady!"
-    ], function(WebMap, MapView, FeatureLayer, GE, FeatureSet, Query, esriRequest, dom, domConstruct, on) {
+    ], function(WebMap, MapView, FeatureSet, Query, esriRequest, dom, domConstruct, on, NorwayPlaces) {
 
       var countydd = dom.byId("fylke-select");
       var citydd = dom.byId("herred-select");
@@ -104,12 +113,15 @@
 
       view.ui.add("select-geog", "bottom-left");
 
-
-
-
       view.then(filterByYear)
         .then(getCentroids)
-        .then(setDropdown);
+        .then(setDropdown)
+        .then(function(){
+          return NorwayPlaces.search("ekenes");
+        }).then(function(layer){
+          console.log("layer: ", layer);
+          map.add(layer);
+        });
 
 
       function filterByYear(){
@@ -212,12 +224,12 @@
 
         var qParams = new Query({
           returnGeometry: true,
-          where: "COUNTY = '" + county + "'"
+          where: "COUNTY = '" + county + "' AND " + defExp
         });
 
         countyLayer.queryFeatures(qParams)
           .then(function(response){
-            console.log(response);
+            console.log("county select response: ", response.features);
             var geom = response.features[0].geometry;
             return {
               node: citydd,
@@ -226,6 +238,8 @@
 //              }),
               geom: geom
             }
+          }, function(err){
+            console.error("There was an error performing the query: ", err);
           })
           .then(setDropdown)
           .then(setDropdown)
@@ -243,7 +257,7 @@
 
         var qParams = new Query({
           returnGeometry: true,
-          where: "MUNICIPALITY = '" + city + "'"
+          where: "MUNICIPALITY = '" + city + "' AND " + defExp
         });
 
         cityLayer.queryFeatures(qParams)
@@ -273,7 +287,7 @@
 
         var qParams = new Query({
           returnGeometry: true,
-          where: "NAME = '" + parish + "'"
+          where: "NAME = '" + parish + "' AND " + defExp
         });
 
         parishLayer.queryFeatures(qParams)
@@ -302,7 +316,7 @@
 
         var qParams = new Query({
           returnGeometry: true,
-          where: "Par_NAME = '" + localParish + "'"
+          where: "Par_NAME = '" + localParish + "' AND " + defExp
         });
 
         localParishLayer.queryFeatures(qParams)
@@ -318,6 +332,16 @@
             }
           });
       }
+
+      console.log("test: ", NorwayPlaces.test());
+
+      view.popup.on("trigger-action", function(evt) {
+        // Execute the measureThis() function if the measure-this action is clicked
+        if (evt.action.id === "fact-sheet") {
+          var propId = view.popup.selectedFeature.attributes.ssrId;
+          NorwayPlaces.getFactSheet(propId);
+        }
+      });
 
     });
   </script>
