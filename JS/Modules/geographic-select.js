@@ -8,7 +8,7 @@ define([
   Query, constants, FeatureSet, esriRequest, domConstruct
 ){
 
-  var map;
+  var map, view;
 
   var countyJsonUrl = "../json/fylke_centroids.json";
   var cityJsonUrl = "../json/herred_centroids.json";
@@ -18,8 +18,9 @@ define([
   var COUNTYLYR, CITYLYR, PARISHLYR, LOCALPARISHLYR;
   var COUNTYPTS, CITYPTS, PARISHPTS, LOCALPARISHPTS;
 
-  var getCentroids = function (m) {
+  var getCentroids = function (m, v) {
     map = m;
+    view = v;
     return esriRequest(countyJsonUrl)
       .then(function(response){
         var fs = FeatureSet.fromJSON(response.data);
@@ -157,6 +158,9 @@ define([
       countyLayer.queryFeatures(qParams)
         .then(function(response){
           console.log("county select response: ", response.features);
+          // zoom to selection
+          view.goTo(response.features);
+
           var geom = response.features[0].geometry;
           return {
             node: constants.citydd,
@@ -221,7 +225,10 @@ define([
 
       parishLayer.queryFeatures(qParams)
         .then(function(response){
+          // zoom to selection
+          view.goTo(response.features);
           console.log(response);
+
           var geom = response.features[0].geometry;
           return {
             node: constants.localparishdd,
@@ -251,7 +258,10 @@ define([
 
       localParishLayer.queryFeatures(qParams)
         .then(function(response){
+          // zoom to selection
+          view.goTo(response.features);
           console.log(response);
+
           var geom = response.features[0].geometry;
           return {
             geom: geom

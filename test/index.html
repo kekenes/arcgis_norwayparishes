@@ -62,7 +62,7 @@
 
       view.then(filterByYear)
         .then(function(){
-          return geoSelect.getCentroids(map);
+          return geoSelect.getCentroids(map, view);
         })
         .then(function(){
           return NorwayPlaces.search("ekenes");
