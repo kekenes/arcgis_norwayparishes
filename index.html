@@ -5,37 +5,37 @@
     <title>Norway's Parishes</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <meta charset="utf-8">
-    
+
     <!-- Bootstrap Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    
-    <link rel="stylesheet" type="text/css" href="./JS/Modules/src/agsjs/css/agsjs.css">    
+
+    <link rel="stylesheet" type="text/css" href="./JS/modules/src/agsjs/css/agsjs.css">
     <script>
-      var dojoConfig = { 
+      var dojoConfig = {
         paths: {
-          Modules: location.pathname.replace(/\/[^/]+$/, "") + "./JS/Modules",
-          agsjs: location.pathname.replace(/\/[^/]+$/, "") + "./JS/Modules/src/agsjs"
+          modules: location.pathname.replace(/\/[^/]+$/, "") + "./JS/modules",
+          agsjs: location.pathname.replace(/\/[^/]+$/, "") + "./JS/modules/src/agsjs"
         }
       };
     </script>
-    
+
     <!--Load ArcGIS JS API from CDN-->
     <link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
     <script src="http://js.arcgis.com/3.14/"></script>
 
     <link href="CSS/parishstyle_v2.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" type="image/x-icon" href="/flag_1-20140714-favicon.ico">
-    
+
     <script src="JS/old_county_data.js"></script>
     <script src="JS/navigation.js"></script>
     <script src="JS/parishjs_v2.js"></script>
-    <script src="JS/Modules/xmltojson.js"></script>
-    
+    <script src="JS/modules/xmltojson.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
+
 </head>
-    
+
 <body>
 <div id="map">
     <div id="header">
@@ -50,25 +50,25 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </button>  
-              
+        </button>
+
             <a class="navbar-brand title" href="#">Norway's Parishes</a>
           </div>
-          <div id="navbar" class="collapse navbar-collapse"> 
+          <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
               <li><a id="mapNav" href="#">Map</a></li>
-              <li><a id="aboutNav" href="#">About</a></li> 
-              <li><a id="helpNav" href="#">Help</a></li>    
-              <li><a id="resourcesNav" href="#">More Resources</a></li>    
-              <li><a id="contactNav" href="#">Contact</a></li>  
+              <li><a id="aboutNav" href="#">About</a></li>
+              <li><a id="helpNav" href="#">Help</a></li>
+              <li><a id="resourcesNav" href="#">More Resources</a></li>
+              <li><a id="contactNav" href="#">Contact</a></li>
             </ul>
           </div>
         </div><!--/.container-fluid -->
       </nav>
     </div>
-    
+
 <!--    <div id="map">-->
-    
+
     <div id="tools">
         <img src="IMG/loading.gif" id="loading">
         <div id="toolsHeader" class="divTitle" title="Click to minimize and maximize this toolbox">Tools<span id="toolsMinIcon" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span><span id="toolsMaxIcon" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></div>
@@ -98,9 +98,9 @@
         <div id="legendContent" class="content"></div>
         <div id="legendContentBase" class="content">
         <h4>Base Layers</h4>
-        <input type="checkbox" id="streetCheck">&nbsp;&nbsp;&nbsp;Highways and Streets<br> 
+        <input type="checkbox" id="streetCheck">&nbsp;&nbsp;&nbsp;Highways and Streets<br>
         <input type="radio" name="baseLayers" id="radioTopo" checked>&nbsp;&nbsp;&nbsp;Topographic Map<br>
-        <input type="radio" name="baseLayers" id="radioSat">&nbsp;&nbsp;&nbsp;Satellite Imagery<br>   
+        <input type="radio" name="baseLayers" id="radioSat">&nbsp;&nbsp;&nbsp;Satellite Imagery<br>
         </div><br><br>
         </div>
     </div>
@@ -118,5 +118,5 @@
     <div id="aboutContent"></div>
     </div>
 </body>
-    
+
 </html>

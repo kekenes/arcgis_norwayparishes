@@ -1,6 +1,6 @@
 define([
   "esri/tasks/support/Query",
-  "Modules/constants",
+  "modules/constants",
   "esri/tasks/support/FeatureSet",
   "esri/request",
   "dojo/dom-construct",

@@ -26,23 +26,23 @@
   <script>
     var dojoConfig = {
       paths: {
-        Modules: location.pathname.replace(/\/[^/]+$/, "") + "../JS/Modules",
-        projection: location.pathname.replace(/\/[^/]+$/, "") + "../JS/Modules/proj4js-2.3.14/dist"
+        modules: location.pathname.replace(/\/[^/]+$/, "") + "../JS/modules",
+        projection: location.pathname.replace(/\/[^/]+$/, "") + "../JS/modules/proj4js-2.3.14/dist"
       }
     };
   </script>
 
   <link rel="stylesheet" href="https://jsdev.arcgis.com/4.0/esri/css/main.css">
   <script src="https://jsdev.arcgis.com/4.0/"></script>
-  <script src="../JS/Modules/xmltojson.js"></script>
+  <script src="../JS/modules/xmltojson.js"></script>
 
   <script>
     require([
       "esri/WebMap",
       "esri/views/MapView",
-      "Modules/NorwayPlaces",
-      "Modules/geographic-select",
-      "Modules/constants",
+      "modules/NorwayPlaces",
+      "modules/geographic-select",
+      "modules/constants",
       "dojo/on",
       "dojo/domReady!"
     ], function(WebMap, MapView, NorwayPlaces, geoSelect, constants, on) {
