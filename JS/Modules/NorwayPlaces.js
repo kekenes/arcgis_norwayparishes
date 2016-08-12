@@ -75,6 +75,12 @@ define([
     return proj4(EPSG_25833, WebMercator, { x: x, y: y });
   }
 
+  //////////////////////////////////////////////
+  //
+  // Static Methods
+  //
+  //////////////////////////////////////////////
+
   return {
     test: function(){
       return "this is a test";

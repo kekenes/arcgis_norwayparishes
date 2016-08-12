@@ -40,63 +40,12 @@
     require([
       "esri/WebMap",
       "esri/views/MapView",
-      "esri/tasks/support/FeatureSet",
-      "esri/tasks/support/Query",
-      "esri/request",
-      "dojo/dom",
-      "dojo/dom-construct",
-      "dojo/on",
       "Modules/NorwayPlaces",
+      "Modules/geographic-select",
+      "Modules/constants",
+      "dojo/on",
       "dojo/domReady!"
-    ], function(WebMap, MapView, FeatureSet, Query, esriRequest, dom, domConstruct, on, NorwayPlaces) {
-
-      var countydd = dom.byId("fylke-select");
-      var citydd = dom.byId("herred-select");
-      var parishdd = dom.byId("prestegjeld-select");
-      var localparishdd = dom.byId("sokn-select");
-      var year = dom.byId("year").value;
-      var defExp = "BEGIN_ <= " + year + " AND END_ > " + year;
-
-      var countyJsonUrl = "../json/fylke_centroids.json";
-      var cityJsonUrl = "../json/herred_centroids.json";
-      var parishJsonUrl = "../json/prestegjeld_centroids.json";
-      var localParishJsonUrl = "../json/sokn_centroids.json";
-
-      var COUNTYLYR, CITYLYR, PARISHLYR, LOCALPARISHLYR;
-      var COUNTYPTS, CITYPTS, PARISHPTS, LOCALPARISHPTS;
-
-      function getCentroids() {
-        return esriRequest(countyJsonUrl)
-          .then(function(response){
-            var fs = FeatureSet.fromJSON(response.data);
-            COUNTYPTS = fs.features;
-
-            return esriRequest(cityJsonUrl);
-          })
-          .then(function(response){
-            var fs = FeatureSet.fromJSON(response.data);
-            CITYPTS = fs.features;
-
-            return esriRequest(parishJsonUrl);
-          })
-          .then(function(response){
-            var fs = FeatureSet.fromJSON(response.data);
-            PARISHPTS = fs.features;
-
-            return esriRequest(localParishJsonUrl);
-          })
-          .then(function(response){
-            var fs = FeatureSet.fromJSON(response.data);
-            LOCALPARISHPTS = fs.features;
-
-            return {
-              node: countydd,
-              layer: map.layers.find(function(layer){
-                return layer.title === "Norge_boundaries - fylke";
-              })
-            };
-          });
-      }
+    ], function(WebMap, MapView, NorwayPlaces, geoSelect, constants, on) {
 
       var map = new WebMap({
         portalItem: {
@@ -106,16 +55,15 @@
 
       var view = new MapView({
         container: "viewDiv",
-        map: map,
-//        zoom: 4,
-//        center: [15, 65]
+        map: map
       });
 
       view.ui.add("select-geog", "bottom-left");
 
       view.then(filterByYear)
-        .then(getCentroids)
-        .then(setDropdown)
+        .then(function(){
+          return geoSelect.getCentroids(map);
+        })
         .then(function(){
           return NorwayPlaces.search("ekenes");
         }).then(function(layer){
@@ -123,217 +71,38 @@
           map.add(layer);
         });
 
+      //////////////////////////////////
+      //
+      // FILTER LAYERS BY SELECTED YEAR
+      //
+      /////////////////////////////////
 
       function filterByYear(){
         map.layers.forEach(function(layer){
           console.log(layer);
           if (layer.title !== "Norway Topo map (3857)"){
-            layer.definitionExpression = defExp;
+            layer.definitionExpression = constants.defExp;
           }
         });
         return;
       }
 
+      //////////////////////////////////
+      //
+      // EVENT HANDLERS FOR DROPDOWNS
+      //
+      /////////////////////////////////
 
-      function setDropdown (opts){
-        var node = opts.node;
-        var layer = opts.layer;
-        var geom = opts.geom;
+      on(constants.countydd, "change", geoSelect.countySelect);
+      on(constants.citydd, "change", geoSelect.citySelect);
+      on(constants.parishdd, "change", geoSelect.parishSelect);
+      on(constants.localparishdd, "change", geoSelect.localParishSelect);
 
-        var nextNode, nextLyr;
-
-        var options = [""];
-
-        // reset dropdown if already populated with options
-        node.options.length = 0;
-
-        if (node.id === "fylke-select"){
-          COUNTYPTS.forEach(function(county, i){
-            var atts = county.attributes;
-            // "BEGIN_ <= " + year + " AND END_ > " + year;
-            if (atts.BEGIN <= year && atts.END > year){
-              options.push(atts.COUNTY);
-            }
-          });
-
-          nextLyr = map.layers.find(function(layer){
-            return layer.title === "Norge_boundaries - herred";
-          });
-          nextNode = citydd;
-        }
-
-        if (node.id === "herred-select"){
-          CITYPTS.forEach(function(city, i){
-            var atts = city.attributes;
-            if ((atts.BEGIN <= year && atts.END > year) && geom.contains(city.geometry)){
-              options.push(atts.MUNICIPALITY);
-            }
-          });
-
-          nextLyr = map.layers.find(function(layer){
-            return layer.title === "Norge_boundaries - prestegjeld";
-          });
-          nextNode = parishdd;
-        }
-
-        if (node.id === "prestegjeld-select"){
-          PARISHPTS.forEach(function(parish, i){
-            var atts = parish.attributes;
-            if ((atts.BEGIN <= year && atts.END > year) && geom.contains(parish.geometry)){
-              options.push(atts.NAME);
-            }
-          });
-
-          nextLyr = map.layers.find(function(layer){
-            return layer.title === "Norge_boundaries - sokn";
-          });
-          nextNode = localparishdd;
-        }
-
-        if (node.id === "sokn-select"){
-          LOCALPARISHPTS.forEach(function(parish, i){
-            var atts = parish.attributes;
-            if ((atts.BEGIN <= year && atts.END > year) && geom.contains(parish.geometry)){
-              options.push(atts.Par_NAME);
-            }
-          });
-        }
-
-        options.sort();
-        options.forEach(function(item, i){
-          var option = domConstruct.create("option");
-          option.text = item;
-          node.add(option);
-        });
-
-        return {
-          node: nextNode,
-          layer: nextLyr,
-          geom: geom
-        };
-      }
-
-      on(countydd, "change", countySelect);
-
-      function countySelect (evt){
-
-        var county = evt.target.value;
-        var countyLayer = map.layers.find(function(layer){
-          return layer.title === "Norge_boundaries - fylke";
-        });
-
-        var qParams = new Query({
-          returnGeometry: true,
-          where: "COUNTY = '" + county + "' AND " + defExp
-        });
-
-        countyLayer.queryFeatures(qParams)
-          .then(function(response){
-            console.log("county select response: ", response.features);
-            var geom = response.features[0].geometry;
-            return {
-              node: citydd,
-//              layer: map.layers.find(function(layer){
-//                return layer.title === "Norge_boundaries - herred";
-//              }),
-              geom: geom
-            }
-          }, function(err){
-            console.error("There was an error performing the query: ", err);
-          })
-          .then(setDropdown)
-          .then(setDropdown)
-          .then(setDropdown);
-      }
-
-      on(citydd, "change", citySelect);
-
-      function citySelect (evt){
-
-        var city = evt.target.value;
-        var cityLayer = map.layers.find(function(layer){
-          return layer.title === "Norge_boundaries - herred";
-        });
-
-        var qParams = new Query({
-          returnGeometry: true,
-          where: "MUNICIPALITY = '" + city + "' AND " + defExp
-        });
-
-        cityLayer.queryFeatures(qParams)
-          .then(function(response){
-            console.log(response);
-            var geom = response.features[0].geometry;
-            return {
-              node: parishdd,
-//              layer: map.layers.find(function(layer){
-//
-//              }),
-              geom: geom
-            }
-          })
-          .then(setDropdown)
-          .then(setDropdown);
-      }
-
-      on(parishdd, "change", parishSelect);
-
-      function parishSelect (evt){
-
-        var parish = evt.target.value;
-        var parishLayer = map.layers.find(function(layer){
-          return layer.title === "Norge_boundaries - prestegjeld";
-        });
-
-        var qParams = new Query({
-          returnGeometry: true,
-          where: "NAME = '" + parish + "' AND " + defExp
-        });
-
-        parishLayer.queryFeatures(qParams)
-          .then(function(response){
-            console.log(response);
-            var geom = response.features[0].geometry;
-            return {
-              node: localparishdd,
-//              layer: map.layers.find(function(layer){
-//
-//              }),
-              geom: geom
-            }
-          })
-          .then(setDropdown);
-      }
-
-      on(localparishdd, "change", localParishSelect);
-
-      function localParishSelect (evt){
-
-        var localParish = evt.target.value;
-        var localParishLayer = map.layers.find(function(layer){
-          return layer.title === "Norge_boundaries - sokn";
-        });
-
-        var qParams = new Query({
-          returnGeometry: true,
-          where: "Par_NAME = '" + localParish + "' AND " + defExp
-        });
-
-        localParishLayer.queryFeatures(qParams)
-          .then(function(response){
-            console.log(response);
-            var geom = response.features[0].geometry;
-            return {
-//              node: citydd,
-//              layer: map.layers.find(function(layer){
-//
-//              }),
-              geom: geom
-            }
-          });
-      }
-
-      console.log("test: ", NorwayPlaces.test());
+      //////////////////////////////////////////
+      //
+      // POPUP FACT SHEET ACTION EVENT HANDLER
+      //
+      //////////////////////////////////////////
 
       view.popup.on("trigger-action", function(evt) {
         // Execute the measureThis() function if the measure-this action is clicked
