@@ -32,8 +32,8 @@
     };
   </script>
 
-  <link rel="stylesheet" href="https://jsdev.arcgis.com/4.0/esri/css/main.css">
-  <script src="https://jsdev.arcgis.com/4.0/"></script>
+  <link rel="stylesheet" href="https://jsdev.arcgis.com/4.1/esri/css/main.css">
+  <script src="https://jsdev.arcgis.com/4.1/"></script>
   <script src="../JS/modules/xmltojson.js"></script>
 
   <script>
@@ -55,19 +55,25 @@
 
       var view = new MapView({
         container: "viewDiv",
-        map: map
+        map: map,
+        popup: {
+          dockEnabled: true,
+          dockOptions: {
+            buttonEnabled: false,
+            breakpoint: false
+          }
+        }
       });
 
       view.ui.add("select-geog", "bottom-left");
 
       view.then(filterByYear)
         .then(function(){
-          return geoSelect.getCentroids(map, view);
+          return geoSelect.getCentroids(view);
         })
         .then(function(){
           return NorwayPlaces.search("ekenes");
         }).then(function(layer){
-          console.log("layer: ", layer);
           map.add(layer);
         });
 
@@ -79,7 +85,6 @@
 
       function filterByYear(){
         map.layers.forEach(function(layer){
-          console.log(layer);
           if (layer.title !== "Norway Topo map (3857)"){
             layer.definitionExpression = constants.defExp;
           }
