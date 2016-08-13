@@ -3,9 +3,10 @@ define([
   "modules/constants",
   "esri/tasks/support/FeatureSet",
   "esri/request",
+  "dojo/on",
   "dojo/dom-construct",
 ], function(
-  Query, constants, FeatureSet, esriRequest, domConstruct
+  Query, constants, FeatureSet, esriRequest, on, domConstruct
 ){
 
   var map, view;
@@ -15,12 +16,62 @@ define([
   var parishJsonUrl = "../json/prestegjeld_centroids.json";
   var localParishJsonUrl = "../json/sokn_centroids.json";
 
-  var COUNTYLYR, CITYLYR, PARISHLYR, LOCALPARISHLYR;
+//  var COUNTYLYR, CITYLYR, PARISHLYR, LOCALPARISHLYR;
   var COUNTYPTS, CITYPTS, PARISHPTS, LOCALPARISHPTS;
 
-  var getCentroids = function (m, v) {
-    map = m;
+  // Reset dropdowns when user clicks a feature
+
+  //
+  // works from top down but also needs to work from bottom up
+  // if user clicks local parish outside of county of current
+  // selection, then the upper dropdowns need to be set accordingly
+  //
+  var clickToSelect = function (evt) {
+
+    var screenPoint = evt.screenPoint;
+    view.hitTest(screenPoint).then(function(response){
+      var graphic = response.results[0].graphic;
+      var att = graphic.attributes;
+      var layerTitle = graphic.layer.title;
+
+      if (layerTitle === constants.countyTitle){
+        constants.countydd.value = att.COUNTY;
+        var parOpts = setDropdown({
+          node: constants.citydd,
+          geom: graphic.geometry
+        });
+        var locParOpts = setDropdown(parOpts);
+        setDropdown(locParOpts);
+      }
+      if (layerTitle === constants.cityTitle){
+        constants.citydd.value = att.MUNICIPALITY;
+        var locParOpts = setDropdown({
+          node: constants.parishdd,
+          geom: graphic.geometry
+        });
+        setDropdown(locParOpts);
+      }
+      if (layerTitle === constants.parishTitle){
+        constants.parishdd.value = att.NAME;
+        setDropdown({
+          node: constants.localparishdd,
+          geom: graphic.geometry
+        });
+      }
+      if (layerTitle === constants.localParishTitle){
+        constants.localparishdd.value = att.Par_NAME;
+      }
+    });
+  }
+
+  var getCentroids = function (v) {
+    map = v.map;
     view = v;
+
+    console.log("GET CENTROIDS!");
+
+    on(view, "click", clickToSelect);
+
     return esriRequest(countyJsonUrl)
       .then(function(response){
         var fs = FeatureSet.fromJSON(response.data);
@@ -45,10 +96,7 @@ define([
         LOCALPARISHPTS = fs.features;
 
         return setDropdown({
-          node: constants.countydd,
-          layer: map.layers.find(function(layer){
-            return layer.title === "Norge_boundaries - fylke";
-          })
+          node: constants.countydd
         });
       });
   }
@@ -61,10 +109,7 @@ define([
 
   var setDropdown = function (opts) {
     var node = opts.node;
-    var layer = opts.layer;
     var geom = opts.geom;
-
-    console.log("setDropdown: ", node, layer, map, geom);
 
     var nextNode;
 
@@ -147,12 +192,13 @@ define([
 
       var county = evt.target.value;
       var countyLayer = map.layers.find(function(layer){
-        return layer.title === "Norge_boundaries - fylke";
+        return layer.title === constants.countyTitle;
       });
 
       var qParams = new Query({
         returnGeometry: true,
-        where: "COUNTY = '" + county + "' AND " + constants.defExp
+        where: "COUNTY = '" + county + "' AND " + constants.defExp,
+        outFields: [ "BEGIN_", "END_", "COUNTY", "WIKI", "FS_WIKI", "FARMS" ]
       });
 
       countyLayer.queryFeatures(qParams)
@@ -162,6 +208,9 @@ define([
           view.goTo(response.features);
 
           var geom = response.features[0].geometry;
+          view.popup.open({
+            features: response.features
+          });
           return {
             node: constants.citydd,
             geom: geom
@@ -184,7 +233,7 @@ define([
       var city = evt.target.value;
 
       var cityLayer = map.layers.find(function(layer){
-        return layer.title === "Norge_boundaries - herred";
+        return layer.title === constants.cityTitle;
       });
 
       var qParams = new Query({
@@ -196,6 +245,11 @@ define([
         .then(function(response){
           console.log(response);
           var geom = response.features[0].geometry;
+
+          view.popup.open({
+            features: response.features
+          });
+
           return {
             node: constants.parishdd,
             geom: geom
@@ -215,7 +269,7 @@ define([
 
       var parish = evt.target.value;
       var parishLayer = map.layers.find(function(layer){
-        return layer.title === "Norge_boundaries - prestegjeld";
+        return layer.title === constants.parishTitle;
       });
 
       var qParams = new Query({
@@ -230,6 +284,11 @@ define([
           console.log(response);
 
           var geom = response.features[0].geometry;
+
+          view.popup.open({
+            features: response.features
+          });
+
           return {
             node: constants.localparishdd,
             geom: geom
@@ -248,7 +307,7 @@ define([
 
       var localParish = evt.target.value;
       var localParishLayer = map.layers.find(function(layer){
-        return layer.title === "Norge_boundaries - sokn";
+        return layer.title === constants.localParishTitle;
       });
 
       var qParams = new Query({
@@ -263,6 +322,11 @@ define([
           console.log(response);
 
           var geom = response.features[0].geometry;
+
+          view.popup.open({
+            features: response.features
+          });
+
           return {
             geom: geom
           }
