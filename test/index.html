@@ -87,6 +87,7 @@
         map.layers.forEach(function(layer){
           if (layer.title !== "Norway Topo map (3857)"){
             layer.definitionExpression = constants.defExp;
+            layer.popupEnabled = false;
           }
         });
         return;
