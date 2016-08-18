@@ -16,7 +16,6 @@ define([
   var parishJsonUrl = "../json/prestegjeld_centroids.json";
   var localParishJsonUrl = "../json/sokn_centroids.json";
 
-//  var COUNTYLYR, CITYLYR, PARISHLYR, LOCALPARISHLYR;
   var COUNTYPTS, CITYPTS, PARISHPTS, LOCALPARISHPTS;
 
   // Reset dropdowns when user clicks a feature
@@ -35,20 +34,13 @@ define([
         console.log("No features found in hit test.");
         return;
       }
-      console.log(results);
+
       var countyGraphic, cityGraphic, parishGraphic, localParishGraphic;
       var popupGraphics = [];
 
-      var countyDDval = constants.countydd.value;
-      var cityDDval = constants.citydd.value;
-      var parishDDval = constants.parishdd.value;
-      var localParishDDval = constants.localparishdd.value;
-
-
-
       results.forEach(function(result){
         var title = result.graphic.layer.title;
-        console.log("title: ", title, " result: ", result);
+
         if (title === constants.countyTitle){
           countyGraphic = result.graphic;
           popupGraphics.push(countyGraphic);
@@ -69,73 +61,57 @@ define([
 
       view.popup.open({ features: popupGraphics });
 
-      //////////////////////////////////
-      //
-      //  NEEDS WORK. USE QUERIES TO ENSURE
-      // UPDATED DROPDOWN MENUS
-      // ADD LOGIC TO EXISTING QUERIES FOR
-      // SELECT METHODS
-      //
-      //////////////////////////////////////
-
-
       // If the click occurred outside the selected county
-      if (countyGraphic && countyGraphic.attributes.COUNTY !== countyDDval){
+      if (countyGraphic && countyGraphic.attributes.COUNTY !== constants.countydd.value){
         constants.countydd.value = countyGraphic.attributes.COUNTY;
-        setDropdown({
-          node: constants.citydd,
-          geom: cityGraphic.geometry
+
+        var cityddSelected = constants.citydd.value.length > 0 || constants.citydd.value;
+        var parishddSelected = constants.parishdd.value.length > 0 || constants.parishdd.value;
+        var localparishddSelected = constants.localparishdd.value.length > 0 || constants.localparishdd.value;
+
+        countySelect(null, countyGraphic.attributes.COUNTY).then(function(){
+          if (cityGraphic && cityddSelected){
+            constants.citydd.value = cityGraphic.attributes.MUNICIPALITY;
+          }
+          if (parishGraphic && parishddSelected){
+            constants.parishdd.value = parishGraphic.attributes.NAME;
+          }
+          if (localParishGraphic && localparishddSelected){
+            constants.localparishdd.value = localParishGraphic.attributes.Par_NAME;
+          }
         });
-        setDropdown({
-          node: constants.parishdd,
-          geom: parishGraphic.geometry
-        });
-        setDropdown({
-          node: constants.localparishdd,
-          geom: localParishGraphic.geometry
-        });
-        if (cityGraphic && cityDDval){
-          cityDDval = cityGraphic.attributes.MUNICIPALITY;
-        }
-        if (parishGraphic && parishDDval){
-          parishDDval = parishGraphic.attributes.NAME;
-        }
-        if (localParishGraphic && localParishDDval){
-          localParishDDval = localParishGraphic.attributes.Par_NAME;
-        }
       }
       // If the click occurred inside county, but outside municipality
-      else if (cityGraphic && cityGraphic.attributes.COUNTY !== cityDDval){
-        cityDDval = cityGraphic.attributes.MUNICIPALITY;
-        setDropdown({
-          node: constants.parishdd,
-          geom: parishGraphic.geometry
+      else if (cityGraphic && cityGraphic.attributes.COUNTY !== constants.citydd.value){
+        constants.citydd.value = cityGraphic.attributes.MUNICIPALITY;
+
+        var parishddSelected = constants.parishdd.value.length > 0 || constants.parishdd.value;
+        var localparishddSelected = constants.localparishdd.value.length > 0 || constants.localparishdd.value;
+
+        citySelect(null, cityGraphic.attributes.MUNICIPALITY).then(function(){
+          if (parishGraphic && parishddSelected){
+            constants.parishdd.value = parishGraphic.attributes.NAME;
+          }
+          if (localParishGraphic && localparishddSelected){
+            constants.localparishdd.value = localParishGraphic.attributes.Par_NAME;
+          }
         });
-        setDropdown({
-          node: constants.localparishdd,
-          geom: localParishGraphic.geometry
-        });
-        if (parishGraphic && parishDDval){
-          parishDDval = parishGraphic.attributes.NAME;
-        }
-        if (localParishGraphic && localParishDDval){
-          localParishDDval = localParishGraphic.attributes.Par_NAME;
-        }
       }
       // If the click occurred inside the city, but outside the parish
-      else if (parishGraphic && parishGraphic.attributes.NAME !== parishDDval){
-        parishDDval = parishGraphic.attributes.NAME;
-        setDropdown({
-          node: constants.localparishdd,
-          geom: localParishGraphic.geometry
+      else if (parishGraphic && parishGraphic.attributes.NAME !== constants.parishdd.value){
+        constants.parishdd.value = parishGraphic.attributes.NAME;
+
+        var localparishddSelected = constants.localparishdd.value.length > 0 || constants.localparishdd.value;
+
+        parishSelect(null, parishGraphic.attributes.NAME).then(function(){
+          if (localParishGraphic && localparishddSelected){
+            constants.localparishdd.value = localParishGraphic.attributes.Par_NAME;
+          }
         });
-        if (localParishGraphic && localParishDDval){
-          localParishDDval = localParishGraphic.attributes.Par_NAME;
-        }
       }
       // If the click occurred inside the parish, but outside the local parish
-      else if (localParishGraphic && localParishGraphic.attributes.NAME !== localParishDDval){
-        localParishDDval = localParishGraphic.attributes.Par_NAME;
+      else if (localParishGraphic && localParishGraphic.attributes.NAME !== constants.localparishdd.value){
+        constants.localparishdd.value = localParishGraphic.attributes.Par_NAME;
       }
     });
   }
@@ -143,7 +119,6 @@ define([
   var getCentroids = function (v) {
     map = v.map;
     view = v;
-
     console.log("GET CENTROIDS!");
 
     on(view, "click", clickToSelect);
@@ -186,14 +161,7 @@ define([
   var setDropdown = function (opts) {
     var node = opts.node;
     var geom = opts.geom;
-
-    if (!node || !geom){
-      console.log("You must pass a node or geometry in setDropdown()");
-      return;
-    }
-
     var nextNode;
-
     var options = [""];
 
     // reset dropdown if already populated with options
@@ -255,160 +223,163 @@ define([
   }
 
 
+  /////////////////////////////////////
+  //
+  // COUNTY select
+  //
+  /////////////////////////////////////
 
-    /////////////////////////////////////
-    //
-    // COUNTY select
-    //
-    /////////////////////////////////////
+  var countySelect = function (evt, name) {
 
-    var countySelect = function (evt, name) {
+    var county = name ? name : evt.target.value;
+    var countyLayer = map.layers.find(function(layer){
+      return layer.title === constants.countyTitle;
+    });
 
-      var county = name ? name : evt.target.value;
-      var countyLayer = map.layers.find(function(layer){
-        return layer.title === constants.countyTitle;
-      });
+    var qParams = new Query({
+      returnGeometry: true,
+      where: "COUNTY = '" + county + "' AND " + constants.defExp,
+      outFields: [ "BEGIN_", "END_", "COUNTY", "WIKI", "FS_WIKI", "FARMS" ]
+    });
 
-      var qParams = new Query({
-        returnGeometry: true,
-        where: "COUNTY = '" + county + "' AND " + constants.defExp,
-        outFields: [ "BEGIN_", "END_", "COUNTY", "WIKI", "FS_WIKI", "FARMS" ]
-      });
-
-      return countyLayer.queryFeatures(qParams)
-        .then(function(response){
-          console.log("county select response: ", response.features);
-          // zoom to selection
+    return countyLayer.queryFeatures(qParams)
+      .then(function(response){
+        // zoom to selection
+        if (!name){
           view.goTo(response.features);
-
-          var geom = response.features[0].geometry;
           view.popup.open({
             features: response.features
           });
-          return {
-            node: constants.citydd,
-            geom: geom
-          }
-        }, function(err){
-          console.error("There was an error performing the query: ", err);
-        })
-        .then(setDropdown)
-        .then(setDropdown)
-        .then(setDropdown);
-    };
+        }
 
-    /////////////////////////////////////
-    //
-    // CITY select
-    //
-    /////////////////////////////////////
+        var geom = response.features[0].geometry;
 
-    var citySelect = function (evt, name){
-      var city = name ? name : evt.target.value;
+        return {
+          node: constants.citydd,
+          geom: geom
+        }
+      }, function(err){
+        console.error("There was an error performing the query: ", err);
+      })
+      .then(setDropdown)
+      .then(setDropdown)
+      .then(setDropdown);
+  };
 
-      var cityLayer = map.layers.find(function(layer){
-        return layer.title === constants.cityTitle;
-      });
+  /////////////////////////////////////
+  //
+  // CITY select
+  //
+  /////////////////////////////////////
 
-      var qParams = new Query({
-        returnGeometry: true,
-        where: "MUNICIPALITY = '" + city + "' AND " + constants.defExp
-      });
+  var citySelect = function (evt, name){
+    var city = name ? name : evt.target.value;
 
-      return cityLayer.queryFeatures(qParams)
-        .then(function(response){
-          console.log(response);
-          var geom = response.features[0].geometry;
+    var cityLayer = map.layers.find(function(layer){
+      return layer.title === constants.cityTitle;
+    });
 
-          view.popup.open({
-            features: response.features
-          });
+    var qParams = new Query({
+      returnGeometry: true,
+      where: "MUNICIPALITY = '" + city + "' AND " + constants.defExp
+    });
 
-          return {
-            node: constants.parishdd,
-            geom: geom
-          }
-        })
-        .then(setDropdown)
-        .then(setDropdown);
-    };
-
-
-    /////////////////////////////////////
-    //
-    // PARISH select
-    //
-    /////////////////////////////////////
-
-    var parishSelect = function (evt, name){
-
-      var parish = name ? name : evt.target.value;
-      var parishLayer = map.layers.find(function(layer){
-        return layer.title === constants.parishTitle;
-      });
-
-      var qParams = new Query({
-        returnGeometry: true,
-        where: "NAME = '" + parish + "' AND " + constants.defExp
-      });
-
-      return parishLayer.queryFeatures(qParams)
-        .then(function(response){
-          // zoom to selection
+    return cityLayer.queryFeatures(qParams)
+      .then(function(response){
+        // zoom to selection
+        if (!name){
           view.goTo(response.features);
-          console.log(response);
-
-          var geom = response.features[0].geometry;
-
           view.popup.open({
             features: response.features
           });
+        }
 
-          return {
-            node: constants.localparishdd,
-            geom: geom
-          }
-        })
-        .then(setDropdown);
-    };
+        var geom = response.features[0].geometry;
+
+        return {
+          node: constants.parishdd,
+          geom: geom
+        }
+      })
+      .then(setDropdown)
+      .then(setDropdown);
+  };
 
 
+  /////////////////////////////////////
+  //
+  // PARISH select
+  //
+  /////////////////////////////////////
 
-    /////////////////////////////////////
-    //
-    // LOCAL PARISH select
-    //
-    /////////////////////////////////////
+  var parishSelect = function (evt, name){
 
-    var localParishSelect = function (evt, name) {
+    var parish = name ? name : evt.target.value;
+    var parishLayer = map.layers.find(function(layer){
+      return layer.title === constants.parishTitle;
+    });
 
-      var localParish = name ? name : evt.target.value;
-      var localParishLayer = map.layers.find(function(layer){
-        return layer.title === constants.localParishTitle;
-      });
+    var qParams = new Query({
+      returnGeometry: true,
+      where: "NAME = '" + parish + "' AND " + constants.defExp
+    });
 
-      var qParams = new Query({
-        returnGeometry: true,
-        where: "Par_NAME = '" + localParish + "' AND " + constants.defExp
-      });
-
-      return localParishLayer.queryFeatures(qParams)
-        .then(function(response){
-          // zoom to selection
+    return parishLayer.queryFeatures(qParams)
+      .then(function(response){
+        // zoom to selection
+        if (!name){
           view.goTo(response.features);
-          console.log(response);
-
-          var geom = response.features[0].geometry;
-
           view.popup.open({
             features: response.features
           });
+        }
 
-          return {
-            geom: geom
-          }
-        });
-    };
+        var geom = response.features[0].geometry;
+
+        return {
+          node: constants.localparishdd,
+          geom: geom
+        }
+      })
+      .then(setDropdown);
+  };
+
+
+  /////////////////////////////////////
+  //
+  // LOCAL PARISH select
+  //
+  /////////////////////////////////////
+
+  var localParishSelect = function (evt, name) {
+
+    var localParish = name ? name : evt.target.value;
+    var localParishLayer = map.layers.find(function(layer){
+      return layer.title === constants.localParishTitle;
+    });
+
+    var qParams = new Query({
+      returnGeometry: true,
+      where: "Par_NAME = '" + localParish + "' AND " + constants.defExp
+    });
+
+    return localParishLayer.queryFeatures(qParams)
+      .then(function(response){
+        // zoom to selection
+        if (!name){
+          view.goTo(response.features);
+          view.popup.open({
+            features: response.features
+          });
+        }
+
+        var geom = response.features[0].geometry;
+
+        return {
+          geom: geom
+        }
+      });
+  };
 
 
   return {
