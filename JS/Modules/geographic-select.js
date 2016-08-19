@@ -3,10 +3,11 @@ define([
   "modules/constants",
   "esri/tasks/support/FeatureSet",
   "esri/request",
+  "esri/symbols/SimpleFillSymbol",
   "dojo/on",
   "dojo/dom-construct",
 ], function(
-  Query, constants, FeatureSet, esriRequest, on, domConstruct
+  Query, constants, FeatureSet, esriRequest, SimpleFillSymbol, on, domConstruct
 ){
 
   var map, view;
@@ -59,24 +60,26 @@ define([
         }
       });
 
+      console.log("popup graphics: ", popupGraphics);
+      addGraphic(popupGraphics[0]);
       view.popup.open({ features: popupGraphics });
 
       // If the click occurred outside the selected county
       if (countyGraphic && countyGraphic.attributes.COUNTY !== constants.countydd.value){
         constants.countydd.value = countyGraphic.attributes.COUNTY;
 
-        var cityddSelected = constants.citydd.value.length > 0 || constants.citydd.value;
-        var parishddSelected = constants.parishdd.value.length > 0 || constants.parishdd.value;
-        var localparishddSelected = constants.localparishdd.value.length > 0 || constants.localparishdd.value;
+//        var cityddSelected = constants.citydd.value.length > 0 || constants.citydd.value;
+//        var parishddSelected = constants.parishdd.value.length > 0 || constants.parishdd.value;
+//        var localparishddSelected = constants.localparishdd.value.length > 0 || constants.localparishdd.value;
 
-        countySelect(null, countyGraphic.attributes.COUNTY).then(function(){
-          if (cityGraphic && cityddSelected){
+        return countySelect(null, countyGraphic.attributes.COUNTY).then(function(){
+          if (cityGraphic/* && cityddSelected*/){
             constants.citydd.value = cityGraphic.attributes.MUNICIPALITY;
           }
-          if (parishGraphic && parishddSelected){
+          if (parishGraphic/* && parishddSelected*/){
             constants.parishdd.value = parishGraphic.attributes.NAME;
           }
-          if (localParishGraphic && localparishddSelected){
+          if (localParishGraphic/* && localparishddSelected*/){
             constants.localparishdd.value = localParishGraphic.attributes.Par_NAME;
           }
         });
@@ -85,14 +88,14 @@ define([
       else if (cityGraphic && cityGraphic.attributes.COUNTY !== constants.citydd.value){
         constants.citydd.value = cityGraphic.attributes.MUNICIPALITY;
 
-        var parishddSelected = constants.parishdd.value.length > 0 || constants.parishdd.value;
-        var localparishddSelected = constants.localparishdd.value.length > 0 || constants.localparishdd.value;
+//        var parishddSelected = constants.parishdd.value.length > 0 || constants.parishdd.value;
+//        var localparishddSelected = constants.localparishdd.value.length > 0 || constants.localparishdd.value;
 
-        citySelect(null, cityGraphic.attributes.MUNICIPALITY).then(function(){
-          if (parishGraphic && parishddSelected){
+        return citySelect(null, cityGraphic.attributes.MUNICIPALITY).then(function(){
+          if (parishGraphic/* && parishddSelected*/){
             constants.parishdd.value = parishGraphic.attributes.NAME;
           }
-          if (localParishGraphic && localparishddSelected){
+          if (localParishGraphic/* && localparishddSelected*/){
             constants.localparishdd.value = localParishGraphic.attributes.Par_NAME;
           }
         });
@@ -101,10 +104,10 @@ define([
       else if (parishGraphic && parishGraphic.attributes.NAME !== constants.parishdd.value){
         constants.parishdd.value = parishGraphic.attributes.NAME;
 
-        var localparishddSelected = constants.localparishdd.value.length > 0 || constants.localparishdd.value;
+//        var localparishddSelected = constants.localparishdd.value.length > 0 || constants.localparishdd.value;
 
-        parishSelect(null, parishGraphic.attributes.NAME).then(function(){
-          if (localParishGraphic && localparishddSelected){
+        return parishSelect(null, parishGraphic.attributes.NAME).then(function(){
+          if (localParishGraphic /*&& localparishddSelected*/){
             constants.localparishdd.value = localParishGraphic.attributes.Par_NAME;
           }
         });
@@ -122,6 +125,8 @@ define([
     console.log("GET CENTROIDS!");
 
     on(view, "click", clickToSelect);
+    view.popup.watch("selectedFeature", popupSelectionChange);
+    view.popup.watch("visible", popupClose);
 
     return esriRequest(countyJsonUrl)
       .then(function(response){
@@ -150,6 +155,90 @@ define([
           node: constants.countydd
         });
       });
+  }
+
+
+  /////////////////////////////////////
+  //
+  // Add selection graphic to view
+  //
+  /////////////////////////////////////
+
+  var addGraphic = function (graphic){
+    var symbol = new SimpleFillSymbol({
+      style: "none",
+      outline: {
+        width: 4,
+        style: "short-dash-dot",
+        color: [ 0, 0, 0, 0.75 ]
+      }
+    });
+    var selection = graphic.clone();
+    selection.symbol = symbol;
+    view.graphics.removeAll();
+    view.graphics.add(selection);
+  }
+
+  /////////////////////////////////////
+  //
+  // Popup selection change
+  //
+  /////////////////////////////////////
+
+  var popupSelectionChange = function (newVal, oldVal){
+    if (view.popup.features.length <= 1){
+      return;
+    }
+
+    addGraphic(newVal);
+
+//    console.log("selection change: ", newVal);
+//    if (newVal.layer.title === constants.countyTitle){
+//      constants.citydd.value = "";
+//      constants.parishdd.value = "";
+//      constants.localparishdd.value = "";
+//    }
+//    if (newVal.layer.title === constants.cityTitle){
+//      constants.citydd.value = newVal.attributes.MUNICIPALITY;
+//      constants.parishdd.value = "";
+//      constants.localparishdd.value = "";
+//    }
+//    if (newVal.layer.title === constants.parishTitle){
+//      constants.parishdd.value = newVal.attributes.NAME;
+//      constants.localparishdd.value = "";
+//    }
+//    if (newVal.layer.title === constants.localParishTitle){
+//      constants.localparishdd.value = newVal.attributes.Par_NAME;
+//    }
+  };
+
+  var popupClose = function (newVal, oldVal){
+    var features = view.popup.features;
+    if (newVal || features.length < 2){
+      return;
+    }
+
+    var selection;
+
+    if (constants.localparishdd.value){
+      selection = features.find(function(graphic){
+        return graphic.layer.title === constants.localParishTitle;
+      });
+    } else if (constants.parishdd.value){
+      selection = features.find(function(graphic){
+        return graphic.layer.title === constants.parishTitle;
+      });
+    } else if (constants.citydd.value) {
+      selection = features.find(function(graphic){
+        return graphic.layer.title === constants.cityTitle;
+      });
+    } else if (constants.countydd.value){
+      selection = features.find(function(graphic){
+        return graphic.layer.title === constants.countyTitle;
+      });
+    }
+
+    addGraphic(selection);
   }
 
   /////////////////////////////////////
@@ -237,6 +326,7 @@ define([
       constants.parishdd.options.length = 0;
       constants.localparishdd.options.length = 0;
       view.popup.close();
+      view.graphics.removeAll();
       return;
     }
 
@@ -258,6 +348,7 @@ define([
           view.popup.open({
             features: response.features
           });
+          addGraphic(response.features[0]);
         }
 
         var geom = response.features[0].geometry;
@@ -286,6 +377,7 @@ define([
     if (!city){
       var county = constants.countydd.value;
       view.popup.close();
+      view.graphics.removeAll();
       return countySelect(null, county);
     }
 
@@ -306,6 +398,7 @@ define([
           view.popup.open({
             features: response.features
           });
+          addGraphic(response.features[0]);
         }
 
         var geom = response.features[0].geometry;
@@ -331,6 +424,7 @@ define([
 
     if (!parish){
       view.popup.close();
+      view.graphics.removeAll();
       var city = constants.citydd.value;
       var county = constants.countydd.value;
 
@@ -358,6 +452,7 @@ define([
           view.popup.open({
             features: response.features
           });
+          addGraphic(response.features[0]);
         }
 
         var geom = response.features[0].geometry;
@@ -382,6 +477,7 @@ define([
 
     if (!localParish){
       view.popup.close();
+      view.graphics.removeAll();
       return;
     }
 
@@ -402,6 +498,7 @@ define([
           view.popup.open({
             features: response.features
           });
+          addGraphic(response.features[0]);
         }
 
         var geom = response.features[0].geometry;
