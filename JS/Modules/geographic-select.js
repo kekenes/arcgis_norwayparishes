@@ -230,7 +230,6 @@ define([
   /////////////////////////////////////
 
   var countySelect = function (evt, name) {
-
     var county = name ? name : evt.target.value;
 
     if (!county){
@@ -284,6 +283,12 @@ define([
   var citySelect = function (evt, name){
     var city = name ? name : evt.target.value;
 
+    if (!city){
+      var county = constants.countydd.value;
+      view.popup.close();
+      return countySelect(null, county);
+    }
+
     var cityLayer = map.layers.find(function(layer){
       return layer.title === constants.cityTitle;
     });
@@ -322,8 +327,20 @@ define([
   /////////////////////////////////////
 
   var parishSelect = function (evt, name){
-
     var parish = name ? name : evt.target.value;
+
+    if (!parish){
+      view.popup.close();
+      var city = constants.citydd.value;
+      var county = constants.countydd.value;
+
+      if (!city){
+        return countySelect(null, county);
+      } else {
+        return citySelect(null, city);
+      }
+    }
+
     var parishLayer = map.layers.find(function(layer){
       return layer.title === constants.parishTitle;
     });
@@ -361,8 +378,13 @@ define([
   /////////////////////////////////////
 
   var localParishSelect = function (evt, name) {
-
     var localParish = name ? name : evt.target.value;
+
+    if (!localParish){
+      view.popup.close();
+      return;
+    }
+
     var localParishLayer = map.layers.find(function(layer){
       return layer.title === constants.localParishTitle;
     });
