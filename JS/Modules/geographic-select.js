@@ -232,6 +232,15 @@ define([
   var countySelect = function (evt, name) {
 
     var county = name ? name : evt.target.value;
+
+    if (!county){
+      constants.citydd.options.length = 0;
+      constants.parishdd.options.length = 0;
+      constants.localparishdd.options.length = 0;
+      view.popup.close();
+      return;
+    }
+
     var countyLayer = map.layers.find(function(layer){
       return layer.title === constants.countyTitle;
     });
